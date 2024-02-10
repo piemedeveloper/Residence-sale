@@ -84,8 +84,8 @@ function Insights() {
   return (
     <div className="gray-bg">
       <div className="container py-12 mx-auto">
-        <h3 className="text-4xl font-medium text-center main-color">
-          How real estate crowdfunding works
+        <h3 className="max-w-2xl mx-auto text-4xl font-medium text-center main-color">
+          How Pieme Community Hotel Ownership works
         </h3>
 
         <Swiper
@@ -106,7 +106,7 @@ function Insights() {
         >
           {funding.map((f, i) => (
             <SwiperSlide key={i}>
-              <div className="mb-10  ms-3 me-4">
+              <div className="mb-10 ms-3 me-4">
                 <InsightCell data={f} />
               </div>
             </SwiperSlide>
@@ -135,7 +135,7 @@ function Insights() {
         >
           {insights.map((f, i) => (
             <SwiperSlide key={i}>
-              <div className="mb-10  ms-3 me-4">
+              <div className="mb-10 ms-3 me-4">
                 <InsightCell data={f} />
               </div>
             </SwiperSlide>

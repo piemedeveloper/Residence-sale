@@ -1,39 +1,42 @@
 import React from "react";
 import { Collapse } from "antd";
-import { FriendReferrer, General, Referrers, Reward } from "./data-content";
+import {
+  Differences,
+  Disadvanges,
+  HowItWorks,
+  WhatIs,
+  WhyConsider,
+} from "./data-content";
 
 function Faq() {
   const items = [
     {
       key: "1",
-      label: "About Pieme",
-      children: <Reward />,
+      label:
+        "I can afford to build an entire hotel alone” Why you should consider investing in Pieme Residences",
+      children: <WhyConsider />,
     },
     {
       key: "2",
-      label: "My Investments",
-      children: <Referrers />,
+      label: "How do Pieme residences work",
+      children: <HowItWorks />,
     },
     {
       key: "3",
-      label: "My Portfolio",
-      children: <FriendReferrer />,
+      label:
+        "What are the Disadvantages of investing in community-owned Hotels",
+      children: <Disadvanges />,
     },
     {
       key: "4",
-      label: "My Account",
-      children: <General />,
+      label:
+        "Difference Between Community Owned Hotel and Other traditional ownership Models",
+      children: <Differences />,
     },
     {
       key: "5",
-      label: "General Returns",
-      children: <General />,
-    },
-
-    {
-      key: "6",
-      label: "Security",
-      children: <General />,
+      label: "What is Hotel Community ownership",
+      children: <WhatIs />,
     },
   ];
   return (
@@ -43,7 +46,7 @@ function Faq() {
           Frequently asked questions
         </h1>
 
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <Collapse
             accordion
             items={items}

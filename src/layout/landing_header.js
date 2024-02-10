@@ -39,6 +39,7 @@ function LandingHeader() {
   const onClose = () => {
     setOpen(false);
   };
+
   return (
     <>
       <Drawer title="Pieme" placement={"right"} onClose={onClose} open={open}>
