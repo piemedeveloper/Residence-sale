@@ -77,7 +77,7 @@ function Summary() {
           <div className="grid grid-cols-2 gap-6 p-5 sm:grid-cols-3">
             {_.map(investments, (investment, i) => (
               <div key={i}>
-                <p className="text-sm whitespace-pre-line head-color">
+                <p className="text-base whitespace-pre-line head-color">
                   {investment.title}
                 </p>
                 <p className="text-xl font-semibold main-color">
@@ -95,7 +95,7 @@ function Summary() {
             {_.map(returns, (r, i) => (
               <div key={i}>
                 <Tooltip placement="top" title={r.tip}>
-                  <p className="text-sm underline whitespace-pre-line cursor-pointer head-color">
+                  <p className="text-base underline whitespace-pre-line cursor-pointer head-color">
                     {r.title}
                   </p>
                 </Tooltip>
@@ -114,7 +114,7 @@ function Summary() {
                   className="w-3 h-3 mt-1 rounded-full"
                 ></div>
                 <div>
-                  <p className="text-sm whitespace-pre-line head-color">
+                  <p className="text-base whitespace-pre-line head-color">
                     {f.title}
                   </p>
                   <p className="text-xl font-semibold main-color">

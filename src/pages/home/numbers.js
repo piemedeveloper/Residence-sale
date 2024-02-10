@@ -39,8 +39,8 @@ function Numbers() {
 
         <div className="grid gap-6 mt-16 md:grid-cols-2">
           <div>
-            <h2 className="text-3xl">Why Hotel Business?</h2>
-            <p className="my-4 text-lg font-normal">
+            <h2 className="text-2xl md:text-3xl">Why Hotel Business?</h2>
+            <p className="my-4 text-base font-normal md:text-lg">
               A hotel business is an appealing venture due to its potential for
               consistent revenue, diverse income streams, and the growing demand
               for hospitality services. With global tourism on the rise, hotels
@@ -51,7 +51,7 @@ function Numbers() {
               services such as dining, spa facilities, and entertainment
               contribute to revenue diversification.
             </p>
-            <p className="text-lg font-normal">
+            <p className="text-base font-normal md:text-lg">
               The recurring nature of travel ensures a steady customer flow,
               providing the hotel business with a solid foundation for growth
               and profitability. Moreover, the sector's adaptability to emerging
@@ -62,8 +62,10 @@ function Numbers() {
           </div>
 
           <div>
-            <h2 className="text-3xl">Why Community Hotel Ownership Model?</h2>
-            <p className="my-4 text-lg font-normal">
+            <h2 className="text-2xl md:text-3xl">
+              Why Community Hotel Ownership Model?
+            </h2>
+            <p className="my-4 text-base font-normal md:text-lg">
               The community hotel ownership model, exemplified by Pieme
               Residences, offers a groundbreaking approach by breaking down
               financial barriers, allowing individuals to invest modest sums, as
@@ -75,7 +77,7 @@ function Numbers() {
               ensuring a seamless guest experience.
             </p>
 
-            <p className="text-lg font-normal">
+            <p className="text-base font-normal md:text-lg">
               Beyond financial inclusivity and risk diversification, this
               approach aligns with evolving consumer preferences for socially
               responsible businesses, contributing to the hotel's long-term

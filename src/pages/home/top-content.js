@@ -33,7 +33,7 @@ function TopContent() {
       <div className="flex">
         <Slide direction="left" triggerOnce>
           <div className="w-full px-6 py-10 pt-16">
-            <h1 className="text-4xl md:text-5xl font-semibold leading-tight heading-color">
+            <h1 className="text-4xl font-semibold leading-tight md:text-5xl heading-color">
               Real estate investment made easy
             </h1>
             <p className="my-6 text-lg heading-color">
@@ -43,7 +43,7 @@ function TopContent() {
 
             <div className="flex">
               <Link>
-                <p className="md:text-base text-sm text-center register-btn">
+                <p className="text-base text-center md:text-base register-btn">
                   Register to view full property details
                 </p>
               </Link>

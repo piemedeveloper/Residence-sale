@@ -16,7 +16,7 @@ function Footer() {
   ];
 
   return (
-    <div className="text-sm gradient-bg">
+    <div className="text-base gradient-bg">
       <div className="container flex md:flex-row flex-col gap-10 py-16 mx-auto border-b-[0.2px]">
         <div className="w-full md:w-1/4">
           <h3 className="text-base heading-color">Quick Links</h3>
@@ -63,7 +63,7 @@ function Footer() {
       </div>
 
       <div>
-        <p className="p-4 text-sm text-center text-white">
+        <p className="p-4 text-base text-center text-white">
           Copyright Pieme 2024. All rights reserved
         </p>
       </div>

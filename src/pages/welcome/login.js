@@ -25,7 +25,7 @@ function Login() {
                     <input
                       type="email"
                       placeholder="Enter email address"
-                      className="text-sm"
+                      className="text-base"
                     />
                   </td>
                 </tr>
@@ -38,7 +38,7 @@ function Login() {
                     <input
                       type="password"
                       placeholder="Enter password"
-                      className="text-sm"
+                      className="text-base"
                     />
                   </td>
                 </tr>

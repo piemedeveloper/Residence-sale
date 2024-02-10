@@ -58,16 +58,16 @@ function Rewards() {
           <ContentHeading title="share my code" />
           <div className="p-6">
             <div className="flex items-center overflow-hidden share-bg rounded-xl">
-              <p className="w-full px-6 text-sm head-color line-clamp-1">
+              <p className="w-full px-6 text-base head-color line-clamp-1">
                 {window.location.origin}?referrer={username}
               </p>
-              <button className="px-10 py-3.5 main-bg text-white text-sm">
+              <button className="px-10 py-3.5 main-bg text-white text-base">
                 Copy
               </button>
             </div>
 
             <div className="flex items-center gap-3 mt-6">
-              <p className="text-sm">Share via:</p>
+              <p className="text-base">Share via:</p>
               <FaSquareFacebook
                 className={`${icon_class}`}
                 style={{ color: "#1973eb" }}

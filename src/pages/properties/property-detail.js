@@ -46,7 +46,7 @@ function PropertyDetail() {
             <div className="w-2/3">
               <div className="relative rounded-xl overflow-hidden max-h-[30rem]">
                 <p
-                  className={`uppercase text-white text-center p-1.5 text-sm tracking-wide ${
+                  className={`uppercase text-white text-center p-1.5 text-base tracking-wide ${
                     property.type === 0 ? "main-bg" : "entire-bg"
                   }`}
                 >
@@ -62,14 +62,14 @@ function PropertyDetail() {
               <div className="flex my-6 border rounded-xl">
                 <div className="grid w-3/5 grid-cols-3 border-e">
                   <div className="relative p-5 border-e">
-                    <p className="text-sm">Investment term</p>
+                    <p className="text-base">Investment term</p>
                     <p className="absolute text-lg font-semibold bottom-2 main-color">
                       {numberFormatter(property.period)} Years
                     </p>
                   </div>
 
                   <div className="relative p-5 border-e">
-                    <p className="text-sm">Forecast annual rental returns</p>
+                    <p className="text-base">Forecast annual rental returns</p>
                     <p className="absolute text-lg font-semibold bottom-2 main-color">
                       $
                       {numberFormatter(
@@ -79,7 +79,7 @@ function PropertyDetail() {
                   </div>
 
                   <div className="relative p-5">
-                    <p className="text-sm">Total forecast rental returns</p>
+                    <p className="text-base">Total forecast rental returns</p>
                     <p className="absolute text-lg font-semibold bottom-2 main-color">
                       $
                       {numberFormatter(
@@ -96,13 +96,13 @@ function PropertyDetail() {
 
                   <div className="flex justify-between mt-4">
                     <div>
-                      <p className="text-sm head-color">Investors to date</p>
+                      <p className="text-base head-color">Investors to date</p>
                       <p className="font-medium main-color">
                         ${numberFormatter(property.investors)}
                       </p>
                     </div>
                     <div>
-                      <p className="text-sm head-color text-end">
+                      <p className="text-base head-color text-end">
                         Funding target
                       </p>
                       <p className="font-medium main-color text-end">

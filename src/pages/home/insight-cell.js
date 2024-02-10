@@ -19,12 +19,12 @@ function InsightCell(props) {
       <div className="p-6">
         <h2 className="font-medium main-color">{data.title}</h2>
 
-        <p className="mt-4 mb-3 text-sm heading-color">{data.desc}</p>
+        <p className="mt-4 mb-3 text-base heading-color">{data.desc}</p>
       </div>
 
       <div className="absolute bottom-0 w-full p-3 border-t">
         <Link to={`/`}>
-          <p className="text-sm font-medium text-center entire-color">
+          <p className="text-base font-medium text-center entire-color">
             Read more
           </p>
         </Link>

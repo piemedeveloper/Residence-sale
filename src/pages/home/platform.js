@@ -15,7 +15,7 @@ function Platform() {
     <div>
       <div className="container relative mx-auto">
         <div
-          className="grid p-8 text-lg bg-white gap-x-8 gap-y-4 lg:grid-cols-2 rounded-xl"
+          className="grid p-8 text-base bg-white md:text-lg gap-x-8 gap-y-4 lg:grid-cols-2 rounded-xl"
           style={{ marginTop: "-3rem" }}
         >
           <p>
@@ -44,7 +44,7 @@ function Platform() {
             <div className="md:w-2/5"></div>
             <div className="w-full md:w-3/5">
               <div className="md:max-w-2xl">
-                <h3 className="text-[2.8rem] font-medium">
+                <h3 className="text-3xl md:text-[2.8rem] font-medium">
                   A real estate investment platform built for you
                 </h3>
 
@@ -54,7 +54,7 @@ function Platform() {
                       <div className="p-1 rounded-full invest-input">
                         <TiTick className="text-2xl heading-color" />
                       </div>
-                      <p className="text-lg">{p}</p>
+                      <p className="text-base md:text-lg">{p}</p>
                     </div>
                   ))}
                 </div>

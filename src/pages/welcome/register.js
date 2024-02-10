@@ -35,12 +35,12 @@ function Register() {
                       <input
                         type="email"
                         placeholder="Enter your first name"
-                        className="text-sm"
+                        className="text-base"
                       />
                       <input
                         type="email"
                         placeholder="Enter your last name"
-                        className="text-sm"
+                        className="text-base"
                       />
                     </div>
                   </td>
@@ -54,7 +54,7 @@ function Register() {
                     <input
                       type="email"
                       placeholder="Enter email address"
-                      className="text-sm"
+                      className="text-base"
                     />
                   </td>
                 </tr>
@@ -67,7 +67,7 @@ function Register() {
                     <input
                       type="password"
                       placeholder="Enter password"
-                      className="text-sm"
+                      className="text-base"
                     />
                   </td>
                 </tr>
@@ -86,7 +86,7 @@ function Register() {
                     <input
                       type="text"
                       placeholder="Enter your referral code if you have one"
-                      className="text-sm"
+                      className="text-base"
                     />
                   </td>
                 </tr>

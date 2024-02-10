@@ -14,12 +14,14 @@ function InvestPart(props) {
         ACCUMULATED EARNINGS FORECAST
       </p>
       <div className="p-5">
-        <p className="text-sm head-color">Investment amount (minimum $1,000)</p>
+        <p className="text-base head-color">
+          Investment amount (minimum $1,000)
+        </p>
 
         <div className="flex items-center mt-3 overflow-hidden rounded-lg invest-container">
           <span className="px-4 py-2.5 invest-input font-medium">$</span>
           <input
-            className="px-4 py-2 text-sm font-medium bg-transparent outline-none"
+            className="px-4 py-2 text-base font-medium bg-transparent outline-none"
             value={1000}
             onChange={onChange}
             style={{ width: "100%", border: "none", borderRadius: 0 }}
@@ -31,19 +33,19 @@ function InvestPart(props) {
           <div className="relative w-full">
             <div className="absolute bottom-0 w-full">
               <div className="w-full h-3 graph-bg"></div>
-              <p className="text-sm text-center head-color">Year 1</p>
+              <p className="text-base text-center head-color">Year 1</p>
             </div>
           </div>
           <div className="relative w-full">
             <div className="">
               <div className="w-full h-6 graph-bg"></div>
-              <p className="text-sm text-center head-color">Year 2</p>
+              <p className="text-base text-center head-color">Year 2</p>
             </div>
           </div>
         </div>
 
         <div className="flex justify-center pt-4 pb-2">
-          <p className="entire-bg text-sm md:text-base rounded-full text-white py-2.5 w-full text-center">
+          <p className="entire-bg text-base md:text-base rounded-full text-white py-2.5 w-full text-center">
             Invest
           </p>
         </div>

@@ -35,7 +35,7 @@ function PropertyCell(props) {
       </Link>
 
       <p
-        className={`uppercase text-white text-center p-1.5 text-sm tracking-wide ${
+        className={`uppercase text-white text-center p-1.5 text-base tracking-wide ${
           property.type === 0 ? "main-bg" : "entire-bg"
         }`}
       >
@@ -55,14 +55,14 @@ function PropertyCell(props) {
         <Progress percent={parseInt((property.paid / property.price) * 100)} />
         <div className="flex justify-between">
           <div>
-            <p className="text-sm md:text-[15px]">Investors</p>
-            <p className="entire-color font-semibold text-sm md:text-[15px]">
+            <p className="text-base md:text-[15px]">Investors</p>
+            <p className="entire-color font-semibold text-base md:text-[15px]">
               {numberFormatter(property.investors)}
             </p>
           </div>
           <div>
-            <p className="text-sm md:text-[15px] text-end">Target</p>
-            <p className="entire-color font-semibold text-end text-sm md:text-[15px]">
+            <p className="text-base md:text-[15px] text-end">Target</p>
+            <p className="entire-color font-semibold text-end text-base md:text-[15px]">
               ${numberFormatter(property.price)}
             </p>
           </div>
@@ -78,7 +78,7 @@ function PropertyCell(props) {
         {property.price !== property.paid && (
           <div className="flex justify-center py-4">
             <Link to={`/properties/${property.slag}/invest`}>
-              <p className="entire-bg text-sm md:text-base rounded-full text-white py-2.5 px-8">
+              <p className="entire-bg text-base md:text-base rounded-full text-white py-2.5 px-8">
                 Invest now
               </p>
             </Link>
@@ -88,7 +88,7 @@ function PropertyCell(props) {
 
       <div className="absolute bottom-0 w-full p-3 border-t">
         <Link to={`/properties/${property.slag}`}>
-          <p className="text-sm font-medium text-center entire-color">
+          <p className="text-base font-medium text-center entire-color">
             View details
           </p>
         </Link>

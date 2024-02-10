@@ -35,7 +35,7 @@ function HomePropertyCell(props) {
       </Link>
 
       <p
-        className={`uppercase text-white text-center p-1.5 text-sm tracking-wide ${
+        className={`uppercase text-white text-center p-1.5 text-base tracking-wide ${
           property.type === 0 ? "main-bg" : "entire-bg"
         }`}
       >
@@ -54,8 +54,8 @@ function HomePropertyCell(props) {
 
         <Progress percent={parseInt((property.paid / property.price) * 100)} />
         <div className="flex justify-between">
-          <p className="text-sm md:text-[15px]">Target</p>
-          <p className="entire-color font-semibold text-end text-sm md:text-[15px]">
+          <p className="text-base md:text-[15px]">Target</p>
+          <p className="entire-color font-semibold text-end text-base md:text-[15px]">
             ${numberFormatter(property.price)}
           </p>
         </div>
@@ -70,7 +70,7 @@ function HomePropertyCell(props) {
 
       <div className="absolute bottom-0 w-full p-3 border-t">
         <Link to={`/properties/${property.slag}`}>
-          <p className="text-sm font-medium text-center entire-color">
+          <p className="text-base font-medium text-center entire-color">
             View details
           </p>
         </Link>

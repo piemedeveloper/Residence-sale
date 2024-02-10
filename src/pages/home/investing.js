@@ -60,7 +60,7 @@ function Investing() {
                 className="w-12 h-12 rounded-full min-w-12"
               />
               <div>
-                <p className="text-sm">"{t.message}"</p>
+                <p className="text-base">"{t.message}"</p>
                 <p className="mt-2 text-xs">{t.name}</p>
               </div>
             </div>

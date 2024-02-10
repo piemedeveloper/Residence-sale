@@ -34,7 +34,7 @@ function StartPortfolio() {
     <div className="gray-bg">
       <div className="container py-12 mx-auto">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-medium text-center heading-color">
+          <h2 className="text-3xl font-medium text-center md:text-4xl heading-color">
             Commence Your Hotel Business Journey Today
           </h2>
 
@@ -64,7 +64,7 @@ function StartPortfolio() {
           >
             {properties.map((property, i) => (
               <SwiperSlide key={i}>
-                <div className="me-8 mb-10">
+                <div className="mb-10 me-8">
                   <HomePropertyCell property={property} />
                 </div>
               </SwiperSlide>

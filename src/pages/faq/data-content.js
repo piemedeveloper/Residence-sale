@@ -1,6 +1,4 @@
-import _ from "lodash";
 import React from "react";
-import { numberFormatter } from "../../utils/utils";
 
 export function WhyConsider() {
   return (

@@ -13,7 +13,7 @@ function Referrrals() {
   return (
     <div>
       <h2 className="mt-10 text-3xl font-medium main-color">My referrals</h2>
-      <div className="px-3 py-5 mt-6 overflow-y-auto text-sm bg-white rounded-xl">
+      <div className="px-3 py-5 mt-6 overflow-y-auto text-base bg-white rounded-xl">
         <table className="w-full rewards">
           <thead>
             <tr>

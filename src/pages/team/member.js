@@ -12,7 +12,7 @@ function TeamMember({ member }) {
           <h2 className="main-color font-semibold">
             {member.name}, {member.title}
           </h2>
-          <p className="text-sm mt-2 menu-color">{member.desc}</p>
+          <p className="text-base mt-2 menu-color">{member.desc}</p>
         </div>
       </div>
     </Slide>
