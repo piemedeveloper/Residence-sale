@@ -1,114 +1,192 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Checkbox } from "antd";
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import "react-phone-number-input/style.css";
+import PasswordStrengthBar from "react-password-strength-bar";
+
+import { Checkbox, Alert, Input } from "antd";
+import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 
 function Register() {
-  const onChange = (e) => {
-    console.log(`checked = ${e.target.checked}`);
+  const [error, setError] = useState("");
+  const [data, setData] = useState({
+    first_name: "",
+    last_name: "",
+    email_id: "",
+    password: "",
+    phone_no: "",
+    strength: 0,
+    agree: false,
+  });
+
+  const register = (e) => {
+    e.preventDefault();
+    if (data.first_name.length === 0) setError("Please enter your first name");
+    else if (data.last_name.length === 0)
+      setError("Please enter your last name");
+    else if (data.email_id.length === 0)
+      setError("Please enter your Email address");
+    else if (data.phone_no.length === 0)
+      setError("Please enter your Phone number");
+    else if (!isValidPhoneNumber(data.phone_no))
+      setError("Please enter a valid Phone number");
+    else if (data.password.length === 0) setError("Please enter a password");
+    else if (data.strength < 2) setError("Password is still weak");
+    else if (!data.agree) setError("Please accept the agreement to continue");
+    else {
+      setError("");
+    }
   };
 
   return (
     <div>
       <div className="bg-white">
-        <div className="container mx-auto heading-color text-center py-12">
-          <h1 className="font-semibold text-5xl">Register</h1>
-          <p className="text-lg mt-3 menu-color">
+        <div className="container py-12 mx-auto text-center heading-color">
+          <h1 className="text-5xl font-semibold">Register</h1>
+          <p className="mt-3 text-lg menu-color">
             Sign up now to get access to exclusive crowdfunded real estate
             opportunities
           </p>
         </div>
       </div>
       <div className="gray-bg">
-        <div className="container mx-auto py-12">
+        <div className="container py-12 mx-auto">
           <div className="max-w-2xl mx-auto detail-form">
-            <h2 className="font-semibold text-3xl heading-color text-center mb-2">
+            <h2 className="mb-2 text-3xl font-semibold text-center heading-color">
               Your details
             </h2>
-            <table>
-              <tbody>
-                <tr>
-                  <td>
-                    <p>Full Name</p>
-                  </td>
-                  <td>
-                    <div className="grid md:grid-cols-2 gap-5">
+            <form onSubmit={register}>
+              {error.length > 0 && (
+                <Alert showIcon={true} message={error} type="error" />
+              )}
+              <table>
+                <tbody>
+                  <tr>
+                    <td>
+                      <p>Full Name</p>
+                    </td>
+                    <td>
+                      <div className="grid gap-5 md:grid-cols-2">
+                        <input
+                          type="text"
+                          placeholder="Enter your first name"
+                          className="text-base"
+                          value={data.first_name}
+                          onChange={(e) => {
+                            data.first_name = e.target.value;
+                            setData({ ...data });
+                          }}
+                        />
+                        <input
+                          type="text"
+                          placeholder="Enter your last name"
+                          className="text-base"
+                          value={data.last_name}
+                          onChange={(e) => {
+                            data.last_name = e.target.value;
+                            setData({ ...data });
+                          }}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <p>Email Address</p>
+                    </td>
+                    <td>
                       <input
                         type="email"
-                        placeholder="Enter your first name"
+                        placeholder="Enter email address"
                         className="text-base"
+                        value={data.email_id}
+                        onChange={(e) => {
+                          data.email_id = e.target.value;
+                          setData({ ...data });
+                        }}
                       />
-                      <input
-                        type="email"
-                        placeholder="Enter your last name"
-                        className="text-base"
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Phone number</p>
+                    </td>
+                    <td>
+                      <PhoneInput
+                        placeholder="Enter phone number"
+                        defaultCountry="UG"
+                        value={data.phone}
+                        onChange={(e) => {
+                          data.phone_no = e;
+                          setData({ ...data });
+                        }}
                       />
-                    </div>
-                  </td>
-                </tr>
+                    </td>
+                  </tr>
 
-                <tr>
-                  <td>
-                    <p>Email Address</p>
-                  </td>
-                  <td>
-                    <input
-                      type="email"
-                      placeholder="Enter email address"
-                      className="text-base"
-                    />
-                  </td>
-                </tr>
+                  <tr className="mt-3 border-t">
+                    <td>
+                      <p>Password</p>
+                    </td>
+                    <td>
+                      <div>
+                        <Input.Password
+                          placeholder="Enter password"
+                          className="p-2.5 text-base"
+                          iconRender={(visible) =>
+                            visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                          }
+                          value={data.password}
+                          onChange={(e) => {
+                            data.password = e.target.value;
+                            setData({ ...data });
+                          }}
+                        />
+                        <PasswordStrengthBar
+                          password={data.password}
+                          onChangeScore={(score) => {
+                            data.strength = score;
+                            setData({ ...data });
+                          }}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colSpan={2}>
+                      Your password must be at least eight characters long and
+                      contain at least one capital letter and one number.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
 
-                <tr className="border-t mt-3">
-                  <td>
-                    <p>Password</p>
-                  </td>
-                  <td>
-                    <input
-                      type="password"
-                      placeholder="Enter password"
-                      className="text-base"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td colSpan={2}>
-                    Your password must be at least eight characters long and
-                    contain at least one capital letter and one number.
-                  </td>
-                </tr>
+              <div className="mt-4">
+                <Checkbox
+                  onChange={(e) => {
+                    data.agree = e.target.checked;
+                    setData({ ...data });
+                  }}
+                >
+                  <p className="text-base">
+                    Please click here to accept our{" "}
+                    <Link>
+                      <span className="main-color">terms & conditions</span>
+                    </Link>
+                  </p>
+                </Checkbox>
+              </div>
 
-                <tr className="border-t mt-3">
-                  <td>
-                    <p>Referral Code</p>
-                  </td>
-                  <td>
-                    <input
-                      type="text"
-                      placeholder="Enter your referral code if you have one"
-                      className="text-base"
-                    />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-            <div className="mt-4">
-              <Checkbox onChange={onChange}>
-                <p className="text-base">
-                  Please click here to accept our{" "}
-                  <Link>
-                    <span className="main-color">terms & conditions</span>
-                  </Link>
-                </p>
-              </Checkbox>
-            </div>
-
-            <div className="flex justify-center mt-6">
-              <button className="text-base text-center register-btn shadow-md">
-                Create my profile
-              </button>
-            </div>
+              <div className="flex justify-center mt-6">
+                <button
+                  type="submit"
+                  className="text-base text-center shadow-md register-btn"
+                >
+                  Create my profile
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>

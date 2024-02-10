@@ -51,12 +51,12 @@ function StartPortfolio() {
             modules={[Autoplay, Pagination, Navigation, A11y]}
             slidesPerView={
               windowSize[0] < 1050
-                ? windowSize[0] < 750
+                ? windowSize[0] < 800
                   ? windowSize[0] < 600
                     ? 1.1
                     : 1.5
-                  : 2.05
-                : 3.05
+                  : 2.1
+                : 3.1
             }
             navigation
             pagination={{ clickable: true }}
