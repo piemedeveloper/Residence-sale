@@ -18,7 +18,7 @@ function Investing() {
       photo:
         "https://pbs.twimg.com/profile_images/1441776451187924997/b78zR_5X_400x400.jpg",
       message:
-        "I’ve been impressed with Pieme from the very beginning. The investing process was made clear and simple through the website and there is always excellent support available. I strongly recommend them.",
+        "I've been impressed with Pieme from the very beginning. The investing process was made clear and simple through the website and there is always excellent support available. I strongly recommend them.",
       name: "Carlos Paz y Mino - Architect, Ecuador",
     },
   ];
@@ -69,7 +69,7 @@ function Investing() {
 
         <div className="relative grid p-5 mt-8 mb-10 bg-white gap-x-8 gap-y-4 lg:grid-cols-2 rounded-xl">
           {invest.map((i, p) => (
-            <div className="flex items-center gap-4">
+            <div key={p} className="flex items-center gap-4">
               <div className="flex">
                 <div className="p-2.5 rounded-full invest-input">{i.icon}</div>
               </div>

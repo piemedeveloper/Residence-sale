@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import PasswordStrengthBar from "react-password-strength-bar";
 
 import { Checkbox, Alert, Input } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
+import { postDataAuth } from "../../hooks/useFetch";
+import useToken, { getToken } from "../../utils/useToken";
 
 function Register() {
+  const navigate = useNavigate();
+  const { setToken } = useToken();
   const [error, setError] = useState("");
   const [data, setData] = useState({
     first_name: "",
@@ -18,6 +22,13 @@ function Register() {
     strength: 0,
     agree: false,
   });
+
+  React.useEffect(() => {
+    if (getToken().length > 0) {
+      navigate("/dashboard");
+      window.location.reload(false);
+    }
+  }, []);
 
   const register = (e) => {
     e.preventDefault();
@@ -35,6 +46,17 @@ function Register() {
     else if (!data.agree) setError("Please accept the agreement to continue");
     else {
       setError("");
+
+      postDataAuth({
+        service: "signup",
+        data: data,
+      }).then((data) => {
+        if (data.success === 0) setError(data.message);
+        else {
+          setToken(data.token);
+          window.location.reload(false);
+        }
+      });
     }
   };
 

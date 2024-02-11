@@ -1,3 +1,5 @@
+exports.base_url = "http://localhost:8000/";
+
 exports.url_gen = (str) => {
   let newStr = str.toLowerCase().replace(/\s+/g, " ");
   return newStr.replaceAll(" ", "-");

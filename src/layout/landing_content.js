@@ -25,6 +25,7 @@ function LandingContent() {
           <Route path="/properties" element={<LandingProperties />} />
           <Route path="/how-it-works" element={<HowItWorks />} />
           <Route path="/team" element={<Team />} />
+          <Route path="*" element={<Home />} />
         </Routes>
         <Footer />
       </BrowserRouter>

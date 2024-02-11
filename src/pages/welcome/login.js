@@ -1,23 +1,52 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Alert, Input } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
+import { postDataAuth } from "../../hooks/useFetch";
+import useToken, { getToken } from "../../utils/useToken";
 
 function Login() {
+  const navigate = useNavigate();
+  const { setToken } = useToken();
   const [error, setError] = React.useState("");
+  const [disable, setDisable] = React.useState(false);
   const [data, setData] = React.useState({
     email_id: "",
     password: "",
   });
 
+  React.useEffect(() => {
+    if (getToken().length > 0) {
+      navigate("/dashboard");
+      window.location.reload(false);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    if (error.length > 0) setDisable(false);
+  }, [error]);
+
   const login = (e) => {
+    setDisable(true);
     e.preventDefault();
     if (data.email_id.length === 0)
       setError("Please enter your Emaill Address");
     else if (data.password.length === 0) setError("Please enter your password");
     else {
       setError("");
+      postDataAuth({
+        service: "login",
+        data: data,
+      }).then((data) => {
+        setDisable(false);
+        if (data.success === 0) setError(data.message);
+        else {
+          setToken(data.token);
+          navigate("/dashboard");
+          window.location.reload(false);
+        }
+      });
     }
   };
   return (
@@ -82,6 +111,7 @@ function Login() {
               <div className="flex justify-center mt-6">
                 <button
                   type="submit"
+                  disabled={disable}
                   className="text-base text-center shadow-md register-btn"
                 >
                   Sign in
@@ -89,7 +119,7 @@ function Login() {
               </div>
             </form>
 
-            <div className="mt-10 text-lg">
+            <div className="mt-10 text-base">
               <Link>
                 <p className="main-color">Forgot your password?</p>
               </Link>

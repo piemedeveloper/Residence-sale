@@ -5,10 +5,12 @@ import { Link, useLocation } from "react-router-dom";
 import { IoMenu } from "react-icons/io5";
 import { Drawer, Dropdown } from "antd";
 import { TiArrowSortedDown } from "react-icons/ti";
+import { getToken } from "../utils/useToken";
 
 function LandingHeader() {
   const [open, setOpen] = React.useState(false);
   const [active, setActive] = React.useState("");
+  const token = getToken();
 
   let location = useLocation();
   React.useEffect(() => {
@@ -98,11 +100,17 @@ function LandingHeader() {
             })}
           </div>
 
-          <Link to={"/login"} className="hidden lg:block">
-            <p className="font-medium rounded-full login-btn">
-              Login / Register
-            </p>
-          </Link>
+          {token.length === 0 ? (
+            <Link to={"/login"} className="hidden lg:block">
+              <p className="font-medium rounded-full login-btn">
+                Login / Register
+              </p>
+            </Link>
+          ) : (
+            <Link to={"/dashboard"} className="hidden lg:block">
+              <p className="font-medium rounded-full login-btn">Dashboard</p>
+            </Link>
+          )}
 
           <div className="absolute left-6 lg:hidden">
             <IoMenu className="text-4xl head-color" onClick={showDrawer} />

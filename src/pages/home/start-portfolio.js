@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { properties } from "../../utils/data";
 import HomePropertyCell from "./home-property-cell";
 
-import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
+import { Navigation, A11y, Autoplay } from "swiper/modules";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/autoplay";
 
@@ -48,7 +48,7 @@ function StartPortfolio() {
 
           <Swiper
             spaceBetween={1}
-            modules={[Autoplay, Pagination, Navigation, A11y]}
+            modules={[Autoplay, Navigation, A11y]}
             slidesPerView={
               windowSize[0] < 1050
                 ? windowSize[0] < 800
@@ -59,7 +59,6 @@ function StartPortfolio() {
                 : 3.1
             }
             navigation
-            pagination={{ clickable: true }}
             className="mt-10"
           >
             {properties.map((property, i) => (
