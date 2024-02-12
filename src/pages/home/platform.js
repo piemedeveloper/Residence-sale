@@ -61,7 +61,7 @@ function Platform() {
                 </div>
 
                 <div className="flex mt-10">
-                  <Link>
+                  <Link to="/login">
                     <p className="mt-20 text-center register-btn">Invest Now</p>
                   </Link>
                 </div>

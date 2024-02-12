@@ -39,7 +39,7 @@ function StartPortfolio() {
           </h2>
 
           <div className="flex justify-center pb-6 mt-8">
-            <Link>
+            <Link to="/login">
               <p className="mt-20 text-center register-btn">Invest Now</p>
             </Link>
           </div>

@@ -53,7 +53,7 @@ function LandingPropertyDetail() {
             <img
               src={property.image}
               alt={property.location}
-              className="w-full h-full"
+              className="object-cover w-full h-full"
             />
           </div>
           <div className="relative w-3/5">
