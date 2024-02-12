@@ -289,3 +289,11 @@ ul > li {
 .active-menu {
   color: var(--main-color);
 }
+
+.how-detail ol {
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+.how-detail li {
+  font-size: 1.08rem;
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Markup } from "interweave";
 
 function InsightCell(props) {
   const data = props.data;
@@ -22,7 +23,7 @@ function InsightCell(props) {
             data.title > 40 ? "line-clamp-8" : "line-clamp-6"
           }`}
         >
-          {data.desc}
+          <Markup content={data.desc} />
         </p>
       </div>
 
