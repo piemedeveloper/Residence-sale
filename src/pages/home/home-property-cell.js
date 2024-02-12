@@ -12,7 +12,7 @@ function HomePropertyCell(props) {
         <div className="relative h-48 sm:h-52">
           <img
             src={property.image}
-            alt={property.street}
+            alt={property.location}
             className="object-cover w-full h-full"
           />
           <p className="absolute px-2 py-1 text-xs rounded-full top-3 left-3 period-bg">
@@ -48,7 +48,7 @@ function HomePropertyCell(props) {
         </h2>
         <Link to={`/properties/${property.slag}`}>
           <p className="mb-6 font-semibold text-center md:text-lg main-color">
-            {property.street}
+            {property.country}
           </p>
         </Link>
 

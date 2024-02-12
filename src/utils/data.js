@@ -2,8 +2,8 @@ exports.properties = [
   {
     period: 20,
     image: require("../assets/kampala.jpg"),
-    location: "Uganda",
-    street: "Kampala",
+    country: "Uganda",
+    location: "Kampala",
     slag: "kampala",
     investors: 29,
     price: 1100000,
@@ -16,8 +16,8 @@ exports.properties = [
   {
     period: 20,
     image: require("../assets/jinja.jpeg"),
-    location: "Uganda",
-    street: "Jinja",
+    country: "Uganda",
+    location: "Jinja",
     slag: "jinja",
     investors: 0,
     price: 0,
@@ -30,8 +30,8 @@ exports.properties = [
   {
     period: 20,
     image: require("../assets/mombasa.jpg"),
-    location: "Kenya",
-    street: "Mombasa",
+    country: "Kenya",
+    location: "Mombasa",
     slag: "mombasa",
     investors: 0,
     price: 150000,
@@ -44,8 +44,8 @@ exports.properties = [
   {
     period: 20,
     image: require("../assets/zanzibar.jpg"),
+    country: "Zanzibar",
     location: "Zanzibar",
-    street: "Zanzibar",
     slag: "zanzibar",
     investors: 0,
     price: 150000,

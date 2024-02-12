@@ -54,8 +54,8 @@ function HowItWorksDetails() {
             </div>
           </div>
 
-          <div className="container flex gap-10 py-12 mx-auto">
-            <div className="w-2/3 text-lg menu-color">
+          <div className="container flex flex-col gap-10 py-12 mx-auto lg:flex-row">
+            <div className="w-full text-lg lg:w-2/3 menu-color">
               <h2 className="mb-4 text-4xl font-semibold heading-color">
                 {data.title}
               </h2>
@@ -63,7 +63,7 @@ function HowItWorksDetails() {
                 <Markup content={data.desc} />
               </div>
             </div>
-            <div className="w-1/3">
+            <div className="w-full lg:w-1/3">
               <div className="sticky overflow-hidden border rounded-lg home-property top-20">
                 <p className="p-4 border-b gray-bg">
                   Learn more about Pieme Residences

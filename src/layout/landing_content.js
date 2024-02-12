@@ -20,6 +20,7 @@ import PropertyDetail from "../pages/properties/property-detail";
 import PropertyInvest from "../pages/properties/property-invest";
 import Summary from "../pages/summary";
 import HowItWorksDetails from "../pages/how-it-works/how-it-works-details";
+import LandingPropertyDetail from "../pages/properties/landing-property-detail";
 
 function LandingContent() {
   const location = useLocation();
@@ -47,6 +48,7 @@ function LandingContent() {
         </Route>
         {/* <Route path="/dashboard/:id" element={<DashboardContent />} />
         <Route path="/dashboard/:id/:id" element={<DashboardContent />} /> */}
+        <Route path="properties/:id" element={<LandingPropertyDetail />} />
         <Route path="/:id" element={<HowItWorksDetails />} />
         <Route path="*" element={<Home />} />
       </Routes>
