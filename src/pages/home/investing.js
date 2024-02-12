@@ -1,8 +1,8 @@
 import React from "react";
 import residences from "../../assets/residences.jpeg";
-import { FaRegBuilding, FaAward, FaHome } from "react-icons/fa";
-import { TbZoomMoney } from "react-icons/tb";
-import { low_investment } from "../../utils/data";
+// import { FaRegBuilding, FaAward, FaHome } from "react-icons/fa";
+// import { TbZoomMoney } from "react-icons/tb";
+// import { low_investment } from "../../utils/data";
 import jei from "../../assets/jei.jpeg";
 import lydia from "../../assets/lydia.jpeg";
 
@@ -23,24 +23,24 @@ function Investing() {
     },
   ];
 
-  const invest = [
-    {
-      icon: <FaRegBuilding className={`text-3xl heading-color`} />,
-      label: "Institutional: Bespoke investment opportunities",
-    },
-    {
-      icon: <FaAward className={`text-3xl heading-color`} />,
-      label: "Available: Manage your investments 24/7, wherever you are",
-    },
-    {
-      icon: <FaHome className={`text-3xl heading-color`} />,
-      label: "Accessible: Invest from as little as " + low_investment,
-    },
-    {
-      icon: <TbZoomMoney className={`text-3xl heading-color`} />,
-      label: "Transparent: No hidden fees",
-    },
-  ];
+  // const invest = [
+  //   {
+  //     icon: <FaRegBuilding className={`text-3xl heading-color`} />,
+  //     label: "Institutional: Bespoke investment opportunities",
+  //   },
+  //   {
+  //     icon: <FaAward className={`text-3xl heading-color`} />,
+  //     label: "Available: Manage your investments 24/7, wherever you are",
+  //   },
+  //   {
+  //     icon: <FaHome className={`text-3xl heading-color`} />,
+  //     label: "Accessible: Invest from as little as " + low_investment,
+  //   },
+  //   {
+  //     icon: <TbZoomMoney className={`text-3xl heading-color`} />,
+  //     label: "Transparent: No hidden fees",
+  //   },
+  // ];
   return (
     <div
       className="bg-center bg-no-repeat bg-cover"

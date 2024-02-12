@@ -10,7 +10,6 @@ import { BsMenuUp } from "react-icons/bs";
 import { TiThMenu } from "react-icons/ti";
 
 import { IoNotifications } from "react-icons/io5";
-import { getToken } from "../utils/useToken";
 
 function Header() {
   const [active, setActive] = React.useState("");

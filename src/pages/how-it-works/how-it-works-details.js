@@ -71,7 +71,7 @@ function HowItWorksDetails() {
                 <div className="p-4">
                   {how_it_works.map((h, i) => (
                     <Link to={`/${h.slag}`} key={i}>
-                      <p className="my-2 heading-color">{h.title}</p>
+                      <p className="my-3 heading-color">{h.title}</p>
                     </Link>
                   ))}
                 </div>

@@ -29,31 +29,31 @@ function Insights() {
     };
   });
 
-  const insights = [
-    {
-      title: "Lorem ipsum dolor sit amet, consectetur",
-      photo:
-        "https://e1.pxfuel.com/desktop-wallpaper/145/234/desktop-wallpaper-3-hiking.jpg",
-      desc: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    },
-    {
-      title: "Lorem ipsum dolor sit amet, consectetur",
-      photo: "https://images.alphacoders.com/435/435793.jpg",
-      desc: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    },
-    {
-      title: "Lorem ipsum dolor sit amet, consectetur",
-      photo:
-        "https://img.freepik.com/premium-photo/people-wallking-blurred-background-wallpaper_846066-14.jpg",
-      desc: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    },
-    {
-      title: "Lorem ipsum dolor sit amet, consectetur",
-      photo:
-        "https://media.istockphoto.com/id/635887100/id/video/orang-orang-kerumunan-pembeli-high-street-yang-tidak-dapat-diubah-hari.jpg?b=1&s=640x640&k=20&c=5Z-qwk0zvcyriBKz8qGvvbm0f5bntVwZHBvVMczELa8=",
-      desc: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    },
-  ];
+  // const insights = [
+  //   {
+  //     title: "Lorem ipsum dolor sit amet, consectetur",
+  //     photo:
+  //       "https://e1.pxfuel.com/desktop-wallpaper/145/234/desktop-wallpaper-3-hiking.jpg",
+  //     desc: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  //   },
+  //   {
+  //     title: "Lorem ipsum dolor sit amet, consectetur",
+  //     photo: "https://images.alphacoders.com/435/435793.jpg",
+  //     desc: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  //   },
+  //   {
+  //     title: "Lorem ipsum dolor sit amet, consectetur",
+  //     photo:
+  //       "https://img.freepik.com/premium-photo/people-wallking-blurred-background-wallpaper_846066-14.jpg",
+  //     desc: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  //   },
+  //   {
+  //     title: "Lorem ipsum dolor sit amet, consectetur",
+  //     photo:
+  //       "https://media.istockphoto.com/id/635887100/id/video/orang-orang-kerumunan-pembeli-high-street-yang-tidak-dapat-diubah-hari.jpg?b=1&s=640x640&k=20&c=5Z-qwk0zvcyriBKz8qGvvbm0f5bntVwZHBvVMczELa8=",
+  //     desc: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  //   },
+  // ];
 
   return (
     <div className="gray-bg">
