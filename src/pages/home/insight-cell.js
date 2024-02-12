@@ -6,17 +6,15 @@ function InsightCell(props) {
 
   return (
     <div className="relative pb-12 overflow-hidden bg-white home-property rounded-xl ">
-      <Link to={`/${data.title}`}>
-        <div className="relative h-52 sm:h-60">
-          <img
-            src={data.photo}
-            alt={data.title}
-            className="object-cover w-full h-full"
-          />
-        </div>
-      </Link>
+      <div className="relative h-52 sm:h-60">
+        <img
+          src={data.photo}
+          alt={data.title}
+          className="object-cover w-full h-full"
+        />
+      </div>
 
-      <div className="p-6">
+      <div className="p-6 overflow-hidden min-h-64 max-h-64">
         <h2 className="font-medium main-color">{data.title}</h2>
 
         <p
@@ -29,7 +27,7 @@ function InsightCell(props) {
       </div>
 
       <div className="absolute bottom-0 w-full p-3 border-t">
-        <Link to={`/`}>
+        <Link to={`/${data.slag}`}>
           <p className="text-base font-medium text-center entire-color">
             Read more
           </p>
