@@ -10,26 +10,31 @@ import { BsMenuUp } from "react-icons/bs";
 import { TiThMenu } from "react-icons/ti";
 
 import { IoNotifications } from "react-icons/io5";
+import { getToken } from "../utils/useToken";
 
 function Header() {
   const [active, setActive] = React.useState("");
   const icon_class = "text-white";
   const menu = [
-    { icon: <BsMenuUp className={icon_class} />, label: "Summary", url: "" },
+    {
+      icon: <BsMenuUp className={icon_class} />,
+      label: "Summary",
+      url: "/dashboard",
+    },
     {
       icon: <BsGraphUp className={icon_class} />,
       label: "My Investments",
-      url: "investments",
+      url: "/dashboard/investments",
     },
     {
       icon: <IoHomeOutline className={icon_class} />,
       label: "Properties",
-      url: "properties",
+      url: "/dashboard/properties",
     },
     {
       icon: <CiGift className={`${icon_class} text-xl`} />,
       label: "Rewards",
-      url: "rewards",
+      url: "/dashboard/rewards",
     },
     // {
     //   icon: <FaRegFileLines className={icon_class} />,
@@ -47,7 +52,7 @@ function Header() {
   let location = useLocation();
   React.useEffect(() => {
     setActive(location.pathname.substring(1));
-    // window.scrollTo({ behavior: "smooth", top: 0 });
+    window.scrollTo({ behavior: "smooth", top: 0 });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
@@ -67,7 +72,7 @@ function Header() {
                 <Link to={m.url}>
                   <div
                     className={`h-full flex items-center px-6 ${
-                      active === m.url ? "active-link" : "link-hover"
+                      "/" + active === m.url ? "active-link" : "link-hover"
                     }  transform transition-all duration-300 gap-2`}
                   >
                     {m.icon}

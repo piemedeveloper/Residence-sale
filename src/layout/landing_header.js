@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../assets/logoblue.png";
 import _ from "lodash";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IoMenu } from "react-icons/io5";
 import { Drawer, Dropdown } from "antd";
 import { TiArrowSortedDown } from "react-icons/ti";
@@ -13,9 +13,19 @@ function LandingHeader() {
   const token = getToken();
 
   let location = useLocation();
+  let navigate = useNavigate();
+
   React.useEffect(() => {
     setActive(location.pathname.substring(1));
     window.scrollTo({ behavior: "smooth", top: 0 });
+
+    if (
+      location.pathname.substring(1) === "dashboard" &&
+      getToken().length === 0
+    ) {
+      navigate("/login");
+      window.location.reload(false);
+    }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
@@ -108,7 +118,7 @@ function LandingHeader() {
             </Link>
           ) : (
             <Link to={"/dashboard"} className="hidden lg:block">
-              <p className="font-medium rounded-full login-btn">Dashboard</p>
+              <p className="font-medium rounded-full login-btn">My Dashboard</p>
             </Link>
           )}
 

@@ -1,12 +1,15 @@
 import "./App.css";
 // import Content from "./layout/content";
 import LandingContent from "./layout/landing_content";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
       {/* <Content /> */}
-      <LandingContent />
+      <BrowserRouter>
+        <LandingContent />
+      </BrowserRouter>
     </div>
   );
 }

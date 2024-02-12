@@ -39,7 +39,7 @@ function HomePropertyCell(props) {
           property.type === 0 ? "main-bg" : "entire-bg"
         }`}
       >
-        {property.type === 0 ? "funding" : "Entire property"}
+        {property.type === 0 ? "funding now" : "Not Funding now"}
       </p>
 
       <div className="p-6">

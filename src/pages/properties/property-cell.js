@@ -7,7 +7,7 @@ function PropertyCell(props) {
   const property = props.property;
 
   return (
-    <div className="relative pb-8 overflow-hidden bg-white rounded-xl">
+    <div className="relative pb-8 overflow-hidden bg-white shadow-md rounded-xl">
       <Link to={`/properties/${property.slag}`}>
         <div className="relative h-48 sm:h-52">
           <img

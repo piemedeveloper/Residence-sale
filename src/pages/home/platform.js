@@ -5,11 +5,13 @@ import { TiTick } from "react-icons/ti";
 
 function Platform() {
   const platform_b = [
-    "Clear portfolio dashboard display",
-    "Early-access investment opportunities",
-    "Regular insights, research and trends",
-    "Property and investment updates",
-    "Referral reward scheme",
+    "Portfolio Platform Dashboard",
+    "Investment Opportunities in Different Pieme Residences",
+    "Development updates Per unit and whole residence",
+    "Management and Booking Updates",
+    "Guest Hotel booking in Pieme Residences",
+    "Food ordering in Pieme Residential Restaurants",
+    "Referral rewards",
   ];
   return (
     <div>
@@ -19,18 +21,17 @@ function Platform() {
           style={{ marginTop: "-3rem" }}
         >
           <p>
-            We are property people at heart. Behind our state-of-the-art
-            investment platform is a specialist team of real estate
-            professionals searching the globe to identify exclusive investment
-            opportunities. Our expert team undertake a rigorous due diligence
-            process when selecting investment opportunities for you.
+            The Pieme platform is a revolutionary system that enables
+            individuals to invest in hotel ownership through blockchain-powered
+            community-owned apartments. It simplifies hotel investment by
+            handling management tasks, allowing investors to earn revenue from
+            nightly bookings without the hassle of traditional hotel management.
           </p>
           <p>
-            We navigate and manage the complex legal and administrative
-            undertakings to create a bespoke selection of properties to choose
-            from. Allowing our investors to curate an internationally
-            diversified real estate portfolio from the palm of their hand with
-            the knowledge that the hard work is already done.
+            Invest in Pieme Residences now for easy hotel ownership in Africa.
+            Earn 70% booking revenue hassle-free with blockchain. Join the
+            digital transformation trend and tap into lucrative hospitality
+            opportunities.
           </p>
         </div>
       </div>
@@ -44,8 +45,8 @@ function Platform() {
             <div className="md:w-2/5"></div>
             <div className="w-full md:w-3/5">
               <div className="md:max-w-2xl">
-                <h3 className="text-3xl md:text-[2.8rem] font-medium">
-                  A real estate investment platform built for you
+                <h3 className="text-3xl md:text-[2.8rem] font-medium leading-snug">
+                  A Hotel investment platform created For you
                 </h3>
 
                 <div className="mt-8">
@@ -61,9 +62,7 @@ function Platform() {
 
                 <div className="flex mt-10">
                   <Link>
-                    <p className="mt-20 text-center register-btn">
-                      Register to view full property details
-                    </p>
+                    <p className="mt-20 text-center register-btn">Invest Now</p>
                   </Link>
                 </div>
               </div>

@@ -21,6 +21,7 @@ function Login() {
       navigate("/dashboard");
       window.location.reload(false);
     }
+    // eslint-disable-next-line
   }, []);
 
   React.useEffect(() => {

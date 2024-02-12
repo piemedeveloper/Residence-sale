@@ -40,9 +40,7 @@ function StartPortfolio() {
 
           <div className="flex justify-center pb-6 mt-8">
             <Link>
-              <p className="mt-20 text-center register-btn">
-                Register to view full property details
-              </p>
+              <p className="mt-20 text-center register-btn">Invest Now</p>
             </Link>
           </div>
 

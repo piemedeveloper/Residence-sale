@@ -12,11 +12,7 @@ function Numbers() {
       desc: "Amount Invested",
     },
     {
-      figure: "$120k",
-      desc: "Amount Invested",
-    },
-    {
-      figure: "20",
+      figure: "150",
       desc: "Number of Investors",
     },
   ];
@@ -24,7 +20,7 @@ function Numbers() {
     <div className="gradient-bg">
       <div className="container py-12 mx-auto text-3xl font-medium text-white md:text-4xl">
         <p className="text-center">Numbers at a glance</p>
-        <div className="grid max-w-5xl grid-cols-1 mx-auto my-16 gap-y-6 md:grid-cols-4 numbers-cont">
+        <div className="grid max-w-5xl grid-cols-1 mx-auto my-16 gap-y-6 md:grid-cols-3 numbers-cont">
           {_.map(numbers, (number, i) => (
             <div key={i} className="p-2 text-center">
               <p>{number.figure}</p>

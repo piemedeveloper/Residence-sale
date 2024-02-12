@@ -28,6 +28,7 @@ function Register() {
       navigate("/dashboard");
       window.location.reload(false);
     }
+    // eslint-disable-next-line
   }, []);
 
   const register = (e) => {

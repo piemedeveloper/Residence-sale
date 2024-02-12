@@ -175,8 +175,9 @@ ul > li {
 }
 
 .login-btn {
+  font-size: 0.9rem;
   border: 1px solid var(--main-color);
-  padding: 8px 25px;
+  padding: 8px 28px;
   color: var(--main-color);
 }
 

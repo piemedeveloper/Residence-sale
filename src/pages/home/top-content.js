@@ -13,7 +13,7 @@ function TopContent() {
   const invest = [
     {
       icon: <FaRegBuilding className={`text-5xl heading-color`} />,
-      label: "Select property",
+      label: "Select Hotel Residence",
     },
     {
       icon: <MdOutlineAttachMoney className={`text-5xl heading-color`} />,
@@ -21,7 +21,7 @@ function TopContent() {
     },
     {
       icon: <MdPayment className={`text-5xl heading-color`} />,
-      label: "Choose payment plan",
+      label: "Invest now",
     },
     {
       icon: <GiReceiveMoney className={`text-5xl heading-color`} />,
@@ -30,11 +30,11 @@ function TopContent() {
   ];
   return (
     <div className="container p-6 mx-auto">
-      <div className="flex">
+      <div className="flex max-w-2xl">
         <Slide direction="left" triggerOnce>
-          <div className="w-full px-6 py-10 pt-16">
+          <div className="px-6 py-10 pt-16 ">
             <h1 className="text-4xl font-semibold leading-tight md:text-5xl heading-color">
-              Real estate investment made easy
+              Investment in the Hotel Business Made Easy
             </h1>
             <p className="my-6 text-lg heading-color">
               The easy to use, hassle-free way to build a global real estate
@@ -44,13 +44,13 @@ function TopContent() {
             <div className="flex">
               <Link>
                 <p className="text-base text-center md:text-base register-btn">
-                  Register to view full property details
+                  Invest Now
                 </p>
               </Link>
             </div>
           </div>
         </Slide>
-        <div className="md:w-full"></div>
+        {/* <div className="md:w-full"></div> */}
       </div>
 
       <div>
@@ -78,9 +78,7 @@ function TopContent() {
 
           <div className="flex justify-center mt-12">
             <Link>
-              <p className="mt-20 text-center register-btn">
-                Register to view full property details
-              </p>
+              <p className="mt-20 text-center register-btn">Invest Now</p>
             </Link>
           </div>
         </div>

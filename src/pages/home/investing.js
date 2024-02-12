@@ -3,23 +3,23 @@ import residences from "../../assets/residences.jpeg";
 import { FaRegBuilding, FaAward, FaHome } from "react-icons/fa";
 import { TbZoomMoney } from "react-icons/tb";
 import { low_investment } from "../../utils/data";
+import jei from "../../assets/jei.jpeg";
+import lydia from "../../assets/lydia.jpeg";
 
 function Investing() {
   const testimonials = [
     {
-      photo:
-        "https://media.licdn.com/dms/image/C4D03AQGuaqBw0c_Pqg/profile-displayphoto-shrink_800_800/0/1633341653846?e=2147483647&v=beta&t=kBE7vPrX-O5cW8h9b0_hZ3N9BbQsC6XuFfCQx7aWtEs",
+      photo: jei,
       message:
         "Pieme takes care of everything tedious about real estate investment: formalities, insurance, maintenance, tenants, etc. The variety of properties allows diversification which gives me greater peace of mind. The process is really simple - you can keep track of your investments anytime, anywhere.",
-      name: "Carlos Paz y Mino - Architect, Ecuador",
+      name: "Jei Rahman",
     },
 
     {
-      photo:
-        "https://pbs.twimg.com/profile_images/1441776451187924997/b78zR_5X_400x400.jpg",
+      photo: lydia,
       message:
         "I've been impressed with Pieme from the very beginning. The investing process was made clear and simple through the website and there is always excellent support available. I strongly recommend them.",
-      name: "Carlos Paz y Mino - Architect, Ecuador",
+      name: "Asiimwe Lydia",
     },
   ];
 
@@ -47,11 +47,11 @@ function Investing() {
       style={{ backgroundImage: `url(${residences})` }}
     >
       <div className="container relative py-12 mx-auto heading-color">
-        <h1 className="relative text-6xl font-bold text-center text-white">
+        <h1 className="relative text-4xl font-bold text-center text-white md:text-5xl">
           Investing with Pieme
         </h1>
 
-        <div className="relative grid gap-8 mt-10 lg:grid-cols-2">
+        <div className="relative grid gap-8 mt-10 mb-10 lg:grid-cols-2">
           {testimonials.map((t, i) => (
             <div key={i} className="flex gap-4 p-5 bg-white rounded-xl">
               <img
@@ -67,7 +67,7 @@ function Investing() {
           ))}
         </div>
 
-        <div className="relative grid p-5 mt-8 mb-10 bg-white gap-x-8 gap-y-4 lg:grid-cols-2 rounded-xl">
+        {/* <div className="relative grid p-5 mt-8 mb-10 bg-white gap-x-8 gap-y-4 lg:grid-cols-2 rounded-xl">
           {invest.map((i, p) => (
             <div key={p} className="flex items-center gap-4">
               <div className="flex">
@@ -76,7 +76,7 @@ function Investing() {
               <p className="text-base">{i.label}</p>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );

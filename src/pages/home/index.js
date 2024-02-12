@@ -3,10 +3,12 @@ import bg from "../../assets/bg.png";
 import TopContent from "./top-content";
 import Numbers from "./numbers";
 import StartPortfolio from "./start-portfolio";
-import InPress from "./in-press";
+// import InPress from "./in-press";
 import Investing from "./investing";
 import Platform from "./platform";
 import Insights from "./insights";
+import CalculateInvestment from "./calculate-investment";
+import Faq from "../faq";
 
 function Home() {
   document.title = "Real Estate Investment";
@@ -21,13 +23,17 @@ function Home() {
 
       <StartPortfolio />
 
-      <InPress />
+      {/* <InPress /> */}
+
+      <CalculateInvestment />
 
       <Investing />
 
       <Platform />
 
       <Insights />
+
+      <Faq />
     </div>
   );
 }
