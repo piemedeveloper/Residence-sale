@@ -23,8 +23,6 @@ function Home() {
 
       <StartPortfolio />
 
-      {/* <InPress /> */}
-
       <CalculateInvestment />
 
       <Investing />

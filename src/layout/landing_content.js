@@ -9,7 +9,7 @@ import Login from "../pages/welcome/login";
 import Register from "../pages/welcome/register";
 import LandingProperties from "../pages/properties/landing-properties";
 import HowItWorks from "../pages/how-it-works";
-import Team from "../pages/team";
+// import Team from "../pages/team";
 import DashboardContent from "./dashboard-content";
 
 import Properties from "../pages/properties";
@@ -54,7 +54,7 @@ function LandingContent() {
         <Route path="/signup" element={<Register />} />
         <Route path="/residences" element={<LandingProperties />} />
         <Route path="/how-it-works" element={<HowItWorks />} />
-        <Route path="/team" element={<Team />} />
+        {/* <Route path="/team" element={<Team />} /> */}
 
         {Object.keys(userData).length > 0 && (
           <Route

@@ -39,7 +39,7 @@ function LandingHeader() {
       url: "about team",
       links: [
         { label: "About Pieme", url: "about" },
-        { label: "Meet the team", url: "team" },
+        // { label: "Meet the team", url: "team" },
       ],
     },
     { label: "Questions", url: "faq", links: [] },

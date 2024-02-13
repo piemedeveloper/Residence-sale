@@ -1,5 +1,5 @@
 import React from "react";
-import { how_it_works, low_investment, properties } from "../../utils/data";
+import { how_it_works, low_investment } from "../../utils/data";
 import InsightCell from "../home/insight-cell";
 import { Link } from "react-router-dom";
 import WhyInvest from "./why-invest";
@@ -14,8 +14,21 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/scrollbar";
 import "swiper/css/autoplay";
+import postData from "../../hooks/useFetch";
 
 function HowItWorks() {
+  const [residences, setResidences] = React.useState([]);
+  React.useEffect(() => {
+    postData({
+      service: "residences",
+      data: {},
+    }).then((data) => {
+      if (data.success === 1) {
+        setResidences(data.data);
+      }
+    });
+  }, []);
+
   const [windowSize, setWindowSize] = React.useState([
     window.innerWidth,
     window.innerHeight,
@@ -88,10 +101,10 @@ function HowItWorks() {
             navigation
             className="mt-10"
           >
-            {properties.map((property, i) => (
+            {residences.map((residence, i) => (
               <SwiperSlide key={i}>
                 <div className="mb-10 me-8">
-                  <HomePropertyCell property={property} />
+                  <HomePropertyCell residence={residence} />
                 </div>
               </SwiperSlide>
             ))}

@@ -1,11 +1,24 @@
 import React from "react";
-import { properties, low_investment } from "../../utils/data";
+import { low_investment } from "../../utils/data";
 import PropertyCell from "./property-cell";
 import Heading from "../../components/heading";
 import Info from "../../components/info";
+import postData from "../../hooks/useFetch";
 
 function Properties() {
   document.title = "Residences | Pieme";
+  const [residences, setResidences] = React.useState([]);
+  React.useEffect(() => {
+    postData({
+      service: "residences",
+      data: {},
+    }).then((data) => {
+      if (data.success === 1) {
+        setResidences(data.data);
+      }
+    });
+  }, []);
+
   return (
     <div className="mx-auto container-box py-14">
       <Heading
@@ -14,8 +27,8 @@ function Properties() {
         from as little as ${low_investment}`}
       />
       <div className="grid gap-6 mt-16 md:grid-cols-2 lg:grid-cols-3">
-        {properties.map((property, i) => (
-          <PropertyCell key={i} property={property} />
+        {residences.map((residence, i) => (
+          <PropertyCell key={i} residence={residence} />
         ))}
       </div>
 

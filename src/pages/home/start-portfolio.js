@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { properties } from "../../utils/data";
 import HomePropertyCell from "./home-property-cell";
 
 import { Navigation, A11y, Autoplay } from "swiper/modules";
@@ -11,6 +10,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/scrollbar";
 import "swiper/css/autoplay";
+import postData from "../../hooks/useFetch";
 
 function StartPortfolio() {
   const [windowSize, setWindowSize] = React.useState([
@@ -29,6 +29,18 @@ function StartPortfolio() {
       window.removeEventListener("resize", handleWindowResize);
     };
   });
+
+  const [residences, setResidences] = React.useState([]);
+  React.useEffect(() => {
+    postData({
+      service: "residences",
+      data: {},
+    }).then((data) => {
+      if (data.success === 1) {
+        setResidences(data.data);
+      }
+    });
+  }, []);
 
   return (
     <div className="gray-bg">
@@ -59,10 +71,10 @@ function StartPortfolio() {
             navigation
             className="mt-10"
           >
-            {properties.map((property, i) => (
+            {residences.map((residence, i) => (
               <SwiperSlide key={i}>
                 <div className="mb-10 me-8">
-                  <HomePropertyCell property={property} />
+                  <HomePropertyCell residence={residence} />
                 </div>
               </SwiperSlide>
             ))}
