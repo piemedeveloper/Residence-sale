@@ -6,11 +6,11 @@ import { Tooltip } from "antd";
 import _ from "lodash";
 import { numberFormatter } from "../../utils/utils";
 import residence from "../../assets/residence.png";
-import residence1 from "../../assets/residence.jpeg";
+// import residence1 from "../../assets/residence.jpeg";
 import SummaryContainer from "../../components/summary-container";
-import GraphSection from "./graph-section";
+// import GraphSection from "./graph-section";
 
-function Summary() {
+function Summary({ user }) {
   document.title = "Summary | Pieme";
 
   const investments = [
@@ -128,24 +128,35 @@ function Summary() {
           <div className="px-5 my-3">
             <div className="w-full h-4 rounded-full invest-input"></div>
           </div>
+
+          <div className="grid grid-cols-2 gap-6 p-5 sm:grid-cols-3">
+            <div>
+              <p className="text-base whitespace-pre-line head-color">$PIE</p>
+              <p className="text-xl font-semibold main-color">0</p>
+            </div>
+
+            <div>
+              <button>Withdraw</button>
+            </div>
+          </div>
         </div>
       </div>
 
       <SummaryContainer
         bg={residence}
-        title="Kainja, don't miss out on the current available opportunities"
-        link="properties"
+        title={`${user.first_name}, don't miss out on the current available opportunities`}
+        link="/residences"
         label="View available opportunities"
       />
 
-      <GraphSection />
+      {/* <GraphSection /> */}
 
-      <SummaryContainer
+      {/* <SummaryContainer
         bg={residence1}
         title="Refer a friend! If they invest, you both earn a reward!"
         link="rewards"
         label="Refer a friend"
-      />
+      /> */}
     </div>
   );
 }

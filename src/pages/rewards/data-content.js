@@ -44,7 +44,7 @@ export function Referrers() {
           credited into the property, which is being funded at the time, after a
           Binding Terms sheet has been sent to and signed by the referrer,
           within one month of the referral having deployed a minimum of $2,500
-          into properties on the Pieme Platform
+          into residences on the Pieme Platform
         </li>
         <li>
           The referral reward will be issued in the same currency that the
@@ -81,7 +81,7 @@ export function FriendReferrer() {
             </li>
             <li>
               have within a period of 90 days from sign-up to Pieme deployed a
-              minimum of $2,500 in properties on the Pieme platform.
+              minimum of $2,500 in residences on the Pieme platform.
             </li>
           </ul>
         </li>
@@ -89,7 +89,7 @@ export function FriendReferrer() {
         <li>
           The referral's portion of the referral reward will be added to the
           investment which triggers the bonus, having deployed a minimum of
-          $2,500 into properties on the Pieme platform.
+          $2,500 into residences on the Pieme platform.
         </li>
       </ol>
     </div>

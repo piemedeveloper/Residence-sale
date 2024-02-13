@@ -10,10 +10,9 @@ import { FriendReferrer, General, Referrers, Reward } from "./data-content";
 import Referrrals from "./referrrals";
 import ContentHeading from "../../components/content-heading";
 
-function Rewards() {
+function Rewards({ user }) {
   document.title = "Rewards | Pieme";
-  const icon_class = "text-2xl";
-  const username = "JOSH5813126";
+  const icon_class = "text-3xl";
 
   const items = [
     {
@@ -50,7 +49,7 @@ function Rewards() {
           <ContentHeading title="my referral code" />
           <div className="py-12">
             <p className="text-2xl font-medium text-center md:text-3xl main-color">
-              {username}
+              {user.enc_id}
             </p>
           </div>
         </div>
@@ -59,7 +58,7 @@ function Rewards() {
           <div className="p-6">
             <div className="flex items-center overflow-hidden share-bg rounded-xl">
               <p className="w-full px-6 text-base head-color line-clamp-1">
-                {window.location.origin}?referrer={username}
+                {window.location.origin}?referrer={user.enc_id}
               </p>
               <button className="px-10 py-3.5 main-bg text-white text-base">
                 Copy

@@ -67,7 +67,7 @@ function Register() {
         <div className="container py-12 mx-auto text-center heading-color">
           <h1 className="text-5xl font-semibold">Register</h1>
           <p className="mt-3 text-lg menu-color">
-            Sign up now to get access to exclusive crowdfunded real estate
+            Sign up now to get access to exclusive crowdfunded hotel room
             opportunities
           </p>
         </div>

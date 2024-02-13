@@ -33,7 +33,7 @@ function LandingHeader() {
   const menu = [
     { label: "Home", url: "", links: [] },
     { label: "How it works", url: "how-it-works", links: [] },
-    { label: "Properties", url: "properties", links: [] },
+    { label: "Residences", url: "residences", links: [] },
     {
       label: "About",
       url: "about team",

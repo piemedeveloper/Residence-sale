@@ -11,7 +11,7 @@ import CalculateInvestment from "./calculate-investment";
 import Faq from "../faq";
 
 function Home() {
-  document.title = "Real Estate Investment";
+  document.title = "hotel room Investment";
   return (
     <div
       style={{ backgroundImage: `url(${bg})` }}

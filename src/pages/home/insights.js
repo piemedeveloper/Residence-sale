@@ -88,7 +88,7 @@ function Insights() {
         </Swiper>
 
         {/* <h3 className="mt-4 text-4xl font-medium text-center main-color">
-          Latest real estate investment insight
+          Latest hotel room investment insight
         </h3>
 
         <Swiper

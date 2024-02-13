@@ -11,7 +11,7 @@ function Investing() {
     {
       photo: jei,
       message:
-        "Pieme takes care of everything tedious about real estate investment: formalities, insurance, maintenance, tenants, etc. The variety of properties allows diversification which gives me greater peace of mind. The process is really simple - you can keep track of your investments anytime, anywhere.",
+        "Pieme takes care of everything tedious about hotel room investment: formalities, insurance, maintenance, tenants, etc. The variety of residences allows diversification which gives me greater peace of mind. The process is really simple - you can keep track of your investments anytime, anywhere.",
       name: "Jei Rahman",
     },
 

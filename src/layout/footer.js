@@ -6,7 +6,7 @@ function Footer() {
     { menu: "Privacy Policy", url: "" },
     { menu: "Terms & Conditions", url: "" },
     { menu: "About Pieme", url: "" },
-    { menu: "Properties", url: "" },
+    { menu: "Residences", url: "" },
     { menu: "Contact us", url: "" },
     { menu: "Sitemap", url: "" },
   ];

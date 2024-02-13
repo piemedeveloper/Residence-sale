@@ -15,14 +15,15 @@ function PropertyDetail() {
     const p = _.filter(properties, { slag: id });
     if (p.length !== 0) {
       setProperty({ ...p[0] });
-      document.title = p[0].street + " | Pieme";
+      document.title = p[0].location + " | Pieme";
     }
   };
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
     let id = location.pathname.substring(1);
-    id = id.length > 1 ? id.split("/")[1] : "";
+
+    id = id.length > 1 ? id.split("/")[id.split("/").length - 1] : "";
     if (pid !== id) {
       setPid(id);
       getProperty(id);

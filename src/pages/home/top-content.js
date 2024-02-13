@@ -37,8 +37,8 @@ function TopContent() {
               Investment in the Hotel Business Made Easy
             </h1>
             <p className="my-6 text-lg heading-color">
-              The easy to use, hassle-free way to build a global real estate
-              portfolio from as little as {low_investment}
+              The easy, hassle-free way to build a Hotel Empire from as little
+              as {low_investment}
             </p>
 
             <div className="flex">

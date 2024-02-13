@@ -1,5 +1,6 @@
 import React from "react";
 import { Slider } from "antd";
+import { low_investment } from "../../utils/data";
 
 function InvestPart(props) {
   // const property = props.propperty;
@@ -15,14 +16,14 @@ function InvestPart(props) {
       </p>
       <div className="p-5">
         <p className="text-base head-color">
-          Investment amount (minimum $1,000)
+          Investment amount (minimum {low_investment})
         </p>
 
         <div className="flex items-center mt-3 overflow-hidden rounded-lg invest-container">
           <span className="px-4 py-2.5 invest-input font-medium">$</span>
           <input
             className="px-4 py-2 text-base font-medium bg-transparent outline-none"
-            value={1000}
+            value={150}
             onChange={onChange}
             style={{ width: "100%", border: "none", borderRadius: 0 }}
           />

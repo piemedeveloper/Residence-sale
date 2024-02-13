@@ -4,11 +4,11 @@ import { properties } from "../../utils/data";
 import HomePropertyCell from "../home/home-property-cell";
 
 function LandingProperties() {
-  document.title = "Properties";
+  document.title = "Residences";
   return (
     <div>
       <div className="max-w-3xl px-2 py-12 mx-auto text-center heading-color">
-        <h1 className="text-5xl font-semibold">Our Investment Properties</h1>
+        <h1 className="text-5xl font-semibold">Our Investment Residences</h1>
         <p className="mt-4 text-lg">
           <Link to="/login">
             <span className="font-medium main-color">Login</span>
@@ -17,7 +17,7 @@ function LandingProperties() {
           <Link to="/signup">
             <span className="font-medium main-color">register</span>
           </Link>{" "}
-          to view full portfolio of properties available
+          to view full portfolio of residences available
         </p>
       </div>
 

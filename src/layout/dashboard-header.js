@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../assets/logo.png";
 import { Link, useLocation } from "react-router-dom";
-import { FaWallet } from "react-icons/fa6";
+import { FaWallet, FaRegFileLines } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 import { IoHomeOutline } from "react-icons/io5";
 import { CiGift } from "react-icons/ci";
@@ -27,19 +27,19 @@ function Header() {
     },
     {
       icon: <IoHomeOutline className={icon_class} />,
-      label: "Properties",
-      url: "/dashboard/properties",
+      label: "Residences",
+      url: "/dashboard/residences",
     },
     {
       icon: <CiGift className={`${icon_class} text-xl`} />,
       label: "Rewards",
       url: "/dashboard/rewards",
     },
-    // {
-    //   icon: <FaRegFileLines className={icon_class} />,
-    //   label: "Documents",
-    //   url: "documents",
-    // },
+    {
+      icon: <FaRegFileLines className={icon_class} />,
+      label: "Documents",
+      url: "documents",
+    },
   ];
 
   const side_menu = [
@@ -60,10 +60,12 @@ function Header() {
     <div className="fixed z-50 w-full main-bg">
       <div className="mx-auto container-box">
         <div className="flex justify-between">
-          <div className="flex items-center py-2.5">
-            <img src={logo} alt="Pieme logo" className="h-12" />
-            <h1 className="text-3xl text-white ms-1">Pieme</h1>
-          </div>
+          <Link to="/">
+            <div className="flex items-center py-2.5">
+              <img src={logo} alt="Pieme logo" className="h-12" />
+              <h1 className="text-3xl text-white ms-1">Pieme</h1>
+            </div>
+          </Link>
 
           <ul className="hidden lg:flex">
             {menu.map((m, i) => (

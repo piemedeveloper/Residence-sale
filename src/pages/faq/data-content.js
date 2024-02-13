@@ -18,7 +18,7 @@ export function WhyConsider() {
         of independent hotel ownership. With strategic location selection,
         blockchain technology integration, and an innovative investment concept,
         Pieme Residences stands as a modern, collaborative, and risk-mitigating
-        approach to real estate and hotel investment.
+        approach to hotel room and hotel investment.
       </p>
 
       <p className="mt-4">

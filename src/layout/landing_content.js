@@ -22,9 +22,27 @@ import Summary from "../pages/summary";
 import HowItWorksDetails from "../pages/how-it-works/how-it-works-details";
 import LandingPropertyDetail from "../pages/properties/landing-property-detail";
 
+import { useSelector, useDispatch } from "react-redux";
+import { user, addUsers } from "../features";
+import postData from "../hooks/useFetch";
+
 function LandingContent() {
   const location = useLocation();
   const url = location.pathname.substring(1).split("/")[0];
+
+  const userData = useSelector(user.user);
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    postData({
+      service: "get_profile",
+      data: {},
+    }).then((data) => {
+      if (data.success === 1) dispatch(addUsers.user(data.data));
+    });
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div className="bg-white">
       {url !== "dashboard" && <LandingHeader />}
@@ -34,21 +52,31 @@ function LandingContent() {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Register />} />
-        <Route path="/properties" element={<LandingProperties />} />
+        <Route path="/residences" element={<LandingProperties />} />
         <Route path="/how-it-works" element={<HowItWorks />} />
         <Route path="/team" element={<Team />} />
-        <Route path="/dashboard" element={<DashboardContent />}>
-          <Route path="" element={<Summary />} />
-          <Route path="properties" element={<Properties />} />
-          <Route path="properties/:id" element={<PropertyDetail />} />
-          <Route path="properties/:id/invest" element={<PropertyInvest />} />
-          <Route path="rewards" element={<Rewards />} />
-          <Route path="documents" element={<Documents />} />
-          <Route path="investments" element={<Investments />} />
-        </Route>
+
+        {Object.keys(userData).length > 0 && (
+          <Route
+            path="/dashboard"
+            element={<DashboardContent user={userData} />}
+          >
+            <Route path="" element={<Summary user={userData} />} />
+            <Route path="residences" element={<Properties />} />
+            <Route path="residences/:id" element={<PropertyDetail />} />
+            <Route path="residences/:id/invest" element={<PropertyInvest />} />
+            <Route path="rewards" element={<Rewards user={userData} />} />
+            <Route path="documents" element={<Documents />} />
+            <Route
+              path="investments"
+              element={<Investments user={userData} />}
+            />
+          </Route>
+        )}
+
         {/* <Route path="/dashboard/:id" element={<DashboardContent />} />
         <Route path="/dashboard/:id/:id" element={<DashboardContent />} /> */}
-        <Route path="properties/:id" element={<LandingPropertyDetail />} />
+        <Route path="residences/:id" element={<LandingPropertyDetail />} />
         <Route path="/:id" element={<HowItWorksDetails />} />
         <Route path="*" element={<Home />} />
       </Routes>

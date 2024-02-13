@@ -5,12 +5,12 @@ import Heading from "../../components/heading";
 import Info from "../../components/info";
 
 function Properties() {
-  document.title = "Properties | Pieme";
+  document.title = "Residences | Pieme";
   return (
     <div className="mx-auto container-box py-14">
       <Heading
-        title="Available properties for investment"
-        description={`The easy to use, hassle-free way to build a global real estate portfolio
+        title="Available residences for investment"
+        description={`The easy to use, hassle-free way to build a global hotel room portfolio
         from as little as ${low_investment}`}
       />
       <div className="grid gap-6 mt-16 md:grid-cols-2 lg:grid-cols-3">

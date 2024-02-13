@@ -3,12 +3,10 @@ import { Link } from "react-router-dom";
 import { formatDate, numberFormatter } from "../../utils/utils";
 import { Progress } from "antd";
 
-function PropertyCell(props) {
-  const property = props.property;
-
+function PropertyCell({ property }) {
   return (
     <div className="relative pb-8 overflow-hidden bg-white shadow-md rounded-xl">
-      <Link to={`/properties/${property.slag}`}>
+      <Link to={`/dashboard/residences/${property.slag}`}>
         <div className="relative h-48 sm:h-52">
           <img
             src={property.image}
@@ -46,7 +44,7 @@ function PropertyCell(props) {
         <h2 className="text-center head-color uppercase text-[13px] font-medium mt-2">
           {property.location}
         </h2>
-        <Link to={`/properties/${property.slag}`}>
+        <Link to={`/dashboard/residences/${property.slag}`}>
           <p className="my-2 mb-6 font-semibold text-center md:text-lg main-color">
             {property.street}
           </p>
@@ -77,7 +75,7 @@ function PropertyCell(props) {
 
         {property.price !== property.paid && (
           <div className="flex justify-center py-4">
-            <Link to={`/properties/${property.slag}/invest`}>
+            <Link to={`/dashboard/residences/${property.slag}/invest`}>
               <p className="entire-bg text-base md:text-base rounded-full text-white py-2.5 px-8">
                 Invest now
               </p>
@@ -87,7 +85,7 @@ function PropertyCell(props) {
       </div>
 
       <div className="absolute bottom-0 w-full p-3 border-t">
-        <Link to={`/properties/${property.slag}`}>
+        <Link to={`/residences/${property.slag}`}>
           <p className="text-base font-medium text-center entire-color">
             View details
           </p>

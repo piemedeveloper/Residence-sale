@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { getToken } from "../utils/useToken";
 async function postData(data = {}) {
   const url = require("../utils/utils").base_url + "api";
 
@@ -8,22 +8,15 @@ async function postData(data = {}) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        // 'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: `bearer ${getToken()}`,
       },
       body: JSON.stringify(data), // body data type must match "Content-Type" header
     });
 
     const resp = await response.json();
-    if (resp.success === 0) {
-      alert(resp.message);
-    } else if (resp.success === 1) {
-      return resp;
-    }
     return resp;
   } catch (e) {
-    if (_.includes(e.message, "Forbidden")) return { success: -1 };
-    // alert("Check you internet connection");
-    return { success: 3 };
+    return { success: 0, message: "Request failed" };
   }
   // parses JSON response into native JavaScript objects
 }

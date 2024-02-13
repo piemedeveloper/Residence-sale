@@ -4,7 +4,7 @@ import SummaryContainer from "../../components/summary-container";
 import residence from "../../assets/residence.jpeg";
 import Info from "../../components/info";
 
-function Investments() {
+function Investments({ user }) {
   document.title = "Investments | Pieme";
   return (
     <div className="mx-auto my-14 container-box">
@@ -12,8 +12,8 @@ function Investments() {
       <br />
       <SummaryContainer
         bg={residence}
-        title="Kainja, don't miss out on the current available opportunities"
-        link="properties"
+        title={`${user.first_name}, don't miss out on the current available opportunities`}
+        link="/residences"
         label="View availble opportunities"
       />
 

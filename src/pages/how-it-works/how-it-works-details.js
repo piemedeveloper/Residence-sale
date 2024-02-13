@@ -65,7 +65,7 @@ function HowItWorksDetails() {
             </div>
             <div className="w-full lg:w-1/3">
               <div className="sticky overflow-hidden border rounded-lg home-property top-20">
-                <p className="p-4 border-b gray-bg">
+                <p className="p-4 font-medium border-b gray-bg">
                   Learn more about Pieme Residences
                 </p>
                 <div className="p-4">
