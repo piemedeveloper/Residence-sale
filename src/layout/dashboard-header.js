@@ -50,7 +50,7 @@ function Header() {
         {
           key: "1",
           label: (
-            <a target="_blank" rel="noopener noreferrer" href="">
+            <a target="_blank" rel="noopener noreferrer" href="nah">
               1st menu item
             </a>
           ),
@@ -58,7 +58,7 @@ function Header() {
         {
           key: "2",
           label: (
-            <a target="_blank" rel="noopener noreferrer" href="">
+            <a target="_blank" rel="noopener noreferrer" href="nah">
               2nd menu item
             </a>
           ),
@@ -71,7 +71,7 @@ function Header() {
         {
           key: "1",
           label: (
-            <a target="_blank" rel="noopener noreferrer" href="">
+            <a target="_blank" rel="noopener noreferrer" href="nah">
               1st menu item
             </a>
           ),
@@ -79,7 +79,7 @@ function Header() {
         {
           key: "2",
           label: (
-            <a target="_blank" rel="noopener noreferrer" href="">
+            <a target="_blank" rel="noopener noreferrer" href="nah">
               2nd menu item
             </a>
           ),
@@ -92,7 +92,7 @@ function Header() {
         {
           key: "2",
           label: (
-            <a target="_blank" rel="noopener noreferrer" href="">
+            <a target="_blank" rel="noopener noreferrer" href="nah">
               Logout
             </a>
           ),
