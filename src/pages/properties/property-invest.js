@@ -8,7 +8,6 @@ import NumericInput from "react-numeric-input";
 import { numberFormatter } from "../../utils/utils";
 import { IoIosCloseCircle } from "react-icons/io";
 
-import _ from "lodash";
 import {
   EditOutlined,
   CloudUploadOutlined,
@@ -24,7 +23,6 @@ function PropertyInvest() {
   const [sign, setSign] = React.useState(false);
   const [unit, setUnit] = useState({});
   const [invest, setInvest] = useState(150);
-  const [trimmedDataURL, setTrimmedDataURL] = useState(null);
   const [textSignature, setTextSignature] = useState(null);
   document.title = "Investment";
 
@@ -154,10 +152,6 @@ function PropertyInvest() {
     },
   ];
 
-  const tabChange = (t) => {
-    // setTab(t);
-  };
-
   return (
     <div className="container py-12 mx-auto">
       <div>
@@ -177,12 +171,19 @@ function PropertyInvest() {
                     Residence
                   </h2>
 
-                  <div className="grid max-w-3xl grid-cols-2 gap-10 mx-auto my-12">
-                    <div className="overflow-hidden bg-white rounded-2xl unit-selected">
-                      <UnitCell unit={unit} />
+                  <div className="grid max-w-3xl gap-10 mx-auto my-12 md:grid-cols-2">
+                    <div>
+                      <div className="flex justify-center">
+                        <p className="px-8 py-1.5 text-white rounded-t-lg main-bg">
+                          Selected
+                        </p>
+                      </div>
+                      <div className="overflow-hidden bg-white rounded-2xl unit-selected">
+                        <UnitCell unit={unit} />
+                      </div>
                     </div>
                     <div>
-                      <div className="bg-white rounded-lg shadow-md">
+                      <div className="mt-10 bg-white rounded-lg shadow-md">
                         <p className="p-4 text-base font-medium text-center border-b main-color">
                           Investment
                         </p>
@@ -238,7 +239,7 @@ function PropertyInvest() {
               {current === 2 && (
                 <div>
                   <div className="max-w-4xl mx-auto">
-                    <h2 className="text-3xl text-center heading-color">
+                    <h2 className="text-2xl text-center md:text-3xl heading-color">
                       You are investing{" "}
                       <span className="font-medium">
                         ${numberFormatter(invest)}
@@ -249,139 +250,143 @@ function PropertyInvest() {
                       Residence
                     </h2>
 
-                    <h3 className="mt-3 text-2xl text-center heading-color">
+                    <h3 className="mt-3 text-xl text-center md:text-2xl heading-color">
                       Please sign the document below:
                     </h3>
-                  </div>
 
-                  <div className="flex mt-10 overflow-hidden border">
-                    <div className="w-64 min-w-64">
+                    <div className="flex mt-10 overflow-hidden border">
+                      {/* <div className="w-64 min-w-64">
                       <div className="p-5 text-xl font-semibold text-white border border-b-2 main-bg border-b-blue-400">
                         <p>Pieme Contracts</p>
                       </div>
                       <div className="h-full p-3 bg-white">
                         <p>Contracts</p>
                       </div>
+                    </div> */}
+                      <div className="relative w-full">
+                        <div className="p-5 text-xl font-semibold bg-white border border-b-2 border-b-blue-400 main-color">
+                          <p>
+                            Binding Terms - {unit.name} at Pieme{" "}
+                            {unit.residence} Residence
+                          </p>
+                        </div>
+                        <div className="relative h-[40rem] overflow-y-scroll gray-bg">
+                          <div className="px-8 py-6 m-8 bg-white home-property">
+                            <p>
+                              Lorem ipsum dolor sit amet, consectetur adipiscing
+                              elit, sed do eiusmod tempor incididunt ut labore
+                              et dolore magna aliqua. Enim diam vulputate ut
+                              pharetra sit. Elementum facilisis leo vel
+                              fringilla est ullamcorper eget nulla facilisi.
+                              Adipiscing bibendum est ultricies integer quis
+                              auctor elit. Netus et malesuada fames ac turpis.
+                              Suspendisse ultrices gravida dictum fusce ut
+                              placerat. Adipiscing elit duis tristique
+                              sollicitudin. Vitae nunc sed velit dignissim.
+                              Vitae aliquet nec ullamcorper sit amet risus
+                              nullam eget felis. Turpis egestas maecenas
+                              pharetra convallis posuere morbi leo urna
+                            </p>
+
+                            <div className="flex">
+                              <div
+                                onClick={() => setSign(true)}
+                                className="px-6 py-4 my-4 border-2 border-black cursor-pointer hover:border-blue-700"
+                              >
+                                {signature && signature.length > 0 ? (
+                                  <img
+                                    className="h-20"
+                                    src={signature}
+                                    alt="Signature"
+                                  />
+                                ) : (
+                                  <div className="px-10 py-4 text-sm ">
+                                    <p>Click here to sign</p>
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="px-8 py-6 m-8 bg-white home-property pb-96">
+                            <p>
+                              Lorem ipsum dolor sit amet, consectetur adipiscing
+                              elit, sed do eiusmod tempor incididunt ut labore
+                              et dolore magna aliqua. Enim diam vulputate ut
+                              pharetra sit. Elementum facilisis leo vel
+                              fringilla est ullamcorper eget nulla facilisi.
+                              Adipiscing bibendum est ultricies integer quis
+                              auctor elit. Netus et malesuada fames ac turpis.
+                              Suspendisse ultrices gravida dictum fusce ut
+                              placerat. Adipiscing elit duis tristique
+                              sollicitudin. Vitae nunc sed velit dignissim.
+                              Vitae aliquet nec ullamcorper sit amet risus
+                              nullam eget felis. Turpis egestas maecenas
+                              pharetra convallis posuere morbi leo urna
+                            </p>
+
+                            <div className="flex">
+                              <div
+                                onClick={() => setSign(true)}
+                                className="px-6 py-4 my-4 border-2 border-black cursor-pointer hover:border-blue-700"
+                              >
+                                {signature && signature.length > 0 ? (
+                                  <img
+                                    className="h-20"
+                                    src={signature}
+                                    alt="Signature"
+                                  />
+                                ) : (
+                                  <div className="px-10 py-4 text-sm ">
+                                    <p>Click here to sign</p>
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div
+                          className={`absolute bottom-0 ${
+                            !sign && "hidden"
+                          } w-full bg-white border-t`}
+                        >
+                          <div className="flex items-center justify-between px-4 border-b">
+                            <p className="p-4 text-2xl ">Signature</p>
+                            <button onClick={() => setSign(false)}>
+                              <IoIosCloseCircle className="text-4xl text-red-600" />
+                            </button>
+                          </div>
+                          <div className="px-4">
+                            <Tabs
+                              defaultActiveKey="1"
+                              items={tabs}
+                              onChange={(t) => setTab(t)}
+                            />
+
+                            <div className="flex justify-end w-full gap-10 p-2 mt-4 text-sm border-t border-b signature-buttons">
+                              <button onClick={mySignature}>Confirm</button>
+                              <button>Submit</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div className="relative w-full">
-                      <div className="p-5 text-xl font-semibold bg-white border border-b-2 border-b-blue-400 main-color">
-                        <p>
-                          Binding Terms - {unit.name} at Pieme {unit.residence}{" "}
-                          Residence
-                        </p>
-                      </div>
-                      <div className="relative h-[40rem] overflow-y-scroll gray-bg">
-                        <div className="px-8 py-6 m-8 bg-white home-property">
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Enim diam vulputate ut pharetra
-                            sit. Elementum facilisis leo vel fringilla est
-                            ullamcorper eget nulla facilisi. Adipiscing bibendum
-                            est ultricies integer quis auctor elit. Netus et
-                            malesuada fames ac turpis. Suspendisse ultrices
-                            gravida dictum fusce ut placerat. Adipiscing elit
-                            duis tristique sollicitudin. Vitae nunc sed velit
-                            dignissim. Vitae aliquet nec ullamcorper sit amet
-                            risus nullam eget felis. Turpis egestas maecenas
-                            pharetra convallis posuere morbi leo urna
-                          </p>
 
-                          <div className="flex">
-                            <div
-                              onClick={() => setSign(true)}
-                              className="px-6 py-4 my-4 border-2 border-black cursor-pointer hover:border-blue-700"
-                            >
-                              {signature && signature.length > 0 ? (
-                                <img
-                                  className="h-20"
-                                  src={signature}
-                                  alt="Signature"
-                                />
-                              ) : (
-                                <div className="px-10 py-4 text-sm ">
-                                  <p>Click here to sign</p>
-                                </div>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="px-8 py-6 m-8 bg-white home-property pb-96">
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Enim diam vulputate ut pharetra
-                            sit. Elementum facilisis leo vel fringilla est
-                            ullamcorper eget nulla facilisi. Adipiscing bibendum
-                            est ultricies integer quis auctor elit. Netus et
-                            malesuada fames ac turpis. Suspendisse ultrices
-                            gravida dictum fusce ut placerat. Adipiscing elit
-                            duis tristique sollicitudin. Vitae nunc sed velit
-                            dignissim. Vitae aliquet nec ullamcorper sit amet
-                            risus nullam eget felis. Turpis egestas maecenas
-                            pharetra convallis posuere morbi leo urna
-                          </p>
-
-                          <div className="flex">
-                            <div
-                              onClick={() => setSign(true)}
-                              className="px-6 py-4 my-4 border-2 border-black cursor-pointer hover:border-blue-700"
-                            >
-                              {signature && signature.length > 0 ? (
-                                <img
-                                  className="h-20"
-                                  src={signature}
-                                  alt="Signature"
-                                />
-                              ) : (
-                                <div className="px-10 py-4 text-sm ">
-                                  <p>Click here to sign</p>
-                                </div>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div
-                        className={`absolute bottom-0 ${
-                          !sign && "hidden"
-                        } w-full bg-white border-t`}
+                    <div className="flex justify-end p-2 bg-white">
+                      <button
+                        onClick={() => {
+                          if (signature == null || signature.length === 0)
+                            message.error(
+                              "Please sign the document to continue"
+                            );
+                          else next();
+                        }}
+                        className="px-10 py-3 text-sm text-white rounded-md main-bg"
                       >
-                        <div className="flex items-center justify-between px-4 border-b">
-                          <p className="p-4 text-2xl ">Signature</p>
-                          <button onClick={() => setSign(false)}>
-                            <IoIosCloseCircle className="text-4xl text-red-600" />
-                          </button>
-                        </div>
-                        <div className="px-4">
-                          <Tabs
-                            defaultActiveKey="1"
-                            items={tabs}
-                            onChange={(t) => setTab(t)}
-                          />
-
-                          <div className="flex justify-end w-full gap-10 p-2 mt-4 text-sm border-t border-b signature-buttons">
-                            <button onClick={mySignature}>Confirm</button>
-                            <button>Submit</button>
-                          </div>
-                        </div>
-                      </div>
+                        Submit
+                      </button>
                     </div>
-                  </div>
-
-                  <div className="flex justify-end p-2 bg-white">
-                    <button
-                      onClick={() => {
-                        if (signature == null || signature.length === 0)
-                          message.error("Please sign the document to continue");
-                        else next();
-                      }}
-                      className="px-10 py-3 text-sm text-white rounded-md main-bg"
-                    >
-                      Submit
-                    </button>
                   </div>
                 </div>
               )}

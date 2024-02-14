@@ -58,10 +58,12 @@ function PropertyDetail() {
                 <div className="relative rounded-xl overflow-hidden max-h-[28rem]">
                   <p
                     className={`uppercase text-white text-center p-1.5 text-base tracking-wide ${
-                      residence.type === 0 ? "main-bg" : "entire-bg"
+                      residence.is_active === 1 ? "main-bg" : "entire-bg"
                     }`}
                   >
-                    {residence.type === 0 ? "funding" : "Entire property"}
+                    {residence.is_active === 1
+                      ? "funding now"
+                      : "Not funding now"}
                   </p>
                   <img
                     src={residence.image}

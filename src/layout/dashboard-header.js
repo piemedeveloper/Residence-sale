@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../assets/logo.png";
 import { Link, useLocation } from "react-router-dom";
-import { FaWallet, FaRegFileLines } from "react-icons/fa6";
+import { FaWallet } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 import { IoHomeOutline } from "react-icons/io5";
 import { CiGift } from "react-icons/ci";
@@ -35,11 +35,11 @@ function Header() {
       label: "Rewards",
       url: "/dashboard/rewards",
     },
-    {
-      icon: <FaRegFileLines className={icon_class} />,
-      label: "Documents",
-      url: "documents",
-    },
+    // {
+    //   icon: <FaRegFileLines className={icon_class} />,
+    //   label: "Documents",
+    //   url: "documents",
+    // },
   ];
 
   const side_menu = [

@@ -64,7 +64,13 @@ function UnitCell({ unit }) {
             </div>
           )}
 
-          <p className={`mt-3 text-sm line-clamp-6`}>{unit.description}</p>
+          <p className={`mt-3 text-sm line-clamp-3`}>{unit.description}</p>
+
+          <div className="flex justify-center mt-4">
+            <p className="px-10 py-2 text-sm text-white rounded-full main-bg">
+              Invest now
+            </p>
+          </div>
         </div>
 
         <div className="w-full"></div>

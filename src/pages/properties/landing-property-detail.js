@@ -6,12 +6,14 @@ import { numberFormatter } from "../../utils/utils";
 import HomePropertyCell from "../home/home-property-cell";
 import { getToken } from "../../utils/useToken";
 import postData from "../../hooks/useFetch";
+import UnitCell from "./unit-cell";
 
 function LandingPropertyDetail() {
   let location = useLocation();
   const [pid, setPid] = React.useState("");
   const [residence, setResidence] = React.useState({});
   const [residences, setResidences] = React.useState([]);
+  const [units, setUnits] = React.useState([]);
 
   const getResidences = () => {
     postData({
@@ -31,6 +33,7 @@ function LandingPropertyDetail() {
     }).then((data) => {
       if (data.success === 1) {
         setResidence(data.data.residence);
+        setUnits(data.data.units);
       }
     });
   };
@@ -75,6 +78,9 @@ function LandingPropertyDetail() {
               />
             </div>
             <div className="relative w-full lg:w-3/5">
+              <p className="mb-3 text-lg font-bold uppercase heading-color">
+                {residence.is_active === 1 ? "funding now" : "not funding now"}
+              </p>
               <div className="relative grid gap-6 md:grid-cols-2">
                 <div>
                   <p className="text-sm uppercase menu-color">
@@ -133,6 +139,20 @@ function LandingPropertyDetail() {
               </Link>
             </div>
           )}
+        </div>
+      )}
+
+      {units.length > 0 && (
+        <div className="py-10 bg-white">
+          <h2 className="container max-w-2xl mx-auto mb-10 text-3xl font-medium text-center md:text-4xl heading-color">
+            Available units at Pieme Residence
+            <br /> {residence.name}
+          </h2>
+          <div className="container grid gap-6 pb-10 mx-auto sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {_.map(units, (unit, i) => (
+              <UnitCell key={i} unit={unit} />
+            ))}
+          </div>
         </div>
       )}
 
