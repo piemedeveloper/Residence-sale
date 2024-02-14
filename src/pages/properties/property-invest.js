@@ -32,9 +32,11 @@ function PropertyInvest() {
 
   const sigPad = useRef();
   const mySignature = () => {
-    if (tab == "1")
+    if (tab === "1")
       setSignature(sigPad.current.getTrimmedCanvas().toDataURL("image/png"));
-    else if (tab == "2") setSignature(textSignature);
+    else if (tab === "2") setSignature(textSignature);
+
+    setSign(false);
   };
 
   const getUnit = (id) => {
@@ -220,7 +222,7 @@ function PropertyInvest() {
 
                           <div className="flex justify-center pt-4 pb-2">
                             <button
-                              onClick={() => next()}
+                              onClick={next}
                               className="main-bg rounded-full text-white py-2.5 w-full text-center"
                             >
                               Continue to Signature
@@ -254,63 +256,72 @@ function PropertyInvest() {
 
                   <div className="flex mt-10 overflow-hidden border">
                     <div className="w-64 min-w-64">
-                      <div className="p-5 font-semibold text-white main-bg">
+                      <div className="p-5 text-xl font-semibold text-white border border-b-2 main-bg border-b-blue-400">
                         <p>Pieme Contracts</p>
                       </div>
                       <div className="h-full p-3 bg-white">
-                        <p>Content</p>
+                        <p>Contracts</p>
                       </div>
                     </div>
                     <div className="relative w-full">
-                      <div className="p-5 font-semibold bg-white border border-b-2 border-b-blue-400 main-color">
-                        <p>Binding Terms</p>
+                      <div className="p-5 text-xl font-semibold bg-white border border-b-2 border-b-blue-400 main-color">
+                        <p>
+                          Binding Terms - {unit.name} at Pieme {unit.residence}{" "}
+                          Residence
+                        </p>
                       </div>
-                      <div className="relative h-screen overflow-y-scroll gray-bg">
+                      <div className="relative h-[40rem] overflow-y-scroll gray-bg">
+                        <div className="px-8 py-6 m-8 bg-white home-property">
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua. Enim diam vulputate ut pharetra
+                            sit. Elementum facilisis leo vel fringilla est
+                            ullamcorper eget nulla facilisi. Adipiscing bibendum
+                            est ultricies integer quis auctor elit. Netus et
+                            malesuada fames ac turpis. Suspendisse ultrices
+                            gravida dictum fusce ut placerat. Adipiscing elit
+                            duis tristique sollicitudin. Vitae nunc sed velit
+                            dignissim. Vitae aliquet nec ullamcorper sit amet
+                            risus nullam eget felis. Turpis egestas maecenas
+                            pharetra convallis posuere morbi leo urna
+                          </p>
+
+                          <div className="flex">
+                            <div
+                              onClick={() => setSign(true)}
+                              className="px-6 py-4 my-4 border-2 border-black cursor-pointer hover:border-blue-700"
+                            >
+                              {signature && signature.length > 0 ? (
+                                <img
+                                  className="h-20"
+                                  src={signature}
+                                  alt="Signature"
+                                />
+                              ) : (
+                                <div className="px-10 py-4 text-sm ">
+                                  <p>Click here to sign</p>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+
                         <div className="px-8 py-6 m-8 bg-white home-property pb-96">
-                          {_.times(10, (u) => (
-                            <p className="" key={u}>
-                              Lorem ipsum dolor sit amet, consectetur adipiscing
-                              elit, sed do eiusmod tempor incididunt ut labore
-                              et dolore magna aliqua. Enim diam vulputate ut
-                              pharetra sit. Elementum facilisis leo vel
-                              fringilla est ullamcorper eget nulla facilisi.
-                              Adipiscing bibendum est ultricies integer quis
-                              auctor elit. Netus et malesuada fames ac turpis.
-                              Suspendisse ultrices gravida dictum fusce ut
-                              placerat. Adipiscing elit duis tristique
-                              sollicitudin. Vitae nunc sed velit dignissim.
-                              Vitae aliquet nec ullamcorper sit amet risus
-                              nullam eget felis. Turpis egestas maecenas
-                              pharetra convallis posuere morbi leo urna
-                              molestie. Eu non diam phasellus vestibulum. Sed
-                              risus ultricies tristique nulla aliquet enim. Non
-                              odio euismod lacinia at quis risus sed vulputate.
-                              Aliquet risus feugiat in ante metus dictum at
-                              tempor commodo. Quam vulputate dignissim
-                              suspendisse in est ante in. Eget egestas purus
-                              viverra accumsan in. Id ornare arcu odio ut sem
-                              nulla pharetra. Nunc mi ipsum faucibus vitae.
-                              Pellentesque habitant morbi tristique senectus et.
-                              Massa ultricies mi quis hendrerit dolor. Aliquam
-                              id diam maecenas ultricies mi. Et pharetra
-                              pharetra massa massa. Congue eu consequat ac
-                              felis. Malesuada bibendum arcu vitae elementum
-                              curabitur vitae nunc sed. Tortor aliquam nulla
-                              facilisi cras. Mi tempus imperdiet nulla
-                              malesuada. Elementum pulvinar etiam non quam lacus
-                              suspendisse faucibus interdum. Turpis in eu mi
-                              bibendum neque. Phasellus vestibulum lorem sed
-                              risus. Integer feugiat scelerisque varius morbi
-                              enim nunc. Diam donec adipiscing tristique risus
-                              nec feugiat in fermentum posuere. Diam vel quam
-                              elementum pulvinar etiam. Consequat mauris nunc
-                              congue nisi vitae suscipit tellus. Viverra
-                              suspendisse potenti nullam ac. Varius sit amet
-                              mattis vulputate. Sed lectus vestibulum mattis
-                              ullamcorper velit sed ullamcorper morbi. Vitae
-                              congue mauris rhoncus aenean vel elit scelerisque
-                            </p>
-                          ))}
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua. Enim diam vulputate ut pharetra
+                            sit. Elementum facilisis leo vel fringilla est
+                            ullamcorper eget nulla facilisi. Adipiscing bibendum
+                            est ultricies integer quis auctor elit. Netus et
+                            malesuada fames ac turpis. Suspendisse ultrices
+                            gravida dictum fusce ut placerat. Adipiscing elit
+                            duis tristique sollicitudin. Vitae nunc sed velit
+                            dignissim. Vitae aliquet nec ullamcorper sit amet
+                            risus nullam eget felis. Turpis egestas maecenas
+                            pharetra convallis posuere morbi leo urna
+                          </p>
 
                           <div className="flex">
                             <div
@@ -358,6 +369,19 @@ function PropertyInvest() {
                         </div>
                       </div>
                     </div>
+                  </div>
+
+                  <div className="flex justify-end p-2 bg-white">
+                    <button
+                      onClick={() => {
+                        if (signature == null || signature.length === 0)
+                          message.error("Please sign the document to continue");
+                        else next();
+                      }}
+                      className="px-10 py-3 text-sm text-white rounded-md main-bg"
+                    >
+                      Submit
+                    </button>
                   </div>
                 </div>
               )}
