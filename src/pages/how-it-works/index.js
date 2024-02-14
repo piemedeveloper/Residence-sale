@@ -18,6 +18,7 @@ import postData from "../../hooks/useFetch";
 
 function HowItWorks() {
   const [residences, setResidences] = React.useState([]);
+  document.title = "How Pieme works";
   React.useEffect(() => {
     postData({
       service: "residences",

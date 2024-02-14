@@ -13,7 +13,7 @@ function Investments({ user }) {
       <SummaryContainer
         bg={residence}
         title={`${user.first_name}, don't miss out on the current available opportunities`}
-        link="/residences"
+        link="/dashboard/residences"
         label="View availble opportunities"
       />
 

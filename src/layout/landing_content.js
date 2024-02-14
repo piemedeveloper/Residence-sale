@@ -64,7 +64,7 @@ function LandingContent() {
             <Route path="" element={<Summary user={userData} />} />
             <Route path="residences" element={<Properties />} />
             <Route path="residences/:id" element={<PropertyDetail />} />
-            <Route path="residences/:id/invest" element={<PropertyInvest />} />
+            <Route path="residences/invest/:id" element={<PropertyInvest />} />
             <Route path="rewards" element={<Rewards user={userData} />} />
             <Route path="documents" element={<Documents />} />
             <Route

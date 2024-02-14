@@ -26,7 +26,7 @@ function Properties() {
         description={`The easy to use, hassle-free way to build a global hotel room portfolio
         from as little as ${low_investment}`}
       />
-      <div className="grid gap-6 mt-16 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-8 mt-16 md:grid-cols-2 lg:grid-cols-3">
         {residences.map((residence, i) => (
           <PropertyCell key={i} residence={residence} />
         ))}

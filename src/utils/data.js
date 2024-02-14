@@ -1,3 +1,5 @@
+const textSignature = require("text-signature");
+
 exports.properties = [
   {
     period: 20,
@@ -99,3 +101,24 @@ exports.how_it_works = [
 ];
 
 exports.low_investment = "$150";
+
+exports.text_to_signature = (text) => {
+  var optionsParameter = {
+    width: 800,
+    height: 300,
+    paddingX: 100,
+    paddingY: 200,
+    canvasTargetDom: ".js-canvasTargetDom",
+    font: ["100px", "'Homemade Apple'"],
+    color: "black",
+    textString: text,
+    customFont: {
+      name: "'Homemade Apple'",
+      url: "http://fonts.googleapis.com/css?family=Homemade+Apple",
+    },
+  };
+
+  const sig = new textSignature(optionsParameter);
+  sig.generateImage(optionsParameter);
+  return sig.getImageData();
+};

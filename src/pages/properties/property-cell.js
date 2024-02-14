@@ -33,7 +33,7 @@ function PropertyCell({ residence }) {
       </Link>
 
       <p
-        className={`uppercase text-white text-center p-1.5 text-base tracking-wide ${
+        className={`uppercase text-white text-center p-1.5 text-sm tracking-wide ${
           residence.is_active === 1 ? "main-bg" : "entire-bg"
         }`}
       >
@@ -41,11 +41,11 @@ function PropertyCell({ residence }) {
       </p>
 
       <div className="p-6">
-        <h2 className="text-center head-color uppercase text-[13px] font-medium mt-2">
+        <h2 className="text-center head-color uppercase text-[13px] font-medium">
           {residence.name}
         </h2>
         <Link to={`/dashboard/residences/${residence.slag}`}>
-          <p className="my-2 mb-6 font-semibold text-center md:text-lg main-color">
+          <p className="my-1 mb-4 font-semibold text-center md:text-lg main-color">
             {residence.location}
           </p>
         </Link>
@@ -68,26 +68,16 @@ function PropertyCell({ residence }) {
           </div>
         </div>
 
-        <p className="mt-3 text-3xl font-semibold text-center md:text-4xl main-color">
+        <p className="mt-3 text-2xl font-semibold text-center md:text-3xl main-color">
           {residence.annual_yield}%*
         </p>
-        <p className="mt-1 text-center head-color">
+        <p className="mt-1 mb-3 text-center head-color">
           Forecast annual rental yield
         </p>
-
-        {residence.is_active === 1 && (
-          <div className="flex justify-center py-4">
-            <Link to={`/dashboard/residences/${residence.slag}/invest`}>
-              <p className="entire-bg text-base md:text-base rounded-full text-white py-2.5 px-8">
-                Invest now
-              </p>
-            </Link>
-          </div>
-        )}
       </div>
 
       <div className="absolute bottom-0 w-full p-3 border-t">
-        <Link to={`/residences/${residence.slag}`}>
+        <Link to={`/dashboard/residences/${residence.slag}`}>
           <p className="text-base font-medium text-center entire-color">
             View details
           </p>

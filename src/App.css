@@ -195,7 +195,7 @@ ul > li {
 
 @media screen and (min-width: 1200px) {
   .container {
-    max-width: 1200px;
+    max-width: 1250px;
   }
 }
 
@@ -296,4 +296,27 @@ ul > li {
 }
 .how-detail li {
   font-size: 1.08rem;
+}
+.unit-selected {
+  border: 6px solid var(--main-color);
+}
+
+.signature-buttons button {
+  border: 1px solid var(--main-color);
+  padding: 8px 20px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.signature-input,
+.signature-input:focus,
+.signature-input:hover,
+.signature-input:active {
+  color: rgb(82, 82, 82);
+  border: none;
+  outline: none !important;
+  border-bottom: 1px solid gray;
 }

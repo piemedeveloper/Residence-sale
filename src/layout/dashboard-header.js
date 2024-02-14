@@ -58,7 +58,7 @@ function Header() {
 
   return (
     <div className="fixed z-50 w-full main-bg">
-      <div className="mx-auto container-box">
+      <div className="container mx-auto">
         <div className="flex justify-between">
           <Link to="/">
             <div className="flex items-center py-2.5">

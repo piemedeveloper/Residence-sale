@@ -9,6 +9,7 @@ import {
 } from "./data-content";
 
 function Faq() {
+  document.title = "Questions";
   const items = [
     {
       key: "1",
