@@ -42,7 +42,7 @@ function TopContent() {
             </p>
 
             <div className="flex">
-              <Link>
+              <Link to="/residences">
                 <p className="text-base text-center md:text-base register-btn">
                   Invest Now
                 </p>

@@ -10,6 +10,7 @@ import { BsMenuUp } from "react-icons/bs";
 import { TiThMenu } from "react-icons/ti";
 
 import { IoNotifications } from "react-icons/io5";
+import { Dropdown } from "antd";
 
 function Header() {
   const [active, setActive] = React.useState("");
@@ -43,9 +44,61 @@ function Header() {
   ];
 
   const side_menu = [
-    { icon: <IoNotifications className={`${icon_class} text-2xl`} /> },
-    { icon: <FaWallet className={`${icon_class} text-2xl`} /> },
-    { icon: <FaUser className={`${icon_class} text-2xl`} /> },
+    {
+      icon: <IoNotifications className={`${icon_class} text-2xl`} />,
+      items: [
+        {
+          key: "1",
+          label: (
+            <a target="_blank" rel="noopener noreferrer" href="">
+              1st menu item
+            </a>
+          ),
+        },
+        {
+          key: "2",
+          label: (
+            <a target="_blank" rel="noopener noreferrer" href="">
+              2nd menu item
+            </a>
+          ),
+        },
+      ],
+    },
+    {
+      icon: <FaWallet className={`${icon_class} text-2xl`} />,
+      items: [
+        {
+          key: "1",
+          label: (
+            <a target="_blank" rel="noopener noreferrer" href="">
+              1st menu item
+            </a>
+          ),
+        },
+        {
+          key: "2",
+          label: (
+            <a target="_blank" rel="noopener noreferrer" href="">
+              2nd menu item
+            </a>
+          ),
+        },
+      ],
+    },
+    {
+      icon: <FaUser className={`${icon_class} text-2xl`} />,
+      items: [
+        {
+          key: "2",
+          label: (
+            <a target="_blank" rel="noopener noreferrer" href="">
+              Logout
+            </a>
+          ),
+        },
+      ],
+    },
   ];
 
   let location = useLocation();
@@ -86,9 +139,18 @@ function Header() {
             ))}
           </ul>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center">
             {side_menu.map((m, i) => (
-              <div key={i}>{m.icon}</div>
+              <Dropdown
+                key={i}
+                menu={{
+                  items: m.items,
+                }}
+              >
+                <div className="flex items-center h-full px-3.5 cursor-pointer">
+                  {m.icon}
+                </div>
+              </Dropdown>
             ))}
             <div className="lg:hidden">
               <TiThMenu className={`${icon_class} text-3xl`} />
