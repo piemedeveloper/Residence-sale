@@ -8,10 +8,10 @@ import Investing from "./investing";
 import Platform from "./platform";
 import Insights from "./insights";
 import CalculateInvestment from "./calculate-investment";
-import Faq from "../faq";
+import FaqData from "../faq/faq-data";
 
 function Home() {
-  document.title = "hotel room Investment";
+  document.title = "Hotel Room Investment";
   return (
     <div
       style={{ backgroundImage: `url(${bg})` }}
@@ -31,7 +31,7 @@ function Home() {
 
       <Insights />
 
-      <Faq />
+      <FaqData />
     </div>
   );
 }

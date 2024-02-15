@@ -50,7 +50,9 @@ const beforeUpload = (file) => {
   return isJpgOrPng && isLt2M;
 };
 
-function LoadDocument({ unit, addSignature }) {
+function LoadDocument(props) {
+  const unit = props.unit;
+
   const sigPad = useRef();
   const [numPages, setNumPages] = useState();
   const [containerRef, setContainerRef] = useState(null);
@@ -121,7 +123,8 @@ function LoadDocument({ unit, addSignature }) {
   }
 
   React.useEffect(() => {
-    addSignature(signature);
+    props.addSignature(signature);
+    // eslint-disable-next-line
   }, [signature]);
 
   const tabs = [

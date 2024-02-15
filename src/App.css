@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  background-color: white;
+  /* background-color: white; */
   font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto,
     helvetica neue, Arial, noto sans, sans-serif, apple color emoji,
     segoe ui emoji, segoe ui symbol, noto color emoji;
@@ -21,7 +21,12 @@ body {
 }
 
 body {
-  background-color: #f7f1fa;
+  background-color: #f7f7f7;
+}
+
+.colored-bg {
+  background-color: #f7f7f7;
+  /* background-color: #f7f1fa; */
 }
 :root {
   --main-color: #036eb8;
@@ -195,7 +200,7 @@ ul > li {
 
 @media screen and (min-width: 1200px) {
   .container {
-    max-width: 1250px;
+    max-width: 1200px;
   }
 }
 
@@ -323,4 +328,18 @@ ul > li {
 
 .ant-btn-primary {
   background-color: var(--main-color);
+}
+
+.phone-input input,
+.phone-input input:focus,
+.phone-input input:hover,
+.phone-input input:active {
+  border: none;
+  outline: none !important;
+  padding: 10px;
+  background-color: #ebebeb;
+}
+
+.phone-input {
+  margin-top: 10px;
 }

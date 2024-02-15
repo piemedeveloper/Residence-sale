@@ -50,7 +50,7 @@ function PropertyDetail() {
               {residence.location}
             </p>
             <h1 className="mt-4 text-3xl font-medium text-center main-color md:text-5xl">
-              {residence.name}
+              {residence.name} Residence
             </h1>
 
             <div className="flex flex-col gap-6 mt-10 lg:flex-row">

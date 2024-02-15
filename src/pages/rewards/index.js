@@ -7,7 +7,7 @@ import {
   FaLinkedin,
 } from "react-icons/fa6";
 import { FriendReferrer, General, Referrers, Reward } from "./data-content";
-import Referrrals from "./referrrals";
+// import Referrrals from "./referrrals";
 import ContentHeading from "../../components/content-heading";
 
 function Rewards({ user }) {
@@ -92,7 +92,7 @@ function Rewards({ user }) {
         bordered={false}
       />
 
-      <Referrrals />
+      {/* <Referrrals /> */}
     </div>
   );
 }
