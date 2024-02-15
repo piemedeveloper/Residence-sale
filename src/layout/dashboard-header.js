@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../assets/logo.png";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaWallet } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 import { IoHomeOutline } from "react-icons/io5";
@@ -8,11 +8,16 @@ import { CiGift } from "react-icons/ci";
 import { BsGraphUp } from "react-icons/bs";
 import { BsMenuUp } from "react-icons/bs";
 import { TiThMenu } from "react-icons/ti";
+import { ExclamationCircleOutlined } from "@ant-design/icons";
 
 import { IoNotifications } from "react-icons/io5";
-import { Dropdown } from "antd";
+import { Dropdown, Modal } from "antd";
+import { removeToken } from "../utils/useToken";
+
+const { confirm } = Modal;
 
 function Header() {
+  let navigate = useNavigate();
   const [active, setActive] = React.useState("");
   const icon_class = "text-white";
   const menu = [
@@ -43,46 +48,33 @@ function Header() {
     // },
   ];
 
+  const logout = () => {
+    confirm({
+      title: "Are you sure you want to logout?",
+      icon: <ExclamationCircleOutlined />,
+      content: "When you click 'ok' you will be logged out automatically",
+      onOk() {
+        removeToken();
+        navigate("/");
+        window.location.reload(false);
+      },
+      onCancel() {
+        console.log("Cancel");
+      },
+    });
+    // removeToken
+  };
   const side_menu = [
     {
       icon: <IoNotifications className={`${icon_class} text-2xl`} />,
-      items: [
-        {
-          key: "1",
-          label: (
-            <a target="_blank" rel="noopener noreferrer" href="nah">
-              1st menu item
-            </a>
-          ),
-        },
-        {
-          key: "2",
-          label: (
-            <a target="_blank" rel="noopener noreferrer" href="nah">
-              2nd menu item
-            </a>
-          ),
-        },
-      ],
+      items: [],
     },
     {
       icon: <FaWallet className={`${icon_class} text-2xl`} />,
       items: [
         {
           key: "1",
-          label: (
-            <a target="_blank" rel="noopener noreferrer" href="nah">
-              1st menu item
-            </a>
-          ),
-        },
-        {
-          key: "2",
-          label: (
-            <a target="_blank" rel="noopener noreferrer" href="nah">
-              2nd menu item
-            </a>
-          ),
+          label: <p>Coming soon</p>,
         },
       ],
     },
@@ -91,11 +83,7 @@ function Header() {
       items: [
         {
           key: "2",
-          label: (
-            <a target="_blank" rel="noopener noreferrer" href="nah">
-              Logout
-            </a>
-          ),
+          label: <button onClick={logout}>Logout</button>,
         },
       ],
     },
@@ -146,6 +134,7 @@ function Header() {
                 menu={{
                   items: m.items,
                 }}
+                trigger={["click"]}
               >
                 <div className="flex items-center h-full px-3.5 cursor-pointer">
                   {m.icon}

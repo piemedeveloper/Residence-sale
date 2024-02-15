@@ -66,7 +66,7 @@ function HowItWorks() {
       </div>
 
       <div className="flex justify-center mb-10">
-        <Link>
+        <Link to="/residences">
           <p className="mt-20 text-center register-btn">
             Take a look at our Residences
           </p>

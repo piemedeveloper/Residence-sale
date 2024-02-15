@@ -320,3 +320,7 @@ ul > li {
   outline: none !important;
   border-bottom: 1px solid gray;
 }
+
+.ant-btn-primary {
+  background-color: var(--main-color);
+}

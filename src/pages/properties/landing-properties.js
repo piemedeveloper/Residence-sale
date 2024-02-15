@@ -20,7 +20,9 @@ function LandingProperties() {
   return (
     <div>
       <div className="max-w-3xl px-2 py-12 mx-auto text-center heading-color">
-        <h1 className="text-5xl font-semibold">Our Investment Residences</h1>
+        <h1 className="text-5xl font-semibold">
+          Our Residences for Investment
+        </h1>
         <p className="mt-4 text-lg">
           <Link to="/login">
             <span className="font-medium main-color">Login</span>

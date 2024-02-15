@@ -142,7 +142,7 @@ function LandingPropertyDetail() {
         </div>
       )}
 
-      {units.length > 0 && (
+      {getToken().length > 0 && units.length > 0 && (
         <div className="py-10 bg-white">
           <h2 className="container max-w-2xl mx-auto mb-10 text-3xl font-medium text-center md:text-4xl heading-color">
             Available units at Pieme Residence

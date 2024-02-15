@@ -1,41 +1,20 @@
-import { Steps, message, Slider, Tabs } from "antd";
-import React, { useState, useRef } from "react";
+import { Steps, message, Slider } from "antd";
+import React, { useState } from "react";
 import { postDataAuth } from "../../hooks/useFetch";
 import { useLocation } from "react-router-dom";
 import UnitCell from "./unit-cell";
-import { low_investment, text_to_signature } from "../../utils/data";
+import { low_investment } from "../../utils/data";
 import NumericInput from "react-numeric-input";
 import { numberFormatter } from "../../utils/utils";
-import { IoIosCloseCircle } from "react-icons/io";
 
-import {
-  EditOutlined,
-  CloudUploadOutlined,
-  FontColorsOutlined,
-} from "@ant-design/icons";
-
-import SignatureCanvas from "react-signature-canvas";
+import LoadDocument from "./load-document";
 
 function PropertyInvest() {
   let location = useLocation();
   const [pid, setPid] = React.useState("");
-  const [tab, setTab] = React.useState("1");
-  const [sign, setSign] = React.useState(false);
   const [unit, setUnit] = useState({});
   const [invest, setInvest] = useState(150);
-  const [textSignature, setTextSignature] = useState(null);
   document.title = "Investment";
-
-  const [signature, setSignature] = useState(null);
-
-  const sigPad = useRef();
-  const mySignature = () => {
-    if (tab === "1")
-      setSignature(sigPad.current.getTrimmedCanvas().toDataURL("image/png"));
-    else if (tab === "2") setSignature(textSignature);
-
-    setSign(false);
-  };
 
   const getUnit = (id) => {
     postDataAuth({
@@ -91,67 +70,6 @@ function PropertyInvest() {
     setCurrent(current - 1);
   };
 
-  const tabs = [
-    {
-      key: "1",
-      label: "Draw Signature",
-      icon: <EditOutlined />,
-      children: (
-        <div className="relative w-full">
-          <div className="flex justify-center">
-            <SignatureCanvas
-              penColor="black"
-              canvasProps={{
-                width: 500,
-                height: 200,
-                className: "sigCanvas border",
-              }}
-              ref={sigPad}
-            />
-          </div>
-
-          <button
-            className="absolute px-4 py-2 text-sm text-white bg-red-500 rounded-md top-2 right-10"
-            onClick={() => {
-              sigPad.current.clear();
-            }}
-          >
-            Clear
-          </button>
-        </div>
-      ),
-    },
-    {
-      key: "2",
-      label: "Type Signature",
-      icon: <FontColorsOutlined />,
-      children: (
-        <div>
-          <input
-            type="text"
-            placeholder="Enter signature text"
-            className="w-full p-4 text-lg signature-input"
-            onChange={(e) => {
-              if (e.target.value.length > 0)
-                setTextSignature(text_to_signature(e.target.value));
-              else setTextSignature(null);
-            }}
-          />
-
-          {textSignature ? (
-            <img className="h-20" src={textSignature} alt="Text Signature" />
-          ) : null}
-        </div>
-      ),
-    },
-    {
-      key: "3",
-      label: "Upload Signature",
-      icon: <CloudUploadOutlined />,
-      children: "Content of Tab Pane 3",
-    },
-  ];
-
   return (
     <div className="container py-12 mx-auto">
       <div>
@@ -203,6 +121,7 @@ function PropertyInvest() {
                               step={1}
                               max={unit.cost - unit.amount}
                               value={invest}
+                              // eslint-disable-next-line
                               style={false}
                               onBlur={(e) => setInvest(e.target.value)}
                             />
@@ -263,124 +182,18 @@ function PropertyInvest() {
                         <p>Contracts</p>
                       </div>
                     </div> */}
-                      <div className="relative w-full">
-                        <div className="p-5 text-xl font-semibold bg-white border border-b-2 border-b-blue-400 main-color">
-                          <p>
-                            Binding Terms - {unit.name} at Pieme{" "}
-                            {unit.residence} Residence
-                          </p>
-                        </div>
-                        <div className="relative h-[40rem] overflow-y-scroll gray-bg">
-                          <div className="px-8 py-6 m-8 bg-white home-property">
-                            <p>
-                              Lorem ipsum dolor sit amet, consectetur adipiscing
-                              elit, sed do eiusmod tempor incididunt ut labore
-                              et dolore magna aliqua. Enim diam vulputate ut
-                              pharetra sit. Elementum facilisis leo vel
-                              fringilla est ullamcorper eget nulla facilisi.
-                              Adipiscing bibendum est ultricies integer quis
-                              auctor elit. Netus et malesuada fames ac turpis.
-                              Suspendisse ultrices gravida dictum fusce ut
-                              placerat. Adipiscing elit duis tristique
-                              sollicitudin. Vitae nunc sed velit dignissim.
-                              Vitae aliquet nec ullamcorper sit amet risus
-                              nullam eget felis. Turpis egestas maecenas
-                              pharetra convallis posuere morbi leo urna
-                            </p>
-
-                            <div className="flex">
-                              <div
-                                onClick={() => setSign(true)}
-                                className="px-6 py-4 my-4 border-2 border-black cursor-pointer hover:border-blue-700"
-                              >
-                                {signature && signature.length > 0 ? (
-                                  <img
-                                    className="h-20"
-                                    src={signature}
-                                    alt="Signature"
-                                  />
-                                ) : (
-                                  <div className="px-10 py-4 text-sm ">
-                                    <p>Click here to sign</p>
-                                  </div>
-                                )}
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="px-8 py-6 m-8 bg-white home-property pb-96">
-                            <p>
-                              Lorem ipsum dolor sit amet, consectetur adipiscing
-                              elit, sed do eiusmod tempor incididunt ut labore
-                              et dolore magna aliqua. Enim diam vulputate ut
-                              pharetra sit. Elementum facilisis leo vel
-                              fringilla est ullamcorper eget nulla facilisi.
-                              Adipiscing bibendum est ultricies integer quis
-                              auctor elit. Netus et malesuada fames ac turpis.
-                              Suspendisse ultrices gravida dictum fusce ut
-                              placerat. Adipiscing elit duis tristique
-                              sollicitudin. Vitae nunc sed velit dignissim.
-                              Vitae aliquet nec ullamcorper sit amet risus
-                              nullam eget felis. Turpis egestas maecenas
-                              pharetra convallis posuere morbi leo urna
-                            </p>
-
-                            <div className="flex">
-                              <div
-                                onClick={() => setSign(true)}
-                                className="px-6 py-4 my-4 border-2 border-black cursor-pointer hover:border-blue-700"
-                              >
-                                {signature && signature.length > 0 ? (
-                                  <img
-                                    className="h-20"
-                                    src={signature}
-                                    alt="Signature"
-                                  />
-                                ) : (
-                                  <div className="px-10 py-4 text-sm ">
-                                    <p>Click here to sign</p>
-                                  </div>
-                                )}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div
-                          className={`absolute bottom-0 ${
-                            !sign && "hidden"
-                          } w-full bg-white border-t`}
-                        >
-                          <div className="flex items-center justify-between px-4 border-b">
-                            <p className="p-4 text-2xl ">Signature</p>
-                            <button onClick={() => setSign(false)}>
-                              <IoIosCloseCircle className="text-4xl text-red-600" />
-                            </button>
-                          </div>
-                          <div className="px-4">
-                            <Tabs
-                              defaultActiveKey="1"
-                              items={tabs}
-                              onChange={(t) => setTab(t)}
-                            />
-
-                            <div className="flex justify-end w-full gap-10 p-2 mt-4 text-sm border-t border-b signature-buttons">
-                              <button onClick={mySignature}>Confirm</button>
-                              <button>Submit</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      <LoadDocument unit />
                     </div>
 
                     <div className="flex justify-end p-2 bg-white">
                       <button
                         onClick={() => {
-                          if (signature == null || signature.length === 0)
-                            message.error(
-                              "Please sign the document to continue"
-                            );
-                          else next();
+                          // if (signature == null || signature.length === 0)
+                          //   message.error(
+                          //     "Please sign the document to continue"
+                          //   );
+                          // else
+                          next();
                         }}
                         className="px-10 py-3 text-sm text-white rounded-md main-bg"
                       >

@@ -60,6 +60,10 @@ export const getToken = () => {
   }
 };
 
+export const removeToken = () => {
+  localStorage.removeItem("token");
+};
+
 function encrypt(text) {
   return CryptoJS.AES.encrypt(text, encKey).toString();
 }

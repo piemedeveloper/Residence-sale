@@ -44,7 +44,7 @@ function WhyInvest() {
         <Slider />
 
         <div className="flex justify-center mt-6 mb-10">
-          <Link>
+          <Link to="/signup">
             <p className="mt-20 text-center register-btn">Register</p>
           </Link>
         </div>
