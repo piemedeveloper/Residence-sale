@@ -4,7 +4,7 @@ import { pdfjs, Document, Page } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 import contract from "../../assets/contract.pdf";
-import { Tabs } from "antd";
+import { Tabs, message, Upload } from "antd";
 import { IoIosCloseCircle } from "react-icons/io";
 
 import SignatureCanvas from "react-signature-canvas";
@@ -15,6 +15,9 @@ import {
   FontColorsOutlined,
 } from "@ant-design/icons";
 import { text_to_signature } from "../../utils/data";
+
+import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
+import { base_url } from "../../utils/utils";
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.js",
@@ -30,7 +33,24 @@ const resizeObserverOptions = {};
 
 const maxWidth = 1000;
 
-function LoadDocument({ unit }) {
+const getBase64 = (img, callback) => {
+  const reader = new FileReader();
+  reader.addEventListener("load", () => callback(reader.result));
+  reader.readAsDataURL(img);
+};
+const beforeUpload = (file) => {
+  const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
+  if (!isJpgOrPng) {
+    message.error("You can only upload JPG/PNG file!");
+  }
+  const isLt2M = file.size / 1024 / 1024 < 2;
+  if (!isLt2M) {
+    message.error("Image must smaller than 2MB!");
+  }
+  return isJpgOrPng && isLt2M;
+};
+
+function LoadDocument({ unit, addSignature }) {
   const sigPad = useRef();
   const [numPages, setNumPages] = useState();
   const [containerRef, setContainerRef] = useState(null);
@@ -40,10 +60,48 @@ function LoadDocument({ unit }) {
   const [tab, setTab] = React.useState("1");
   const [textSignature, setTextSignature] = useState(null);
 
+  const [loading, setLoading] = useState(false);
+  const [imageUrl, setImageUrl] = useState();
+
+  const handleChange = (info) => {
+    if (info.file.status === "uploading") {
+      setLoading(true);
+      return;
+    }
+    if (info.file.status === "done") {
+      // Get this url from response in real world.
+      getBase64(info.file.originFileObj, (url) => {
+        setLoading(false);
+        setImageUrl(url);
+      });
+    }
+  };
+  const uploadButton = (
+    <button
+      style={{
+        border: 0,
+        background: "none",
+      }}
+      type="button"
+    >
+      {loading ? <LoadingOutlined /> : <PlusOutlined />}
+      <div
+        style={{
+          marginTop: 8,
+        }}
+      >
+        Upload
+      </div>
+    </button>
+  );
+
   const mySignature = () => {
     if (tab === "1")
       setSignature(sigPad.current.getTrimmedCanvas().toDataURL("image/png"));
     else if (tab === "2") setSignature(textSignature);
+    else if (tab === "3") {
+      setSignature(imageUrl);
+    }
 
     setSign(false);
   };
@@ -61,6 +119,10 @@ function LoadDocument({ unit }) {
   function onDocumentLoadSuccess(nextNumPages) {
     setNumPages(nextNumPages.numPages);
   }
+
+  React.useEffect(() => {
+    addSignature(signature);
+  }, [signature]);
 
   const tabs = [
     {
@@ -119,7 +181,31 @@ function LoadDocument({ unit }) {
       key: "3",
       label: "Upload Signature",
       icon: <CloudUploadOutlined />,
-      children: "Content of Tab Pane 3",
+      children: (
+        <div>
+          <Upload
+            name="image"
+            listType="picture-card"
+            className="avatar-uploader"
+            showUploadList={false}
+            action={base_url + "image_upload"}
+            beforeUpload={beforeUpload}
+            onChange={handleChange}
+          >
+            {imageUrl ? (
+              <img
+                src={imageUrl}
+                alt="avatar"
+                style={{
+                  width: "100%",
+                }}
+              />
+            ) : (
+              uploadButton
+            )}
+          </Upload>
+        </div>
+      ),
     },
   ];
 

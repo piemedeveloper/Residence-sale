@@ -14,6 +14,7 @@ function PropertyInvest() {
   const [pid, setPid] = React.useState("");
   const [unit, setUnit] = useState({});
   const [invest, setInvest] = useState(150);
+  const [signature, setSignature] = useState(null);
   document.title = "Investment";
 
   const getUnit = (id) => {
@@ -25,6 +26,10 @@ function PropertyInvest() {
         setUnit(data.data);
       }
     });
+  };
+
+  const addSignature = (sign) => {
+    setSignature(sign);
   };
 
   React.useEffect(() => {
@@ -182,18 +187,17 @@ function PropertyInvest() {
                         <p>Contracts</p>
                       </div>
                     </div> */}
-                      <LoadDocument unit />
+                      <LoadDocument unit addSignature={addSignature} />
                     </div>
 
                     <div className="flex justify-end p-2 bg-white">
                       <button
                         onClick={() => {
-                          // if (signature == null || signature.length === 0)
-                          //   message.error(
-                          //     "Please sign the document to continue"
-                          //   );
-                          // else
-                          next();
+                          if (signature == null || signature.length === 0)
+                            message.error(
+                              "Please sign the document to continue"
+                            );
+                          else next();
                         }}
                         className="px-10 py-3 text-sm text-white rounded-md main-bg"
                       >
