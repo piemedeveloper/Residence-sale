@@ -29,7 +29,7 @@ function TopContent() {
     },
   ];
   return (
-    <div className="container p-6 mx-auto">
+    <div className="container p-2 mx-auto mt-2">
       <div className="flex max-w-2xl">
         <Slide direction="left" triggerOnce>
           <div className="px-6 py-10 pt-16 ">
@@ -58,8 +58,8 @@ function TopContent() {
           <Slider />
         </div>
 
-        <div className="max-w-4xl mx-auto my-10">
-          <h2 className="text-4xl font-medium text-center md:text-5xl heading-color">
+        <div className="max-w-4xl mx-auto my-14">
+          <h2 className="text-3xl font-semibold text-center md:text-4xl heading-color">
             Hotel Investment Opportunity Generating Superior Returns
           </h2>
 
