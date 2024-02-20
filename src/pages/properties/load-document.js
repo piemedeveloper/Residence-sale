@@ -17,12 +17,15 @@ import {
 import { text_to_signature } from "../../utils/data";
 
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
-import { base_url } from "../../utils/utils";
+import { base_url, formatDate, numberFormatter } from "../../utils/utils";
+import { ceil } from "lodash";
 
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  "pdfjs-dist/build/pdf.worker.min.js",
-  import.meta.url
-).toString();
+// pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+//   "pdfjs-dist/build/pdf.worker.min.js",
+//   import.meta.url
+// ).toString();
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/legacy/build/pdf.worker.min.js`;
 
 const options = {
   cMapUrl: "/cmaps/",
@@ -52,6 +55,8 @@ const beforeUpload = (file) => {
 
 function LoadDocument(props) {
   const unit = props.unit;
+  const user = props.user;
+  const amount = props.amount;
 
   const sigPad = useRef();
   const [numPages, setNumPages] = useState();
@@ -239,47 +244,61 @@ function LoadDocument(props) {
                         : maxWidth
                     }
                   >
-                    {index === 5 && (
-                      <div className="absolute right-32 bottom-[30rem] z-10 flex">
-                        <div
-                          onClick={() => setSign(true)}
-                          className="px-6 py-4 my-4 border-2 border-red-500 cursor-pointer hover:border-blue-700"
-                        >
-                          {signature && signature.length > 0 ? (
-                            <img
-                              className="h-20"
-                              src={signature}
-                              alt="Signature"
-                            />
-                          ) : (
-                            <div className="px-10 py-4 text-sm ">
-                              <p>Click here to sign</p>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    )}
+                    <div className="text-sm">
+                      {index === 0 && (
+                        <>
+                          <p className="absolute left-[7rem] top-[9.45rem] z-10 flex">
+                            {formatDate(new Date())}
+                          </p>
 
-                    {index === 6 && (
-                      <div className="absolute left-14 bottom-[33rem] z-10 flex">
-                        <div
-                          onClick={() => setSign(true)}
-                          className="px-6 py-4 my-4 border-2 border-red-500 cursor-pointer hover:border-blue-700"
-                        >
-                          {signature && signature.length > 0 ? (
-                            <img
-                              className="h-20"
-                              src={signature}
-                              alt="Signature"
-                            />
-                          ) : (
-                            <div className="px-10 py-4 text-sm ">
-                              <p>Click here to sign</p>
-                            </div>
-                          )}
+                          <p className="absolute left-[12rem] top-[19.4rem] z-10 flex tracking-wider font-bold">
+                            {user.first_name} {user.last_name}
+                          </p>
+
+                          <p className="absolute left-[32rem] top-[29.4rem] z-10 flex tracking-wider font-medium">
+                            {unit.name}
+                          </p>
+                        </>
+                      )}
+
+                      {index === 2 && (
+                        <>
+                          <p className="absolute left-[28rem] top-[8.5rem] z-10 flex font-bold">
+                            {numberFormatter(amount)}
+                          </p>
+                          <p className="absolute left-[17.5rem] top-[9.8rem] z-10 flex font-bold">
+                            {numberFormatter(ceil(props.cValue * amount))}
+                          </p>
+                          <p className="absolute left-[25rem] top-[9.8rem] z-10 flex font-bold">
+                            {parseFloat((amount / unit.cost) * 100).toFixed(2)}
+                          </p>
+                          <p className="absolute left-[31.5rem] top-[9.8rem] z-10 flex font-bold">
+                            {parseFloat((amount / unit.cost) * 100).toFixed(2)}
+                          </p>
+                        </>
+                      )}
+
+                      {index === 6 && (
+                        <div className="absolute left-[11rem] bottom-[15rem] z-10 flex">
+                          <div
+                            onClick={() => setSign(true)}
+                            className="px-6 py-4 my-4 border-2 border-red-500 cursor-pointer hover:border-blue-700"
+                          >
+                            {signature && signature.length > 0 ? (
+                              <img
+                                className="h-16"
+                                src={signature}
+                                alt="Signature"
+                              />
+                            ) : (
+                              <div className="px-10 py-4 text-sm ">
+                                <p>Click here to sign</p>
+                              </div>
+                            )}
+                          </div>
                         </div>
-                      </div>
-                    )}
+                      )}
+                    </div>
                   </Page>
                 ))}
               </Document>

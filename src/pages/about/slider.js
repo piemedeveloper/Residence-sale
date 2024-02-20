@@ -1,13 +1,14 @@
 import React from "react";
 import { Fade } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
-import residence from "../../assets/residence.png";
+import residence from "../../assets/residence1.jpeg";
 import residence1 from "../../assets/residence.jpeg";
 import residence2 from "../../assets/residences.jpeg";
+import parking from "../../assets/parking.jpeg";
 import { Slide } from "react-awesome-reveal";
 
 function Slider() {
-  const images = [residence, residence1, residence2];
+  const images = [residence, residence1, residence2, parking];
   return (
     <div>
       <Slide direction="up" triggerOnce>

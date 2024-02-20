@@ -23,7 +23,7 @@ function Summary({ user }) {
       amount: 0,
     },
     {
-      title: "Total\ninvested",
+      title: "Total amount\ninvested",
       amount: 0,
     },
   ];

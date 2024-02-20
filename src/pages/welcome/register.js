@@ -10,6 +10,7 @@ import { postDataAuth } from "../../hooks/useFetch";
 import useToken, { getToken } from "../../utils/useToken";
 
 function Register() {
+  document.title = "Signup | Pieme";
   const navigate = useNavigate();
   const { setToken } = useToken();
   const [error, setError] = useState("");
@@ -17,6 +18,7 @@ function Register() {
     first_name: "",
     last_name: "",
     email_id: "",
+    username: "",
     password: "",
     phone_no: "",
     strength: 0,
@@ -38,6 +40,7 @@ function Register() {
       setError("Please enter your last name");
     else if (data.email_id.length === 0)
       setError("Please enter your Email address");
+    else if (data.username.length === 0) setError("Please enter your Username");
     else if (data.phone_no.length === 0)
       setError("Please enter your Phone number");
     else if (!isValidPhoneNumber(data.phone_no))
@@ -111,6 +114,24 @@ function Register() {
                           }}
                         />
                       </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <p>Username</p>
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        placeholder="Enter username"
+                        className="text-base"
+                        value={data.username}
+                        onChange={(e) => {
+                          data.username = e.target.value;
+                          setData({ ...data });
+                        }}
+                      />
                     </td>
                   </tr>
 
@@ -194,7 +215,7 @@ function Register() {
                 >
                   <p className="text-base">
                     Please click here to accept our{" "}
-                    <Link>
+                    <Link to={"/terms-and-conditions"}>
                       <span className="main-color">terms & conditions</span>
                     </Link>
                   </p>

@@ -48,9 +48,9 @@ function Footer() {
           <div className="mt-6 text-white">
             <p>
               Invest in Pieme Residences now for easy hotel ownership in Africa.
-              Earn 70% booking revenue hassle-free with blockchain. Join the
-              digital transformation trend and tap into lucrative hospitality
-              opportunities.
+              Earn up to 70% booking revenue hassle-free with blockchain. Join
+              the digital transformation trend and tap into lucrative
+              hospitality opportunities.
             </p>
           </div>
         </div>

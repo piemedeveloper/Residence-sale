@@ -36,11 +36,11 @@ function Header() {
       label: "Residences",
       url: "/dashboard/residences",
     },
-    {
-      icon: <CiGift className={`${icon_class} text-xl`} />,
-      label: "Rewards",
-      url: "/dashboard/rewards",
-    },
+    // {
+    //   icon: <CiGift className={`${icon_class} text-xl`} />,
+    //   label: "Rewards",
+    //   url: "/dashboard/rewards",
+    // },
     // {
     //   icon: <FaRegFileLines className={icon_class} />,
     //   label: "Documents",
@@ -74,7 +74,7 @@ function Header() {
       items: [
         {
           key: "1",
-          label: <p>Coming soon</p>,
+          label: <Link to="/dashboard">Wallet</Link>,
         },
       ],
     },

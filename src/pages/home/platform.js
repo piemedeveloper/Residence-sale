@@ -1,5 +1,5 @@
 import React from "react";
-import platform from "../../assets/platform.png";
+import platform from "../../assets/pieme-process.png";
 import { Link } from "react-router-dom";
 import { TiTick } from "react-icons/ti";
 
@@ -29,7 +29,7 @@ function Platform() {
           </p>
           <p>
             Invest in Pieme Residences now for easy hotel ownership in Africa.
-            Earn 70% booking revenue hassle-free with blockchain. Join the
+            Earn up to 70% booking revenue hassle-free with blockchain. Join the
             digital transformation trend and tap into lucrative hospitality
             opportunities.
           </p>

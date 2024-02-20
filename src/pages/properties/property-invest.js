@@ -1,6 +1,6 @@
-import { Steps, message, Slider, Collapse } from "antd";
+import { Steps, message, Slider, Collapse, notification } from "antd";
 import React, { useState } from "react";
-import { postDataAuth } from "../../hooks/useFetch";
+import postData, { postDataAuth } from "../../hooks/useFetch";
 import { useLocation } from "react-router-dom";
 import UnitCell from "./unit-cell";
 import { low_investment } from "../../utils/data";
@@ -8,6 +8,7 @@ import NumericInput from "react-numeric-input";
 import { numberFormatter } from "../../utils/utils";
 import mtn from "../../assets/mtn-logo.png";
 import _, { ceil } from "lodash";
+import { Spin } from "antd";
 
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 
@@ -20,7 +21,7 @@ function PropertyInvest({ user }) {
   const [cValue, setCValue] = useState(0);
   const [invest, setInvest] = useState(150);
   const [signature, setSignature] = useState(null);
-  const [phone, setPhone] = useState("+" + user.phone_no.toString());
+  const [phone, setPhone] = useState();
   document.title = "Investment";
 
   const getUnit = (id) => {
@@ -84,6 +85,7 @@ function PropertyInvest({ user }) {
   }));
 
   const [current, setCurrent] = useState(1);
+  const [btnDis, setBtnDis] = useState(false);
   const next = () => {
     setCurrent(current + 1);
   };
@@ -93,14 +95,49 @@ function PropertyInvest({ user }) {
     else if (!isValidPhoneNumber(phone))
       message.error("Please enter a valid Phone number");
     else {
-      alert(phone);
+      setBtnDis(true);
+      postData({
+        service: "mobile_money",
+        data: {
+          phone: phone.substring(1),
+          currency: 800,
+          amount: invest,
+          unit_id: unit.id,
+          signature: "ertygf56789.png",
+        },
+      }).then((data) => {
+        setBtnDis(false);
+        if (data.status === 1) {
+          notification.success({
+            message: "Mobile money payment success",
+            description:
+              "Payment successfully initaited, please enter your pin",
+          });
+        } else {
+          if (data.transaction.reason === "PAYER_NOT_FOUND")
+            notification.error({
+              message: "Mobile money payment failed",
+              description: "Please enter an MTN phone number",
+            });
+          if (data.transaction.reason === "PAYER_LIMIT_REACHED")
+            notification.error({
+              message: "Mobile money payment failed",
+              description: "Limit for payment reached",
+            });
+          if (data.transaction.reason === "NOT_ENOUGH_FUNDS")
+            notification.error({
+              message: "Mobile money payment failed",
+              description: "Insufficient balance on your account",
+            });
+        }
+      });
     }
   };
 
   const payments = [
     {
       key: "1",
-      label: "Mobile Money Payment",
+      label: "Mobile Money Payment (For Ugandan Investors only)",
       children: (
         <div>
           <img
@@ -131,9 +168,11 @@ function PropertyInvest({ user }) {
 
           <button
             onClick={mobileMoneyPay}
-            className="w-full px-10 py-2.5 mt-8 text-white rounded-lg main-bg"
+            disabled={btnDis}
+            className="w-full flex items-center justify-center gap-3 px-10 py-2.5 mt-8 text-white rounded-lg main-bg"
           >
-            Make Payment
+            {btnDis && <Spin className="text-white" />}
+            <p> Make Payment</p>
           </button>
         </div>
       ),
@@ -141,14 +180,19 @@ function PropertyInvest({ user }) {
     {
       key: "2",
       label: "Pay with bank transfer",
-      children: <BankPayment invest={invest} user={user} />,
+      children: (
+        <div>
+          {/* <BankPayment invest={invest} user={user} /> */}
+          <p>Coming soon</p>
+        </div>
+      ),
     },
     {
       key: "3",
       label: "Crypto Currency Payment",
       children: (
         <div>
-          <p>Crypto currency payment</p>
+          <p>Coming soon</p>
         </div>
       ),
     },
@@ -174,7 +218,7 @@ function PropertyInvest({ user }) {
                       Residence
                     </h2>
 
-                    <div className="grid max-w-3xl gap-10 mx-auto my-12 md:grid-cols-2">
+                    <div className="grid max-w-5xl gap-10 mx-auto my-12 md:grid-cols-2">
                       <div>
                         <div className="flex justify-center">
                           <p className="px-8 py-1.5 text-white rounded-t-lg main-bg">
@@ -182,7 +226,7 @@ function PropertyInvest({ user }) {
                           </p>
                         </div>
                         <div className="overflow-hidden bg-white rounded-2xl unit-selected">
-                          <UnitCell unit={unit} />
+                          <UnitCell unit={unit} clamp={false} />
                         </div>
                       </div>
                       <div>
@@ -267,7 +311,13 @@ function PropertyInvest({ user }) {
                         <p>Contracts</p>
                       </div>
                     </div> */}
-                        <LoadDocument unit={unit} addSignature={addSignature} />
+                        <LoadDocument
+                          unit={unit}
+                          user={user}
+                          amount={invest}
+                          cValue={cValue}
+                          addSignature={addSignature}
+                        />
                       </div>
 
                       <div className="flex justify-end p-2 bg-white">
@@ -304,6 +354,16 @@ function PropertyInvest({ user }) {
                     <h3 className="pb-3 mt-3 text-xl text-center md:text-2xl heading-color">
                       Select your payment method:
                     </h3>
+
+                    {/* Name
+                    Username
+                    Email Address
+                    Country
+                    Percentage stake
+                    Amount invested
+              
+                    Platform fee (2%)
+                    Total amount */}
 
                     <Collapse
                       accordion

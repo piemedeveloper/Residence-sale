@@ -7,6 +7,7 @@ import { postDataAuth } from "../../hooks/useFetch";
 import useToken, { getToken } from "../../utils/useToken";
 
 function Login() {
+  document.title = "Login | Pieme";
   const navigate = useNavigate();
   const { setToken } = useToken();
   const [error, setError] = React.useState("");

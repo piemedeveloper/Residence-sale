@@ -68,8 +68,7 @@ exports.how_it_works = [
   {
     title: "Community vs Traditional Hotel Ownership",
     slag: "community-vs-traditional-hotel-ownership",
-    photo:
-      "https://images.unsplash.com/photo-1610085927744-7217728267a6?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZnVsbCUyMGhkJTIwd2FsbHBhcGVyfGVufDB8fDB8fHww",
+    photo: require("../assets/comvs.png"),
     desc: "<p>A Community-Owned Hotel involves diverse local stakeholders collectively owning and making decisions for the hotel, fostering community engagement and reinvesting profits locally. In contrast, traditional ownership models are typically centralized, owned by a single entity or investor group, with decision-making and benefits focused on profitability rather than community involvement. Community-owned hotels prioritize sustainability, aligning with local values, while profits are shared among stakeholders. Traditional models may lack this emphasis on community-driven values and shared prosperity, making the community-owned approach a more inclusive and locally focused alternative.</p>",
   },
   {
@@ -88,8 +87,7 @@ exports.how_it_works = [
   {
     title: "“I can afford to build an entire hotel alone”",
     slag: "i-can-afford-to-build-an-entire-hotel-alone",
-    photo:
-      "https://images.unsplash.com/photo-1610085927744-7217728267a6?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZnVsbCUyMGhkJTIwd2FsbHBhcGVyfGVufDB8fDB8fHww",
+    photo: require("../assets/afford.jpeg"),
     desc: `<div><p>Having the financial capacity to independently build a hotel is commendable, however, investing in Pieme Residences offers unique advantages, including risk diversification. Unlike owning a hotel in one location and country, which concentrates risk, Pieme Residences allows investors to spread their capital across multiple residences and projects to be built across Africa. This diversification minimizes the impact of potential issues in a single location, offering a more resilient and secure investment strategy. The community-owned model, managed by Pie Tech Limited, fosters shared decision-making, providing investors with up to 70% of nightly booking fees. This hands-free approach ensures passive income without the operational responsibilities of independent hotel ownership. With strategic location selection, blockchain technology integration, and an innovative investment concept, Pieme Residences stands as a modern, collaborative, and risk-mitigating approach to hotel room and hotel investment.</p><br /><p>More so, while it's expensive and challenging to rapidly expand hotels and general investments across different countries independently, Pieme Residences provides a seamless avenue for investors to diversify across the African continent easily. Unlike the tedious process of individually visiting countries, dealing with paperwork, and obtaining work permits, investing in Pieme Residences allows for effortless expansion. Investors can own hotel rooms in various cities like Mombasa, Dar es Salaam, Kigali, and other countries where Pieme Residences will be established. The investor doesn't need to navigate the complexities of international bureaucracy; a simple investment in Pieme Residences to be established in those countries is all it takes to start. This ease of expansion, combined with the benefits of a community-owned model and profit-sharing, positions Pieme Residences as a convenient and lucrative investment opportunity across diverse African locations.</p></div>`,
   },
   {

@@ -3,7 +3,7 @@ import React from "react";
 import { numberFormatter } from "../../utils/utils";
 import { Link } from "react-router-dom";
 
-function UnitCell({ unit, invest }) {
+function UnitCell({ unit, invest, clamp }) {
   return (
     <Link
       to={`${
@@ -34,8 +34,8 @@ function UnitCell({ unit, invest }) {
           <h2 className="font-medium">{unit.name}</h2>
 
           <Progress
-            percent={parseInt((unit.amount / unit.cost) * 100)}
-            className="w-full"
+            percent={parseFloat((unit.amount / unit.cost) * 100).toFixed(2)}
+            className="w-[95%]"
           />
 
           <div className="flex justify-between text-sm">
@@ -64,7 +64,11 @@ function UnitCell({ unit, invest }) {
             </div>
           )}
 
-          <p className={`mt-3 text-sm line-clamp-3`}>{unit.description}</p>
+          <p
+            className={`mt-3  ${clamp ? "line-clamp-3 text-sm " : "text-base"}`}
+          >
+            {unit.description}
+          </p>
 
           {invest && (
             <div className="flex justify-center mt-4">

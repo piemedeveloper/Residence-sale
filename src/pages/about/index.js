@@ -8,7 +8,7 @@ function About() {
     "The state-of-the-art investment platform allows instant access across every time zone. The clear and simple dashboard display allows investors to view, monitor and manage their investment portfolio wherever they are in the world, from the palm of their hand. ",
     "Behind our investment platform is a specialist team of property professionals searching the globe selecting investment opportunities.  Our expert team undertake strict due diligence and navigate complex legal and administrative undertakings in order to create a bespoke selection of residences for investors to choose from.",
     "Pieme now serves over two-thousand users worldwide, offering access to secure asset-backed investments into secure hotel room opportunities across the world's strongest currencies. ",
-    "Welcome to Pieme: Global hotel room investing. Backed by bricks and mortar.",
+    "Welcome to Pieme: Global hotel room investing. Backed by Pieme and mortar.",
   ];
   return (
     <div>

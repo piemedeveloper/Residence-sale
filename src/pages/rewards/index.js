@@ -81,16 +81,16 @@ function Rewards({ user }) {
         </div>
       </div>
 
-      <h2 className="mt-10 text-3xl font-medium main-color">
+      {/* <h2 className="mt-10 text-3xl font-medium main-color">
         How does it work?
-      </h2>
-      <Collapse
+      </h2> */}
+      {/* <Collapse
         accordion
         items={items}
         expandIconPosition="end"
         className="mt-6"
         bordered={false}
-      />
+      /> */}
 
       {/* <Referrrals /> */}
     </div>

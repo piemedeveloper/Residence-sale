@@ -148,9 +148,9 @@ function LandingPropertyDetail() {
             Available units at Pieme Residence
             <br /> {residence.name}
           </h2>
-          <div className="container grid gap-6 pb-10 mx-auto sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="container grid gap-6 pb-10 mx-auto sm:grid-cols-2 lg:grid-cols-3">
             {_.map(units, (unit, i) => (
-              <UnitCell key={i} unit={unit} invest={true} />
+              <UnitCell key={i} unit={unit} invest={true} clamp={true} />
             ))}
           </div>
         </div>
