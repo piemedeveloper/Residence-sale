@@ -614,6 +614,45 @@
     left: 288px;
     font-size: 10px;
   }
+
+  .document_investor_name {
+    position: absolute;
+    top: 88px;
+    left: 90px;
+    font-size: 10px;
+  }
+  .document_nok,
+  .document_nok_relationship,
+  .document_nok_address,
+  .document_beneficiary,
+  .document_beneficiary_relationship,
+  .document_beneficiary_address {
+    position: absolute;
+    left: 135px;
+    background-color: transparent;
+    font-size: 10px;
+    padding: 4px;
+    width: 100%;
+    z-index: 10;
+  }
+  .document_nok {
+    top: 150px;
+  }
+  .document_nok_relationship {
+    top: 178px;
+  }
+  .document_nok_address {
+    top: 205px;
+  }
+  .document_beneficiary {
+    top: 230px;
+  }
+  .document_beneficiary_relationship {
+    top: 258px;
+  }
+  .document_beneficiary_address {
+    top: 285px;
+  }
 }
 
 /* XS */
@@ -659,6 +698,45 @@
     left: 294px;
     font-size: 10px;
   }
+
+  .document_investor_name {
+    position: absolute;
+    top: 92px;
+    left: 100px;
+    font-size: 10px;
+  }
+  .document_nok,
+  .document_nok_relationship,
+  .document_nok_address,
+  .document_beneficiary,
+  .document_beneficiary_relationship,
+  .document_beneficiary_address {
+    position: absolute;
+    left: 140px;
+    background-color: transparent;
+    font-size: 10px;
+    padding: 4px;
+    width: 100%;
+    z-index: 10;
+  }
+  .document_nok {
+    top: 155px;
+  }
+  .document_nok_relationship {
+    top: 182px;
+  }
+  .document_nok_address {
+    top: 210px;
+  }
+  .document_beneficiary {
+    top: 240px;
+  }
+  .document_beneficiary_relationship {
+    top: 268px;
+  }
+  .document_beneficiary_address {
+    top: 297px;
+  }
 }
 
 /* SM */
@@ -703,6 +781,45 @@
     top: 114px;
     left: 300px;
     font-size: 10px;
+  }
+
+  .document_investor_name {
+    position: absolute;
+    top: 94px;
+    left: 100px;
+    font-size: 10px;
+  }
+  .document_nok,
+  .document_nok_relationship,
+  .document_nok_address,
+  .document_beneficiary,
+  .document_beneficiary_relationship,
+  .document_beneficiary_address {
+    position: absolute;
+    left: 140px;
+    background-color: transparent;
+    font-size: 10px;
+    padding: 4px;
+    width: 100%;
+    z-index: 10;
+  }
+  .document_nok {
+    top: 160px;
+  }
+  .document_nok_relationship {
+    top: 190px;
+  }
+  .document_nok_address {
+    top: 218px;
+  }
+  .document_beneficiary {
+    top: 247px;
+  }
+  .document_beneficiary_relationship {
+    top: 277px;
+  }
+  .document_beneficiary_address {
+    top: 307px;
   }
 }
 
