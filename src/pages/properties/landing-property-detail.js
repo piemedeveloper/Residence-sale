@@ -166,16 +166,18 @@ function LandingPropertyDetail() {
             Pieme Residences
           </p>
 
-          <p className="mt-4">
-            <Link to="/login">
-              <span className="font-medium main-color">Login</span>
-            </Link>{" "}
-            or{" "}
-            <Link to="/signup">
-              <span className="font-medium main-color">register</span>
-            </Link>{" "}
-            to view full portfolio of residences available
-          </p>
+          {getToken().length === 0 && (
+            <p className="mt-4">
+              <Link to="/login">
+                <span className="font-medium main-color">Login</span>
+              </Link>{" "}
+              or{" "}
+              <Link to="/signup">
+                <span className="font-medium main-color">register</span>
+              </Link>{" "}
+              to view full portfolio of residences available
+            </p>
+          )}
         </div>
 
         <div className="container grid gap-8 pb-16 mx-auto mt-10 md:grid-cols-2 lg:grid-cols-3">

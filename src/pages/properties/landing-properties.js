@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import HomePropertyCell from "../home/home-property-cell";
 import postData from "../../hooks/useFetch";
+import { getToken } from "../../utils/useToken";
 
 function LandingProperties() {
   document.title = "Residences";
@@ -23,16 +24,18 @@ function LandingProperties() {
         <h1 className="text-5xl font-semibold">
           Our Residences for Investment
         </h1>
-        <p className="mt-4 text-lg">
-          <Link to="/login">
-            <span className="font-medium main-color">Login</span>
-          </Link>{" "}
-          or{" "}
-          <Link to="/signup">
-            <span className="font-medium main-color">register</span>
-          </Link>{" "}
-          to view full portfolio of residences available
-        </p>
+        {getToken().length === 0 && (
+          <p className="mt-4 text-lg">
+            <Link to="/login">
+              <span className="font-medium main-color">Login</span>
+            </Link>{" "}
+            or{" "}
+            <Link to="/signup">
+              <span className="font-medium main-color">register</span>
+            </Link>{" "}
+            to view full portfolio of residences available
+          </p>
+        )}
       </div>
 
       <div className="container grid gap-10 pb-16 mx-auto mt-3 md:grid-cols-2 lg:grid-cols-3">

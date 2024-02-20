@@ -1,8 +1,87 @@
 .document_date {
   position: absolute;
-  top: 56px;
+  top: 52px;
   left: 41px;
-  font-size: 6px;
+  font-size: 5px;
+}
+
+.document_investor {
+  position: absolute;
+  top: 110px;
+  left: 70px;
+  font-size: 5px;
+}
+
+.document_unit {
+  position: absolute;
+  top: 172px;
+  left: 200px;
+  font-size: 5px;
+}
+
+.document_unit_price {
+  position: absolute;
+  top: 45px;
+  left: 180px;
+  font-size: 5px;
+}
+
+.document_unit_price_ugx {
+  position: absolute;
+  top: 54px;
+  left: 105px;
+  font-size: 5px;
+}
+
+.document_unit_percentage {
+  position: absolute;
+  top: 54px;
+  left: 155px;
+  font-size: 5px;
+}
+
+@media (min-width: 360px) {
+  .document_date {
+    position: absolute;
+    top: 56px;
+    left: 41px;
+    font-size: 6px;
+  }
+
+  .document_investor {
+    position: absolute;
+    top: 115px;
+    left: 70px;
+    font-size: 6px;
+  }
+
+  .document_unit {
+    position: absolute;
+    top: 180px;
+    left: 220px;
+    font-size: 6px;
+  }
+
+  .document_unit_price {
+    position: absolute;
+    top: 48px;
+    left: 180px;
+    font-size: 6px;
+  }
+
+  .document_unit_price_ugx {
+    position: absolute;
+    top: 56px;
+    left: 110px;
+    font-size: 6px;
+  }
+
+  .document_unit_percentage {
+    position: absolute;
+    top: 56px;
+    left: 161px;
+    font-size: 6px;
+  }
 }
 
 @media (min-width: 380px) {
@@ -10,16 +89,130 @@
     position: absolute;
     top: 59px;
     left: 46px;
-    font-size: 7px;
+    font-size: 6px;
+  }
+
+  .document_investor {
+    position: absolute;
+    top: 124px;
+    left: 72px;
+    font-size: 6px;
+  }
+
+  .document_unit {
+    position: absolute;
+    top: 193px;
+    left: 230px;
+    font-size: 6px;
+  }
+
+  .document_unit_price {
+    position: absolute;
+    top: 52px;
+    left: 200px;
+    font-size: 6px;
+  }
+
+  .document_unit_price_ugx {
+    position: absolute;
+    top: 61px;
+    left: 120px;
+    font-size: 6px;
+  }
+
+  .document_unit_percentage {
+    position: absolute;
+    top: 61px;
+    left: 172px;
+    font-size: 6px;
   }
 }
 
 @media (min-width: 390px) {
   .document_date {
     position: absolute;
-    top: 62px;
+    top: 60px;
+    left: 46px;
+    font-size: 7px;
+  }
+
+  .document_investor {
+    position: absolute;
+    top: 128px;
+    left: 75px;
+    font-size: 6px;
+  }
+
+  .document_unit {
+    position: absolute;
+    top: 198px;
+    left: 240px;
+    font-size: 6px;
+  }
+
+  .document_unit_price {
+    position: absolute;
+    top: 53px;
+    left: 200px;
+    font-size: 6px;
+  }
+
+  .document_unit_price_ugx {
+    position: absolute;
+    top: 63px;
+    left: 120px;
+    font-size: 6px;
+  }
+
+  .document_unit_percentage {
+    position: absolute;
+    top: 63px;
+    left: 178px;
+    font-size: 6px;
+  }
+}
+
+@media (min-width: 400px) {
+  .document_date {
+    position: absolute;
+    top: 63px;
     left: 50px;
     font-size: 7px;
+  }
+
+  .document_investor {
+    position: absolute;
+    top: 135px;
+    left: 80px;
+    font-size: 7px;
+  }
+
+  .document_unit {
+    position: absolute;
+    top: 208px;
+    left: 245px;
+    font-size: 6px;
+  }
+
+  .document_unit_price {
+    position: absolute;
+    top: 55px;
+    left: 200px;
+    font-size: 6px;
+  }
+
+  .document_unit_price_ugx {
+    position: absolute;
+    top: 65px;
+    left: 125px;
+    font-size: 6px;
+  }
+
+  .document_unit_percentage {
+    position: absolute;
+    top: 65px;
+    left: 182px;
+    font-size: 6px;
   }
 }
 
@@ -28,6 +221,41 @@
     position: absolute;
     top: 67px;
     left: 50px;
+    font-size: 7px;
+  }
+
+  .document_investor {
+    position: absolute;
+    top: 140px;
+    left: 85px;
+    font-size: 7px;
+  }
+
+  .document_unit {
+    position: absolute;
+    top: 220px;
+    left: 255px;
+    font-size: 7px;
+  }
+
+  .document_unit_price {
+    position: absolute;
+    top: 57px;
+    left: 200px;
+    font-size: 7px;
+  }
+
+  .document_unit_price_ugx {
+    position: absolute;
+    top: 67px;
+    left: 125px;
+    font-size: 7px;
+  }
+
+  .document_unit_percentage {
+    position: absolute;
+    top: 67px;
+    left: 186px;
     font-size: 7px;
   }
 }
@@ -39,6 +267,41 @@
     left: 55px;
     font-size: 8px;
   }
+
+  .document_investor {
+    position: absolute;
+    top: 155px;
+    left: 94px;
+    font-size: 8px;
+  }
+
+  .document_unit {
+    position: absolute;
+    top: 233px;
+    left: 275px;
+    font-size: 8px;
+  }
+
+  .document_unit_price {
+    position: absolute;
+    top: 63px;
+    left: 240px;
+    font-size: 8px;
+  }
+
+  .document_unit_price_ugx {
+    position: absolute;
+    top: 75px;
+    left: 150px;
+    font-size: 8px;
+  }
+
+  .document_unit_percentage {
+    position: absolute;
+    top: 75px;
+    left: 205px;
+    font-size: 8px;
+  }
 }
 
 @media (min-width: 480px) {
@@ -46,6 +309,41 @@
     position: absolute;
     top: 80px;
     left: 60px;
+    font-size: 8px;
+  }
+
+  .document_investor {
+    position: absolute;
+    top: 163px;
+    left: 96px;
+    font-size: 8px;
+  }
+
+  .document_unit {
+    position: absolute;
+    top: 252px;
+    left: 295px;
+    font-size: 8px;
+  }
+
+  .document_unit_price {
+    position: absolute;
+    top: 70px;
+    left: 270px;
+    font-size: 8px;
+  }
+
+  .document_unit_price_ugx {
+    position: absolute;
+    top: 82px;
+    left: 160px;
+    font-size: 8px;
+  }
+
+  .document_unit_percentage {
+    position: absolute;
+    top: 82px;
+    left: 220px;
     font-size: 8px;
   }
 }
@@ -57,24 +355,218 @@
     left: 65px;
     font-size: 8px;
   }
+
+  .document_investor {
+    position: absolute;
+    top: 170px;
+    left: 105px;
+    font-size: 8px;
+  }
+
+  .document_unit {
+    position: absolute;
+    top: 260px;
+    left: 300px;
+    font-size: 8px;
+  }
+
+  .document_unit_price {
+    position: absolute;
+    top: 70px;
+    left: 270px;
+    font-size: 8px;
+  }
+
+  .document_unit_price_ugx {
+    position: absolute;
+    top: 82px;
+    left: 160px;
+    font-size: 8px;
+  }
+
+  .document_unit_percentage {
+    position: absolute;
+    top: 82px;
+    left: 225px;
+    font-size: 8px;
+  }
+}
+
+@media (min-width: 500px) {
+  .document_date {
+    position: absolute;
+    top: 85px;
+    left: 65px;
+    font-size: 8px;
+  }
+
+  .document_investor {
+    position: absolute;
+    top: 175px;
+    left: 105px;
+    font-size: 8px;
+  }
+
+  .document_unit {
+    position: absolute;
+    top: 265px;
+    left: 300px;
+    font-size: 8px;
+  }
+
+  .document_unit_price {
+    position: absolute;
+    top: 75px;
+    left: 280px;
+    font-size: 8px;
+  }
+
+  .document_unit_price_ugx {
+    position: absolute;
+    top: 88px;
+    left: 160px;
+    font-size: 8px;
+  }
+
+  .document_unit_percentage {
+    position: absolute;
+    top: 88px;
+    left: 235px;
+    font-size: 8px;
+  }
 }
 
 /* XXXS */
 @media (min-width: 520px) {
   .document_date {
     position: absolute;
-    top: 86px;
+    top: 90px;
     left: 65px;
+    font-size: 9px;
+  }
+
+  .document_investor {
+    position: absolute;
+    top: 182px;
+    left: 110px;
+    font-size: 10px;
+  }
+
+  .document_unit {
+    position: absolute;
+    top: 275px;
+    left: 310px;
+    font-size: 9px;
+  }
+
+  .document_unit_price {
+    position: absolute;
+    top: 80px;
+    left: 300px;
+    font-size: 9px;
+  }
+
+  .document_unit_price_ugx {
+    position: absolute;
+    top: 91px;
+    left: 175px;
+    font-size: 9px;
+  }
+
+  .document_unit_percentage {
+    position: absolute;
+    top: 91px;
+    left: 245px;
     font-size: 9px;
   }
 }
 
 /* XXS */
-@media (min-width: 560px) {
+@media (min-width: 540px) {
+  .document_date {
+    position: absolute;
+    top: 93px;
+    left: 73px;
+    font-size: 10px;
+  }
+
+  .document_investor {
+    position: absolute;
+    top: 192px;
+    left: 110px;
+    font-size: 10px;
+  }
+
+  .document_unit {
+    position: absolute;
+    top: 287px;
+    left: 330px;
+    font-size: 10px;
+  }
+
+  .document_unit_price {
+    position: absolute;
+    top: 84px;
+    left: 300px;
+    font-size: 10px;
+  }
+
+  .document_unit_price_ugx {
+    position: absolute;
+    top: 98px;
+    left: 185px;
+    font-size: 10px;
+  }
+
+  .document_unit_percentage {
+    position: absolute;
+    top: 98px;
+    left: 260px;
+    font-size: 10px;
+  }
+}
+
+/* XXS */
+@media (min-width: 580px) {
   .document_date {
     position: absolute;
     top: 100px;
     left: 73px;
+    font-size: 10px;
+  }
+
+  .document_investor {
+    position: absolute;
+    top: 205px;
+    left: 110px;
+    font-size: 10px;
+  }
+
+  .document_unit {
+    position: absolute;
+    top: 318px;
+    left: 360px;
+    font-size: 10px;
+  }
+
+  .document_unit_price {
+    position: absolute;
+    top: 88px;
+    left: 330px;
+    font-size: 10px;
+  }
+
+  .document_unit_price_ugx {
+    position: absolute;
+    top: 103px;
+    left: 194px;
+    font-size: 10px;
+  }
+
+  .document_unit_percentage {
+    position: absolute;
+    top: 103px;
+    left: 273px;
     font-size: 10px;
   }
 }
@@ -87,6 +579,86 @@
     left: 73px;
     font-size: 10px;
   }
+
+  .document_investor {
+    position: absolute;
+    top: 217px;
+    left: 120px;
+    font-size: 10px;
+  }
+
+  .document_unit {
+    position: absolute;
+    top: 340px;
+    left: 380px;
+    font-size: 10px;
+  }
+
+  .document_unit_price {
+    position: absolute;
+    top: 92px;
+    left: 330px;
+    font-size: 10px;
+  }
+
+  .document_unit_price_ugx {
+    position: absolute;
+    top: 108px;
+    left: 200px;
+    font-size: 10px;
+  }
+
+  .document_unit_percentage {
+    position: absolute;
+    top: 108px;
+    left: 288px;
+    font-size: 10px;
+  }
+}
+
+/* XS */
+@media (min-width: 620px) {
+  .document_date {
+    position: absolute;
+    top: 105px;
+    left: 73px;
+    font-size: 10px;
+  }
+
+  .document_investor {
+    position: absolute;
+    top: 217px;
+    left: 120px;
+    font-size: 10px;
+  }
+
+  .document_unit {
+    position: absolute;
+    top: 340px;
+    left: 380px;
+    font-size: 10px;
+  }
+
+  .document_unit_price {
+    position: absolute;
+    top: 96px;
+    left: 330px;
+    font-size: 10px;
+  }
+
+  .document_unit_price_ugx {
+    position: absolute;
+    top: 112px;
+    left: 200px;
+    font-size: 10px;
+  }
+
+  .document_unit_percentage {
+    position: absolute;
+    top: 112px;
+    left: 294px;
+    font-size: 10px;
+  }
 }
 
 /* SM */
@@ -95,6 +667,41 @@
     position: absolute;
     top: 110px;
     left: 75px;
+    font-size: 10px;
+  }
+
+  .document_investor {
+    position: absolute;
+    top: 225px;
+    left: 125px;
+    font-size: 10px;
+  }
+
+  .document_unit {
+    position: absolute;
+    top: 345px;
+    left: 380px;
+    font-size: 10px;
+  }
+
+  .document_unit_price {
+    position: absolute;
+    top: 98px;
+    left: 330px;
+    font-size: 10px;
+  }
+
+  .document_unit_price_ugx {
+    position: absolute;
+    top: 114px;
+    left: 200px;
+    font-size: 10px;
+  }
+
+  .document_unit_percentage {
+    position: absolute;
+    top: 114px;
+    left: 300px;
     font-size: 10px;
   }
 }
@@ -107,6 +714,80 @@
     left: 90px;
     font-size: 14px;
   }
+
+  .document_investor {
+    position: absolute;
+    top: 275px;
+    left: 150px;
+    font-size: 14px;
+  }
+
+  .document_unit {
+    position: absolute;
+    top: 418px;
+    left: 460px;
+    font-size: 14px;
+  }
+
+  .document_unit_price {
+    position: absolute;
+    top: 120px;
+    left: 400px;
+    font-size: 13px;
+  }
+
+  .document_unit_price_ugx {
+    position: absolute;
+    top: 140px;
+    left: 250px;
+    font-size: 13px;
+  }
+
+  .document_unit_percentage {
+    position: absolute;
+    top: 140px;
+    left: 362px;
+    font-size: 13px;
+  }
+
+  .document_investor_name {
+    position: absolute;
+    top: 115px;
+    left: 115px;
+    font-size: 13px;
+  }
+  .document_nok,
+  .document_nok_relationship,
+  .document_nok_address,
+  .document_beneficiary,
+  .document_beneficiary_relationship,
+  .document_beneficiary_address {
+    position: absolute;
+    left: 170px;
+    background-color: transparent;
+    font-size: 12.5px;
+    padding: 4px;
+    width: 100%;
+    z-index: 10;
+  }
+  .document_nok {
+    top: 195px;
+  }
+  .document_nok_relationship {
+    top: 230px;
+  }
+  .document_nok_address {
+    top: 265px;
+  }
+  .document_beneficiary {
+    top: 300px;
+  }
+  .document_beneficiary_relationship {
+    top: 335px;
+  }
+  .document_beneficiary_address {
+    top: 372px;
+  }
 }
 
 /* LG */
@@ -117,4 +798,93 @@
     left: 115px;
     font-size: 14px;
   }
+
+  .document_investor {
+    position: absolute;
+    top: 335px;
+    left: 170px;
+    font-size: 15px;
+  }
+
+  .document_unit {
+    position: absolute;
+    top: 510px;
+    left: 560px;
+    font-size: 15px;
+  }
+
+  .document_unit_price {
+    position: absolute;
+    top: 150px;
+    left: 500px;
+    font-size: 15px;
+  }
+
+  .document_unit_price_ugx {
+    position: absolute;
+    top: 174px;
+    left: 300px;
+    font-size: 15px;
+  }
+
+  .document_unit_percentage {
+    position: absolute;
+    top: 174px;
+    left: 445px;
+    font-size: 15px;
+  }
+
+  .document_investor_name {
+    position: absolute;
+    top: 145px;
+    left: 125px;
+    font-size: 15px;
+  }
+  .document_nok,
+  .document_nok_relationship,
+  .document_nok_address,
+  .document_beneficiary,
+  .document_beneficiary_relationship,
+  .document_beneficiary_address {
+    position: absolute;
+    left: 220px;
+    background-color: transparent;
+    font-size: 14.5px;
+    padding: 4px;
+    width: 100%;
+    z-index: 10;
+  }
+  .document_nok {
+    top: 243px;
+  }
+  .document_nok_relationship {
+    top: 285px;
+  }
+  .document_nok_address {
+    top: 328px;
+  }
+  .document_beneficiary {
+    top: 370px;
+  }
+  .document_beneficiary_relationship {
+    top: 413px;
+  }
+  .document_beneficiary_address {
+    top: 455px;
+  }
+}
+
+.document_nok:active,
+.document_nok:focus,
+.document_nok_address:active,
+.document_nok_address:focus,
+.document_beneficiary:active,
+.document_beneficiary:focus,
+.document_beneficiary_address:active,
+.document_beneficiary_address:focus,
+.document_beneficiary_relationship:active,
+.document_beneficiary_relationship:focus,
+.document_nok_relationship:active,
+.document_nok_relationship:focus {
+  outline: none;
 }

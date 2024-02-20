@@ -259,6 +259,104 @@ function LoadDocument(props) {
                           <p className="document_date">
                             {formatDate(new Date())}
                           </p>
+
+                          <p className="document_investor">
+                            {user.first_name} {user.last_name}
+                          </p>
+
+                          <p className="document_unit">{unit.name}</p>
+                        </>
+                      )}
+
+                      {index === 2 && (
+                        <>
+                          <p className="document_unit_price">
+                            {numberFormatter(amount)}
+                          </p>
+
+                          <p className="document_unit_price_ugx">
+                            {numberFormatter(ceil(props.cValue * amount))}
+                          </p>
+
+                          <p className="document_unit_percentage">
+                            {parseFloat((amount / unit.cost) * 100).toFixed(2)}
+                          </p>
+                        </>
+                      )}
+
+                      {index === 6 && (
+                        <>
+                          <p className="document_investor_name">
+                            {user.first_name} {user.last_name}
+                          </p>
+
+                          <input
+                            type="text"
+                            required
+                            placeholder="Enter name"
+                            value={docData.nok}
+                            onChange={(e) => {
+                              docData.nok = e.target.value;
+                              setDocData({ ...docData });
+                            }}
+                            className="document_nok"
+                          />
+
+                          <input
+                            type="text"
+                            required
+                            placeholder="Enter your relationship"
+                            value={docData.nok_relationship}
+                            onChange={(e) => {
+                              docData.nok_relationship = e.target.value;
+                              setDocData({ ...docData });
+                            }}
+                            className="document_nok_relationship"
+                          />
+
+                          <input
+                            type="text"
+                            placeholder="Enter the address"
+                            value={docData.nok_address}
+                            onChange={(e) => {
+                              docData.nok_address = e.target.value;
+                              setDocData({ ...docData });
+                            }}
+                            className="document_nok_address"
+                          />
+
+                          <input
+                            type="text"
+                            placeholder="Enter benefiary's name"
+                            value={docData.beneficiary}
+                            onChange={(e) => {
+                              docData.beneficiary = e.target.value;
+                              setDocData({ ...docData });
+                            }}
+                            className="document_beneficiary"
+                          />
+
+                          <input
+                            type="text"
+                            placeholder="Enter relationship with benefiary"
+                            value={docData.beneficiary_relationship}
+                            onChange={(e) => {
+                              docData.beneficiary_relationship = e.target.value;
+                              setDocData({ ...docData });
+                            }}
+                            className="document_beneficiary_relationship"
+                          />
+
+                          <input
+                            type="text"
+                            placeholder="Enter benefiary's address"
+                            value={docData.beneficiary_address}
+                            onChange={(e) => {
+                              docData.beneficiary_address = e.target.value;
+                              setDocData({ ...docData });
+                            }}
+                            className="document_beneficiary_address"
+                          />
                         </>
                       )}
                     </div>
