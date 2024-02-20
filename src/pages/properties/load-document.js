@@ -357,6 +357,25 @@ function LoadDocument(props) {
                             }}
                             className="document_beneficiary_address"
                           />
+
+                          <div className="document_signature">
+                            <div
+                              onClick={() => setSign(true)}
+                              className="px-6 py-4 my-4 border-2 border-blue-500 cursor-pointer hover:border-blue-700"
+                            >
+                              {signature && signature.length > 0 ? (
+                                <img
+                                  className="h-16"
+                                  src={signature}
+                                  alt="Signature"
+                                />
+                              ) : (
+                                <div className="px-10 py-4 text-sm ">
+                                  <p>Click here to sign</p>
+                                </div>
+                              )}
+                            </div>
+                          </div>
                         </>
                       )}
                     </div>

@@ -1496,6 +1496,16 @@
   .document_beneficiary_address {
     top: 455px;
   }
+
+  .document_signature {
+    position: absolute;
+    left: 220px;
+    display: flex;
+    background-color: transparent;
+    font-size: 14.5px;
+    padding: 4px;
+    z-index: 10;
+  }
 }
 
 .document_nok:active,
