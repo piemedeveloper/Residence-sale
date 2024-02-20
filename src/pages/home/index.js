@@ -1,5 +1,5 @@
 import React from "react";
-import bg from "../../assets/bg.png";
+import bg from "../../assets/images/bg.png";
 import TopContent from "./top-content";
 import Numbers from "./numbers";
 import StartPortfolio from "./start-portfolio";

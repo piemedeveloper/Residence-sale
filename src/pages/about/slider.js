@@ -1,10 +1,10 @@
 import React from "react";
 import { Fade } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
-import residence from "../../assets/residence1.jpeg";
-import residence1 from "../../assets/residence.jpeg";
-import residence2 from "../../assets/residences.jpeg";
-import parking from "../../assets/parking.jpeg";
+import residence from "../../assets/images/residence1.jpeg";
+import residence1 from "../../assets/images/residence.jpeg";
+import residence2 from "../../assets/images/residences.jpeg";
+import parking from "../../assets/images/parking.jpeg";
 import { Slide } from "react-awesome-reveal";
 
 function Slider() {

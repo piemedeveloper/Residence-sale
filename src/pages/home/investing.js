@@ -1,10 +1,10 @@
 import React from "react";
-import residences from "../../assets/residences.jpeg";
+import residences from "../../assets/images/residences.jpeg";
 // import { FaRegBuilding, FaAward, FaHome } from "react-icons/fa";
 // import { TbZoomMoney } from "react-icons/tb";
 // import { low_investment } from "../../utils/data";
-import jei from "../../assets/jei.jpeg";
-import lydia from "../../assets/lydia.jpeg";
+import jei from "../../assets/images/jei.jpeg";
+import lydia from "../../assets/images/lydia.jpeg";
 
 function Investing() {
   const testimonials = [

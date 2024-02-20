@@ -3,7 +3,7 @@ import React from "react";
 import { Input } from "antd";
 import { BsCalculator } from "react-icons/bs";
 import { JackInTheBox } from "react-awesome-reveal";
-import residence from "../../assets/residence.jpeg";
+import residence from "../../assets/images/residence.jpeg";
 
 function CalculateInvestment() {
   const [data, setData] = React.useState({

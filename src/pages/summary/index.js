@@ -5,8 +5,8 @@ import ContentHeading from "../../components/content-heading";
 import { Tooltip } from "antd";
 import _ from "lodash";
 import { numberFormatter } from "../../utils/utils";
-import residence from "../../assets/residence.png";
-// import residence1 from "../../assets/residence.jpeg";
+import residence from "../../assets/images/residence.png";
+// import residence1 from "../../assets/images/residence.jpeg";
 import SummaryContainer from "../../components/summary-container";
 // import GraphSection from "./graph-section";
 

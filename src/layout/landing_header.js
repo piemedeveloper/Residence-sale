@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../assets/logoblue.png";
+import logo from "../assets/images/logoblue.png";
 import _ from "lodash";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IoMenu } from "react-icons/io5";

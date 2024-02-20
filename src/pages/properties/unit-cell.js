@@ -65,7 +65,9 @@ function UnitCell({ unit, invest, clamp }) {
           )}
 
           <p
-            className={`mt-3  ${clamp ? "line-clamp-3 text-sm " : "text-base"}`}
+            className={`mt-3  ${
+              clamp ? "line-clamp-3 text-[15px]" : "text-base"
+            }`}
           >
             {unit.description}
           </p>

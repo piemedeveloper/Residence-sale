@@ -3,7 +3,7 @@ import { useResizeObserver } from "@wojtekmaj/react-hooks";
 import { pdfjs, Document, Page } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
-import contract from "../../assets/contract.pdf";
+import contract from "../../assets/images/contract.pdf";
 import { Tabs, message, Upload } from "antd";
 import { IoIosCloseCircle } from "react-icons/io";
 
@@ -57,6 +57,15 @@ function LoadDocument(props) {
   const unit = props.unit;
   const user = props.user;
   const amount = props.amount;
+
+  const [docData, setDocData] = useState({
+    nok: "",
+    nok_relationship: "",
+    nok_address: "",
+    beneficiary: "",
+    beneficiary_relationship: "",
+    beneficiary_address: "",
+  });
 
   const sigPad = useRef();
   const [numPages, setNumPages] = useState();
@@ -224,10 +233,10 @@ function LoadDocument(props) {
           Binding Terms - {unit.name} at Pieme {unit.residence} Residence
         </p>
       </div>
-      <div className="relative h-[40rem] overflow-y-scroll gray-bg">
-        <div className="px-5 m-4">
+      <div className="relative h-[50rem] overflow-y-scroll gray-bg">
+        <div>
           <div>
-            <div className="Example__container__document" ref={setContainerRef}>
+            <div ref={setContainerRef}>
               <Document
                 file={contract}
                 onLoadSuccess={onDocumentLoadSuccess}
@@ -237,7 +246,7 @@ function LoadDocument(props) {
                   <Page
                     key={`page_${index + 1}`}
                     pageNumber={index + 1}
-                    className={"home-property mt-8"}
+                    className={"home-property mb-8"}
                     width={
                       containerWidth
                         ? Math.min(containerWidth, maxWidth)
@@ -247,56 +256,10 @@ function LoadDocument(props) {
                     <div className="text-sm">
                       {index === 0 && (
                         <>
-                          <p className="absolute left-[7rem] top-[9.45rem] z-10 flex">
+                          <p className="document_date">
                             {formatDate(new Date())}
                           </p>
-
-                          <p className="absolute left-[12rem] top-[19.4rem] z-10 flex tracking-wider font-bold">
-                            {user.first_name} {user.last_name}
-                          </p>
-
-                          <p className="absolute left-[32rem] top-[29.4rem] z-10 flex tracking-wider font-medium">
-                            {unit.name}
-                          </p>
                         </>
-                      )}
-
-                      {index === 2 && (
-                        <>
-                          <p className="absolute left-[28rem] top-[8.5rem] z-10 flex font-bold">
-                            {numberFormatter(amount)}
-                          </p>
-                          <p className="absolute left-[17.5rem] top-[9.8rem] z-10 flex font-bold">
-                            {numberFormatter(ceil(props.cValue * amount))}
-                          </p>
-                          <p className="absolute left-[25rem] top-[9.8rem] z-10 flex font-bold">
-                            {parseFloat((amount / unit.cost) * 100).toFixed(2)}
-                          </p>
-                          <p className="absolute left-[31.5rem] top-[9.8rem] z-10 flex font-bold">
-                            {parseFloat((amount / unit.cost) * 100).toFixed(2)}
-                          </p>
-                        </>
-                      )}
-
-                      {index === 6 && (
-                        <div className="absolute left-[11rem] bottom-[15rem] z-10 flex">
-                          <div
-                            onClick={() => setSign(true)}
-                            className="px-6 py-4 my-4 border-2 border-red-500 cursor-pointer hover:border-blue-700"
-                          >
-                            {signature && signature.length > 0 ? (
-                              <img
-                                className="h-16"
-                                src={signature}
-                                alt="Signature"
-                              />
-                            ) : (
-                              <div className="px-10 py-4 text-sm ">
-                                <p>Click here to sign</p>
-                              </div>
-                            )}
-                          </div>
-                        </div>
                       )}
                     </div>
                   </Page>

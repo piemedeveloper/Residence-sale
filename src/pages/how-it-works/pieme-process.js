@@ -1,5 +1,5 @@
 import React from "react";
-import pieme_p from "../../assets/pieme-process.png";
+import pieme_p from "../../assets/images/pieme-process.png";
 import { Slide } from "react-awesome-reveal";
 
 function PiemeProcess() {

@@ -6,7 +6,7 @@ import UnitCell from "./unit-cell";
 import { low_investment } from "../../utils/data";
 import NumericInput from "react-numeric-input";
 import { numberFormatter } from "../../utils/utils";
-import mtn from "../../assets/mtn-logo.png";
+import mtn from "../../assets/images/mtn-logo.png";
 import _, { ceil } from "lodash";
 import { Spin } from "antd";
 
@@ -198,6 +198,13 @@ function PropertyInvest({ user }) {
     },
   ];
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (signature === null || signature.length === 0)
+      message.error("Please sign the document to continue");
+    else next();
+  };
+
   return (
     <div className="colored-bg">
       <div className="container py-12 mx-auto">
@@ -302,8 +309,9 @@ function PropertyInvest({ user }) {
                         Please sign the document below:
                       </h3>
 
-                      <div className="flex mt-10 overflow-hidden border">
-                        {/* <div className="w-64 min-w-64">
+                      <form onSubmit={onSubmit}>
+                        <div className="flex mt-10 overflow-hidden border">
+                          {/* <div className="w-64 min-w-64">
                       <div className="p-5 text-xl font-semibold text-white border border-b-2 main-bg border-b-blue-400">
                         <p>Pieme Contracts</p>
                       </div>
@@ -311,29 +319,24 @@ function PropertyInvest({ user }) {
                         <p>Contracts</p>
                       </div>
                     </div> */}
-                        <LoadDocument
-                          unit={unit}
-                          user={user}
-                          amount={invest}
-                          cValue={cValue}
-                          addSignature={addSignature}
-                        />
-                      </div>
+                          <LoadDocument
+                            unit={unit}
+                            user={user}
+                            amount={invest}
+                            cValue={cValue}
+                            addSignature={addSignature}
+                          />
+                        </div>
 
-                      <div className="flex justify-end p-2 bg-white">
-                        <button
-                          onClick={() => {
-                            if (signature === null || signature.length === 0)
-                              message.error(
-                                "Please sign the document to continue"
-                              );
-                            else next();
-                          }}
-                          className="px-10 py-3 text-sm text-white rounded-md main-bg"
-                        >
-                          Submit
-                        </button>
-                      </div>
+                        <div className="flex justify-end p-2 bg-white">
+                          <button
+                            type="submit"
+                            className="px-10 py-3 text-sm text-white rounded-md main-bg"
+                          >
+                            Submit
+                          </button>
+                        </div>
+                      </form>
                     </div>
                   </div>
                 )}

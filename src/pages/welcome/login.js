@@ -55,7 +55,7 @@ function Login() {
     <div>
       <div className="bg-white">
         <div className="container py-12 mx-auto text-center heading-color">
-          <h1 className="text-5xl font-semibold">Sign in</h1>
+          <h1 className="text-4xl font-semibold md:text-5xl">Sign in</h1>
           <p className="mt-3 text-lg menu-color">
             Login to your account by entering your details below
           </p>

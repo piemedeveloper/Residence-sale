@@ -1,9 +1,9 @@
 import React from "react";
-import why_invest from "../../assets/why-invest.png";
+import why_invest from "../../assets/images/why-invest.png";
 import Slider from "../about/slider";
 import { Link } from "react-router-dom";
-import jei from "../../assets/jei.jpeg";
-import lydia from "../../assets/lydia.jpeg";
+import jei from "../../assets/images/jei.jpeg";
+import lydia from "../../assets/images/lydia.jpeg";
 
 function WhyInvest() {
   const testimonials = [

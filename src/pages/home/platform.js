@@ -1,5 +1,5 @@
 import React from "react";
-import platform from "../../assets/pieme-process.png";
+import platform from "../../assets/images/pieme-process.png";
 import { Link } from "react-router-dom";
 import { TiTick } from "react-icons/ti";
 
