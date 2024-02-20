@@ -233,7 +233,7 @@ function LoadDocument(props) {
           Binding Terms - {unit.name} at Pieme {unit.residence} Residence
         </p>
       </div>
-      <div className="relative h-[50rem] overflow-y-scroll gray-bg">
+      <div className="relative h-[50rem] w-full overflow-y-scroll gray-bg">
         <div>
           <div>
             <div ref={setContainerRef}>
