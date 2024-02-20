@@ -40,6 +40,45 @@
   font-size: 5px;
 }
 
+.document_investor_name {
+  position: absolute;
+  top: 45px;
+  left: 50px;
+  font-size: 5px;
+}
+.document_nok,
+.document_nok_relationship,
+.document_nok_address,
+.document_beneficiary,
+.document_beneficiary_relationship,
+.document_beneficiary_address {
+  position: absolute;
+  left: 70px;
+  background-color: transparent;
+  font-size: 5px;
+  padding: 4px;
+  width: 100%;
+  z-index: 10;
+}
+.document_nok {
+  top: 75px;
+}
+.document_nok_relationship {
+  top: 90px;
+}
+.document_nok_address {
+  top: 106px;
+}
+.document_beneficiary {
+  top: 120px;
+}
+.document_beneficiary_relationship {
+  top: 136px;
+}
+.document_beneficiary_address {
+  top: 152px;
+}
+
 @media (min-width: 360px) {
   .document_date {
     position: absolute;
@@ -81,6 +120,45 @@
     top: 56px;
     left: 161px;
     font-size: 6px;
+  }
+
+  .document_investor_name {
+    position: absolute;
+    top: 45px;
+    left: 50px;
+    font-size: 6px;
+  }
+  .document_nok,
+  .document_nok_relationship,
+  .document_nok_address,
+  .document_beneficiary,
+  .document_beneficiary_relationship,
+  .document_beneficiary_address {
+    position: absolute;
+    left: 75px;
+    background-color: transparent;
+    font-size: 6px;
+    padding: 4px;
+    width: 100%;
+    z-index: 10;
+  }
+  .document_nok {
+    top: 80px;
+  }
+  .document_nok_relationship {
+    top: 95px;
+  }
+  .document_nok_address {
+    top: 110px;
+  }
+  .document_beneficiary {
+    top: 126px;
+  }
+  .document_beneficiary_relationship {
+    top: 143px;
+  }
+  .document_beneficiary_address {
+    top: 158px;
   }
 }
 
@@ -126,6 +204,45 @@
     left: 172px;
     font-size: 6px;
   }
+
+  .document_investor_name {
+    position: absolute;
+    top: 50px;
+    left: 60px;
+    font-size: 6px;
+  }
+  .document_nok,
+  .document_nok_relationship,
+  .document_nok_address,
+  .document_beneficiary,
+  .document_beneficiary_relationship,
+  .document_beneficiary_address {
+    position: absolute;
+    left: 90px;
+    background-color: transparent;
+    font-size: 6px;
+    padding: 4px;
+    width: 100%;
+    z-index: 10;
+  }
+  .document_nok {
+    top: 90px;
+  }
+  .document_nok_relationship {
+    top: 105px;
+  }
+  .document_nok_address {
+    top: 125px;
+  }
+  .document_beneficiary {
+    top: 142px;
+  }
+  .document_beneficiary_relationship {
+    top: 158px;
+  }
+  .document_beneficiary_address {
+    top: 175px;
+  }
 }
 
 @media (min-width: 390px) {
@@ -169,6 +286,45 @@
     top: 63px;
     left: 178px;
     font-size: 6px;
+  }
+
+  .document_investor_name {
+    position: absolute;
+    top: 50px;
+    left: 60px;
+    font-size: 6px;
+  }
+  .document_nok,
+  .document_nok_relationship,
+  .document_nok_address,
+  .document_beneficiary,
+  .document_beneficiary_relationship,
+  .document_beneficiary_address {
+    position: absolute;
+    left: 90px;
+    background-color: transparent;
+    font-size: 6px;
+    padding: 4px;
+    width: 100%;
+    z-index: 10;
+  }
+  .document_nok {
+    top: 90px;
+  }
+  .document_nok_relationship {
+    top: 105px;
+  }
+  .document_nok_address {
+    top: 125px;
+  }
+  .document_beneficiary {
+    top: 142px;
+  }
+  .document_beneficiary_relationship {
+    top: 158px;
+  }
+  .document_beneficiary_address {
+    top: 175px;
   }
 }
 
@@ -214,6 +370,45 @@
     left: 182px;
     font-size: 6px;
   }
+
+  .document_investor_name {
+    position: absolute;
+    top: 62px;
+    left: 60px;
+    font-size: 8px;
+  }
+  .document_nok,
+  .document_nok_relationship,
+  .document_nok_address,
+  .document_beneficiary,
+  .document_beneficiary_relationship,
+  .document_beneficiary_address {
+    position: absolute;
+    left: 100px;
+    background-color: transparent;
+    font-size: 7px;
+    padding: 4px;
+    width: 100%;
+    z-index: 10;
+  }
+  .document_nok {
+    top: 105px;
+  }
+  .document_nok_relationship {
+    top: 125px;
+  }
+  .document_nok_address {
+    top: 145px;
+  }
+  .document_beneficiary {
+    top: 165px;
+  }
+  .document_beneficiary_relationship {
+    top: 185px;
+  }
+  .document_beneficiary_address {
+    top: 205px;
+  }
 }
 
 @media (min-width: 410px) {
@@ -257,6 +452,45 @@
     top: 67px;
     left: 186px;
     font-size: 7px;
+  }
+
+  .document_investor_name {
+    position: absolute;
+    top: 62px;
+    left: 60px;
+    font-size: 8px;
+  }
+  .document_nok,
+  .document_nok_relationship,
+  .document_nok_address,
+  .document_beneficiary,
+  .document_beneficiary_relationship,
+  .document_beneficiary_address {
+    position: absolute;
+    left: 100px;
+    background-color: transparent;
+    font-size: 7px;
+    padding: 4px;
+    width: 100%;
+    z-index: 10;
+  }
+  .document_nok {
+    top: 105px;
+  }
+  .document_nok_relationship {
+    top: 125px;
+  }
+  .document_nok_address {
+    top: 145px;
+  }
+  .document_beneficiary {
+    top: 165px;
+  }
+  .document_beneficiary_relationship {
+    top: 185px;
+  }
+  .document_beneficiary_address {
+    top: 205px;
   }
 }
 
@@ -302,6 +536,45 @@
     left: 205px;
     font-size: 8px;
   }
+
+  .document_investor_name {
+    position: absolute;
+    top: 62px;
+    left: 60px;
+    font-size: 8px;
+  }
+  .document_nok,
+  .document_nok_relationship,
+  .document_nok_address,
+  .document_beneficiary,
+  .document_beneficiary_relationship,
+  .document_beneficiary_address {
+    position: absolute;
+    left: 100px;
+    background-color: transparent;
+    font-size: 7px;
+    padding: 4px;
+    width: 100%;
+    z-index: 10;
+  }
+  .document_nok {
+    top: 105px;
+  }
+  .document_nok_relationship {
+    top: 125px;
+  }
+  .document_nok_address {
+    top: 145px;
+  }
+  .document_beneficiary {
+    top: 165px;
+  }
+  .document_beneficiary_relationship {
+    top: 185px;
+  }
+  .document_beneficiary_address {
+    top: 205px;
+  }
 }
 
 @media (min-width: 480px) {
@@ -345,6 +618,45 @@
     top: 82px;
     left: 220px;
     font-size: 8px;
+  }
+
+  .document_investor_name {
+    position: absolute;
+    top: 68px;
+    left: 70px;
+    font-size: 8px;
+  }
+  .document_nok,
+  .document_nok_relationship,
+  .document_nok_address,
+  .document_beneficiary,
+  .document_beneficiary_relationship,
+  .document_beneficiary_address {
+    position: absolute;
+    left: 110px;
+    background-color: transparent;
+    font-size: 8px;
+    padding: 4px;
+    width: 100%;
+    z-index: 10;
+  }
+  .document_nok {
+    top: 115px;
+  }
+  .document_nok_relationship {
+    top: 135px;
+  }
+  .document_nok_address {
+    top: 158px;
+  }
+  .document_beneficiary {
+    top: 180px;
+  }
+  .document_beneficiary_relationship {
+    top: 200px;
+  }
+  .document_beneficiary_address {
+    top: 220px;
   }
 }
 
@@ -390,6 +702,45 @@
     left: 225px;
     font-size: 8px;
   }
+
+  .document_investor_name {
+    position: absolute;
+    top: 70px;
+    left: 70px;
+    font-size: 9px;
+  }
+  .document_nok,
+  .document_nok_relationship,
+  .document_nok_address,
+  .document_beneficiary,
+  .document_beneficiary_relationship,
+  .document_beneficiary_address {
+    position: absolute;
+    left: 110px;
+    background-color: transparent;
+    font-size: 8px;
+    padding: 4px;
+    width: 100%;
+    z-index: 10;
+  }
+  .document_nok {
+    top: 118px;
+  }
+  .document_nok_relationship {
+    top: 140px;
+  }
+  .document_nok_address {
+    top: 162px;
+  }
+  .document_beneficiary {
+    top: 184px;
+  }
+  .document_beneficiary_relationship {
+    top: 204px;
+  }
+  .document_beneficiary_address {
+    top: 228px;
+  }
 }
 
 @media (min-width: 500px) {
@@ -433,6 +784,45 @@
     top: 88px;
     left: 235px;
     font-size: 8px;
+  }
+
+  .document_investor_name {
+    position: absolute;
+    top: 70px;
+    left: 70px;
+    font-size: 9px;
+  }
+  .document_nok,
+  .document_nok_relationship,
+  .document_nok_address,
+  .document_beneficiary,
+  .document_beneficiary_relationship,
+  .document_beneficiary_address {
+    position: absolute;
+    left: 110px;
+    background-color: transparent;
+    font-size: 8px;
+    padding: 4px;
+    width: 100%;
+    z-index: 10;
+  }
+  .document_nok {
+    top: 120px;
+  }
+  .document_nok_relationship {
+    top: 142px;
+  }
+  .document_nok_address {
+    top: 164px;
+  }
+  .document_beneficiary {
+    top: 188px;
+  }
+  .document_beneficiary_relationship {
+    top: 210px;
+  }
+  .document_beneficiary_address {
+    top: 232px;
   }
 }
 
@@ -479,6 +869,45 @@
     left: 245px;
     font-size: 9px;
   }
+
+  .document_investor_name {
+    position: absolute;
+    top: 72px;
+    left: 80px;
+    font-size: 10px;
+  }
+  .document_nok,
+  .document_nok_relationship,
+  .document_nok_address,
+  .document_beneficiary,
+  .document_beneficiary_relationship,
+  .document_beneficiary_address {
+    position: absolute;
+    left: 115px;
+    background-color: transparent;
+    font-size: 8px;
+    padding: 4px;
+    width: 100%;
+    z-index: 10;
+  }
+  .document_nok {
+    top: 125px;
+  }
+  .document_nok_relationship {
+    top: 148px;
+  }
+  .document_nok_address {
+    top: 170px;
+  }
+  .document_beneficiary {
+    top: 195px;
+  }
+  .document_beneficiary_relationship {
+    top: 218px;
+  }
+  .document_beneficiary_address {
+    top: 242px;
+  }
 }
 
 /* XXS */
@@ -524,6 +953,45 @@
     left: 260px;
     font-size: 10px;
   }
+
+  .document_investor_name {
+    position: absolute;
+    top: 76px;
+    left: 80px;
+    font-size: 10px;
+  }
+  .document_nok,
+  .document_nok_relationship,
+  .document_nok_address,
+  .document_beneficiary,
+  .document_beneficiary_relationship,
+  .document_beneficiary_address {
+    position: absolute;
+    left: 120px;
+    background-color: transparent;
+    font-size: 9px;
+    padding: 4px;
+    width: 100%;
+    z-index: 10;
+  }
+  .document_nok {
+    top: 132px;
+  }
+  .document_nok_relationship {
+    top: 156px;
+  }
+  .document_nok_address {
+    top: 180px;
+  }
+  .document_beneficiary {
+    top: 205px;
+  }
+  .document_beneficiary_relationship {
+    top: 228px;
+  }
+  .document_beneficiary_address {
+    top: 253px;
+  }
 }
 
 /* XXS */
@@ -568,6 +1036,45 @@
     top: 103px;
     left: 273px;
     font-size: 10px;
+  }
+
+  .document_investor_name {
+    position: absolute;
+    top: 84px;
+    left: 90px;
+    font-size: 10px;
+  }
+  .document_nok,
+  .document_nok_relationship,
+  .document_nok_address,
+  .document_beneficiary,
+  .document_beneficiary_relationship,
+  .document_beneficiary_address {
+    position: absolute;
+    left: 130px;
+    background-color: transparent;
+    font-size: 10px;
+    padding: 4px;
+    width: 100%;
+    z-index: 10;
+  }
+  .document_nok {
+    top: 145px;
+  }
+  .document_nok_relationship {
+    top: 170px;
+  }
+  .document_nok_address {
+    top: 195px;
+  }
+  .document_beneficiary {
+    top: 220px;
+  }
+  .document_beneficiary_relationship {
+    top: 250px;
+  }
+  .document_beneficiary_address {
+    top: 275px;
   }
 }
 
