@@ -34,7 +34,7 @@ function PropertyCell({ residence }) {
 
       <p
         className={`uppercase text-white text-center p-1.5 text-sm tracking-wide ${
-          residence.is_active === 1 ? "main-bg" : "entire-bg"
+          residence.is_active === 1 ? "bg-orange-500" : "entire-bg"
         }`}
       >
         {residence.is_active === 1 ? "funding now" : "not funding now"}

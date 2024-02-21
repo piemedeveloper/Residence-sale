@@ -71,6 +71,7 @@ function PropertyInvest({ user }) {
       setPid(id);
       getUnit(id);
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
@@ -100,8 +101,9 @@ function PropertyInvest({ user }) {
 
   const [current, setCurrent] = useState(1);
   const [btnDis, setBtnDis] = useState(false);
+
   const next = () => {
-    if (current == 1 && user.nok !== undefined && user.nok.length > 0)
+    if (current === 1 && user.nok !== undefined && user.nok.length > 0)
       setCurrent(current + 2);
     else setCurrent(current + 1);
   };
@@ -119,7 +121,6 @@ function PropertyInvest({ user }) {
           currency: 800,
           amount: invest,
           unit_id: unit.id,
-          signature: "ertygf56789.png",
         },
       }).then((data) => {
         setBtnDis(false);
@@ -425,7 +426,7 @@ function PropertyInvest({ user }) {
                                 onClick={next}
                                 className="main-bg rounded-full text-white py-2.5 w-full text-center"
                               >
-                                {user.nok !== undefined && user.nok.length > 0
+                                {user.nok !== undefined && user.nok !== null
                                   ? "Continue to Payment"
                                   : "Continue to Signature"}
                               </button>

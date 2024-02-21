@@ -69,6 +69,7 @@ function LoadDocument(props) {
 
   React.useEffect(() => {
     props.docData(docData);
+    // eslint-disable-next-line
   }, [docData]);
 
   const sigPad = useRef();

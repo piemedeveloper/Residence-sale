@@ -1,5 +1,5 @@
-exports.base_url = "http://localhost:8000/";
-// exports.base_url = "https://api.pieme.info/";
+// exports.base_url = "http://localhost:8000/";
+exports.base_url = "https://api.pieme.info/";
 
 exports.url_gen = (str) => {
   let newStr = str.toLowerCase().replace(/\s+/g, " ");
