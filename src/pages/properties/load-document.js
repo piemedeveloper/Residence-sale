@@ -122,7 +122,6 @@ function LoadDocument(props) {
     else if (tab === "3") {
       setSignature(imageUrl);
     }
-
     setSign(false);
   };
 
@@ -164,14 +163,14 @@ function LoadDocument(props) {
             />
           </div>
 
-          <button
-            className="absolute px-4 py-2 text-sm text-white bg-red-500 rounded-md top-2 right-10"
+          <p
+            className="absolute px-4 py-2 text-sm text-white bg-red-500 rounded-md cursor-pointer top-2 right-10"
             onClick={() => {
               sigPad.current.clear();
             }}
           >
             Clear
-          </button>
+          </p>
         </div>
       ),
     },
@@ -320,6 +319,7 @@ function LoadDocument(props) {
 
                           <input
                             type="text"
+                            required
                             placeholder="Enter the address"
                             value={docData.nok_address}
                             onChange={(e) => {
@@ -331,6 +331,7 @@ function LoadDocument(props) {
 
                           <input
                             type="text"
+                            required
                             placeholder="Enter benefiary's name"
                             value={docData.beneficiary}
                             onChange={(e) => {
@@ -342,6 +343,7 @@ function LoadDocument(props) {
 
                           <input
                             type="text"
+                            required
                             placeholder="Enter relationship with benefiary"
                             value={docData.beneficiary_relationship}
                             onChange={(e) => {
@@ -353,6 +355,7 @@ function LoadDocument(props) {
 
                           <input
                             type="text"
+                            required
                             placeholder="Enter benefiary's address"
                             value={docData.beneficiary_address}
                             onChange={(e) => {
@@ -398,16 +401,15 @@ function LoadDocument(props) {
       >
         <div className="flex items-center justify-between px-4 border-b">
           <p className="p-4 text-2xl ">Signature</p>
-          <button onClick={() => setSign(false)}>
-            <IoIosCloseCircle className="text-4xl text-red-600" />
-          </button>
+          <p onClick={() => setSign(false)}>
+            <IoIosCloseCircle className="text-4xl text-red-600 cursor-pointer" />
+          </p>
         </div>
         <div className="px-4">
           <Tabs defaultActiveKey="1" items={tabs} onChange={(t) => setTab(t)} />
 
           <div className="flex justify-end w-full gap-10 p-2 mt-4 text-sm border-t border-b signature-buttons">
-            <button onClick={mySignature}>Confirm</button>
-            <button>Submit</button>
+            <p onClick={mySignature}>Confirm</p>
           </div>
         </div>
       </div>

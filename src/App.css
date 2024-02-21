@@ -306,7 +306,7 @@ ul > li {
   border: 6px solid var(--main-color);
 }
 
-.signature-buttons button {
+.signature-buttons p {
   border: 1px solid var(--main-color);
   padding: 8px 20px;
   border-radius: 5px;
@@ -314,6 +314,7 @@ ul > li {
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
+  cursor: pointer;
 }
 
 .signature-input,

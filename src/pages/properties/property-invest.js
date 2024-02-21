@@ -8,7 +8,7 @@ import NumericInput from "react-numeric-input";
 import { base_url, numberFormatter } from "../../utils/utils";
 import mtn from "../../assets/images/mtn-logo.png";
 import _, { ceil } from "lodash";
-import { Spin } from "antd";
+import { Spin, Modal } from "antd";
 
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 
@@ -25,6 +25,18 @@ function PropertyInvest({ user }) {
   const [docSign, setDocSign] = useState({});
   const [phone, setPhone] = useState();
   document.title = "Investment";
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+    uploadImage();
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
   const getUnit = (id) => {
     postDataAuth({
@@ -89,7 +101,9 @@ function PropertyInvest({ user }) {
   const [current, setCurrent] = useState(1);
   const [btnDis, setBtnDis] = useState(false);
   const next = () => {
-    setCurrent(current + 1);
+    if (current == 1 && user.nok !== undefined && user.nok.length > 0)
+      setCurrent(current + 2);
+    else setCurrent(current + 1);
   };
 
   const mobileMoneyPay = () => {
@@ -213,7 +227,8 @@ function PropertyInvest({ user }) {
   }
 
   /** Upload signature image */
-  let uploadImage = async () => {
+  let uploadImage = () => {
+    handleCancel();
     //Check if any file is selected or not
     if (signature != null) {
       const file = dataURLtoFile(signature, "signature.png");
@@ -224,13 +239,25 @@ function PropertyInvest({ user }) {
       axios
         .post(`${base_url}image_upload`, formData)
         .then((res) => {
-          console.log(res.data);
+          if (res.data.status === 1) {
+            docSign.signature = res.data.data[res.data.data.length - 1];
+            setDocSign({ ...docSign });
+
+            postData({
+              service: "sign_document",
+              data: docSign,
+            }).then((data) => {
+              if (data.success === 1) {
+                notification.success({
+                  message: "Document sign",
+                  description: data.message,
+                });
+                next();
+              } else message.error(data.message);
+            });
+          }
         })
         .catch((err) => console.log(err));
-
-      // // formData.append("", signature);
-
-      // alert("Upload Successful");
     } else {
       //if no file selected the show alert
       alert("Please Select File first");
@@ -279,7 +306,7 @@ function PropertyInvest({ user }) {
         message: "Document sign",
         description: "Please sign the document to continue",
       });
-    else uploadImage();
+    else showModal();
   };
 
   const docData = (doc) => {
@@ -288,6 +315,42 @@ function PropertyInvest({ user }) {
 
   return (
     <div className="colored-bg">
+      <Modal
+        title="Please confirm these detail before you continue"
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <div className="text-base">
+          <p>
+            <b>Next of kin</b> : {docSign.nok}
+          </p>
+          <p>
+            <b>Relationship with next of kin</b> : {docSign.nok_relationship}
+          </p>
+          <p>
+            <b>Address of next of kin</b> : {docSign.nok_address}
+          </p>
+          <br />
+          <p>
+            <b>Beneficiary</b> : {docSign.beneficiary}
+          </p>
+          <p>
+            <b>Relationship with Beneficiary</b> :{" "}
+            {docSign.beneficiary_relationship}
+          </p>
+          <p>
+            <b>Address of the Beneficiary</b> : {docSign.beneficiary_address}
+          </p>
+
+          <br />
+          <p className="my-4">Signature</p>
+          {signature && signature.length > 0 && (
+            <img className="h-16" src={signature} alt="Signature" />
+          )}
+        </div>
+      </Modal>
+
       <div className="container py-12 mx-auto">
         <div>
           <div className="max-w-5xl mx-auto">
@@ -362,7 +425,9 @@ function PropertyInvest({ user }) {
                                 onClick={next}
                                 className="main-bg rounded-full text-white py-2.5 w-full text-center"
                               >
-                                Continue to Signature
+                                {user.nok !== undefined && user.nok.length > 0
+                                  ? "Continue to Payment"
+                                  : "Continue to Signature"}
                               </button>
                             </div>
                           </div>
