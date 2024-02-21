@@ -57,7 +57,7 @@
   background-color: transparent;
   font-size: 5px;
   padding: 4px;
-  width: 100%;
+  width: 50%;
   z-index: 10;
 }
 .document_nok {
@@ -139,7 +139,7 @@
     background-color: transparent;
     font-size: 6px;
     padding: 4px;
-    width: 100%;
+    width: 50%;
     z-index: 10;
   }
   .document_nok {
@@ -222,7 +222,7 @@
     background-color: transparent;
     font-size: 6px;
     padding: 4px;
-    width: 100%;
+    width: 50%;
     z-index: 10;
   }
   .document_nok {
@@ -305,7 +305,7 @@
     background-color: transparent;
     font-size: 6px;
     padding: 4px;
-    width: 100%;
+    width: 50%;
     z-index: 10;
   }
   .document_nok {
@@ -388,7 +388,7 @@
     background-color: transparent;
     font-size: 7px;
     padding: 4px;
-    width: 100%;
+    width: 50%;
     z-index: 10;
   }
   .document_nok {
@@ -471,7 +471,7 @@
     background-color: transparent;
     font-size: 7px;
     padding: 4px;
-    width: 100%;
+    width: 50%;
     z-index: 10;
   }
   .document_nok {
@@ -554,7 +554,7 @@
     background-color: transparent;
     font-size: 7px;
     padding: 4px;
-    width: 100%;
+    width: 50%;
     z-index: 10;
   }
   .document_nok {
@@ -637,7 +637,7 @@
     background-color: transparent;
     font-size: 8px;
     padding: 4px;
-    width: 100%;
+    width: 50%;
     z-index: 10;
   }
   .document_nok {
@@ -720,7 +720,7 @@
     background-color: transparent;
     font-size: 8px;
     padding: 4px;
-    width: 100%;
+    width: 50%;
     z-index: 10;
   }
   .document_nok {
@@ -803,7 +803,7 @@
     background-color: transparent;
     font-size: 8px;
     padding: 4px;
-    width: 100%;
+    width: 50%;
     z-index: 10;
   }
   .document_nok {
@@ -887,7 +887,7 @@
     background-color: transparent;
     font-size: 8px;
     padding: 4px;
-    width: 100%;
+    width: 50%;
     z-index: 10;
   }
   .document_nok {
@@ -971,7 +971,7 @@
     background-color: transparent;
     font-size: 9px;
     padding: 4px;
-    width: 100%;
+    width: 50%;
     z-index: 10;
   }
   .document_nok {
@@ -1055,7 +1055,7 @@
     background-color: transparent;
     font-size: 10px;
     padding: 4px;
-    width: 100%;
+    width: 50%;
     z-index: 10;
   }
   .document_nok {
@@ -1139,7 +1139,7 @@
     background-color: transparent;
     font-size: 10px;
     padding: 4px;
-    width: 100%;
+    width: 50%;
     z-index: 10;
   }
   .document_nok {
@@ -1223,7 +1223,7 @@
     background-color: transparent;
     font-size: 10px;
     padding: 4px;
-    width: 100%;
+    width: 50%;
     z-index: 10;
   }
   .document_nok {
@@ -1307,7 +1307,7 @@
     background-color: transparent;
     font-size: 10px;
     padding: 4px;
-    width: 100%;
+    width: 50%;
     z-index: 10;
   }
   .document_nok {
@@ -1391,7 +1391,7 @@
     background-color: transparent;
     font-size: 12.5px;
     padding: 4px;
-    width: 100%;
+    width: 50%;
     z-index: 10;
   }
   .document_nok {
@@ -1475,7 +1475,6 @@
     background-color: transparent;
     font-size: 14.5px;
     padding: 4px;
-    width: 100%;
     z-index: 10;
   }
   .document_nok {
@@ -1499,7 +1498,8 @@
 
   .document_signature {
     position: absolute;
-    left: 220px;
+    left: 190px;
+    bottom: 255px;
     display: flex;
     background-color: transparent;
     font-size: 14.5px;

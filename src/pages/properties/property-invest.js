@@ -21,6 +21,7 @@ function PropertyInvest({ user }) {
   const [cValue, setCValue] = useState(0);
   const [invest, setInvest] = useState(150);
   const [signature, setSignature] = useState(null);
+  const [docSign, setDocSign] = useState({});
   const [phone, setPhone] = useState();
   document.title = "Investment";
 
@@ -200,9 +201,51 @@ function PropertyInvest({ user }) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (signature === null || signature.length === 0)
-      message.error("Please sign the document to continue");
+    if (Object.keys(docSign).length === 0)
+      notification.error({
+        message: "Document sign",
+        description: "Please fill in all fields",
+      });
+    else if (docSign.nok.trim().toString().length === 0)
+      notification.error({
+        message: "Document sign",
+        description: "Please enter name of your next of kin",
+      });
+    else if (docSign.nok_relationship.trim().toString().length === 0)
+      notification.error({
+        message: "Document sign",
+        description: "Please enter your relationship with the next of kin",
+      });
+    else if (docSign.nok_address.trim().toString().length === 0)
+      notification.error({
+        message: "Document sign",
+        description: "Please enter your next of kin address",
+      });
+    else if (docSign.beneficiary.trim().toString().length === 0)
+      notification.error({
+        message: "Document sign",
+        description: "Please enter name of your beneficiary",
+      });
+    else if (docSign.beneficiary_relationship.trim().toString().length === 0)
+      notification.error({
+        message: "Document sign",
+        description: "Please enter your relationship with the beneficiary",
+      });
+    else if (docSign.beneficiary_address.trim().toString().length === 0)
+      notification.error({
+        message: "Document sign",
+        description: "Please enter the address of your beneficiary",
+      });
+    else if (signature === null || signature.length === 0)
+      notification.error({
+        message: "Document sign",
+        description: "Please sign the document to continue",
+      });
     else next();
+  };
+
+  const docData = (doc) => {
+    setDocSign({ ...doc });
   };
 
   return (
@@ -324,6 +367,7 @@ function PropertyInvest({ user }) {
                             user={user}
                             amount={invest}
                             cValue={cValue}
+                            docData={docData}
                             addSignature={addSignature}
                           />
                         </div>

@@ -67,6 +67,10 @@ function LoadDocument(props) {
     beneficiary_address: "",
   });
 
+  React.useEffect(() => {
+    props.docData(docData);
+  }, [docData]);
+
   const sigPad = useRef();
   const [numPages, setNumPages] = useState();
   const [containerRef, setContainerRef] = useState(null);

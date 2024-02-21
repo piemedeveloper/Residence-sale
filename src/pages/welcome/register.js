@@ -11,6 +11,7 @@ import useToken, { getToken } from "../../utils/useToken";
 
 function Register() {
   document.title = "Signup | Pieme";
+  const [disable, setDisable] = useState(false);
   const navigate = useNavigate();
   const { setToken } = useToken();
   const [error, setError] = useState("");
@@ -34,27 +35,42 @@ function Register() {
   }, []);
 
   const register = (e) => {
+    setDisable(true);
     e.preventDefault();
-    if (data.first_name.length === 0) setError("Please enter your first name");
-    else if (data.last_name.length === 0)
+    if (data.first_name.length === 0) {
+      setError("Please enter your first name");
+      setDisable(false);
+    } else if (data.last_name.length === 0) {
       setError("Please enter your last name");
-    else if (data.email_id.length === 0)
+      setDisable(false);
+    } else if (data.email_id.length === 0) {
       setError("Please enter your Email address");
-    else if (data.username.length === 0) setError("Please enter your Username");
-    else if (data.phone_no.length === 0)
+      setDisable(false);
+    } else if (data.username.length === 0) {
+      setError("Please enter your Username");
+      setDisable(false);
+    } else if (data.phone_no.length === 0) {
       setError("Please enter your Phone number");
-    else if (!isValidPhoneNumber(data.phone_no))
+      setDisable(false);
+    } else if (!isValidPhoneNumber(data.phone_no)) {
       setError("Please enter a valid Phone number");
-    else if (data.password.length === 0) setError("Please enter a password");
-    else if (data.strength < 2) setError("Password is still weak");
-    else if (!data.agree) setError("Please accept the agreement to continue");
-    else {
+      setDisable(false);
+    } else if (data.password.length === 0) {
+      setError("Please enter a password");
+      setDisable(false);
+    } else if (data.strength < 2) {
+      setError("Password is still weak");
+      setDisable(false);
+    } else if (!data.agree) {
+      setError("Please accept the agreement to continue");
+      setDisable(false);
+    } else {
       setError("");
-
       postDataAuth({
         service: "signup",
         data: data,
       }).then((data) => {
+        setDisable(false);
         if (data.success === 0) setError(data.message);
         else {
           setToken(data.token);
@@ -225,6 +241,7 @@ function Register() {
               <div className="flex justify-center mt-6">
                 <button
                   type="submit"
+                  disabled={disable}
                   className="text-base text-center shadow-md register-btn"
                 >
                   Create my profile

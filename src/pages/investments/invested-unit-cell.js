@@ -41,7 +41,7 @@ function InvestedUnitCell({ unit }) {
           </div>
         )}
 
-        <p className={`mt-3 text-[14px] line-clamp-3`}>{unit.description}</p>
+        <p className={`mt-3 text-[15px] line-clamp-3`}>{unit.description}</p>
       </div>
 
       <div className="w-full"></div>
