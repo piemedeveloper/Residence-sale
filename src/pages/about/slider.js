@@ -12,7 +12,7 @@ function Slider() {
   return (
     <div>
       <Slide direction="up" triggerOnce>
-        <div className="max-w-lg mx-auto overflow-hidden border-8 border-white lg:max-w-2xl rounded-3xl">
+        <div className="max-w-lg mx-auto overflow-hidden bg-white border-8 border-white lg:max-w-2xl rounded-3xl">
           <Fade duration={2000}>
             {images.map((img, i) => (
               <img

@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import UnitCell from "./unit-cell";
 import { low_investment } from "../../utils/data";
 import NumericInput from "react-numeric-input";
-import { numberFormatter } from "../../utils/utils";
+import { base_url, numberFormatter } from "../../utils/utils";
 import mtn from "../../assets/images/mtn-logo.png";
 import _, { ceil } from "lodash";
 import { Spin } from "antd";
@@ -13,6 +13,7 @@ import { Spin } from "antd";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 
 import LoadDocument from "./load-document";
+import axios from "axios";
 
 function PropertyInvest({ user }) {
   let location = useLocation();
@@ -199,6 +200,43 @@ function PropertyInvest({ user }) {
     },
   ];
 
+  function dataURLtoFile(dataurl, filename) {
+    var arr = dataurl.split(","),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[arr.length - 1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], filename, { type: mime });
+  }
+
+  /** Upload signature image */
+  let uploadImage = async () => {
+    //Check if any file is selected or not
+    if (signature != null) {
+      const file = dataURLtoFile(signature, "signature.png");
+
+      const formData = new FormData();
+      formData.append("image", file);
+
+      axios
+        .post(`${base_url}image_upload`, formData)
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => console.log(err));
+
+      // // formData.append("", signature);
+
+      // alert("Upload Successful");
+    } else {
+      //if no file selected the show alert
+      alert("Please Select File first");
+    }
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
     if (Object.keys(docSign).length === 0)
@@ -241,7 +279,7 @@ function PropertyInvest({ user }) {
         message: "Document sign",
         description: "Please sign the document to continue",
       });
-    else next();
+    else uploadImage();
   };
 
   const docData = (doc) => {
