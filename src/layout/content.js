@@ -36,9 +36,7 @@ function Content() {
       service: "get_profile",
       data: {},
     }).then((data) => {
-      if (data.success !== 1) {
-        removeToken();
-      } else dispatch(addUsers.user(data.data));
+      dispatch(addUsers.user(data.data));
     });
     // eslint-disable-next-line
   }, []);

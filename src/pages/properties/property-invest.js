@@ -103,9 +103,10 @@ function PropertyInvest({ user }) {
   const [btnDis, setBtnDis] = useState(false);
 
   const next = () => {
-    if (current === 1 && user.nok !== undefined && user.nok !== null)
-      setCurrent(current + 2);
-    else setCurrent(current + 1);
+    // if (current === 1 && user.nok !== undefined && user.nok !== null)
+    //   setCurrent(current + 2);
+    // else
+    setCurrent(current + 1);
   };
 
   const mobileMoneyPay = () => {

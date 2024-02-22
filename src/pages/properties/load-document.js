@@ -3,9 +3,12 @@ import { useResizeObserver } from "@wojtekmaj/react-hooks";
 import { pdfjs, Document, Page } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
-import contract from "../../assets/images/contract.pdf";
+import contract from "../../assets/contract.pdf";
 import { Tabs, message, Upload } from "antd";
 import { IoIosCloseCircle } from "react-icons/io";
+
+import { useSelector } from "react-redux";
+import { user } from "../../features";
 
 import SignatureCanvas from "react-signature-canvas";
 
@@ -54,8 +57,8 @@ const beforeUpload = (file) => {
 };
 
 function LoadDocument(props) {
+  const userData = useSelector(user.user);
   const unit = props.unit;
-  const user = props.user;
   const amount = props.amount;
 
   const [docData, setDocData] = useState({
@@ -265,7 +268,7 @@ function LoadDocument(props) {
                           </p>
 
                           <p className="document_investor">
-                            {user.first_name} {user.last_name}
+                            {userData.first_name} {userData.last_name}
                           </p>
 
                           <p className="document_unit">{unit.name}</p>
@@ -278,10 +281,6 @@ function LoadDocument(props) {
                             {numberFormatter(amount)}
                           </p>
 
-                          <p className="document_unit_price_ugx">
-                            {numberFormatter(ceil(props.cValue * amount))}
-                          </p>
-
                           <p className="document_unit_percentage">
                             {parseFloat((amount / unit.cost) * 100).toFixed(2)}
                           </p>
@@ -291,7 +290,7 @@ function LoadDocument(props) {
                       {index === 6 && (
                         <>
                           <p className="document_investor_name">
-                            {user.first_name} {user.last_name}
+                            {userData.first_name} {userData.last_name}
                           </p>
 
                           <input
@@ -384,6 +383,14 @@ function LoadDocument(props) {
                               )}
                             </div>
                           </div>
+
+                          <p className="document_investor_names">
+                            {userData.first_name} {userData.last_name}
+                          </p>
+
+                          <p className="document_investor_dates">
+                            {formatDate(new Date())}
+                          </p>
                         </>
                       )}
                     </div>

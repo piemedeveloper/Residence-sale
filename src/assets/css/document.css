@@ -22,21 +22,14 @@
 .document_unit_price {
   position: absolute;
   top: 45px;
-  left: 180px;
-  font-size: 5px;
-}
-
-.document_unit_price_ugx {
-  position: absolute;
-  top: 54px;
-  left: 105px;
+  left: 170px;
   font-size: 5px;
 }
 
 .document_unit_percentage {
   position: absolute;
   top: 54px;
-  left: 155px;
+  left: 65px;
   font-size: 5px;
 }
 
@@ -108,17 +101,10 @@
     font-size: 6px;
   }
 
-  .document_unit_price_ugx {
-    position: absolute;
-    top: 56px;
-    left: 110px;
-    font-size: 6px;
-  }
-
   .document_unit_percentage {
     position: absolute;
     top: 56px;
-    left: 161px;
+    left: 68px;
     font-size: 6px;
   }
 
@@ -187,21 +173,14 @@
   .document_unit_price {
     position: absolute;
     top: 52px;
-    left: 200px;
-    font-size: 6px;
-  }
-
-  .document_unit_price_ugx {
-    position: absolute;
-    top: 61px;
-    left: 120px;
+    left: 180px;
     font-size: 6px;
   }
 
   .document_unit_percentage {
     position: absolute;
     top: 61px;
-    left: 172px;
+    left: 70px;
     font-size: 6px;
   }
 
@@ -270,21 +249,14 @@
   .document_unit_price {
     position: absolute;
     top: 53px;
-    left: 200px;
-    font-size: 6px;
-  }
-
-  .document_unit_price_ugx {
-    position: absolute;
-    top: 63px;
-    left: 120px;
+    left: 180px;
     font-size: 6px;
   }
 
   .document_unit_percentage {
     position: absolute;
     top: 63px;
-    left: 178px;
+    left: 75px;
     font-size: 6px;
   }
 
@@ -353,21 +325,14 @@
   .document_unit_price {
     position: absolute;
     top: 55px;
-    left: 200px;
-    font-size: 6px;
-  }
-
-  .document_unit_price_ugx {
-    position: absolute;
-    top: 65px;
-    left: 125px;
+    left: 180px;
     font-size: 6px;
   }
 
   .document_unit_percentage {
     position: absolute;
     top: 65px;
-    left: 182px;
+    left: 75px;
     font-size: 6px;
   }
 
@@ -440,17 +405,10 @@
     font-size: 7px;
   }
 
-  .document_unit_price_ugx {
-    position: absolute;
-    top: 67px;
-    left: 125px;
-    font-size: 7px;
-  }
-
   .document_unit_percentage {
     position: absolute;
     top: 67px;
-    left: 186px;
+    left: 80px;
     font-size: 7px;
   }
 
@@ -519,21 +477,14 @@
   .document_unit_price {
     position: absolute;
     top: 63px;
-    left: 240px;
-    font-size: 8px;
-  }
-
-  .document_unit_price_ugx {
-    position: absolute;
-    top: 75px;
-    left: 150px;
+    left: 210px;
     font-size: 8px;
   }
 
   .document_unit_percentage {
     position: absolute;
     top: 75px;
-    left: 205px;
+    left: 90px;
     font-size: 8px;
   }
 
@@ -602,21 +553,14 @@
   .document_unit_price {
     position: absolute;
     top: 70px;
-    left: 270px;
-    font-size: 8px;
-  }
-
-  .document_unit_price_ugx {
-    position: absolute;
-    top: 82px;
-    left: 160px;
+    left: 230px;
     font-size: 8px;
   }
 
   .document_unit_percentage {
     position: absolute;
     top: 82px;
-    left: 220px;
+    left: 95px;
     font-size: 8px;
   }
 
@@ -685,21 +629,14 @@
   .document_unit_price {
     position: absolute;
     top: 70px;
-    left: 270px;
-    font-size: 8px;
-  }
-
-  .document_unit_price_ugx {
-    position: absolute;
-    top: 82px;
-    left: 160px;
+    left: 240px;
     font-size: 8px;
   }
 
   .document_unit_percentage {
     position: absolute;
     top: 82px;
-    left: 225px;
+    left: 94px;
     font-size: 8px;
   }
 
@@ -768,21 +705,14 @@
   .document_unit_price {
     position: absolute;
     top: 75px;
-    left: 280px;
-    font-size: 8px;
-  }
-
-  .document_unit_price_ugx {
-    position: absolute;
-    top: 88px;
-    left: 160px;
+    left: 240px;
     font-size: 8px;
   }
 
   .document_unit_percentage {
     position: absolute;
-    top: 88px;
-    left: 235px;
+    top: 85px;
+    left: 95px;
     font-size: 8px;
   }
 
@@ -852,21 +782,14 @@
   .document_unit_price {
     position: absolute;
     top: 80px;
-    left: 300px;
-    font-size: 9px;
-  }
-
-  .document_unit_price_ugx {
-    position: absolute;
-    top: 91px;
-    left: 175px;
+    left: 250px;
     font-size: 9px;
   }
 
   .document_unit_percentage {
     position: absolute;
     top: 91px;
-    left: 245px;
+    left: 105px;
     font-size: 9px;
   }
 
@@ -935,22 +858,15 @@
 
   .document_unit_price {
     position: absolute;
-    top: 84px;
-    left: 300px;
-    font-size: 10px;
-  }
-
-  .document_unit_price_ugx {
-    position: absolute;
-    top: 98px;
-    left: 185px;
+    top: 82px;
+    left: 260px;
     font-size: 10px;
   }
 
   .document_unit_percentage {
     position: absolute;
-    top: 98px;
-    left: 260px;
+    top: 94px;
+    left: 105px;
     font-size: 10px;
   }
 
@@ -1020,21 +936,14 @@
   .document_unit_price {
     position: absolute;
     top: 88px;
-    left: 330px;
-    font-size: 10px;
-  }
-
-  .document_unit_price_ugx {
-    position: absolute;
-    top: 103px;
-    left: 194px;
+    left: 280px;
     font-size: 10px;
   }
 
   .document_unit_percentage {
     position: absolute;
     top: 103px;
-    left: 273px;
+    left: 110px;
     font-size: 10px;
   }
 
@@ -1104,21 +1013,14 @@
   .document_unit_price {
     position: absolute;
     top: 92px;
-    left: 330px;
-    font-size: 10px;
-  }
-
-  .document_unit_price_ugx {
-    position: absolute;
-    top: 108px;
-    left: 200px;
+    left: 300px;
     font-size: 10px;
   }
 
   .document_unit_percentage {
     position: absolute;
     top: 108px;
-    left: 288px;
+    left: 120px;
     font-size: 10px;
   }
 
@@ -1192,17 +1094,10 @@
     font-size: 10px;
   }
 
-  .document_unit_price_ugx {
-    position: absolute;
-    top: 112px;
-    left: 200px;
-    font-size: 10px;
-  }
-
   .document_unit_percentage {
     position: absolute;
     top: 112px;
-    left: 294px;
+    left: 124px;
     font-size: 10px;
   }
 
@@ -1276,17 +1171,10 @@
     font-size: 10px;
   }
 
-  .document_unit_price_ugx {
-    position: absolute;
-    top: 114px;
-    left: 200px;
-    font-size: 10px;
-  }
-
   .document_unit_percentage {
     position: absolute;
     top: 114px;
-    left: 300px;
+    left: 130px;
     font-size: 10px;
   }
 
@@ -1360,17 +1248,10 @@
     font-size: 13px;
   }
 
-  .document_unit_price_ugx {
-    position: absolute;
-    top: 140px;
-    left: 250px;
-    font-size: 13px;
-  }
-
   .document_unit_percentage {
     position: absolute;
     top: 140px;
-    left: 362px;
+    left: 152px;
     font-size: 13px;
   }
 
@@ -1444,17 +1325,10 @@
     font-size: 15px;
   }
 
-  .document_unit_price_ugx {
-    position: absolute;
-    top: 174px;
-    left: 300px;
-    font-size: 15px;
-  }
-
   .document_unit_percentage {
     position: absolute;
     top: 174px;
-    left: 445px;
+    left: 190px;
     font-size: 15px;
   }
 
@@ -1505,6 +1379,21 @@
     font-size: 14.5px;
     padding: 4px;
     z-index: 10;
+  }
+
+  .document_investor_dates,
+  .document_investor_names {
+    position: absolute;
+    left: 170px;
+    font-size: 15px;
+  }
+
+  .document_investor_names {
+    bottom: 225px;
+  }
+
+  .document_investor_dates {
+    bottom: 180px;
   }
 }
 

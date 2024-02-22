@@ -2,7 +2,6 @@ import React from "react";
 import Header from "./dashboard-header";
 import { Outlet, useNavigate } from "react-router-dom";
 import postData from "../hooks/useFetch";
-import { removeToken } from "../utils/useToken";
 
 function DashboardContent() {
   const navigate = useNavigate();
@@ -14,7 +13,7 @@ function DashboardContent() {
       data: {},
     }).then((data) => {
       if (data.success !== 1) {
-        removeToken();
+        // removeToken();
         navigate("/");
       } else setUser({ ...data.data });
     });
