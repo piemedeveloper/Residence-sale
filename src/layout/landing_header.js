@@ -55,7 +55,49 @@ function LandingHeader() {
   return (
     <>
       <Drawer title="Pieme" placement={"right"} onClose={onClose} open={open}>
-        <p>dfghjk</p>
+        <div className="text-lg text-black">
+          {_.map(menu, (m, i) => {
+            const items = _.map(m.links, (link, l) => {
+              return {
+                key: l + 1,
+                label: <Link to={`/${link.url}`}>{link.label}</Link>,
+              };
+            });
+            return m.links.length > 0 ? (
+              <Dropdown
+                key={i}
+                menu={{
+                  items,
+                }}
+                arrow
+              >
+                <div
+                  className={`flex items-center p-2 menu-color hover:text-black cursor-pointer gap-2 ${
+                    active.length > 0 && m.url.includes(active)
+                      ? "active-menu"
+                      : ""
+                  }`}
+                >
+                  <p className="h-full">{m.label}</p>
+                  <TiArrowSortedDown />
+                </div>
+              </Dropdown>
+            ) : (
+              <Link key={i} to={`/${m.url}`}>
+                <p
+                  className={`h-full p-2 menu-color hover:text-black ${
+                    (active.length === 0 && m.url === active) ||
+                    (active.length > 0 && m.url.includes(active))
+                      ? "active-menu"
+                      : ""
+                  }`}
+                >
+                  {m.label}
+                </p>
+              </Link>
+            );
+          })}
+        </div>
       </Drawer>
       <div className="sticky top-0 z-10 bg-white shadow-sm">
         <div className="container relative flex items-center justify-center mx-auto lg:justify-between">

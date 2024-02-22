@@ -20,7 +20,7 @@ function Login() {
   React.useEffect(() => {
     if (getToken().length > 0) {
       navigate("/dashboard");
-      window.location.reload(false);
+      // window.location.reload(false);
     }
     // eslint-disable-next-line
   }, []);
@@ -46,7 +46,7 @@ function Login() {
         else {
           setToken(data.token);
           navigate("/dashboard");
-          window.location.reload(false);
+          // window.location.reload(false);
         }
       });
     }

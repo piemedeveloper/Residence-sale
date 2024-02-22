@@ -6,6 +6,7 @@ import { removeToken } from "../utils/useToken";
 
 function DashboardContent() {
   const navigate = useNavigate();
+  const [user, setUser] = React.useState({});
 
   React.useEffect(() => {
     postData({
@@ -15,18 +16,23 @@ function DashboardContent() {
       if (data.success !== 1) {
         removeToken();
         navigate("/");
-      }
+      } else setUser({ ...data.data });
     });
+
     // eslint-disable-next-line
   }, []);
 
   return (
-    <div>
-      <Header />
-      <div className="pt-20 gray-bg">
-        <Outlet />
-      </div>
-    </div>
+    <>
+      {Object.keys(user).length > 0 && (
+        <div>
+          <Header />
+          <div className="pt-20 gray-bg">
+            <Outlet />
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

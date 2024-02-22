@@ -25,6 +25,7 @@ import { user, addUsers } from "../features";
 import postData from "../hooks/useFetch";
 import LandingContent from "./landing-content";
 import NotFound from "../pages/not-found";
+import { removeToken } from "../utils/useToken";
 
 function Content() {
   const userData = useSelector(user.user);
@@ -35,7 +36,9 @@ function Content() {
       service: "get_profile",
       data: {},
     }).then((data) => {
-      if (data.success === 1) dispatch(addUsers.user(data.data));
+      if (data.success !== 1) {
+        removeToken();
+      } else dispatch(addUsers.user(data.data));
     });
     // eslint-disable-next-line
   }, []);

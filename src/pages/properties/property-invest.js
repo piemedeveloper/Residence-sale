@@ -103,7 +103,7 @@ function PropertyInvest({ user }) {
   const [btnDis, setBtnDis] = useState(false);
 
   const next = () => {
-    if (current === 1 && user.nok !== undefined && user.nok.length > 0)
+    if (current === 1 && user.nok !== undefined && user.nok !== null)
       setCurrent(current + 2);
     else setCurrent(current + 1);
   };
@@ -141,7 +141,11 @@ function PropertyInvest({ user }) {
               message: "Mobile money payment failed",
               description: "Limit for payment reached",
             });
-          if (data.transaction.reason === "NOT_ENOUGH_FUNDS")
+          if (
+            data.transaction.reason === "NOT_ENOUGH_FUNDS" ||
+            data.transaction.reason ===
+              "LOW_BALANCE_OR_PAYEE_LIMIT_REACHED_OR_NOT_ALLOWED"
+          )
             notification.error({
               message: "Mobile money payment failed",
               description: "Insufficient balance on your account",
@@ -166,7 +170,10 @@ function PropertyInvest({ user }) {
             Note: MTN Phone number is currently being supported
           </p>
 
-          <p className="pb-2 text-xl font-semibold main-color">
+          <p className="text-base text-red-500">
+            Reload webpage after completing payment
+          </p>
+          <p className="pb-2 mt-2 text-xl font-semibold main-color">
             UGX. {numberFormatter(ceil(cValue * invest))}
           </p>
 
