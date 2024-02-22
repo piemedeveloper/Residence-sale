@@ -13,9 +13,11 @@ function HomePropertyCell({ residence }) {
             alt={residence.location}
             className="object-cover w-full h-full"
           />
-          {/* <p className="absolute px-2 py-1 text-xs rounded-full top-3 left-3 period-bg">
-            {residence.period}-Year term
-          </p> */}
+          {residence.is_active === 1 && (
+            <p className="absolute px-3 py-1 text-xs rounded-full top-3 left-3 period-bg">
+              Under construction
+            </p>
+          )}
 
           {residence.paid > 0 && residence.paid === residence.price && (
             <div

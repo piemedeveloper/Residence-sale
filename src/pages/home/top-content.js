@@ -77,7 +77,7 @@ function TopContent() {
           </div>
 
           <div className="flex justify-center mt-12">
-            <Link to="/login">
+            <Link to="/residences">
               <p className="mt-20 text-center register-btn">Invest Now</p>
             </Link>
           </div>

@@ -122,6 +122,7 @@ function PropertyInvest({ user }) {
           currency: 800,
           amount: invest,
           unit_id: unit.id,
+          signature: docSign.signature,
         },
       }).then((data) => {
         setBtnDis(false);
@@ -132,6 +133,7 @@ function PropertyInvest({ user }) {
               "Payment successfully initaited, please enter your pin",
           });
         } else {
+          console.log(data);
           if (data.transaction.reason === "PAYER_NOT_FOUND")
             notification.error({
               message: "Mobile money payment failed",
@@ -257,10 +259,7 @@ function PropertyInvest({ user }) {
               data: docSign,
             }).then((data) => {
               if (data.success === 1) {
-                notification.success({
-                  message: "Document sign",
-                  description: data.message,
-                });
+                message.success("Document signed");
                 next();
               } else message.error(data.message);
             });

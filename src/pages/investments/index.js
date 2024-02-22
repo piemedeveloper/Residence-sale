@@ -22,7 +22,7 @@ function Investments({ user }) {
   }, []);
   return (
     <div className="mx-auto my-14 container-box">
-      <Heading title="Investments" description="" />
+      <Heading title="My Investments" description="" />
       <br />
 
       {units.length > 0 ? (

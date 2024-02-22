@@ -21,7 +21,6 @@ import { text_to_signature } from "../../utils/data";
 
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import { base_url, formatDate, numberFormatter } from "../../utils/utils";
-import { ceil } from "lodash";
 
 // pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 //   "pdfjs-dist/build/pdf.worker.min.js",
@@ -62,12 +61,12 @@ function LoadDocument(props) {
   const amount = props.amount;
 
   const [docData, setDocData] = useState({
-    nok: "",
-    nok_relationship: "",
-    nok_address: "",
-    beneficiary: "",
-    beneficiary_relationship: "",
-    beneficiary_address: "",
+    nok: userData.nok,
+    nok_relationship: userData.nok_relationship,
+    nok_address: userData.nok_address,
+    beneficiary: userData.beneficiary,
+    beneficiary_relationship: userData.beneficiary_relationship,
+    beneficiary_address: userData.beneficiary_address,
   });
 
   React.useEffect(() => {

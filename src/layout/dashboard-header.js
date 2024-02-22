@@ -11,7 +11,7 @@ import { TiThMenu } from "react-icons/ti";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 
 import { IoNotifications } from "react-icons/io5";
-import { Dropdown, Modal } from "antd";
+import { Drawer, Dropdown, Modal } from "antd";
 import { removeToken } from "../utils/useToken";
 
 const { confirm } = Modal;
@@ -19,6 +19,7 @@ const { confirm } = Modal;
 function Header() {
   let navigate = useNavigate();
   const [active, setActive] = React.useState("");
+  const [open, setOpen] = React.useState(false);
   const icon_class = "text-white";
   const menu = [
     {
@@ -97,8 +98,27 @@ function Header() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
+  const showDrawer = () => {
+    setOpen(true);
+  };
+  const onClose = () => {
+    setOpen(false);
+  };
   return (
     <div className="fixed z-50 w-full main-bg">
+      <Drawer title="Pieme" placement={"right"} onClose={onClose} open={open}>
+        <div className="text-lg text-black">
+          {menu.map((m, i) => (
+            <Link to={m.url} key={i} onClick={onClose}>
+              <div className={`mt-3 ms-3`}>
+                <p className="uppercase text-[12.5px] font-medium tracking-wider line-clamp-1">
+                  {m.label}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </Drawer>
       <div className="container mx-auto">
         <div className="flex justify-between">
           <Link to="/">
@@ -142,7 +162,10 @@ function Header() {
               </Dropdown>
             ))}
             <div className="lg:hidden">
-              <TiThMenu className={`${icon_class} text-3xl`} />
+              <TiThMenu
+                className={`${icon_class} text-3xl cursor-pointer`}
+                onClick={showDrawer}
+              />
             </div>
           </div>
         </div>
