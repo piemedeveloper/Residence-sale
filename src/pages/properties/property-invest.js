@@ -1,7 +1,7 @@
 import { Steps, message, Slider, Collapse, notification } from "antd";
 import React, { useState } from "react";
 import postData, { postDataAuth } from "../../hooks/useFetch";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import UnitCell from "./unit-cell";
 import { low_investment } from "../../utils/data";
 import NumericInput from "react-numeric-input";
@@ -17,13 +17,15 @@ import axios from "axios";
 
 function PropertyInvest({ user }) {
   let location = useLocation();
+  const navigate = useNavigate();
   const [pid, setPid] = React.useState("");
   const [unit, setUnit] = useState({});
   const [cValue, setCValue] = useState(0);
   const [invest, setInvest] = useState(150);
   const [signature, setSignature] = useState(null);
   const [docSign, setDocSign] = useState({});
-  const [phone, setPhone] = useState();
+  const [phone, setPhone] = useState("");
+  const [countDown, setCountDown] = useState(false);
   document.title = "Investment";
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -109,12 +111,108 @@ function PropertyInvest({ user }) {
     setCurrent(current + 1);
   };
 
+  const Ref = React.useRef(null);
+
+  // The state for our timer
+  const [timer, setTimer] = useState("00");
+
+  const getDeadTime = () => {
+    let deadline = new Date();
+
+    // This is where you need to adjust if
+    // you entend to add more time
+    deadline.setSeconds(deadline.getSeconds() + 40);
+    return deadline;
+  };
+
+  const getTimeRemaining = (e) => {
+    const total = Date.parse(e) - Date.parse(new Date());
+    const seconds = Math.floor((total / 1000) % 60);
+    const minutes = Math.floor((total / 1000 / 60) % 60);
+    const hours = Math.floor((total / 1000 / 60 / 60) % 24);
+    return {
+      total,
+      hours,
+      minutes,
+      seconds,
+    };
+  };
+
+  const clearTimer = (e, transactionId) => {
+    // If you adjust it you should also need to
+    // adjust the Endtime formula we are about
+    // to code next
+    setTimer("40");
+
+    // If you try to remove this line the
+    // updating of timer Variable will be
+    // after 1000ms or 1sec
+    if (Ref.current) clearInterval(Ref.current);
+    const id = setInterval(() => {
+      startTimer(e, transactionId);
+    }, 1000);
+    Ref.current = id;
+  };
+
+  const startTimer = (e, transactionId) => {
+    let { total, seconds } = getTimeRemaining(e);
+    if (total >= 0) {
+      // update the timer
+      // check if less than 10 then we need to
+      // add '0' at the beginning of the variable
+      setTimer(seconds > 9 ? seconds : "0" + seconds);
+      if (total === 0) {
+        postData({
+          service: "check_transaction",
+          data: {
+            id: transactionId,
+          },
+        }).then((data) => {
+          if (data.status === 1) {
+            if (data.transaction.status !== "PENDING") {
+              notification.success({
+                message: "Mobile money payment success",
+                description: "Payment successfully received",
+              });
+              navigate("/dashboard/investments");
+            }
+          } else {
+            if (data.transaction !== undefined) {
+              if (data.transaction.reason === "PAYER_NOT_FOUND")
+                notification.error({
+                  message: "Mobile money payment failed",
+                  description: "Please enter an MTN phone number",
+                });
+              if (data.transaction.reason === "PAYER_LIMIT_REACHED")
+                notification.error({
+                  message: "Mobile money payment failed",
+                  description: "Limit for payment reached",
+                });
+              if (
+                data.transaction.reason === "NOT_ENOUGH_FUNDS" ||
+                data.transaction.reason ===
+                  "LOW_BALANCE_OR_PAYEE_LIMIT_REACHED_OR_NOT_ALLOWED"
+              )
+                notification.error({
+                  message: "Mobile money payment failed",
+                  description: "Insufficient balance on your account",
+                });
+            }
+          }
+          setBtnDis(false);
+          setCountDown(false);
+        });
+      }
+    }
+  };
+
   const mobileMoneyPay = () => {
     if (phone.length === 0) message.error("Please enter a phone number");
     else if (!isValidPhoneNumber(phone))
       message.error("Please enter a valid Phone number");
     else {
       setBtnDis(true);
+
       postData({
         service: "mobile_money",
         data: {
@@ -132,8 +230,11 @@ function PropertyInvest({ user }) {
             description:
               "Payment successfully initaited, please enter your pin",
           });
+
+          setBtnDis(true);
+          setCountDown(true);
+          clearTimer(getDeadTime(), data.transactionId);
         } else {
-          console.log(data);
           if (data.transaction.reason === "PAYER_NOT_FOUND")
             notification.error({
               message: "Mobile money payment failed",
@@ -173,9 +274,6 @@ function PropertyInvest({ user }) {
             Note: MTN Phone number is currently being supported
           </p>
 
-          <p className="text-base text-red-500">
-            Reload webpage after completing payment
-          </p>
           <p className="pb-2 mt-2 text-xl font-semibold main-color">
             UGX. {numberFormatter(ceil(cValue * invest))}
           </p>
@@ -196,10 +294,10 @@ function PropertyInvest({ user }) {
           <button
             onClick={mobileMoneyPay}
             disabled={btnDis}
-            className="w-full flex items-center justify-center gap-3 px-10 py-2.5 mt-8 text-white rounded-lg main-bg"
+            className="w-full flex items-center justify-center gap-3 px-10 py-2.5 mt-8 text-white rounded-md main-bg"
           >
-            {btnDis && <Spin className="text-white" />}
-            <p> Make Payment</p>
+            {!countDown && btnDis && <Spin />}
+            <p> {countDown ? `Waiting... ${timer}` : "Make Payment"}</p>
           </button>
         </div>
       ),

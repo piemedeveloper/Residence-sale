@@ -1,8 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import _ from "lodash";
-import { Progress } from "antd";
-import { numberFormatter } from "../../utils/utils";
 import HomePropertyCell from "../home/home-property-cell";
 import { getToken } from "../../utils/useToken";
 import postData from "../../hooks/useFetch";
