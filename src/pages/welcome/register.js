@@ -9,7 +9,11 @@ import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { postDataAuth } from "../../hooks/useFetch";
 import useToken, { getToken } from "../../utils/useToken";
 
+import ReCAPTCHA from "react-google-recaptcha";
+import { robot_keys } from "../../utils/utils";
+
 function Register() {
+  const recaptcha = React.useRef();
   document.title = "Signup | Pieme";
   const [disable, setDisable] = useState(false);
   const navigate = useNavigate();
@@ -35,36 +39,25 @@ function Register() {
   }, []);
 
   const register = (e) => {
-    setDisable(true);
     e.preventDefault();
-    if (data.first_name.length === 0) {
-      setError("Please enter your first name");
-      setDisable(false);
-    } else if (data.last_name.length === 0) {
+    const captchaValue = recaptcha.current.getValue();
+
+    if (data.first_name.length === 0) setError("Please enter your first name");
+    else if (data.last_name.length === 0)
       setError("Please enter your last name");
-      setDisable(false);
-    } else if (data.email_id.length === 0) {
+    else if (data.email_id.length === 0)
       setError("Please enter your Email address");
-      setDisable(false);
-    } else if (data.username.length === 0) {
-      setError("Please enter your Username");
-      setDisable(false);
-    } else if (data.phone_no.length === 0) {
+    else if (data.username.length === 0) setError("Please enter your Username");
+    else if (data.phone_no.length === 0)
       setError("Please enter your Phone number");
-      setDisable(false);
-    } else if (!isValidPhoneNumber(data.phone_no)) {
+    else if (!isValidPhoneNumber(data.phone_no))
       setError("Please enter a valid Phone number");
-      setDisable(false);
-    } else if (data.password.length === 0) {
-      setError("Please enter a password");
-      setDisable(false);
-    } else if (data.strength < 2) {
-      setError("Password is still weak");
-      setDisable(false);
-    } else if (!data.agree) {
-      setError("Please accept the agreement to continue");
-      setDisable(false);
-    } else {
+    else if (data.password.length === 0) setError("Please enter a password");
+    else if (data.strength < 2) setError("Password is still weak");
+    else if (!data.agree) setError("Please accept the agreement to continue");
+    else if (!captchaValue) alert("Please verify the reCAPTCHA!");
+    else {
+      setDisable(true);
       setError("");
       postDataAuth({
         service: "signup",
@@ -236,6 +229,10 @@ function Register() {
                     </Link>
                   </p>
                 </Checkbox>
+              </div>
+
+              <div className="flex justify-center mt-3">
+                <ReCAPTCHA ref={recaptcha} sitekey={robot_keys.SITE_KEY} />
               </div>
 
               <div className="flex justify-center mt-6">

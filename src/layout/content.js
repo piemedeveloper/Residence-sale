@@ -26,6 +26,7 @@ import postData from "../hooks/useFetch";
 import LandingContent from "./landing-content";
 import NotFound from "../pages/not-found";
 import { removeToken } from "../utils/useToken";
+import TermsAndConditions from "../pages/documents/terms-and-conditions";
 
 function Content() {
   const userData = useSelector(user.user);
@@ -56,6 +57,10 @@ function Content() {
           <Route path="/how-it-works" element={<HowItWorks />} />
           <Route path="residences/:id" element={<LandingPropertyDetail />} />
           <Route path="/:id" element={<HowItWorksDetails />} />
+          <Route
+            path="/terms-and-conditions"
+            element={<TermsAndConditions />}
+          />
           <Route path="*" element={<Home />} />
           {/* <Route path="/team" element={<Team />} /> */}
         </Route>

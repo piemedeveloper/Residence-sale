@@ -5,6 +5,8 @@ import { Alert, Input } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { postDataAuth } from "../../hooks/useFetch";
 import useToken, { getToken } from "../../utils/useToken";
+import ReCAPTCHA from "react-google-recaptcha";
+import { robot_keys } from "../../utils/utils";
 
 function Login() {
   document.title = "Login | Pieme";
@@ -29,14 +31,20 @@ function Login() {
     if (error.length > 0) setDisable(false);
   }, [error]);
 
+  const recaptcha = React.useRef();
+
   const login = (e) => {
-    setDisable(true);
     e.preventDefault();
+    const captchaValue = recaptcha.current.getValue();
+
     if (data.email_id.length === 0)
       setError("Please enter your Emaill Address");
     else if (data.password.length === 0) setError("Please enter your password");
-    else {
+    else if (!captchaValue) {
+      alert("Please verify the reCAPTCHA!");
+    } else {
       setError("");
+      setDisable(true);
       postDataAuth({
         service: "login",
         data: data,
@@ -51,6 +59,7 @@ function Login() {
       });
     }
   };
+
   return (
     <div>
       <div className="bg-white">
@@ -110,7 +119,11 @@ function Login() {
                 </tbody>
               </table>
 
-              <div className="flex justify-center mt-6">
+              <div className="flex justify-center mt-3">
+                <ReCAPTCHA ref={recaptcha} sitekey={robot_keys.SITE_KEY} />
+              </div>
+
+              <div className="flex justify-center mt-3">
                 <button
                   type="submit"
                   disabled={disable}

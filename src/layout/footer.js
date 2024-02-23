@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   const menus = [
-    { menu: "Privacy Policy", url: "" },
-    { menu: "Terms & Conditions", url: "" },
-    { menu: "About Pieme", url: "" },
-    { menu: "Residences", url: "" },
-    { menu: "Contact us", url: "" },
-    { menu: "Sitemap", url: "" },
+    // { menu: "Privacy Policy", url: "" },
+    { menu: "Terms & Conditions", url: "terms-and-conditions" },
+    { menu: "About Pieme", url: "about" },
+    { menu: "Residences", url: "residences" },
+    { menu: "Contact us", url: "contact" },
+    // { menu: "Sitemap", url: "sitemap" },
   ];
 
   return (
@@ -19,7 +19,7 @@ function Footer() {
 
           <div className="mt-6 text-white">
             {menus.map((m, i) => (
-              <Link key={i}>
+              <Link key={i} to={`/${m.url}`}>
                 <p className="mt-2">{m.menu}</p>
               </Link>
             ))}

@@ -218,7 +218,7 @@ function PropertyInvest({ user }) {
         data: {
           phone: phone.substring(1),
           currency: 800,
-          amount: invest,
+          amount: parseFloat(invest),
           unit_id: unit.id,
           signature: docSign.signature,
         },
@@ -259,6 +259,28 @@ function PropertyInvest({ user }) {
     }
   };
 
+  const to_pay = [
+    { label: "Name", value: `${user.first_name} ${user.last_name}` },
+    { label: "Username", value: user.username },
+    {
+      label: "Percentage stake",
+      value: `${parseFloat((invest / unit.cost) * 100).toFixed(2)}%`,
+    },
+    {
+      label: "Amount invested",
+      value: `$ ${numberFormatter(parseFloat(invest))}`,
+    },
+    {
+      label: "Platform fee",
+      value: `$ ${numberFormatter(ceil(parseFloat(invest) * 0.03))}`,
+    },
+    {
+      label: "Total to Pay",
+      value: `$ ${numberFormatter(
+        parseFloat(invest) * 0.03 + parseFloat(invest)
+      )}`,
+    },
+  ];
   const payments = [
     {
       key: "1",
@@ -274,8 +296,31 @@ function PropertyInvest({ user }) {
             Note: MTN Phone number is currently being supported
           </p>
 
+          <div className="text-base">
+            <table>
+              <tbody>
+                {to_pay.map((p, i) => (
+                  <tr key={i}>
+                    <td className="py-1 pe-4">
+                      <p>{p.label}</p>
+                    </td>
+                    <td>
+                      <p>{p.value}</p>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
           <p className="pb-2 mt-2 text-xl font-semibold main-color">
-            UGX. {numberFormatter(ceil(cValue * invest))}
+            UGX.{" "}
+            {numberFormatter(
+              ceil(
+                parseFloat(cValue) *
+                  (parseFloat(invest) + parseFloat(invest) * 0.03)
+              )
+            )}
           </p>
 
           <p>Phone Number</p>
@@ -610,16 +655,6 @@ function PropertyInvest({ user }) {
                     <h3 className="pb-3 mt-3 text-xl text-center md:text-2xl heading-color">
                       Select your payment method:
                     </h3>
-
-                    {/* Name
-                    Username
-                    Email Address
-                    Country
-                    Percentage stake
-                    Amount invested
-              
-                    Platform fee (2%)
-                    Total amount */}
 
                     <Collapse
                       accordion
