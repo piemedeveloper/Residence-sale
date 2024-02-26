@@ -14,6 +14,7 @@ import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 
 import LoadDocument from "./load-document";
 import axios from "axios";
+import CryptoPayments  from "./crypto-payments";
 
 function PropertyInvest({ user }) {
   let location = useLocation();
@@ -361,9 +362,7 @@ function PropertyInvest({ user }) {
       key: "3",
       label: "Crypto Currency Payment",
       children: (
-        <div>
-          <p>Coming soon</p>
-        </div>
+        <CryptoPayments to_pay={to_pay} invest={invest}/>
       ),
     },
   ];

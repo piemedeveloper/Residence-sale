@@ -1,0 +1,19 @@
+.tokenCard{
+    cursor: pointer;
+}
+.connectBtn{
+    margin-top: 10px;
+}
+
+.address{
+    margin-top: 10px;
+}
+ .addr{
+font-weight: 600;
+color: rgb(78, 130, 241);
+}
+
+.error{
+    color: red;
+    font-weight: bold;
+}

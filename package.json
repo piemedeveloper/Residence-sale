@@ -5,14 +5,18 @@
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@reduxjs/toolkit": "^2.1.0",
+    "@tanstack/react-query": "^5.24.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@wagmi/core": "^1.4.13",
+    "@web3modal/wagmi": "^3.5.7",
     "@wojtekmaj/react-hooks": "^1.18.1",
     "antd": "^5.13.3",
     "axios": "^1.6.7",
     "chart.js": "^4.4.1",
     "crypto-js": "^4.2.0",
+    "ethers": "^5.7.2",
     "interweave": "^13.1.0",
     "jquery": "^3.7.1",
     "jwt-decode": "^4.0.0",
@@ -33,11 +37,13 @@
     "react-slideshow-image": "^4.3.0",
     "swiper": "^11.0.6",
     "text-signature": "^1.1.2",
+    "viem": "^1.21.4",
+    "wagmi": "^1.4.13",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "cross-env GENERATE_SOURCEMAP=false react-scripts start",
+    "build": "cross-env GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -60,6 +66,8 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "cross-env": "^7.0.3",
     "tailwindcss": "^3.4.1"
   }
 }
