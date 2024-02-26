@@ -47,9 +47,16 @@ function UnitCell({ unit, invest, clamp }) {
             </div>
             <div>
               <p className="head-color text-end">Target</p>
-              <p className="font-medium main-color text-end">
-                ${numberFormatter(unit.cost)}
-              </p>
+              <div className="flex gap-3">
+                {unit.original_cost > 0 && (
+                  <p className="font-medium text-red-500 line-through">
+                    ${numberFormatter(unit.original_cost)}
+                  </p>
+                )}
+                <p className="font-medium main-color text-end">
+                  ${numberFormatter(unit.cost)}
+                </p>
+              </div>
             </div>
           </div>
 
