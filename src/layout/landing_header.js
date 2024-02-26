@@ -55,12 +55,16 @@ function LandingHeader() {
   return (
     <>
       <Drawer title="Pieme" placement={"right"} onClose={onClose} open={open}>
-        <div className="text-lg text-black">
+        <div className="text-base text-black">
           {_.map(menu, (m, i) => {
             const items = _.map(m.links, (link, l) => {
               return {
                 key: l + 1,
-                label: <Link to={`/${link.url}`}>{link.label}</Link>,
+                label: (
+                  <Link to={`/${link.url}`} onClick={onClose}>
+                    {link.label}
+                  </Link>
+                ),
               };
             });
             return m.links.length > 0 ? (
@@ -83,7 +87,7 @@ function LandingHeader() {
                 </div>
               </Dropdown>
             ) : (
-              <Link key={i} to={`/${m.url}`}>
+              <Link key={i} to={`/${m.url}`} onClick={onClose}>
                 <p
                   className={`h-full p-2 menu-color hover:text-black ${
                     (active.length === 0 && m.url === active) ||
@@ -97,6 +101,21 @@ function LandingHeader() {
               </Link>
             );
           })}
+
+          <div className="h-6"></div>
+          {getToken().length === 0 ? (
+            <Link to={"/login"} onClick={onClose} className="">
+              <p className="font-medium text-center rounded-full login-btn">
+                Login / Register
+              </p>
+            </Link>
+          ) : (
+            <Link to={"/dashboard"} onClick={onClose} className="">
+              <p className="font-medium text-center rounded-full login-btn">
+                My Dashboard
+              </p>
+            </Link>
+          )}
         </div>
       </Drawer>
       <div className="sticky top-0 z-10 bg-white shadow-sm">

@@ -9,22 +9,24 @@ import residence from "../../assets/images/residences.jpeg";
 // import residence1 from "../../assets/images/residence.jpeg";
 import SummaryContainer from "../../components/summary-container";
 // import GraphSection from "./graph-section";
+import postData from "../../hooks/useFetch";
 
 function Summary({ user }) {
   document.title = "Summary | Pieme";
 
+  const [summary, setsummary] = React.useState({});
+
   const investments = [
     {
       title: "Current \ninvestments",
-      amount: 0,
-    },
-    {
-      title: "Exited\ninvestments",
-      amount: 0,
+      amount: Object.keys(summary).length > 0 ? summary.current_investment : 0,
     },
     {
       title: "Total amount\ninvested",
-      amount: 0,
+      amount:
+        Object.keys(summary).length > 0
+          ? "$" + numberFormatter(summary.total_investment)
+          : 0,
     },
   ];
 
@@ -64,6 +66,17 @@ function Summary({ user }) {
     },
   ];
 
+  React.useEffect(() => {
+    postData({
+      service: "dashboard_summary",
+      data: {},
+    }).then((data) => {
+      if (data.success === 1) {
+        setsummary({ ...data.data });
+      }
+    });
+  }, []);
+
   return (
     <div className="mx-auto my-14 container-box">
       <Heading title="Summary" description="" />
@@ -74,14 +87,14 @@ function Summary({ user }) {
       <div className="flex flex-col w-full gap-6 md:flex-row">
         <div className="w-full bg-white rounded-xl">
           <ContentHeading title="YOUR PORTFOLIO" />
-          <div className="grid grid-cols-2 gap-6 p-5 sm:grid-cols-3">
+          <div className="grid grid-cols-2 gap-6 p-5">
             {_.map(investments, (investment, i) => (
               <div key={i}>
                 <p className="text-base whitespace-pre-line head-color">
                   {investment.title}
                 </p>
                 <p className="text-xl font-semibold main-color">
-                  {numberFormatter(investment.amount)}
+                  {investment.amount}
                 </p>
               </div>
             ))}
