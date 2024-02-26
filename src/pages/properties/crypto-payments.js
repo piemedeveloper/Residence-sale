@@ -75,7 +75,7 @@ let amountToPay = (parseFloat(invest) * 0.03 + parseFloat(invest)).toString()
     abi: usdtABI,
     functionName: "transfer",
     args: [
-      "0xE021809a6BCf3aDBfCebA22989E26FdF874Aa98f",
+      "0xda246f575d802a545FCF0af6238f2e52c08e9242",
       utils.parseEther(amountToPay), // convert to wei
     ],
   });
