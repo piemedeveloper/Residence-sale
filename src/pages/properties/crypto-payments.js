@@ -4,15 +4,17 @@ import pieme from "../../assets/images/pieme.png";
 import islamic from "../../assets/images/islamic-mark.png";
 import "../../assets/css/crypto.css";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
-import { LoginOutlined } from "@ant-design/icons";
+import { LoginOutlined,CheckCircleOutlined  } from "@ant-design/icons";
 import { Card, Row, Button, Flex } from "antd";
 import { useState, useEffect } from "react";
 import { useAccount, useContractRead, useSendTransaction } from "wagmi";
+import postData from "../../hooks/useFetch";
 
 import { ethers, utils } from "ethers";
 import { usdtAddress, usdtABI } from "./abi";
 import { readContract } from "@wagmi/core";
 import { useContractWrite, usePrepareContractWrite } from "wagmi";
+import { unitless } from "antd/es/theme/useToken";
 const gridStyle = {
   width: "25%",
   textAlign: "center",
@@ -49,7 +51,7 @@ function toEtherString(value) {
   return toEther(toHumanizeNumber(value)).toString();
 }
 
-function CryptoPayments({ to_pay, invest }) {
+function CryptoPayments({ to_pay, invest, unit }) {
   const { open } = useWeb3Modal();
   const { sendTransaction } = useSendTransaction();
 
@@ -59,6 +61,7 @@ function CryptoPayments({ to_pay, invest }) {
 
   const { address, isConnecting, isConnected, isDisconnected } = useAccount();
   const [usdtBalanceData, setUsdtBalanceData] = useState(0);
+  const [success, setSuccess] = useState(false);
 
   //======================USDT BALANCE ===========================
   const usdtBalance = useContractRead({
@@ -69,47 +72,22 @@ function CryptoPayments({ to_pay, invest }) {
   });
 
   //=============================MAKE PAYMENTS======================
-let amountToPay = (parseFloat(invest) * 0.03 + parseFloat(invest)).toString()
+  let amountToPay = (parseFloat(invest) * 0.03 + parseFloat(invest)).toString();
   const { config, error } = usePrepareContractWrite({
     address: usdtAddress,
     abi: usdtABI,
     functionName: "transfer",
     args: [
       "0xda246f575d802a545FCF0af6238f2e52c08e9242",
-      utils.parseEther(amountToPay), // convert to wei
+      // utils.parseEther("0.1"),
+      utils.parseEther(amountToPay),
+      // convert to wei
     ],
   });
 
   const { data, isLoading, isSuccess, write } = useContractWrite(config);
 
-  console.log(write, data, isLoading, isSuccess,error,amountToPay );
-
-  // const send = async () => {
-  //   console.log(
-  //     usdtBalanceData,
-  //     ethers.utils.parseUnits("0.1", 6),
-  //     toEther(0.1),
-  //     toEtherString(0.1)
-  //   );
-
-  //   readContract({
-  //     address: usdtAddress,
-  //     abi: usdtABI,
-  //     functionName: "transfer",
-  //     args: [
-  //       "0x180d64F6326015cb0c4aBdD00DCEFe52058eB84A",
-  //       utils.parseEther("1"),
-  //     ],
-  //   })
-  //     .then((ress) => {
-  //       console.log(ress);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-
-  //   // console.log("balance .......", data);
-  // };
+  console.log(write, data, isLoading, isSuccess, error, amountToPay);
 
   //=============================MAKE PAYMENTS======================
 
@@ -117,7 +95,31 @@ let amountToPay = (parseFloat(invest) * 0.03 + parseFloat(invest)).toString()
     if (usdtBalance.data !== undefined && isConnected) {
       setUsdtBalanceData(toUnit(usdtBalance.data));
     }
-  }, [isConnected, usdtBalance]);
+
+    console.log("data********************", data);
+
+    if (data !== undefined) {
+      console.log(data.hash);
+
+      postData({
+        service: "crypto_pay",
+        data: {
+          transaction_hash: data.hash.toString(),
+          address: address.toString(),
+          amount: parseFloat(amountToPay),
+          unit_id: unit.id,
+          currency: 234,
+          signature: "ertygf56789.png",
+        },
+      })
+        .then((data) => {
+          console.log(data);
+          setSuccess(true);
+          window.location.reload(true)
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [isConnected, usdtBalance, data]);
 
   return (
     <>
@@ -176,7 +178,11 @@ let amountToPay = (parseFloat(invest) * 0.03 + parseFloat(invest)).toString()
               </tbody>
             </table>
 
-            {error?<span className="error">Insufficient Funds..........</span>: ""}
+            {error && !success ? (
+              <span className="error">Insufficient Funds..........</span>
+            ) : (
+              ""
+            )}
           </div>
           <Flex gap="small" wrap="wrap" justify={"start"} align={"center"}>
             <Button
@@ -189,7 +195,7 @@ let amountToPay = (parseFloat(invest) * 0.03 + parseFloat(invest)).toString()
               Make Payment
             </Button>
             <Button
-             danger
+              danger
               icon={<LoginOutlined />}
               onClick={() => connect()}
               className="connectBtn"

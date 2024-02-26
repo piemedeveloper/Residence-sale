@@ -362,7 +362,7 @@ function PropertyInvest({ user }) {
       key: "3",
       label: "Crypto Currency Payment",
       children: (
-        <CryptoPayments to_pay={to_pay} invest={invest}/>
+        <CryptoPayments to_pay={to_pay} invest={invest} unit={unit}/>
       ),
     },
   ];
