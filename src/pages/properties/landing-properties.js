@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import HomePropertyCell from "../home/home-property-cell";
 import postData from "../../hooks/useFetch";
 import { getToken } from "../../utils/useToken";
+import { Helmet } from "react-helmet";
 
 function LandingProperties() {
   document.title = "Residences";
@@ -20,6 +21,19 @@ function LandingProperties() {
 
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Our Residences for Investment</title>
+        <meta
+          name="description"
+          content={"Check out Our Residences for Investment"}
+        />
+        <meta property="og:title" content="Our Residences for Investment" />
+        <meta
+          property="og:description"
+          content={"Check out Our Residences for Investment"}
+        />
+      </Helmet>
       <div className="max-w-3xl px-2 py-12 mx-auto text-center heading-color">
         <h1 className="text-5xl font-semibold">
           Our Residences for Investment
