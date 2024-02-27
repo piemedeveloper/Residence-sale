@@ -19,21 +19,42 @@ function LandingProperties() {
     });
   }, []);
 
+  const page = {
+    title: "Our Residences for Investment",
+    image:
+      "https://pieme.info/static/media/residence.6d38ffd4baa354fef0ea.jpeg",
+    description: "Check out Our Residences for Investment",
+  };
+
   return (
     <div>
       <Helmet>
-        <meta charSet="utf-8" />
-        <title>Our Residences for Investment</title>
+        <title>{page.title}</title>
+        <meta name="title" content={page.title} />
+        <meta name="description" content={page.description} />
+        <meta property="og:title" content={page.title} />
+        <meta property="og:description" content={page.description} />
+
         <meta
-          name="description"
-          content={"Check out Our Residences for Investment"}
+          property="og:image"
+          content={page.image}
+          data-react-helmet="true"
         />
-        <meta property="og:title" content="Our Residences for Investment" />
+
+        <meta name="twitter:title" content={page.title} />
+        <meta name="twitter:description" content={page.description} />
         <meta
-          property="og:description"
-          content={"Check out Our Residences for Investment"}
+          name="twitter:image"
+          content={page.image}
+          data-react-helmet="true"
+        />
+        <meta
+          name="twitter:card"
+          content={page.image}
+          data-react-helmet="true"
         />
       </Helmet>
+
       <div className="max-w-3xl px-2 py-12 mx-auto text-center heading-color">
         <h1 className="text-5xl font-semibold">
           Our Residences for Investment

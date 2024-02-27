@@ -9,6 +9,7 @@ import { base_url, numberFormatter } from "../../utils/utils";
 import mtn from "../../assets/images/mtn-logo.png";
 import _, { ceil } from "lodash";
 import { Spin, Modal } from "antd";
+import copy from "copy-to-clipboard";
 
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 
@@ -362,7 +363,21 @@ function PropertyInvest({ user }) {
       label: "Crypto Currency Payment",
       children: (
         <div>
-          <p>Coming soon</p>
+          <p>Pay to wallet address</p>
+          <div className="flex items-center mt-3 overflow-hidden share-bg rounded-xl">
+            <p className="w-full px-6 text-base head-color line-clamp-1">
+              0xda246f575d802a545FCF0af6238f2e52c08e9242
+            </p>
+            <button
+              className="px-10 py-3.5 main-bg text-white text-base"
+              onClick={() => {
+                copy("0xda246f575d802a545FCF0af6238f2e52c08e9242");
+                message.success("Address copied to clipboard");
+              }}
+            >
+              Copy
+            </button>
+          </div>
         </div>
       ),
     },
