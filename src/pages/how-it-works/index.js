@@ -9,6 +9,7 @@ import HomePropertyCell from "../home/home-property-cell";
 import { Navigation, A11y, Autoplay } from "swiper/modules";
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Helmet } from "react-helmet";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -47,16 +48,46 @@ function HowItWorks() {
     };
   });
 
+  const page = {
+    title: "How Pieme Community Hotel Ownership works",
+    image: "https://pieme.info/images/community-ownership.jpeg",
+    description: `Earn average annual returns of 30% from as little as {low_investment} in both Fiat and Crypto Currencies`,
+  };
+
   return (
     <div>
+      <Helmet>
+        <title>{page.title}</title>
+        <meta name="title" content={page.title} />
+        <meta name="description" content={page.description} />
+        <meta property="og:title" content={page.title} />
+        <meta property="og:description" content={page.description} />
+
+        <meta
+          property="og:image"
+          content={page.image}
+          data-react-helmet="true"
+        />
+
+        <meta name="twitter:title" content={page.title} />
+        <meta name="twitter:description" content={page.description} />
+        <meta
+          name="twitter:image"
+          content={page.image}
+          data-react-helmet="true"
+        />
+        <meta
+          name="twitter:card"
+          content={page.image}
+          data-react-helmet="true"
+        />
+      </Helmet>
+
       <div className="max-w-3xl px-2 py-12 mx-auto text-center heading-color">
         <h1 className="text-3xl font-semibold md:text-5xl">
           How Pieme Community Hotel Ownership works
         </h1>
-        <p className="mt-4 text-lg">
-          Earn average annual returns of 30% from as little as {low_investment}{" "}
-          in both Fiat and Crypto Currencies
-        </p>
+        <p className="mt-4 text-lg">{page.description}</p>
       </div>
 
       <div className="container grid gap-10 pb-6 mx-auto mt-3 md:grid-cols-2 lg:grid-cols-3">

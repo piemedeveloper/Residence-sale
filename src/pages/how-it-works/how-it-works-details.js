@@ -4,6 +4,8 @@ import { Link, useLocation } from "react-router-dom";
 import { how_it_works } from "../../utils/data";
 import { Markup } from "interweave";
 
+import { Helmet } from "react-helmet";
+
 function HowItWorksDetails() {
   let location = useLocation();
   const [pid, setPid] = React.useState("");
@@ -40,6 +42,33 @@ function HowItWorksDetails() {
         </div>
       ) : (
         <div>
+          <Helmet>
+            <title>{data.title}</title>
+            <meta name="title" content={data.title} />
+            {/* <meta name="description" content={data.desc} /> */}
+            <meta property="og:title" content={data.title} />
+            {/* <meta property="og:description" content={data.desc} /> */}
+
+            <meta
+              property="og:image"
+              content={data.photo}
+              data-react-helmet="true"
+            />
+
+            <meta name="twitter:title" content={data.title} />
+            {/* <meta name="twitter:description" content={data.desc} /> */}
+            <meta
+              name="twitter:image"
+              content={data.photo}
+              data-react-helmet="true"
+            />
+            <meta
+              name="twitter:card"
+              content={data.photo}
+              data-react-helmet="true"
+            />
+          </Helmet>
+
           <div className="gray-bg">
             <div className="container pt-12 pb-4 mx-auto">
               <h1 className="max-w-2xl mx-auto text-4xl font-semibold text-center md:text-5xl heading-color">

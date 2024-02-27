@@ -9,6 +9,7 @@ import { base_url, numberFormatter } from "../../utils/utils";
 import mtn from "../../assets/images/mtn-logo.png";
 import _, { ceil } from "lodash";
 import { Spin, Modal } from "antd";
+import copy from "copy-to-clipboard";
 
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 

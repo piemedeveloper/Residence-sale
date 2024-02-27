@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import HomePropertyCell from "../home/home-property-cell";
 import postData from "../../hooks/useFetch";
 import { getToken } from "../../utils/useToken";
+import { Helmet } from "react-helmet";
 
 function LandingProperties() {
   document.title = "Residences";
@@ -18,8 +19,42 @@ function LandingProperties() {
     });
   }, []);
 
+  const page = {
+    title: "Our Residences for Investment",
+    image:
+      "https://pieme.info/static/media/residence.6d38ffd4baa354fef0ea.jpeg",
+    description: "Check out Our Residences for Investment",
+  };
+
   return (
     <div>
+      <Helmet>
+        <title>{page.title}</title>
+        <meta name="title" content={page.title} />
+        <meta name="description" content={page.description} />
+        <meta property="og:title" content={page.title} />
+        <meta property="og:description" content={page.description} />
+
+        <meta
+          property="og:image"
+          content={page.image}
+          data-react-helmet="true"
+        />
+
+        <meta name="twitter:title" content={page.title} />
+        <meta name="twitter:description" content={page.description} />
+        <meta
+          name="twitter:image"
+          content={page.image}
+          data-react-helmet="true"
+        />
+        <meta
+          name="twitter:card"
+          content={page.image}
+          data-react-helmet="true"
+        />
+      </Helmet>
+
       <div className="max-w-3xl px-2 py-12 mx-auto text-center heading-color">
         <h1 className="text-5xl font-semibold">
           Our Residences for Investment

@@ -9,6 +9,7 @@ import Platform from "./platform";
 import Insights from "./insights";
 import CalculateInvestment from "./calculate-investment";
 import FaqData from "../faq/faq-data";
+import HotelOwnership from "./hotel-ownership";
 
 function Home() {
   document.title = "Hotel Room Investment";
@@ -19,6 +20,7 @@ function Home() {
     >
       <TopContent />
 
+      <HotelOwnership />
       <Numbers />
 
       <StartPortfolio />

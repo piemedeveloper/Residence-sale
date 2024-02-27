@@ -283,6 +283,12 @@ function LoadDocument(props) {
                           <p className="document_unit_percentage">
                             {parseFloat((amount / unit.cost) * 100).toFixed(2)}
                           </p>
+
+                          <p className="document_net_unit_percentage">
+                            {parseFloat(
+                              (parseFloat(amount) / parseFloat(unit.cost)) * 70
+                            ).toFixed(2)}
+                          </p>
                         </>
                       )}
 
