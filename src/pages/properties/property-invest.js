@@ -15,6 +15,7 @@ import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 
 import LoadDocument from "./load-document";
 import axios from "axios";
+import CryptoPayments  from "./crypto-payments";
 
 function PropertyInvest({ user }) {
   let location = useLocation();
@@ -362,23 +363,7 @@ function PropertyInvest({ user }) {
       key: "3",
       label: "Crypto Currency Payment",
       children: (
-        <div>
-          <p>Pay to wallet address</p>
-          <div className="flex items-center mt-3 overflow-hidden share-bg rounded-xl">
-            <p className="w-full px-6 text-base head-color line-clamp-1">
-              0xda246f575d802a545FCF0af6238f2e52c08e9242
-            </p>
-            <button
-              className="px-10 py-3.5 main-bg text-white text-base"
-              onClick={() => {
-                copy("0xda246f575d802a545FCF0af6238f2e52c08e9242");
-                message.success("Address copied to clipboard");
-              }}
-            >
-              Copy
-            </button>
-          </div>
-        </div>
+        <CryptoPayments to_pay={to_pay} invest={invest} unit={unit}/>
       ),
     },
   ];
