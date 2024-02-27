@@ -15,16 +15,41 @@ function About() {
     "<b>Community-Oriented: </b>Become part of a community-owned network of hotel apartments, fostering collaboration and shared success.",
   ];
 
-  const desc =
-    "Welcome to Pieme Residences, where hotel investment meets simplicity and accessibility. Our platform is tailored specifically for Pieme Residences, offering investors seamless access to the hotel business and easy management of their investments.";
+  const page = {
+    title: "About Pieme",
+    image:
+      "https://pieme.info/static/media/residence1.c6793ed9481d810021e0.jpeg",
+    description:
+      "Welcome to Pieme Residences, where hotel investment meets simplicity and accessibility. Our platform is tailored specifically for Pieme Residences, offering investors seamless access to the hotel business and easy management of their investments.",
+  };
+
   return (
     <div>
       <Helmet>
-        <meta charSet="utf-8" />
-        <title>About Pieme</title>
-        <meta name="description" content={desc} />
-        <meta property="og:title" content="About Pieme" />
-        <meta property="og:description" content={desc} />
+        <title>{page.title}</title>
+        <meta name="title" content={page.title} />
+        <meta name="description" content={page.description} />
+        <meta property="og:title" content={page.title} />
+        <meta property="og:description" content={page.description} />
+
+        <meta
+          property="og:image"
+          content={page.image}
+          data-react-helmet="true"
+        />
+
+        <meta name="twitter:title" content={page.title} />
+        <meta name="twitter:description" content={page.description} />
+        <meta
+          name="twitter:image"
+          content={page.image}
+          data-react-helmet="true"
+        />
+        <meta
+          name="twitter:card"
+          content={page.image}
+          data-react-helmet="true"
+        />
       </Helmet>
 
       <div className="max-w-3xl px-2 py-12 mx-auto text-center heading-color">

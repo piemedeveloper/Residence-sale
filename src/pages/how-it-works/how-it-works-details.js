@@ -43,11 +43,30 @@ function HowItWorksDetails() {
       ) : (
         <div>
           <Helmet>
-            <meta charSet="utf-8" />
             <title>{data.title}</title>
-            <meta name="description" content={data.desc} />
+            <meta name="title" content={data.title} />
+            {/* <meta name="description" content={data.desc} /> */}
             <meta property="og:title" content={data.title} />
-            <meta property="og:description" content={data.desc} />
+            {/* <meta property="og:description" content={data.desc} /> */}
+
+            <meta
+              property="og:image"
+              content={data.photo}
+              data-react-helmet="true"
+            />
+
+            <meta name="twitter:title" content={data.title} />
+            {/* <meta name="twitter:description" content={data.desc} /> */}
+            <meta
+              name="twitter:image"
+              content={data.photo}
+              data-react-helmet="true"
+            />
+            <meta
+              name="twitter:card"
+              content={data.photo}
+              data-react-helmet="true"
+            />
           </Helmet>
 
           <div className="gray-bg">
