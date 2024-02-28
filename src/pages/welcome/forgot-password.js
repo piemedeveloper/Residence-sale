@@ -1,23 +1,19 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import { Alert, Input } from "antd";
+import { Alert, Spin, notification } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { postDataAuth } from "../../hooks/useFetch";
 import useToken, { getToken } from "../../utils/useToken";
 import ReCAPTCHA from "react-google-recaptcha";
 import { robot_keys } from "../../utils/utils";
 
-function Login() {
-  document.title = "Login | Pieme";
+function ForgotPassword() {
+  document.title = "Forgot Password | Pieme";
   const navigate = useNavigate();
   const { setToken } = useToken();
-  const [error, setError] = React.useState("");
   const [disable, setDisable] = React.useState(false);
-  const [data, setData] = React.useState({
-    email_id: "",
-    password: "",
-  });
+  const [email, setEmail] = React.useState("");
 
   React.useEffect(() => {
     if (getToken().length > 0) {
@@ -27,34 +23,36 @@ function Login() {
     // eslint-disable-next-line
   }, []);
 
-  React.useEffect(() => {
-    if (error.length > 0) setDisable(false);
-  }, [error]);
-
   const recaptcha = React.useRef();
 
   const login = async (e) => {
     e.preventDefault();
-
-    if (data.email_id.length === 0)
-      setError("Please enter your Emaill Address");
-    else if (data.password.length === 0) setError("Please enter your password");
+    if (email.length === 0)
+      notification.error({
+        message: "Forgot your password",
+        description: "Please enter your Emaill Address",
+      });
     else {
       const captchaValue = recaptcha.current.getValue();
       if (!captchaValue) await recaptcha.current.executeAsync();
 
-      setError("");
       setDisable(true);
       postDataAuth({
-        service: "login",
-        data: data,
+        service: "forgot_password",
+        data: { email },
       }).then((data) => {
         setDisable(false);
-        if (data.success === 0) setError(data.message);
+        if (data.success === 0)
+          notification.error({
+            message: "Forgot your password",
+            description: data.message,
+          });
         else {
-          setToken(data.token);
-          navigate("/dashboard");
-          window.location.reload(false);
+          notification.success({
+            message: "Forgot your password",
+            description: data.message,
+          });
+          navigate("/login");
         }
       });
     }
@@ -64,9 +62,11 @@ function Login() {
     <div>
       <div className="bg-white">
         <div className="container py-12 mx-auto text-center heading-color">
-          <h1 className="text-4xl font-semibold md:text-5xl">Sign in</h1>
+          <h1 className="text-4xl font-semibold md:text-5xl">
+            Forgot your password
+          </h1>
           <p className="mt-3 text-lg menu-color">
-            Login to your account by entering your details below
+            Please provide your Email Address to receive a password reset link
           </p>
         </div>
       </div>
@@ -74,9 +74,6 @@ function Login() {
         <div className="container py-12 mx-auto">
           <div className="max-w-xl mx-auto detail-form">
             <form onSubmit={login}>
-              {error.length > 0 && (
-                <Alert showIcon={true} message={error} type="error" />
-              )}
               <table>
                 <tbody>
                   <tr>
@@ -88,31 +85,8 @@ function Login() {
                         type="email"
                         placeholder="Enter email address"
                         className="text-base"
-                        value={data.email_id}
-                        onChange={(e) => {
-                          data.email_id = e.target.value;
-                          setData({ ...data });
-                        }}
-                      />
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      <p>Password</p>
-                    </td>
-                    <td>
-                      <Input.Password
-                        placeholder="Enter password"
-                        className="p-2.5 text-[0.895rem]"
-                        iconRender={(visible) =>
-                          visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                        }
-                        value={data.password}
-                        onChange={(e) => {
-                          data.password = e.target.value;
-                          setData({ ...data });
-                        }}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                       />
                     </td>
                   </tr>
@@ -131,15 +105,16 @@ function Login() {
                 <button
                   type="submit"
                   disabled={disable}
-                  className="text-base text-center shadow-md register-btn"
+                  className="flex items-center gap-3 text-base text-center shadow-md register-btn"
                 >
-                  Sign in
+                  {disable && <Spin />}
+                  <p>Request reset link</p>
                 </button>
               </div>
             </form>
 
             <div className="mt-10 text-base">
-              <Link to="/forgot-password">
+              <Link>
                 <p className="main-color">Forgot your password?</p>
               </Link>
               <Link to="/signup">
@@ -155,4 +130,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default ForgotPassword;

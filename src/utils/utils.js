@@ -1,9 +1,11 @@
-// exports.base_url = "http://localhost:8000/";
-exports.base_url = "https://api.pieme.info/";
+exports.base_url = "http://localhost:8000/";
+// exports.base_url = "https://api.pieme.info/";
 
 exports.robot_keys = {
-  SITE_KEY: "6Lf0_nwpAAAAAJjykWXCKFHGEpsftIDRS12M2IpA",
-  SECRET_KEY: "6Lf0_nwpAAAAAC-7Bm1Hgh9WbmxqIbJm-aq2Zd9H",
+  // SITE_KEY: "6Lf0_nwpAAAAAJjykWXCKFHGEpsftIDRS12M2IpA",
+  // SECRET_KEY: "6Lf0_nwpAAAAAC-7Bm1Hgh9WbmxqIbJm-aq2Zd9H",
+  SITE_KEY: "6Le4PIMpAAAAAM72wEWFIyqzDbk7hIaZKl_38pmf",
+  SECRET_KEY: "6Le4PIMpAAAAAPsZ0PyfcVMaRF14B_Wky9I5uXoa",
 };
 
 exports.url_gen = (str) => {

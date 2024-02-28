@@ -4,10 +4,11 @@ import pieme from "../../assets/images/pieme.png";
 import islamic from "../../assets/images/islamic-mark.png";
 import "../../assets/css/crypto.css";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
-import { LoginOutlined,CheckCircleOutlined  } from "@ant-design/icons";
-import { Card, Row, Button, Flex } from "antd";
+import { LoginOutlined, CheckCircleOutlined } from "@ant-design/icons";
+import { Card, Row, Button, Flex, Col } from "antd";
 import { useState, useEffect } from "react";
 import { useAccount, useContractRead, useSendTransaction } from "wagmi";
+import { useNavigate } from "react-router-dom";
 import postData from "../../hooks/useFetch";
 
 import { ethers, utils } from "ethers";
@@ -52,11 +53,15 @@ function toEtherString(value) {
 }
 
 function CryptoPayments({ to_pay, invest, unit }) {
-  const { open } = useWeb3Modal();
+  const { open, close } = useWeb3Modal();
   const { sendTransaction } = useSendTransaction();
 
+  const navigate = useNavigate();
+
   const connect = () => {
-    open();
+    // alert(isConnected);
+    if (isConnected) close();
+    else open();
   };
 
   const { address, isConnecting, isConnected, isDisconnected } = useAccount();
@@ -87,7 +92,7 @@ function CryptoPayments({ to_pay, invest, unit }) {
 
   const { data, isLoading, isSuccess, write } = useContractWrite(config);
 
-  console.log(write, data, isLoading, isSuccess, error, amountToPay);
+  // console.log(write, data, isLoading, isSuccess, error, amountToPay);
 
   //=============================MAKE PAYMENTS======================
 
@@ -96,61 +101,49 @@ function CryptoPayments({ to_pay, invest, unit }) {
       setUsdtBalanceData(toUnit(usdtBalance.data));
     }
 
-    console.log("data********************", data);
+    // console.log("data********************", data);
 
     if (data !== undefined) {
-      console.log(data.hash);
+      // console.log(data.hash);
 
       postData({
         service: "crypto_pay",
         data: {
           transaction_hash: data.hash.toString(),
           address: address.toString(),
-          amount: parseFloat(amountToPay),
+          amount: parseFloat(invest),
           unit_id: unit.id,
           currency: 234,
           signature: "ertygf56789.png",
         },
       })
         .then((data) => {
-          console.log(data);
           setSuccess(true);
-          window.location.reload(true)
+          navigate("/dashboard/investments");
         })
         .catch((err) => console.log(err));
     }
   }, [isConnected, usdtBalance, data]);
 
+  const currencies = [
+    { icon: usdt, label: "USDT BEP20", soon: false },
+    { icon: bnb, label: "BNB", soon: true },
+    { icon: pieme, label: "PIE", soon: true },
+    { icon: islamic, label: "ISLM", soon: true },
+  ];
   return (
     <>
-      <Card title="Accepted Tokens">
-        <Card.Grid style={gridStyle} className="tokenCard">
-          <Row justify="center">
-            <img src={usdt} alt="usdt" />
-            <p>USDT</p>
-          </Row>
-        </Card.Grid>
-
-        <Card.Grid style={gridStyle} className="tokenCard">
-          {" "}
-          <Row justify="center">
-            <img src={bnb} alt="bnb" />
-          </Row>
-          <p>BnB</p>
-        </Card.Grid>
-        <Card.Grid style={gridStyle} className="tokenCard">
-          <Row justify="center">
-            <img src={pieme} alt="pieme" style={{ width: "73%" }} />
-            <p>Pieme</p>
-          </Row>
-        </Card.Grid>
-        <Card.Grid style={gridStyle} className="tokenCard">
-          <Row justify="center">
-            <img src={islamic} alt="islamic" style={{ width: "73%" }} />
-            <p>Islamic</p>
-          </Row>
-        </Card.Grid>
-      </Card>
+      <div className="grid grid-cols-2 gap-4 mb-3 md:grid-cols-4">
+        {currencies.map((c, i) => (
+          <div key={i} className={`p-3 border ${!c.soon && "shadow-lg"}`}>
+            <div className={`flex flex-col justify-center text-center`}>
+              <img src={c.icon} alt="usdt" className="p-5" />
+              <p className="font-medium">{c.label}</p>
+              {c.soon && <p>Coming soon</p>}
+            </div>
+          </div>
+        ))}
+      </div>
 
       {isConnected ? (
         <>
@@ -162,27 +155,31 @@ function CryptoPayments({ to_pay, invest, unit }) {
             USDT Balance : <span className="addr">{usdtBalanceData}</span>
           </p>
 
-          <div className="text-base">
-            <table>
-              <tbody>
-                {to_pay.map((p, i) => (
-                  <tr key={i}>
-                    <td className="py-1 pe-4">
-                      <p>{p.label}</p>
-                    </td>
-                    <td>
-                      <p>{p.value}</p>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-
-            {error && !success ? (
-              <span className="error">Insufficient Funds..........</span>
-            ) : (
-              ""
-            )}
+          <div className="items-center text-base md:flex">
+            <div className="w-full">
+              <table>
+                <tbody>
+                  {to_pay.map((p, i) => (
+                    <tr key={i}>
+                      <td className="py-1 pe-4">
+                        <p>{p.label}</p>
+                      </td>
+                      <td>
+                        <p>{p.value}</p>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              {error && !success ? (
+                <span className="error">Insufficient Funds..........</span>
+              ) : (
+                ""
+              )}
+            </div>
+            <p className="w-full text-red-500">
+              Only send USDT BEP20 to avoid loss of funds
+            </p>
           </div>
           <Flex gap="small" wrap="wrap" justify={"start"} align={"center"}>
             <Button
@@ -194,14 +191,14 @@ function CryptoPayments({ to_pay, invest, unit }) {
             >
               Make Payment
             </Button>
-            <Button
+            {/* <Button
               danger
               icon={<LoginOutlined />}
-              onClick={() => connect()}
+              onClick={() => close()}
               className="connectBtn"
             >
               Disconnect
-            </Button>
+            </Button> */}
           </Flex>
         </>
       ) : (

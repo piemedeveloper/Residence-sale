@@ -27,6 +27,7 @@ import LandingContent from "./landing-content";
 import NotFound from "../pages/not-found";
 import { removeToken } from "../utils/useToken";
 import TermsAndConditions from "../pages/documents/terms-and-conditions";
+import ForgotPassword from "../pages/welcome/forgot-password";
 
 function Content() {
   const userData = useSelector(user.user);
@@ -52,6 +53,7 @@ function Content() {
           <Route path="/faq" element={<Faq />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/signup" element={<Register />} />
           <Route path="/residences" element={<LandingProperties />} />
           <Route path="/how-it-works" element={<HowItWorks />} />

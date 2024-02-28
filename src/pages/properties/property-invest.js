@@ -1,3 +1,4 @@
+import { FaArrowLeft } from "react-icons/fa";
 import { Steps, message, Slider, Collapse, notification } from "antd";
 import React, { useState } from "react";
 import postData, { postDataAuth } from "../../hooks/useFetch";
@@ -15,7 +16,7 @@ import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 
 import LoadDocument from "./load-document";
 import axios from "axios";
-import CryptoPayments  from "./crypto-payments";
+import CryptoPayments from "./crypto-payments";
 
 function PropertyInvest({ user }) {
   let location = useLocation();
@@ -125,6 +126,10 @@ function PropertyInvest({ user }) {
     // you entend to add more time
     deadline.setSeconds(deadline.getSeconds() + 40);
     return deadline;
+  };
+
+  const prev = () => {
+    setCurrent(current - 1);
   };
 
   const getTimeRemaining = (e) => {
@@ -362,9 +367,7 @@ function PropertyInvest({ user }) {
     {
       key: "3",
       label: "Crypto Currency Payment",
-      children: (
-        <CryptoPayments to_pay={to_pay} invest={invest} unit={unit}/>
-      ),
+      children: <CryptoPayments to_pay={to_pay} invest={invest} unit={unit} />,
     },
   ];
 
@@ -663,6 +666,18 @@ function PropertyInvest({ user }) {
                       expandIconPosition="end"
                       bordered={false}
                     />
+                  </div>
+                )}
+
+                {current > 1 && (
+                  <div className="max-w-4xl mx-auto mt-4">
+                    <button
+                      className="flex items-center gap-3 px-4 py-2.5 rounded-md text-white main-bg"
+                      onClick={() => prev()}
+                    >
+                      <FaArrowLeft />
+                      <p>Previous</p>
+                    </button>
                   </div>
                 )}
               </div>

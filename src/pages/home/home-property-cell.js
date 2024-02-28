@@ -35,19 +35,19 @@ function HomePropertyCell({ residence }) {
       </Link>
 
       <p
-        className={`uppercase text-white text-center p-1.5 text-base tracking-wide ${
+        className={`uppercase text-white text-center p-1.5 text-sm tracking-wide ${
           residence.is_active === 1 ? "bg-orange-500" : "entire-bg"
         }`}
       >
         {residence.is_active === 1 ? "funding now" : "Not Funding now"}
       </p>
 
-      <div className="p-6">
+      <div className="px-6 pt-2 pb-6">
         <h2 className="text-center head-color uppercase text-[13px] mt-2">
           {residence.name}
         </h2>
         <Link to={`/residences/${residence.slag}`}>
-          <p className="mb-6 font-semibold text-center md:text-lg main-color">
+          <p className="mb-2 font-semibold text-center main-color">
             {residence.location}
           </p>
         </Link>
@@ -56,16 +56,16 @@ function HomePropertyCell({ residence }) {
           percent={parseInt((residence.paid / residence.price) * 100)}
         />
         <div className="flex justify-between">
-          <p className="text-base md:text-[15px]">Target</p>
-          <p className="entire-color font-semibold text-end text-base md:text-[15px]">
+          <p className="md:text-[15px]">Target</p>
+          <p className="entire-color font-semibold text-end text-[15px]">
             ${numberFormatter(residence.price)}
           </p>
         </div>
 
-        <p className="mt-3 text-3xl font-semibold text-center md:text-4xl main-color">
-          {residence.annual_yield}%*
+        <p className="mt-3 text-2xl font-semibold text-center md:text-3xl main-color">
+          {residence.annual_yield}%
         </p>
-        <p className="mt-1 mb-3 text-center head-color">
+        <p className="mt-2 mb-2 text-sm text-center head-color">
           Forecast annual rental yield
         </p>
       </div>

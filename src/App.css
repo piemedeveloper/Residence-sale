@@ -15,7 +15,7 @@ body {
   padding-right: 1rem;
 }
 .container-box {
-  max-width: 1180px;
+  max-width: 1250px;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
@@ -201,7 +201,7 @@ ul > li {
 
 @media screen and (min-width: 1200px) {
   .container {
-    max-width: 1200px;
+    max-width: 1250px;
   }
 }
 
@@ -344,4 +344,8 @@ ul > li {
 
 .phone-input {
   margin-top: 10px;
+}
+
+.ant-spin-dot-spin i {
+  background-color: white !important;
 }
