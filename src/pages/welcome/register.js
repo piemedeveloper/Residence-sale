@@ -4,7 +4,7 @@ import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import PasswordStrengthBar from "react-password-strength-bar";
 
-import { Checkbox, Alert, Input } from "antd";
+import { Checkbox, Alert, Input, notification } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { postDataAuth } from "../../hooks/useFetch";
 import useToken, { getToken } from "../../utils/useToken";
@@ -38,25 +38,58 @@ function Register() {
     // eslint-disable-next-line
   }, []);
 
-  const register = (e) => {
+  const register = async (e) => {
     e.preventDefault();
-    const captchaValue = recaptcha.current.getValue();
 
-    if (data.first_name.length === 0) setError("Please enter your first name");
+    if (data.first_name.length === 0)
+      notification.error({
+        message: "Register",
+        description: "Please enter your first name",
+      });
     else if (data.last_name.length === 0)
-      setError("Please enter your last name");
+      notification.error({
+        message: "Register",
+        description: "Please enter your last name",
+      });
+    else if (data.username.length === 0)
+      notification.error({
+        message: "Register",
+        description: "Please enter your Username",
+      });
     else if (data.email_id.length === 0)
-      setError("Please enter your Email address");
-    else if (data.username.length === 0) setError("Please enter your Username");
+      notification.error({
+        message: "Register",
+        description: "Please enter your Email address",
+      });
     else if (data.phone_no.length === 0)
-      setError("Please enter your Phone number");
+      notification.error({
+        message: "Register",
+        description: "Please enter your Phone number",
+      });
     else if (!isValidPhoneNumber(data.phone_no))
-      setError("Please enter a valid Phone number");
-    else if (data.password.length === 0) setError("Please enter a password");
-    else if (data.strength < 2) setError("Password is still weak");
-    else if (!data.agree) setError("Please accept the agreement to continue");
-    else if (!captchaValue) alert("Please verify the reCAPTCHA!");
+      notification.error({
+        message: "Register",
+        description: "Please enter a valid Phone number",
+      });
+    else if (data.password.length === 0)
+      notification.error({
+        message: "Register",
+        description: "Please enter a password",
+      });
+    else if (data.strength < 2)
+      notification.error({
+        message: "Register",
+        description: "Password is still weak",
+      });
+    else if (!data.agree)
+      notification.error({
+        message: "Register",
+        description: "Please accept the agreement to continue",
+      });
     else {
+      const captchaValue = recaptcha.current.getValue();
+      if (!captchaValue) await recaptcha.current.executeAsync();
+
       setDisable(true);
       setError("");
       postDataAuth({
@@ -232,7 +265,11 @@ function Register() {
               </div>
 
               <div className="flex justify-center mt-3">
-                <ReCAPTCHA ref={recaptcha} sitekey={robot_keys.SITE_KEY} />
+                <ReCAPTCHA
+                  ref={recaptcha}
+                  size="invisible"
+                  sitekey={robot_keys.SITE_KEY}
+                />
               </div>
 
               <div className="flex justify-center mt-6">

@@ -1,17 +1,15 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import { Alert, Spin, notification } from "antd";
-import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
+import { Spin, notification } from "antd";
 import { postDataAuth } from "../../hooks/useFetch";
-import useToken, { getToken } from "../../utils/useToken";
+import { getToken } from "../../utils/useToken";
 import ReCAPTCHA from "react-google-recaptcha";
 import { robot_keys } from "../../utils/utils";
 
 function ForgotPassword() {
   document.title = "Forgot Password | Pieme";
   const navigate = useNavigate();
-  const { setToken } = useToken();
   const [disable, setDisable] = React.useState(false);
   const [email, setEmail] = React.useState("");
 
@@ -114,9 +112,6 @@ function ForgotPassword() {
             </form>
 
             <div className="mt-10 text-base">
-              <Link>
-                <p className="main-color">Forgot your password?</p>
-              </Link>
               <Link to="/signup">
                 <p className="mt-3 main-color ">
                   Don't have an account? Click here to sign up.

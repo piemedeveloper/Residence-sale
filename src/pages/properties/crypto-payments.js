@@ -5,7 +5,7 @@ import islamic from "../../assets/images/islamic-mark.png";
 import "../../assets/css/crypto.css";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { LoginOutlined, CheckCircleOutlined } from "@ant-design/icons";
-import { Card, Row, Button, Flex, Col } from "antd";
+import { Button, Flex } from "antd";
 import { useState, useEffect } from "react";
 import { useAccount, useContractRead, useSendTransaction } from "wagmi";
 import { useNavigate } from "react-router-dom";
