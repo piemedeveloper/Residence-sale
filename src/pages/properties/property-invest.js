@@ -588,7 +588,7 @@ function PropertyInvest({ user }) {
                   </div>
                 )}
 
-                {current === 2 && (
+                {current === 3 && (
                   <div>
                     <div className="max-w-4xl mx-auto">
                       <h2 className="text-2xl text-center md:text-3xl heading-color">
@@ -639,7 +639,7 @@ function PropertyInvest({ user }) {
                   </div>
                 )}
 
-                {current === 3 && (
+                {current === 2 && (
                   <div className="max-w-3xl mx-auto">
                     <h2 className="text-2xl text-center md:text-3xl heading-color">
                       You are investing{" "}

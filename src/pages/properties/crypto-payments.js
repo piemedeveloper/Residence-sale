@@ -4,7 +4,7 @@ import pieme from "../../assets/images/pieme.png";
 import islamic from "../../assets/images/islamic-mark.png";
 import "../../assets/css/crypto.css";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
-import { LoginOutlined,CheckCircleOutlined  } from "@ant-design/icons";
+import { LoginOutlined } from "@ant-design/icons";
 import { Card, Row, Button, Flex } from "antd";
 import { useState, useEffect } from "react";
 import { useAccount, useContractRead, useSendTransaction } from "wagmi";
@@ -12,9 +12,10 @@ import postData from "../../hooks/useFetch";
 
 import { ethers, utils } from "ethers";
 import { usdtAddress, usdtABI } from "./abi";
-import { readContract } from "@wagmi/core";
 import { useContractWrite, usePrepareContractWrite } from "wagmi";
-import { unitless } from "antd/es/theme/useToken";
+import { fetchBalance, sendTransaction } from "@wagmi/core";
+import { Tabs } from "antd";
+
 const gridStyle = {
   width: "25%",
   textAlign: "center",
@@ -53,7 +54,6 @@ function toEtherString(value) {
 
 function CryptoPayments({ to_pay, invest, unit }) {
   const { open } = useWeb3Modal();
-  const { sendTransaction } = useSendTransaction();
 
   const connect = () => {
     open();
@@ -62,6 +62,8 @@ function CryptoPayments({ to_pay, invest, unit }) {
   const { address, isConnecting, isConnected, isDisconnected } = useAccount();
   const [usdtBalanceData, setUsdtBalanceData] = useState(0);
   const [success, setSuccess] = useState(false);
+  const [bnbbalance, setBNBbalance] = useState(0);
+  const [bnbbalanceValue, setBNBbalanceValue] = useState(0);
 
   //======================USDT BALANCE ===========================
   const usdtBalance = useContractRead({
@@ -87,7 +89,59 @@ function CryptoPayments({ to_pay, invest, unit }) {
 
   const { data, isLoading, isSuccess, write } = useContractWrite(config);
 
-  console.log(write, data, isLoading, isSuccess, error, amountToPay);
+  //=============================BNB PAYMENTS======================
+
+  const [usdtBNBValue, setUsdtBNBValue] = useState(0);
+  const [bnbUSDTValue, setBNBusdtValue] = useState(0);
+  const [tkey, setTKey] = useState(0);
+
+  const getBNBbalance = async () => {
+    const balance = await fetchBalance({
+      address: address,
+    });
+
+    setBNBbalance(balance.formatted);
+
+    let bnb1 = 411.48;
+    let usdt1 = 0.00242970144214537222;
+    setUsdtBNBValue(parseFloat(balance.formatted) * bnb1);
+    setBNBusdtValue(parseFloat(amountToPay) * usdt1);
+
+    setBNBbalanceValue(toUnit(balance.value));
+
+  };
+
+  const sendBNB = () => {
+    sendTransaction({
+      to: "0xda246f575d802a545FCF0af6238f2e52c08e9242",
+      value: utils.parseEther(bnbUSDTValue.toString()),
+    })
+      .then((data) => {
+
+        postData({
+          service: "crypto_pay",
+          data: {
+            transaction_hash: data.hash.toString(),
+            address: address.toString(),
+            amount: parseFloat(amountToPay),
+            unit_id: unit.id,
+            currency: 234,
+            signature: "ertygf56789.png",
+          },
+        })
+          .then((data) => {
+            console.log(data);
+            setSuccess(true);
+            window.location.reload(true);
+          })
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    getBNBbalance();
+  }, []);
 
   //=============================MAKE PAYMENTS======================
 
@@ -115,11 +169,188 @@ function CryptoPayments({ to_pay, invest, unit }) {
         .then((data) => {
           console.log(data);
           setSuccess(true);
-          window.location.reload(true)
+          window.location.reload(true);
         })
         .catch((err) => console.log(err));
     }
   }, [isConnected, usdtBalance, data]);
+
+  const onChange = (key) => {
+    console.log(key);
+    setTKey(key);
+  };
+  const items = [
+    {
+      key: "1",
+      label: "USDT Payments",
+      children: (
+        <>
+          {isConnected ? (
+            <>
+              <p className="address">
+                Address : <span className="addr">{address}</span>
+              </p>
+              <p className="address">
+                {" "}
+                USDT Balance : <span className="addr">{usdtBalanceData}</span>
+              </p>
+
+              <div className="text-base">
+                <table>
+                  <tbody>
+                    {to_pay.map((p, i) => (
+                      <tr key={i}>
+                        <td className="py-1 pe-4">
+                          <p>{p.label}</p>
+                        </td>
+                        <td>
+                          <p>{p.value}</p>
+                        </td>
+                      </tr>
+                    ))}
+                   
+                    
+                  </tbody>
+                </table>
+
+                {error && !success ? (
+                  <span className="error">Insufficient Funds..........</span>
+                ) : (
+                  ""
+                )}
+              </div>
+              <Flex gap="small" wrap="wrap" justify={"start"} align={"center"}>
+                <Button
+                  type="primary"
+                  icon={<LoginOutlined />}
+                  disabled={!write}
+                  onClick={() => write?.()}
+                  className="connectBtn"
+                >
+                  Make Payment
+                </Button>
+                <Button
+                  danger
+                  icon={<LoginOutlined />}
+                  onClick={() => connect()}
+                  className="connectBtn"
+                >
+                  Disconnect
+                </Button>
+              </Flex>
+            </>
+          ) : (
+            <Flex gap="small" wrap="wrap" justify={"center"} align={"center"}>
+              <Button
+                type="primary"
+                icon={<LoginOutlined />}
+                loading={isConnecting ? true : false}
+                onClick={() => connect()}
+                className="connectBtn"
+              >
+                {isConnecting ? "Connecting...." : "Connect Wallet"}
+              </Button>
+            </Flex>
+          )}
+        </>
+      ),
+    },
+    {
+      key: "2",
+      label: "BNB Payments",
+      children: (
+        <>
+          {isConnected ? (
+            <>
+              <p className="address">
+                Address : <span className="addr">{address}</span>
+              </p>
+              <p className="address">
+                {" "}
+                BNB Balance : <span className="addr">{bnbbalance}</span>
+              </p>
+
+              <p className="address">
+                {" "}
+                USD Value : <span className="addr">{usdtBNBValue}</span>
+              </p>
+
+              <div className="text-base">
+                <table>
+                  <tbody>
+                    {to_pay.map((p, i) => (
+                      <tr key={i}>
+                        <td className="py-1 pe-4">
+                          <p>{p.label}</p>
+                        </td>
+                        <td>
+                          <p>{p.value}</p>
+                        </td>
+                      </tr>
+                    ))}
+             <tr>
+
+             <td>Amount to pay in BNB:</td>
+                      <td><p className="bnbV"> {bnbUSDTValue}</p></td>
+             </tr>
+                
+                
+                  </tbody>
+                </table>
+
+                { bnbUSDTValue > bnbbalance ? (
+                  <span className="error">Insufficient Funds..........</span>
+                ) : (
+                  ""
+                )}
+              </div>
+              <Flex gap="small" wrap="wrap" justify={"start"} align={"center"}>
+                <Button
+                  type="primary"
+                  icon={<LoginOutlined />}
+                  disabled={bnbUSDTValue > bnbbalance}
+                  onClick={() => sendBNB()}
+                  className="connectBtn"
+                >
+                  Make Payment
+                </Button>
+                <Button
+                  danger
+                  icon={<LoginOutlined />}
+                  onClick={() => connect()}
+                  className="connectBtn"
+                >
+                  Disconnect
+                </Button>
+              </Flex>
+            </>
+          ) : (
+            <Flex gap="small" wrap="wrap" justify={"center"} align={"center"}>
+              <Button
+                type="primary"
+                icon={<LoginOutlined />}
+                loading={isConnecting ? true : false}
+                onClick={() => connect()}
+                className="connectBtn"
+              >
+                {isConnecting ? "Connecting...." : "Connect Wallet"}
+              </Button>
+            </Flex>
+          )}
+        </>
+      ),
+    },
+    {
+      key: "3",
+      label: "Pieme Payments",
+      children: "Payments Coming Soon!",
+    },
+    {
+      key: "4",
+      label: "Islamic Coin Payments",
+      children: "Payments Coming Soon!",
+    },
+  ];
 
   return (
     <>
@@ -152,71 +383,7 @@ function CryptoPayments({ to_pay, invest, unit }) {
         </Card.Grid>
       </Card>
 
-      {isConnected ? (
-        <>
-          <p className="address">
-            Address : <span className="addr">{address}</span>
-          </p>
-          <p className="address">
-            {" "}
-            USDT Balance : <span className="addr">{usdtBalanceData}</span>
-          </p>
-
-          <div className="text-base">
-            <table>
-              <tbody>
-                {to_pay.map((p, i) => (
-                  <tr key={i}>
-                    <td className="py-1 pe-4">
-                      <p>{p.label}</p>
-                    </td>
-                    <td>
-                      <p>{p.value}</p>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-
-            {error && !success ? (
-              <span className="error">Insufficient Funds..........</span>
-            ) : (
-              ""
-            )}
-          </div>
-          <Flex gap="small" wrap="wrap" justify={"start"} align={"center"}>
-            <Button
-              type="primary"
-              icon={<LoginOutlined />}
-              disabled={!write}
-              onClick={() => write?.()}
-              className="connectBtn"
-            >
-              Make Payment
-            </Button>
-            <Button
-              danger
-              icon={<LoginOutlined />}
-              onClick={() => connect()}
-              className="connectBtn"
-            >
-              Disconnect
-            </Button>
-          </Flex>
-        </>
-      ) : (
-        <Flex gap="small" wrap="wrap" justify={"center"} align={"center"}>
-          <Button
-            type="primary"
-            icon={<LoginOutlined />}
-            loading={isConnecting ? true : false}
-            onClick={() => connect()}
-            className="connectBtn"
-          >
-            {isConnecting ? "Connecting...." : "Connect Wallet"}
-          </Button>
-        </Flex>
-      )}
+      <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
     </>
   );
 }

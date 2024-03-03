@@ -26,3 +26,9 @@ color: rgb(78, 130, 241);
     display: inline-block;
     margin-right: 10px;
 }
+
+.bnbV{
+    color: blue;
+    margin-left: 10px;
+    font-weight: 600;
+}
