@@ -5,11 +5,11 @@ import Content from "./layout/content";
 import { BrowserRouter } from "react-router-dom";
 import { createWeb3Modal, defaultWagmiConfig } from "@web3modal/wagmi/react";
 import { WagmiConfig } from "wagmi";
-import { bsc } from "viem/chains";
+import { bsc ,haqqMainnet} from "viem/chains";
 
 function App() {
-  const projectId = "04f3c387a6d55f5a29fd58b99c63a224";
-  const chains = [bsc];
+  const projectId = "384c478577dc3d74092b4cdc65e2358c";
+  const chains = [bsc,haqqMainnet];
   const wagmiConfig = defaultWagmiConfig({
     chains,
     projectId,
