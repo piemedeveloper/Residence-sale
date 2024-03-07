@@ -87,7 +87,7 @@ function Login() {
                       <input
                         type="email"
                         placeholder="Enter email address"
-                        className="text-base"
+                        className="text-sm"
                         value={data.email_id}
                         onChange={(e) => {
                           data.email_id = e.target.value;

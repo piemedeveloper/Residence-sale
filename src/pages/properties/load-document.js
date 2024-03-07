@@ -361,7 +361,7 @@ function LoadDocument(props) {
                           <input
                             type="text"
                             required
-                            placeholder="Enter benefiary's address"
+                            placeholder=""
                             value={docData.beneficiary_address}
                             onChange={(e) => {
                               docData.beneficiary_address = e.target.value;

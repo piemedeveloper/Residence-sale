@@ -79,12 +79,20 @@ function UnitCell({ unit, invest, clamp }) {
             {unit.description}
           </p>
 
-          {invest && (
+          {unit.amount > 0 && unit.amount === unit.cost ? (
             <div className="flex justify-center mt-4">
-              <p className="px-10 py-2 text-sm text-white rounded-full main-bg">
-                Invest now
+              <p className="px-10 py-2 text-sm text-white bg-green-600 rounded-full">
+                Closed
               </p>
             </div>
+          ) : (
+            invest && (
+              <div className="flex justify-center mt-4">
+                <p className="px-10 py-2 text-sm text-white rounded-full main-bg">
+                  Invest now
+                </p>
+              </div>
+            )
           )}
         </div>
 

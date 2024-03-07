@@ -20,13 +20,13 @@ function InsightCell(props) {
       <div className="p-6 overflow-hidden min-h-64 max-h-64">
         <h2 className="font-medium main-color">{data.title}</h2>
 
-        <p
+        <div
           className={`mt-4 mb-3 text-base heading-color ${
             data.title > 40 ? "line-clamp-8" : "line-clamp-6"
           }`}
         >
           <Markup content={data.desc} />
-        </p>
+        </div>
       </div>
 
       <div className="absolute bottom-0 w-full p-3 border-t">

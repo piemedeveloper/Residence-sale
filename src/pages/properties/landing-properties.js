@@ -73,7 +73,7 @@ function LandingProperties() {
         )}
       </div>
 
-      <div className="container grid gap-12 pb-16 mx-auto mt-3 md:grid-cols-2 lg:grid-cols-3">
+      <div className="container grid gap-10 pb-16 mx-auto mt-3 md:grid-cols-2 lg:grid-cols-3">
         {residences.map((residence, i) => (
           <HomePropertyCell key={i} residence={residence} />
         ))}

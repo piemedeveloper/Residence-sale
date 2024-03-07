@@ -276,11 +276,11 @@ ul > li {
 
 .detail-form td {
   padding-bottom: 1rem;
-  padding-top: 1rem;
+  padding-top: 0.3rem;
 }
 
 .detail-form td {
-  min-width: 8rem;
+  min-width: 4rem;
 }
 
 .gradient-bg {

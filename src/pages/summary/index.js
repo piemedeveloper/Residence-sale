@@ -145,12 +145,14 @@ function Summary({ user }) {
           <div className="grid grid-cols-2 gap-6 p-5 sm:grid-cols-3">
             <div>
               <p className="text-base whitespace-pre-line head-color">$PIE</p>
-              <p className="text-xl font-semibold main-color">0</p>
+              <p className="text-xl font-semibold main-color">
+                {Object.keys(summary).length > 0
+                  ? numberFormatter(summary.pie)
+                  : 0}
+              </p>
             </div>
 
-            <div>
-              <button>Withdraw</button>
-            </div>
+            <div>{/* <button>Withdraw</button> */}</div>
           </div>
         </div>
       </div>

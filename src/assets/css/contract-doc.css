@@ -1,0 +1,138 @@
+:root {
+  --doc-font: 0.98rem;
+  --h1-font: 1.2rem;
+  --h2-font: 1.15rem;
+  --h4-font: 1rem;
+}
+
+.contract-doc {
+  padding: 4rem;
+  font-size: var(--doc-font);
+}
+
+.contract-doc h1 {
+  font-size: var(--h1-font);
+  text-decoration: underline;
+  /* padding: 1.5rem; */
+  font-weight: 600;
+  text-align: center;
+}
+
+.contract-doc h2 {
+  font-size: var(--h2-font);
+  font-weight: 600;
+  padding: 0.6rem 0;
+}
+
+.contract-doc h3 {
+  font-size: var(--h2-font);
+  font-weight: 600;
+}
+.contract-doc h4 {
+  font-size: var(--h4-font);
+  font-weight: 600;
+}
+
+.alphared,
+.numbered {
+  counter-reset: list;
+  margin-left: 1.5rem;
+}
+
+.alphared > li,
+.numbered > li {
+  font-size: var(--doc-font);
+  list-style: none;
+  position: relative;
+  padding-left: 2rem;
+}
+.alphared > li:before {
+  counter-increment: list;
+  content: " (" counter(list, upper-alpha) ")";
+  position: absolute;
+  left: -1.4em;
+}
+
+.numbered > li:before {
+  counter-increment: list;
+  font-weight: 600;
+  content: " (" counter(list, decimal) ")";
+  position: absolute;
+  left: -1.4em;
+}
+
+.contract-doc p {
+  margin-top: 0.6rem;
+}
+
+.contract-doc h6 {
+  font-weight: 400;
+}
+.contract-doc > p {
+  margin-top: 2rem;
+}
+
+.numbered-dot ol {
+  counter-reset: item;
+  margin-left: 1.5rem;
+  margin-top: 4rem;
+}
+.numbered-dot ol li {
+  font-size: var(--doc-font);
+  list-style: none;
+  position: relative;
+  padding-left: 2rem;
+  font-weight: 600;
+}
+.numbered-dot > ol > li {
+  margin-top: 2rem;
+}
+
+.numbered-dot > ol > li > ol > li {
+  margin-top: 1.3rem;
+  font-weight: 400;
+}
+.numbered-dot ol li:before {
+  content: counters(item, ".") ".";
+  counter-increment: item;
+  position: absolute;
+  margin-right: 100%;
+  right: 10px; /* space between number and text */
+}
+
+.numbered-dot ol ol {
+  margin-left: -2rem;
+  margin-top: 1rem;
+}
+
+h6 {
+  padding: 0.5rem 0;
+}
+
+@media (max-width: 600px) {
+  :root {
+    --doc-font: 0.85rem;
+    --h1-font: 1.2rem;
+    --h2-font: 1rem;
+    --h4-font: 0.9rem;
+  }
+
+  .contract-doc {
+    padding: 4rem 2rem;
+  }
+}
+
+.contract-doc .user-details > div {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.contract-doc .user-details > div input {
+  font-size: 0.9rem;
+  background-color: transparent;
+  border-bottom: 1px dotted;
+  width: 50%;
+  padding: 0 2rem;
+  outline: none !important;
+}
