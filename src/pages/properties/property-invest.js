@@ -619,6 +619,7 @@ function PropertyInvest({ user }) {
                         <p>Contracts</p>
                       </div>
                     </div> */}
+
                           <LoadDocument
                             unit={unit}
                             user={user}

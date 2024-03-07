@@ -1,5 +1,5 @@
-// exports.base_url = "http://localhost:8000/";
-exports.base_url = "https://api.pieme.info/";
+exports.base_url = "http://localhost:8000/";
+// exports.base_url = "https://api.pieme.info/";
 
 exports.robot_keys = {
   // SITE_KEY: "6Lf0_nwpAAAAAJjykWXCKFHGEpsftIDRS12M2IpA",

@@ -8,6 +8,7 @@
 .contract-doc {
   padding: 4rem;
   font-size: var(--doc-font);
+  background-color: white;
 }
 
 .contract-doc h1 {

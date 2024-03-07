@@ -2,13 +2,9 @@ import React, { useState } from "react";
 import { formatDate, numberFormatter } from "../../utils/utils";
 import { Markup } from "interweave";
 import signature from "../../assets/images/signature_image.png";
-
-import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-// import Html from "react-pdf-html";
-// import { Page, Text, View, Document, StyleSheet } from "react-pdf";
 
-function Contract() {
+function Contract(props) {
   const [details, setDetails] = useState({
     date: formatDate(new Date()),
     name: "Amoko Ivan",
@@ -33,40 +29,24 @@ function Contract() {
   const exportPdf = () => {
     const component = document.querySelector("#capture");
 
-    var doc = new jsPDF("p", "pt", "letter");
+    component.style.width = "210mm";
+
+    var doc = new jsPDF("p", "pt", "a4");
     let srcwidth = component.scrollWidth;
-    const margin = 10,
-      scale =
-        (doc.internal.pageSize.width - margin * 2) / document.body.clientWidth;
+    const margin = 10;
     doc.html(component, {
       html2canvas: {
         scale: 600 / srcwidth,
+        // width:210
         // scrollY: 0,
       },
-      x: margin,
-      y: margin,
+      x: 0,
+      y: 0,
       callback: function (doc) {
         doc.save("Generated.pdf");
+        component.style.width = "100%";
       },
     });
-
-    // html2canvas(component).then((canvas) => {
-    //   const componentWidth = component.offsetWidth;
-    //   const componentHeight = component.offsetHeight;
-    //   const orientation = componentWidth >= componentHeight ? "l" : "p";
-    //   const imgData = canvas.toDataURL("image/png");
-    //   const pdf = new jsPDF({
-    //     orientation,
-    //     unit: "px",
-    //     compressPdf: true,
-    //   });
-
-    //   pdf.internal.pageSize.width = componentWidth;
-    //   pdf.internal.pageSize.height = componentHeight;
-
-    //   pdf.addImage(imgData, "PNG", 0, 0, componentWidth, componentHeight);
-    //   pdf.save("download.pdf");
-    // });
   };
 
   const purpose = [
@@ -377,14 +357,12 @@ function Contract() {
   return (
     <>
       <p onClick={exportPdf}>PDF</p>
-      <div
-        className="contract-doc w-[210mm] max-w-[210mm] mx-auto"
-        id="capture"
-      >
+      <div className="w-full mx-auto contract-doc" id="capture">
         <h1>SUB-PROJECT FUNDING AGREEMENT</h1>
         <p>
-          This SUB-PROJECT FUNDING AGREEMENT (the “Agreement”), made this day of
-          <b> {details.date}</b> (the “Execution Date”), is entered into
+          This SUB-PROJECT FUNDING AGREEMENT (the "<b>Agreement</b>"), made this
+          day of
+          <b> {details.date}</b> (the "<b>Execution Date</b>"), is entered into
           between:
         </p>
 
@@ -421,7 +399,9 @@ function Contract() {
           <ol>
             {purpose.map((p, i) => (
               <li key={i}>
-                <h3>{p.menu}</h3>
+                <h3>
+                  <b>{p.menu}</b>
+                </h3>
 
                 {p.description.map((d, k) => (
                   <h6 key={k}>
@@ -432,7 +412,9 @@ function Contract() {
                 <ol>
                   {p.sub_menu.map((s, l) => (
                     <li ley={l}>
-                      <h4>{s.title}</h4>
+                      <h4>
+                        <b>{s.title}</b>
+                      </h4>
                       {s.description.map((d, k) => (
                         <p>
                           <Markup key={k} content={d} />
