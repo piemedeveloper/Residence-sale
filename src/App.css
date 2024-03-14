@@ -391,3 +391,8 @@ ul > li {
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
 }
+
+img {
+  filter: brightness(90%);
+  -webkit-filter: brightness(90%);
+}

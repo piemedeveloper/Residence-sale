@@ -4,7 +4,7 @@ import NumericInput from "react-numeric-input";
 import { Progress, Slider, Row, Col } from "antd";
 import { numberFormatter } from "../../utils/utils";
 import _ from "lodash";
-
+import funded from "../../assets/images/funded.png";
 import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -72,7 +72,6 @@ function UnitSelected({ unit, next }) {
             <Swiper
               loop={true}
               modules={[Autoplay, Pagination, Navigation, A11y]}
-              //   navigation
               autoplay={{ delay: 3000 }}
               pagination={{ clickable: true }}
             >
@@ -91,7 +90,7 @@ function UnitSelected({ unit, next }) {
           </div>
           <div className="relative w-full lg:w-3/5">
             <p className="mb-3 text-lg font-bold uppercase heading-color">
-              funding now
+              {unit.cost - unit.amount > 0 ? "funding now" : "Fully funded"}
             </p>
             <div className="relative grid gap-6 md:grid-cols-2">
               <div>
@@ -146,7 +145,7 @@ function UnitSelected({ unit, next }) {
         </div>
 
         <div className="flex flex-col gap-16 mt-8 md:flex-row">
-          <div className="w-full md:w-2/3">
+          <div className={`w-full md:w-2/3`}>
             <h1 className="pb-3 text-xl font-semibold">Description</h1>
             <p>{unit.description}</p>
 
@@ -182,55 +181,62 @@ function UnitSelected({ unit, next }) {
               <p className="main-color">{unit.cleaning_desc}</p>
             </div>
           </div>
+
           <div className="w-full md:w-1/3">
             <div className="sticky bg-white rounded-lg home-property top-20">
               <p className="p-4 text-base font-medium text-center border-b main-color">
                 Investment
               </p>
-              <div className="p-5">
-                <p className="text-base head-color">
-                  Investment amount (minimum {low_investment})
-                </p>
+              {unit.cost - unit.amount > 0 ? (
+                <div className="p-5">
+                  <p className="text-base head-color">
+                    Investment amount (minimum {low_investment})
+                  </p>
 
-                <div className="flex items-center mt-3 overflow-hidden rounded-lg invest-container">
-                  <span className="px-4 py-2.5 invest-input font-medium">
-                    $
-                  </span>
+                  <div className="flex items-center mt-3 overflow-hidden rounded-lg invest-container">
+                    <span className="px-4 py-2.5 invest-input font-medium">
+                      $
+                    </span>
 
-                  <NumericInput
-                    className="px-4 py-2 text-base font-medium bg-transparent outline-none"
-                    min={150}
-                    step={1}
+                    <NumericInput
+                      className="px-4 py-2 text-base font-medium bg-transparent outline-none"
+                      min={150}
+                      step={1}
+                      max={unit.cost - unit.amount}
+                      value={invest}
+                      // eslint-disable-next-line
+                      style={false}
+                      onBlur={(e) => setInvest(e.target.value)}
+                    />
+                  </div>
+                  <Slider
+                    defaultValue={150}
                     max={unit.cost - unit.amount}
+                    min={150}
                     value={invest}
-                    // eslint-disable-next-line
-                    style={false}
-                    onBlur={(e) => setInvest(e.target.value)}
+                    onChange={(e) => setInvest(e)}
+                    className="mt-6"
                   />
-                </div>
-                <Slider
-                  defaultValue={150}
-                  max={unit.cost - unit.amount}
-                  min={150}
-                  value={invest}
-                  onChange={(e) => setInvest(e)}
-                  className="mt-6"
-                />
 
-                <div className="flex justify-between text-sm">
-                  <p>$150</p>
-                  <p>${numberFormatter(unit.cost - unit.amount)}</p>
-                </div>
+                  <div className="flex justify-between text-sm">
+                    <p>$150</p>
+                    <p>${numberFormatter(unit.cost - unit.amount)}</p>
+                  </div>
 
-                <div className="flex justify-center pt-6 pb-2">
-                  <button
-                    onClick={() => next(invest)}
-                    className="w-full py-3.5 text-sm text-center text-white rounded-full main-bg"
-                  >
-                    Continue to Signature
-                  </button>
+                  <div className="flex justify-center pt-6 pb-2">
+                    <button
+                      onClick={() => next(invest)}
+                      className="w-full py-3.5 text-sm text-center text-white rounded-full main-bg"
+                    >
+                      Continue to Signature
+                    </button>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="p-10 pb-18">
+                  <img src={funded} alt="Residence unit fully funded" />
+                </div>
+              )}
             </div>
           </div>
         </div>

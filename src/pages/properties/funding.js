@@ -81,7 +81,7 @@ function Funding({ residence }) {
             </div>
           </div>
 
-          <div className="mt-10 text-base md:text-lg menu-color">
+          <div className="px-4 mt-10 text-base md:text-lg menu-color">
             <h2 className="mb-2 text-2xl font-semibold heading-color">
               Why this place
             </h2>

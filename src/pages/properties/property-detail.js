@@ -6,6 +6,7 @@ import UnitCell from "./unit-cell";
 import NotFunding from "./not-funding";
 import Funding from "./funding";
 import PropertyCell from "./property-cell";
+import ResidenceUnitCell from "./residence-unit-cell";
 
 function PropertyDetail() {
   let location = useLocation();
@@ -99,9 +100,9 @@ function PropertyDetail() {
             Available units at Pieme Residence
             <br /> {residence.name}
           </h2>
-          <div className="container grid gap-6 pb-10 mx-auto sm:grid-cols-2 lg:grid-cols-3">
+          <div className="container grid grid-cols-1 gap-8 mx-auto sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {_.map(units, (unit, i) => (
-              <UnitCell key={i} unit={unit} invest={true} clamp={true} />
+              <ResidenceUnitCell key={i} unit={unit} />
             ))}
           </div>
         </div>
