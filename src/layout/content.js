@@ -15,7 +15,7 @@ import Rewards from "../pages/rewards";
 import Documents from "../pages/documents";
 import Investments from "../pages/investments";
 import PropertyDetail from "../pages/properties/property-detail";
-import PropertyInvest from "../pages/properties/property-invest";
+import PropertyInvest from "../pages/invest/property-invest";
 import Summary from "../pages/summary";
 import HowItWorksDetails from "../pages/how-it-works/how-it-works-details";
 import LandingPropertyDetail from "../pages/properties/landing-property-detail";

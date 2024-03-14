@@ -82,7 +82,7 @@ function Summary({ user }) {
       <Heading title="Summary" description="" />
       <br />
 
-      <Info desc="The value of any investment can decrease as well as increase due to market fluctuations and other external factors. Forecasts are only estimates and are not reliable." />
+      <Info desc="The income generated in Pieme Residences fluctuates depending on the season, similar to how the value of any investment can decrease as well as increase due to market fluctuations and other external factors. Forecasts regarding the income are only estimates and are not reliable." />
 
       <div className="flex flex-col w-full gap-6 md:flex-row">
         <div className="w-full bg-white rounded-xl">

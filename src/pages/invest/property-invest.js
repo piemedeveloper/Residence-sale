@@ -1,22 +1,21 @@
 import { FaArrowLeft } from "react-icons/fa";
-import { Steps, message, Slider, Collapse, notification } from "antd";
+import { Steps, message, Collapse, notification } from "antd";
 import React, { useState } from "react";
 import postData, { postDataAuth } from "../../hooks/useFetch";
 import { useLocation, useNavigate } from "react-router-dom";
-import UnitCell from "./unit-cell";
-import { low_investment } from "../../utils/data";
-import NumericInput from "react-numeric-input";
-import { base_url, numberFormatter } from "../../utils/utils";
+import UnitCell from "../properties/unit-cell";
+import { base_url, numberFormatter, url_gen } from "../../utils/utils";
 import mtn from "../../assets/images/mtn-logo.png";
 import _, { ceil } from "lodash";
 import { Spin, Modal } from "antd";
-import copy from "copy-to-clipboard";
+import jsPDF from "jspdf";
 
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 
-import LoadDocument from "./load-document";
 import axios from "axios";
-import CryptoPayments from "./crypto-payments";
+import CryptoPayments from "../properties/crypto-payments";
+import Contract from "../documents/contract";
+import UnitSelected from "./unit-selected";
 
 function PropertyInvest({ user }) {
   let location = useLocation();
@@ -29,6 +28,7 @@ function PropertyInvest({ user }) {
   const [docSign, setDocSign] = useState({});
   const [phone, setPhone] = useState("");
   const [countDown, setCountDown] = useState(false);
+  const [pdfDoc, setPdfDoc] = useState(null);
   document.title = "Investment";
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,7 +37,8 @@ function PropertyInvest({ user }) {
   };
   const handleOk = () => {
     setIsModalOpen(false);
-    uploadImage();
+
+    exportPdf();
   };
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -111,6 +112,11 @@ function PropertyInvest({ user }) {
     // if (current === 1 && user.nok !== undefined && user.nok !== null)
     //   setCurrent(current + 2);
     // else
+    setCurrent(current + 1);
+  };
+
+  const amountSet = (amount) => {
+    setInvest(amount);
     setCurrent(current + 1);
   };
 
@@ -228,6 +234,7 @@ function PropertyInvest({ user }) {
           amount: parseFloat(invest),
           unit_id: unit.id,
           signature: docSign.signature,
+          contract: pdfDoc,
         },
       }).then((data) => {
         setBtnDis(false);
@@ -402,7 +409,15 @@ function PropertyInvest({ user }) {
 
             postData({
               service: "sign_document",
-              data: docSign,
+              data: {
+                nok: docSign.nok,
+                nok_relationship: docSign.nok_relationship,
+                nok_address: docSign.nok_address,
+                beneficiary: docSign.beneficiary,
+                beneficiary_relationship: docSign.beneficiary_relationship,
+                beneficiary_address: docSign.beneficiary_address,
+                signature: docSign.signature,
+              },
             }).then((data) => {
               if (data.success === 1) {
                 message.success("Document signed");
@@ -416,6 +431,44 @@ function PropertyInvest({ user }) {
       //if no file selected the show alert
       alert("Please Select File first");
     }
+  };
+
+  const exportPdf = () => {
+    const component = document.querySelector("#capture");
+
+    component.style.width = "210mm";
+
+    var doc = new jsPDF("p", "pt", "a4");
+    let srcwidth = component.scrollWidth;
+    const margin = 10;
+    doc.html(component, {
+      html2canvas: {
+        scale: 600 / srcwidth,
+      },
+      x: 0,
+      y: 0,
+      callback: function (doc) {
+        component.style.width = "100%";
+        const pdfDoc = doc.output("blob");
+        const formData = new FormData();
+        const docFile = new File(
+          [pdfDoc],
+          url_gen(`${user.username} ${unit.name} contract.pdf`),
+          {
+            type: pdfDoc.type,
+          }
+        );
+
+        formData.append("file", docFile);
+
+        axios.post(`${base_url}file_upload`, formData).then((res) => {
+          if (res.data.status === 1) {
+            setPdfDoc(res.data.data[res.data.data.length - 1]);
+            uploadImage();
+          }
+        });
+      },
+    });
   };
 
   const onSubmit = (e) => {
@@ -468,7 +521,7 @@ function PropertyInvest({ user }) {
   };
 
   return (
-    <div className="colored-bg">
+    <div className="">
       <Modal
         title="Please confirm these detail before you continue"
         open={isModalOpen}
@@ -514,87 +567,12 @@ function PropertyInvest({ user }) {
           <div className="my-12">
             {Object.keys(unit).length > 0 && (
               <div>
-                {current === 1 && (
-                  <div className="max-w-4xl mx-auto">
-                    <h2 className="text-2xl text-center heading-color">
-                      Enter the amount you would like to invest in{" "}
-                      <span className="font-medium">{unit.name}</span> at Pieme{" "}
-                      <span className="font-medium">{unit.residence}</span>{" "}
-                      Residence
-                    </h2>
-
-                    <div className="grid max-w-5xl gap-10 mx-auto my-12 md:grid-cols-2">
-                      <div>
-                        <div className="flex justify-center">
-                          <p className="px-8 py-1.5 text-white rounded-t-lg main-bg">
-                            Selected
-                          </p>
-                        </div>
-                        <div className="overflow-hidden bg-white rounded-2xl unit-selected">
-                          <UnitCell unit={unit} clamp={false} />
-                        </div>
-                      </div>
-                      <div>
-                        <div className="mt-10 bg-white rounded-lg shadow-md">
-                          <p className="p-4 text-base font-medium text-center border-b main-color">
-                            Investment
-                          </p>
-                          <div className="p-5">
-                            <p className="text-base head-color">
-                              Investment amount (minimum {low_investment})
-                            </p>
-
-                            <div className="flex items-center mt-3 overflow-hidden rounded-lg invest-container">
-                              <span className="px-4 py-2.5 invest-input font-medium">
-                                $
-                              </span>
-
-                              <NumericInput
-                                className="px-4 py-2 text-base font-medium bg-transparent outline-none"
-                                min={150}
-                                step={1}
-                                max={unit.cost - unit.amount}
-                                value={invest}
-                                // eslint-disable-next-line
-                                style={false}
-                                onBlur={(e) => setInvest(e.target.value)}
-                              />
-                            </div>
-                            <Slider
-                              defaultValue={150}
-                              max={unit.cost - unit.amount}
-                              min={150}
-                              value={invest}
-                              onChange={(e) => setInvest(e)}
-                              className="mt-6"
-                            />
-
-                            <div className="flex justify-between text-sm">
-                              <p>$150</p>
-                              <p>${numberFormatter(unit.cost - unit.amount)}</p>
-                            </div>
-
-                            <div className="flex justify-center pt-4 pb-2">
-                              <button
-                                onClick={next}
-                                className="main-bg rounded-full text-white py-2.5 w-full text-center"
-                              >
-                                {user.nok !== undefined && user.nok !== null
-                                  ? "Continue to Payment"
-                                  : "Continue to Signature"}
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
+                {current === 1 && <UnitSelected unit={unit} next={amountSet} />}
 
                 {current === 2 && (
                   <div>
                     <div className="max-w-4xl mx-auto">
-                      <h2 className="text-2xl text-center md:text-3xl heading-color">
+                      <h2 className="text-2xl text-center heading-color">
                         You are investing{" "}
                         <span className="font-medium">
                           ${numberFormatter(invest)}
@@ -605,22 +583,13 @@ function PropertyInvest({ user }) {
                         Residence
                       </h2>
 
-                      <h3 className="mt-3 text-xl text-center md:text-2xl heading-color">
+                      <h3 className="mt-3 text-xl text-center heading-color">
                         Please sign the document below:
                       </h3>
 
                       <form onSubmit={onSubmit}>
                         <div className="flex mt-10 overflow-hidden border">
-                          {/* <div className="w-64 min-w-64">
-                      <div className="p-5 text-xl font-semibold text-white border border-b-2 main-bg border-b-blue-400">
-                        <p>Pieme Contracts</p>
-                      </div>
-                      <div className="h-full p-3 bg-white">
-                        <p>Contracts</p>
-                      </div>
-                    </div> */}
-
-                          <LoadDocument
+                          <Contract
                             unit={unit}
                             user={user}
                             amount={invest}

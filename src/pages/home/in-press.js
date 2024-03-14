@@ -3,12 +3,6 @@ import React from "react";
 import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
-import "swiper/css/autoplay";
-
 function InPress() {
   const [windowSize, setWindowSize] = React.useState([
     window.innerWidth,

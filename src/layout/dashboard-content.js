@@ -26,7 +26,7 @@ function DashboardContent() {
       {Object.keys(user).length > 0 && (
         <div>
           <Header />
-          <div className="pt-20 gray-bg">
+          <div className="pt-20">
             <Outlet />
           </div>
         </div>

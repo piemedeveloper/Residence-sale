@@ -21,7 +21,7 @@ function UnitCell({ unit, invest, clamp }) {
           />
           {unit.amount > 0 && unit.amount === unit.cost && (
             <div
-              class={`w-full h-full absolute top-0 bg-blue-600/30 backdrop-brightness-[60%] flex items-center justify-center`}
+              className={`w-full h-full absolute top-0 bg-blue-600/30 backdrop-brightness-[60%] flex items-center justify-center`}
             >
               <div className="pt-3 text-xl font-medium text-center text-white uppercase md:text-2xl">
                 <p>Fully funded</p>

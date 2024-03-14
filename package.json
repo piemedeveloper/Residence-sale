@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.11.3",
+    "@hookform/resolvers": "^3.3.4",
     "@reduxjs/toolkit": "^2.1.0",
     "@tanstack/react-query": "^5.24.1",
     "@tawk.to/tawk-messenger-react": "^2.0.2",
@@ -32,6 +33,7 @@
     "react-dom": "^18.2.0",
     "react-google-recaptcha": "^3.1.0",
     "react-helmet": "^6.1.0",
+    "react-hook-form": "^7.51.0",
     "react-icons": "^5.0.1",
     "react-numeric-input": "^2.2.3",
     "react-password-strength-bar": "^0.4.1",
@@ -46,7 +48,8 @@
     "text-signature": "^1.1.2",
     "viem": "^1.21.4",
     "wagmi": "^1.4.13",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^1.4.0"
   },
   "scripts": {
     "start": "cross-env GENERATE_SOURCEMAP=false react-scripts start",

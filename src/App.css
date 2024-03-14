@@ -21,7 +21,7 @@ body {
 }
 
 body {
-  background-color: #f7f7f7;
+  /* background-color: #f7f7f7; */
 }
 
 .colored-bg {
@@ -195,8 +195,12 @@ ul > li {
   padding: 0.775rem 5rem;
   margin-top: 0.75rem;
   color: white;
-  border-radius: 9999px;
+  border-radius: 10px;
   background-color: var(--main-color);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
 @media screen and (min-width: 1200px) {
@@ -225,7 +229,7 @@ ul > li {
 }
 
 .swiper-pagination {
-  display: none !important;
+  /* display: none !important; */
 }
 
 .home-property {
@@ -252,35 +256,6 @@ ul > li {
 
 .react-slideshow-container button {
   display: none !important;
-}
-
-.detail-form table {
-  width: 100%;
-}
-
-.detail-form input {
-  width: 100%;
-  padding: 10px 20px;
-  font-size: 0.9rem;
-  border: 1px solid #aeaeae;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-}
-.detail-form td p {
-  color: var(--deep-main-color);
-  font-weight: 500;
-}
-
-.detail-form td {
-  padding-bottom: 1rem;
-  padding-top: 0.3rem;
-}
-
-.detail-form td {
-  min-width: 4rem;
 }
 
 .gradient-bg {
@@ -348,4 +323,71 @@ ul > li {
 
 .ant-spin-dot-spin i {
   background-color: white !important;
+}
+
+.transactions table {
+  /* border: 1px solid rgba(200, 200, 200, 0.4); */
+  width: 100%;
+  font-size: 0.875rem;
+  overflow-x: auto;
+}
+
+.transactions table,
+.transactions th,
+.transactions td {
+  border: 1px solid rgba(200, 200, 200, 0.4);
+  border-collapse: collapse;
+  padding: 8px 15px;
+  text-wrap: nowrap;
+  white-space: nowrap; /* Chrome */
+}
+
+.transactions th {
+  padding: 10px 15px;
+  background-color: rgb(220, 220, 220);
+}
+
+.detail-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+.detail-form > div {
+  display: flex;
+  align-items: center;
+  /* vertical-align: center; */
+}
+
+.detail-form > div > p {
+  color: var(--deep-main-color);
+  width: 12rem;
+  min-width: 12rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.detail-form p {
+  font-size: 0.93rem;
+}
+
+.detail-form > div > div {
+  width: 100%;
+}
+
+.detail-form > div > div p {
+  color: red;
+  margin-left: 5px;
+  font-size: 0.93rem;
+  margin-top: 0.2rem;
+}
+.detail-form input {
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 0.88rem;
+  border: 1px solid #aeaeae;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
 }

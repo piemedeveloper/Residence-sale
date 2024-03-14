@@ -21,7 +21,7 @@ function HomePropertyCell({ residence }) {
 
           {residence.paid > 0 && residence.paid === residence.price && (
             <div
-              class={`w-full h-full absolute top-0 ${
+              className={`w-full h-full absolute top-0 ${
                 residence.is_active === 0 ? "bg-blue-600/30" : "bg-green-600/20"
               }  backdrop-brightness-[40%] flex items-center justify-center`}
             >

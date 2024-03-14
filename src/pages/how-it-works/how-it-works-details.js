@@ -5,6 +5,7 @@ import { how_it_works } from "../../utils/data";
 import { Markup } from "interweave";
 
 import { Helmet } from "react-helmet";
+import NotFound from "../not-found";
 
 function HowItWorksDetails() {
   let location = useLocation();
@@ -34,12 +35,7 @@ function HowItWorksDetails() {
   return (
     <div className="mx-auto">
       {Object.keys(data).length === 0 ? (
-        <div className="py-12 text-center heading-color">
-          <h2 className="py-3 text-4xl font-semibold">404 - Page not found</h2>
-          <p>
-            Unfortunately the page you are trying to reach could not be found.
-          </p>
-        </div>
+        <NotFound />
       ) : (
         <div>
           <Helmet>

@@ -32,11 +32,7 @@ function Properties() {
         ))}
       </div>
 
-      <Info
-        desc="The value of any investment can decrease as well as increase due to
-        market fluctuations and other external factors. Forecasts are only
-        estimates and are not reliable."
-      />
+      <Info desc="The income generated in Pieme Residences fluctuates depending on the season, similar to how the value of any investment can decrease as well as increase due to market fluctuations and other external factors. Forecasts regarding the income are only estimates and are not reliable." />
     </div>
   );
 }

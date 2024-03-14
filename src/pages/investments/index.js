@@ -5,10 +5,12 @@ import residence from "../../assets/images/residence.jpeg";
 import Info from "../../components/info";
 import postData from "../../hooks/useFetch";
 import InvestedUnitCell from "./invested-unit-cell";
+import Transactions from "./transactions";
 
 function Investments({ user }) {
   document.title = "Investments | Pieme";
   const [units, setUnits] = React.useState([]);
+  const [records, setRecords] = React.useState([]);
 
   React.useEffect(() => {
     postData({
@@ -17,6 +19,7 @@ function Investments({ user }) {
     }).then((data) => {
       if (data.success === 1) {
         setUnits(data.data);
+        setRecords(data.records);
       }
     });
   }, []);
@@ -37,6 +40,8 @@ function Investments({ user }) {
         <p className="text-lg text-center">You have not invested yet</p>
       )}
 
+      {records.length > 0 && <Transactions records={records} />}
+
       <SummaryContainer
         bg={residence}
         title={`${user.first_name}, don't miss out on the current available opportunities`}
@@ -45,7 +50,7 @@ function Investments({ user }) {
       />
 
       <div className="bg-white rounded-xl">
-        <Info desc="The value of any investment can decrease as well as increase due to market fluctuations and other external factors. Forecasts are only estimates and are not reliable." />
+        <Info desc="The income generated in Pieme Residences fluctuates depending on the season, similar to how the value of any investment can decrease as well as increase due to market fluctuations and other external factors. Forecasts regarding the income are only estimates and are not reliable." />
       </div>
     </div>
   );
