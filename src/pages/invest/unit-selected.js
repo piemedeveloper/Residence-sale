@@ -145,16 +145,16 @@ function UnitSelected({ unit, next }) {
           </div>
         </div>
 
-        <div className="flex gap-16 mt-8">
-          <div className="w-2/3">
+        <div className="flex flex-col gap-16 mt-8 md:flex-row">
+          <div className="w-full md:w-2/3">
             <h1 className="pb-3 text-xl font-semibold">Description</h1>
             <p>{unit.description}</p>
 
-            <div className="flex flex-col gap-6 pt-6 mt-4 text-base border-t">
+            <div className="flex flex-col gap-6 pt-6 mt-4 text-sm border-t sm:text-base">
               {_.map(offers, (e, i) => (
                 <div key={i}>
                   <h5 className="mb-2 font-medium">{e.title}</h5>
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
                     {_.map(e.items, (item, l) => (
                       <div key={l} className="flex items-center gap-2">
                         <img
@@ -182,7 +182,7 @@ function UnitSelected({ unit, next }) {
               <p className="main-color">{unit.cleaning_desc}</p>
             </div>
           </div>
-          <div className="w-1/3">
+          <div className="w-full md:w-1/3">
             <div className="sticky bg-white rounded-lg home-property top-20">
               <p className="p-4 text-base font-medium text-center border-b main-color">
                 Investment
