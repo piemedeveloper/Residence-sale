@@ -4,8 +4,9 @@ import _ from "lodash";
 import HomePropertyCell from "../home/home-property-cell";
 import { getToken } from "../../utils/useToken";
 import postData from "../../hooks/useFetch";
-import UnitCell from "./unit-cell";
+// import UnitCell from "./unit-cell";
 import NotFunding from "./not-funding";
+import ResidenceUnitCell from "./residence-unit-cell";
 
 function LandingPropertyDetail() {
   let location = useLocation();
@@ -60,11 +61,17 @@ function LandingPropertyDetail() {
             Available units at Pieme Residence
             <br /> {residence.name}
           </h2>
-          <div className="container grid gap-6 pb-10 mx-auto sm:grid-cols-2 lg:grid-cols-3">
+          <div className="container grid grid-cols-1 gap-8 mx-auto sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {_.map(units, (unit, i) => (
+              <ResidenceUnitCell key={i} unit={unit} />
+            ))}
+          </div>
+
+          {/* <div className="container grid gap-6 pb-10 mx-auto sm:grid-cols-2 lg:grid-cols-3">
             {_.map(units, (unit, i) => (
               <UnitCell key={i} unit={unit} invest={true} clamp={true} />
             ))}
-          </div>
+          </div> */}
         </div>
       )}
 

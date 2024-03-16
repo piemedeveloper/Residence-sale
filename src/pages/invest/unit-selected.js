@@ -228,7 +228,7 @@ function UnitSelected({ unit, next }) {
                       onClick={() => next(invest)}
                       className="w-full py-3.5 text-sm text-center text-white rounded-full main-bg"
                     >
-                      Continue to Signature
+                      Invest now
                     </button>
                   </div>
                 </div>

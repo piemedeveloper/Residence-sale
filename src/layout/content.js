@@ -29,6 +29,7 @@ import { removeToken } from "../utils/useToken";
 import TermsAndConditions from "../pages/documents/terms-and-conditions";
 import ForgotPassword from "../pages/welcome/forgot-password";
 import ResetPassword from "../pages/welcome/reset-password";
+import UnitDetails from "../pages/properties/unit-details";
 
 function Content() {
   const userData = useSelector(user.user);
@@ -73,6 +74,7 @@ function Content() {
           <Route path="" element={<Summary user={userData} />} />
           <Route path="residences" element={<Properties />} />
           <Route path="residences/:id" element={<PropertyDetail />} />
+          <Route path="unit/:id" element={<UnitDetails />} />
           <Route
             path="residences/invest/:id"
             element={<PropertyInvest user={userData} />}

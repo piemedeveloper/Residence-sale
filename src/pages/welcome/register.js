@@ -222,7 +222,7 @@ function Register() {
                   <p>Referral</p>
                   <div>
                     <input
-                      placeholder="Enter your referral code if you have any"
+                      placeholder="Enter the referral username if you have any"
                       {...register("referral")}
                       className="text-sm"
                     />

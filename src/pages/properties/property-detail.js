@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import _ from "lodash";
 import postData from "../../hooks/useFetch";
-import UnitCell from "./unit-cell";
+// import UnitCell from "./unit-cell";
 import NotFunding from "./not-funding";
 import Funding from "./funding";
 import PropertyCell from "./property-cell";

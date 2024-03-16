@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaWallet } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 import { IoHomeOutline } from "react-icons/io5";
-// import { CiGift } from "react-icons/ci";
+import { CiGift } from "react-icons/ci";
 import { BsGraphUp } from "react-icons/bs";
 import { BsMenuUp } from "react-icons/bs";
 import { TiThMenu } from "react-icons/ti";
@@ -37,11 +37,11 @@ function Header() {
       label: "Residences",
       url: "/dashboard/residences",
     },
-    // {
-    //   icon: <CiGift className={`${icon_class} text-xl`} />,
-    //   label: "Rewards",
-    //   url: "/dashboard/rewards",
-    // },
+    {
+      icon: <CiGift className={`${icon_class} text-xl`} />,
+      label: "Rewards",
+      url: "/dashboard/rewards",
+    },
     // {
     //   icon: <FaRegFileLines className={icon_class} />,
     //   label: "Documents",

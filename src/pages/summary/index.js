@@ -37,11 +37,6 @@ function Summary({ user }) {
       amount: 0,
     },
     {
-      title: "Total\nrental returns",
-      tip: "The sum of all net rental returns your portfolio has generated to date",
-      amount: 0,
-    },
-    {
       title: "Average annual\nrental yield",
       tip: "What your portfolio has generated per year as a percentage of your total invested capital",
       amount: 0,
@@ -104,7 +99,7 @@ function Summary({ user }) {
             <div className="w-full h-4 rounded-full invest-input"></div>
           </div>
 
-          <div className="grid grid-cols-2 gap-6 p-5 sm:grid-cols-3">
+          <div className="grid grid-cols-2 gap-6 p-5">
             {_.map(returns, (r, i) => (
               <div key={i}>
                 <Tooltip placement="top" title={r.tip}>

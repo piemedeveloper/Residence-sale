@@ -1,13 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { numberFormatter } from "../../utils/utils";
-import { Progress } from "antd";
+import { Progress, Spin } from "antd";
 import { getToken } from "../../utils/useToken";
 
 function NotFunding({ residence }) {
   return (
     <>
-      {Object.keys(residence).length > 0 && (
+      {Object.keys(residence).length === 0 ? (
+        <div className="flex justify-center loader">
+          <Spin size="large" />
+        </div>
+      ) : (
         <div className="container py-10 mx-auto ">
           <div className="text-center heading-color">
             <h1 className="mb-3 text-5xl font-semibold">{residence.name}</h1>

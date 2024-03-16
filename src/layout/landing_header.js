@@ -55,7 +55,7 @@ function LandingHeader() {
   return (
     <>
       <Drawer title="Pieme" placement={"right"} onClose={onClose} open={open}>
-        <div className="text-base text-black">
+        <div className="z-20 text-base text-black">
           {_.map(menu, (m, i) => {
             const items = _.map(m.links, (link, l) => {
               return {
@@ -118,7 +118,7 @@ function LandingHeader() {
           )}
         </div>
       </Drawer>
-      <div className="sticky top-0 z-10 bg-white shadow-sm">
+      <div className="sticky top-0 z-20 bg-white shadow-sm">
         <div className="container relative flex items-center justify-center mx-auto lg:justify-between">
           <Link to="/">
             <div className="relative flex items-center gap-1 my-3">

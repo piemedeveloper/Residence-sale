@@ -325,6 +325,10 @@ ul > li {
   background-color: white !important;
 }
 
+.loader .ant-spin-dot-spin i {
+  background-color: rgb(33, 113, 179) !important;
+}
+
 .transactions table {
   /* border: 1px solid rgba(200, 200, 200, 0.4); */
   width: 100%;
@@ -395,4 +399,14 @@ ul > li {
 img {
   filter: brightness(90%);
   -webkit-filter: brightness(90%);
+}
+
+.res-progress .ant-progress-outer,
+.res-progress .ant-progress-inner,
+.res-progress .ant-progress-bg {
+  height: 20px !important;
+}
+
+.res-progress .ant-progress-outer {
+  margin-top: 10px;
 }

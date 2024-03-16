@@ -7,7 +7,7 @@ function Funding({ residence }) {
   return (
     <>
       {Object.keys(residence).length > 0 && (
-        <div className="pt-8 pb-6">
+        <div className="pt-2 pb-6">
           <p className="text-center uppercase header-color">
             {residence.location}
           </p>
@@ -15,7 +15,7 @@ function Funding({ residence }) {
             {residence.name} Residence
           </h1>
 
-          <div className="flex flex-col gap-4 p-4 mt-8 bg-white lg:gap-10 lg:flex-row rounded-xl home-property">
+          <div className="flex flex-col gap-4 p-4 mt-4 bg-white lg:gap-10 lg:flex-row rounded-xl home-property">
             <div className="w-full lg:w-3/5">
               <div className="overflow-hidden max-h-[25rem] relative">
                 <p
@@ -71,7 +71,7 @@ function Funding({ residence }) {
                   </div>
                 </div>
 
-                <div className="mt-10">
+                <div className="mt-10 res-progress">
                   <p>Percentage Investment</p>
                   <Progress
                     percent={parseInt((residence.paid / residence.price) * 100)}
@@ -81,7 +81,7 @@ function Funding({ residence }) {
             </div>
           </div>
 
-          <div className="px-4 mt-10 text-base md:text-lg menu-color">
+          <div className="mt-10 text-base md:px-4 md:text-lg menu-color">
             <h2 className="mb-2 text-2xl font-semibold heading-color">
               Why this place
             </h2>

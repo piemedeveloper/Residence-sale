@@ -8,7 +8,7 @@ import { BrowserRouter } from "react-router-dom";
 import { createWeb3Modal, defaultWagmiConfig } from "@web3modal/wagmi/react";
 import { WagmiConfig } from "wagmi";
 import { bsc } from "viem/chains";
-// import TawkMessengerReact from "@tawk.to/tawk-messenger-react";
+import TawkMessengerReact from "@tawk.to/tawk-messenger-react";
 
 import "swiper/css";
 import "swiper/css/navigation";

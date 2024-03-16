@@ -48,7 +48,7 @@ function UnitCell({ unit, invest, clamp }) {
             <div>
               <p className="head-color text-end">Target</p>
               <div className="flex gap-3">
-                {unit.original_cost > 0 && (
+                {unit.original_cost !== unit.cost && (
                   <p className="font-medium text-red-500 line-through">
                     ${numberFormatter(unit.original_cost)}
                   </p>

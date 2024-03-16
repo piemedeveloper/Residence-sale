@@ -1,5 +1,6 @@
 import React from "react";
 import _ from "lodash";
+import { low_investment } from "../../utils/data";
 
 function Numbers() {
   const numbers = [
@@ -65,10 +66,10 @@ function Numbers() {
               The community hotel ownership model, exemplified by Pieme
               Residences, offers a groundbreaking approach by breaking down
               financial barriers, allowing individuals to invest modest sums, as
-              low as $1000. This democratization not only broadens investor
-              participation but also mitigates financial risks by dispersing
-              ownership across diverse contributors. The inclusive model,
-              supported by a professional team, streamlines day-to-day
+              low as {low_investment}. This democratization not only broadens
+              investor participation but also mitigates financial risks by
+              dispersing ownership across diverse contributors. The inclusive
+              model, supported by a professional team, streamlines day-to-day
               operations, relieving investors of managerial responsibilities and
               ensuring a seamless guest experience.
             </p>
