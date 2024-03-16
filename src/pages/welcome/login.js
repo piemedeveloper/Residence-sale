@@ -1,23 +1,36 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import { Alert, Input } from "antd";
-import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
+import { Spin, notification } from "antd";
 import { postDataAuth } from "../../hooks/useFetch";
 import useToken, { getToken } from "../../utils/useToken";
 import ReCAPTCHA from "react-google-recaptcha";
 import { robot_keys } from "../../utils/utils";
 
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as y from "yup";
+
+const schema = y
+  .object({
+    email_id: y.string().email().label("Email address").required(),
+    password: y.string().label("Password").required(),
+  })
+  .required();
+
 function Login() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
   document.title = "Login | Pieme";
   const navigate = useNavigate();
   const { setToken } = useToken();
-  const [error, setError] = React.useState("");
   const [disable, setDisable] = React.useState(false);
-  const [data, setData] = React.useState({
-    email_id: "",
-    password: "",
-  });
 
   React.useEffect(() => {
     if (getToken().length > 0) {
@@ -27,37 +40,28 @@ function Login() {
     // eslint-disable-next-line
   }, []);
 
-  React.useEffect(() => {
-    if (error.length > 0) setDisable(false);
-  }, [error]);
-
   const recaptcha = React.useRef();
 
-  const login = (e) => {
-    e.preventDefault();
+  const onSubmit = async (data) => {
     const captchaValue = recaptcha.current.getValue();
-
-    if (data.email_id.length === 0)
-      setError("Please enter your Emaill Address");
-    else if (data.password.length === 0) setError("Please enter your password");
-    else if (!captchaValue) {
-      alert("Please verify the reCAPTCHA!");
-    } else {
-      setError("");
-      setDisable(true);
-      postDataAuth({
-        service: "login",
-        data: data,
-      }).then((data) => {
-        setDisable(false);
-        if (data.success === 0) setError(data.message);
-        else {
-          setToken(data.token);
-          navigate("/dashboard");
-          window.location.reload(false);
-        }
-      });
-    }
+    if (!captchaValue) await recaptcha.current.executeAsync();
+    setDisable(true);
+    postDataAuth({
+      service: "login",
+      data: data,
+    }).then((resp) => {
+      setDisable(false);
+      if (resp.success === 0)
+        notification.error({
+          message: "Sign in",
+          description: resp.message,
+        });
+      else {
+        setToken(resp.token);
+        navigate("/dashboard");
+        window.location.reload(false);
+      }
+    });
   };
 
   return (
@@ -72,70 +76,58 @@ function Login() {
       </div>
       <div className="gray-bg">
         <div className="container py-12 mx-auto">
-          <div className="max-w-xl mx-auto detail-form">
-            <form onSubmit={login}>
-              {error.length > 0 && (
-                <Alert showIcon={true} message={error} type="error" />
-              )}
-              <table>
-                <tbody>
-                  <tr>
-                    <td>
-                      <p>Email Address</p>
-                    </td>
-                    <td>
-                      <input
-                        type="email"
-                        placeholder="Enter email address"
-                        className="text-base"
-                        value={data.email_id}
-                        onChange={(e) => {
-                          data.email_id = e.target.value;
-                          setData({ ...data });
-                        }}
-                      />
-                    </td>
-                  </tr>
+          <div className="max-w-xl mx-auto">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="detail-form">
+                <div>
+                  <p>Email Address</p>
+                  <div>
+                    <input
+                      placeholder="Enter email address"
+                      {...register("email_id")}
+                      className="text-sm"
+                    />
+                    <p>{errors.email_id?.message}</p>
+                  </div>
+                </div>
 
-                  <tr>
-                    <td>
-                      <p>Password</p>
-                    </td>
-                    <td>
-                      <Input.Password
-                        placeholder="Enter password"
-                        className="p-2.5 text-[0.895rem]"
-                        iconRender={(visible) =>
-                          visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                        }
-                        value={data.password}
-                        onChange={(e) => {
-                          data.password = e.target.value;
-                          setData({ ...data });
-                        }}
-                      />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                <div>
+                  <p>Password</p>
+                  <div>
+                    <input
+                      autoComplete={true}
+                      type="password"
+                      placeholder="Enter your password"
+                      {...register("password")}
+                      className="text-sm"
+                    />
+                    <p>{errors.password?.message}</p>
+                  </div>
+                </div>
+              </div>
 
               <div className="flex justify-center mt-3">
-                <ReCAPTCHA ref={recaptcha} sitekey={robot_keys.SITE_KEY} />
+                <ReCAPTCHA
+                  ref={recaptcha}
+                  sitekey={robot_keys.SITE_KEY}
+                  size="invisible"
+                />
               </div>
 
               <div className="flex justify-center mt-3">
                 <button
                   type="submit"
                   disabled={disable}
-                  className="text-base text-center shadow-md register-btn"
+                  className="flex items-center gap-3 text-base text-center shadow-md register-btn"
                 >
-                  Sign in
+                  {disable && <Spin />}
+                  <p>Sign in</p>
                 </button>
               </div>
             </form>
 
             <div className="mt-10 text-base">
-              <Link>
+              <Link to="/forgot-password">
                 <p className="main-color">Forgot your password?</p>
               </Link>
               <Link to="/signup">

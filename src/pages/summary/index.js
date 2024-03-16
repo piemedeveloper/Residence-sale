@@ -37,11 +37,6 @@ function Summary({ user }) {
       amount: 0,
     },
     {
-      title: "Total\nrental returns",
-      tip: "The sum of all net rental returns your portfolio has generated to date",
-      amount: 0,
-    },
-    {
       title: "Average annual\nrental yield",
       tip: "What your portfolio has generated per year as a percentage of your total invested capital",
       amount: 0,
@@ -82,7 +77,7 @@ function Summary({ user }) {
       <Heading title="Summary" description="" />
       <br />
 
-      <Info desc="The value of any investment can decrease as well as increase due to market fluctuations and other external factors. Forecasts are only estimates and are not reliable." />
+      <Info desc="The income generated in Pieme Residences fluctuates depending on the season, similar to how the value of any investment can decrease as well as increase due to market fluctuations and other external factors. Forecasts regarding the income are only estimates and are not reliable." />
 
       <div className="flex flex-col w-full gap-6 md:flex-row">
         <div className="w-full bg-white rounded-xl">
@@ -104,7 +99,7 @@ function Summary({ user }) {
             <div className="w-full h-4 rounded-full invest-input"></div>
           </div>
 
-          <div className="grid grid-cols-2 gap-6 p-5 sm:grid-cols-3">
+          <div className="grid grid-cols-2 gap-6 p-5">
             {_.map(returns, (r, i) => (
               <div key={i}>
                 <Tooltip placement="top" title={r.tip}>
@@ -145,12 +140,14 @@ function Summary({ user }) {
           <div className="grid grid-cols-2 gap-6 p-5 sm:grid-cols-3">
             <div>
               <p className="text-base whitespace-pre-line head-color">$PIE</p>
-              <p className="text-xl font-semibold main-color">0</p>
+              <p className="text-xl font-semibold main-color">
+                {Object.keys(summary).length > 0
+                  ? numberFormatter(summary.pie)
+                  : 0}
+              </p>
             </div>
 
-            <div>
-              <button>Withdraw</button>
-            </div>
+            <div>{/* <button>Withdraw</button> */}</div>
           </div>
         </div>
       </div>

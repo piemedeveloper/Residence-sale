@@ -21,7 +21,7 @@ function UnitCell({ unit, invest, clamp }) {
           />
           {unit.amount > 0 && unit.amount === unit.cost && (
             <div
-              class={`w-full h-full absolute top-0 bg-blue-600/30 backdrop-brightness-[60%] flex items-center justify-center`}
+              className={`w-full h-full absolute top-0 bg-blue-600/30 backdrop-brightness-[60%] flex items-center justify-center`}
             >
               <div className="pt-3 text-xl font-medium text-center text-white uppercase md:text-2xl">
                 <p>Fully funded</p>
@@ -48,7 +48,7 @@ function UnitCell({ unit, invest, clamp }) {
             <div>
               <p className="head-color text-end">Target</p>
               <div className="flex gap-3">
-                {unit.original_cost > 0 && (
+                {unit.original_cost !== unit.cost && (
                   <p className="font-medium text-red-500 line-through">
                     ${numberFormatter(unit.original_cost)}
                   </p>
@@ -79,12 +79,20 @@ function UnitCell({ unit, invest, clamp }) {
             {unit.description}
           </p>
 
-          {invest && (
+          {unit.amount > 0 && unit.amount === unit.cost ? (
             <div className="flex justify-center mt-4">
-              <p className="px-10 py-2 text-sm text-white rounded-full main-bg">
-                Invest now
+              <p className="px-10 py-2 text-sm text-white bg-green-600 rounded-full">
+                Closed
               </p>
             </div>
+          ) : (
+            invest && (
+              <div className="flex justify-center mt-4">
+                <p className="px-10 py-2 text-sm text-white rounded-full main-bg">
+                  Invest now
+                </p>
+              </div>
+            )
           )}
         </div>
 

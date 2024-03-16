@@ -14,6 +14,7 @@ async function postData(data = {}) {
     });
 
     const resp = await response.json();
+
     return resp;
   } catch (e) {
     return { success: 0, message: "Request failed" };

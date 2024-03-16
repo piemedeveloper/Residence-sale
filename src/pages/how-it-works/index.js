@@ -51,7 +51,7 @@ function HowItWorks() {
   const page = {
     title: "How Pieme Community Hotel Ownership works",
     image: "https://pieme.info/images/community-ownership.jpeg",
-    description: `Earn average annual returns of 30% from as little as {low_investment} in both Fiat and Crypto Currencies`,
+    description: `Earn average annual returns of 30% from as little as ${low_investment} in both Fiat and Crypto Currencies`,
   };
 
   return (
@@ -85,7 +85,7 @@ function HowItWorks() {
 
       <div className="max-w-3xl px-2 py-12 mx-auto text-center heading-color">
         <h1 className="text-3xl font-semibold md:text-5xl">
-          How Pieme Community Hotel Ownership works
+          How Pieme Community Hotel Ownership Works
         </h1>
         <p className="mt-4 text-lg">{page.description}</p>
       </div>

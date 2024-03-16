@@ -15,7 +15,7 @@ import Rewards from "../pages/rewards";
 import Documents from "../pages/documents";
 import Investments from "../pages/investments";
 import PropertyDetail from "../pages/properties/property-detail";
-import PropertyInvest from "../pages/properties/property-invest";
+import PropertyInvest from "../pages/invest/property-invest";
 import Summary from "../pages/summary";
 import HowItWorksDetails from "../pages/how-it-works/how-it-works-details";
 import LandingPropertyDetail from "../pages/properties/landing-property-detail";
@@ -27,6 +27,9 @@ import LandingContent from "./landing-content";
 import NotFound from "../pages/not-found";
 import { removeToken } from "../utils/useToken";
 import TermsAndConditions from "../pages/documents/terms-and-conditions";
+import ForgotPassword from "../pages/welcome/forgot-password";
+import ResetPassword from "../pages/welcome/reset-password";
+import UnitDetails from "../pages/properties/unit-details";
 
 function Content() {
   const userData = useSelector(user.user);
@@ -52,6 +55,8 @@ function Content() {
           <Route path="/faq" element={<Faq />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password/:id" element={<ResetPassword />} />
           <Route path="/signup" element={<Register />} />
           <Route path="/residences" element={<LandingProperties />} />
           <Route path="/how-it-works" element={<HowItWorks />} />
@@ -69,6 +74,7 @@ function Content() {
           <Route path="" element={<Summary user={userData} />} />
           <Route path="residences" element={<Properties />} />
           <Route path="residences/:id" element={<PropertyDetail />} />
+          <Route path="unit/:id" element={<UnitDetails />} />
           <Route
             path="residences/invest/:id"
             element={<PropertyInvest user={userData} />}

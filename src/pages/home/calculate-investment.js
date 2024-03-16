@@ -4,10 +4,11 @@ import { Input } from "antd";
 import { BsCalculator } from "react-icons/bs";
 import { JackInTheBox } from "react-awesome-reveal";
 import residence from "../../assets/images/residence.jpeg";
+import NumericInput from "react-numeric-input";
 
 function CalculateInvestment() {
   const [data, setData] = React.useState({
-    unit: 6500,
+    unit: 55000,
     booking: 200,
     days: 23,
     monthly: 0,
@@ -15,8 +16,12 @@ function CalculateInvestment() {
   });
 
   const calculate = () => {
-    data.monthly = Math.ceil(data.booking * data.days * 0.7);
-    data.annual = Math.ceil(data.booking * data.days * 0.7 * 12);
+    data.monthly = Math.ceil(
+      (data.booking * data.days * 0.7 * data.unit) / 55000
+    );
+    data.annual = Math.ceil(
+      (data.booking * data.days * 0.7 * 12 * data.unit) / 55000
+    );
     setData({ ...data });
   };
 
@@ -43,8 +48,8 @@ function CalculateInvestment() {
         </JackInTheBox>
         <div className="p-10 md:p-10 md:max-w-xl">
           <div className="grid items-center grid-cols-2 gap-4 p-2 px-4 mt-2 bg-white rounded-md">
-            <p className="text-sm border-e">Unit Price ($)</p>
-            <Input
+            <p className="text-sm border-e">Amount Invested ($)</p>
+            {/* <Input
               type="number"
               value={data.unit}
               onChange={(e) => {
@@ -52,6 +57,19 @@ function CalculateInvestment() {
                 setData({ ...data });
               }}
               className="text-sm border-0 rounded-none focus:border-0"
+            /> */}
+
+            <NumericInput
+              min={150}
+              step={1}
+              max={55000}
+              style={false}
+              value={data.unit}
+              onBlur={(e) => {
+                data.unit = e.target.value;
+                setData({ ...data });
+              }}
+              className="text-sm border-0 rounded-none focus:border-0 py-1.5"
             />
           </div>
           <div className="grid items-center grid-cols-2 gap-4 p-2 px-4 mt-2 bg-white rounded-md">
@@ -95,7 +113,7 @@ function CalculateInvestment() {
             </p>
           </div>
 
-          <div className="grid items-center grid-cols-2 gap-4 mt-5">
+          <div className="grid items-center grid-cols-2 gap-4">
             <p className="text-white">Annual Net Income</p>
             <p className="w-full p-2 px-4 text-white rounded-sm main-dark-light-bg">
               $ {data.annual.toLocaleString("en-US")}
