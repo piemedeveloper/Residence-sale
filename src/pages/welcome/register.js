@@ -7,7 +7,7 @@ import PasswordStrengthBar from "react-password-strength-bar";
 import { Checkbox, Spin, Input, notification } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { postDataAuth } from "../../hooks/useFetch";
-import useToken, { getToken } from "../../utils/useToken";
+import useToken from "../../utils/useToken";
 
 import ReCAPTCHA from "react-google-recaptcha";
 import { robot_keys } from "../../utils/utils";
@@ -36,6 +36,7 @@ const schema = y
 
 function Register() {
   const recaptcha = React.useRef();
+
   const {
     register,
     handleSubmit,
@@ -53,14 +54,6 @@ function Register() {
     strength: 0,
     agree: false,
   });
-
-  React.useEffect(() => {
-    if (getToken().length > 0) {
-      navigate("/dashboard");
-      window.location.reload(false);
-    }
-    // eslint-disable-next-line
-  }, []);
 
   const onSubmit = async (sub) => {
     if (data.phone_no.length === 0)
@@ -103,6 +96,7 @@ function Register() {
             description: resp.message,
           });
         else {
+          navigate("/dashboard");
           setToken(resp.token);
           window.location.reload(false);
         }

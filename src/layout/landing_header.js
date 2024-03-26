@@ -1,32 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../assets/images/logoblue.png";
 import _ from "lodash";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IoMenu } from "react-icons/io5";
 import { Drawer, Dropdown } from "antd";
 import { TiArrowSortedDown } from "react-icons/ti";
-import { getToken } from "../utils/useToken";
+import { AuthContext } from "../context/auth-context";
 
 function LandingHeader() {
   const [open, setOpen] = React.useState(false);
   const [active, setActive] = React.useState("");
-  const token = getToken();
+
+  const { isAuthenticated } = useContext(AuthContext);
 
   let location = useLocation();
-  let navigate = useNavigate();
 
   React.useEffect(() => {
     setActive(location.pathname.substring(1));
     window.scrollTo({ behavior: "smooth", top: 0 });
-
-    if (
-      location.pathname.substring(1) === "dashboard" &&
-      getToken().length === 0
-    ) {
-      navigate("/login");
-      window.location.reload(false);
-    }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
@@ -103,7 +94,7 @@ function LandingHeader() {
           })}
 
           <div className="h-6"></div>
-          {getToken().length === 0 ? (
+          {!isAuthenticated ? (
             <Link to={"/login"} onClick={onClose} className="">
               <p className="font-medium text-center rounded-full login-btn">
                 Login / Register
@@ -171,7 +162,7 @@ function LandingHeader() {
             })}
           </div>
 
-          {token.length === 0 ? (
+          {!isAuthenticated ? (
             <Link to={"/login"} className="hidden lg:block">
               <p className="font-medium rounded-full login-btn">
                 Login / Register

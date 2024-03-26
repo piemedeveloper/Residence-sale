@@ -10,7 +10,7 @@ import { Spin, Modal } from "antd";
 import jsPDF from "jspdf";
 
 import axios from "axios";
-import CryptoPayments from "../properties/crypto-payments";
+import CryptoPayments from "../properties/crypto/crypto-payments";
 import Contract from "../documents/contract";
 import UnitSelected from "./unit-selected";
 import MobileMoneyPayment from "../properties/mobile-money-payment";
@@ -139,7 +139,7 @@ function PropertyInvest({ user }) {
     {
       label: "Total to Pay",
       value: `$ ${numberFormatter(
-        parseFloat(invest) * 0.03 + parseFloat(invest)
+        ceil(parseFloat(invest) * 0.03) + parseFloat(invest)
       )}`,
     },
   ];

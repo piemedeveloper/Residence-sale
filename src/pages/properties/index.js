@@ -20,13 +20,13 @@ function Properties() {
   }, []);
 
   return (
-    <div className="mx-auto container-box py-14">
+    <div className="mx-auto container-box">
       <Heading
         title="Available residences for investment"
         description={`The easy to use, hassle-free way to build a global hotel room portfolio
         from as little as ${low_investment}`}
       />
-      <div className="grid gap-8 mt-16 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-5 mt-6 md:grid-cols-2 lg:grid-cols-4">
         {residences.map((residence, i) => (
           <PropertyCell key={i} residence={residence} />
         ))}
