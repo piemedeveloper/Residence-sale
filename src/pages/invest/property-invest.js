@@ -216,6 +216,7 @@ function PropertyInvest({ user }) {
                 signature: docSign.signature,
               },
             }).then((data) => {
+              setDisable(false);
               if (data.success === 1) {
                 message.success("Document signed");
                 next();
@@ -363,7 +364,7 @@ function PropertyInvest({ user }) {
         </div>
       </Modal>
 
-      <div className="container py-12 mx-auto">
+      <div className="container mx-auto">
         <div>
           <div className="max-w-5xl mx-auto">
             <Steps current={current} items={items} />
@@ -377,7 +378,7 @@ function PropertyInvest({ user }) {
                 {current === 2 && (
                   <div>
                     <div className="max-w-4xl mx-auto">
-                      <h2 className="text-2xl text-center heading-color">
+                      <h2 className="text-xl text-center heading-color">
                         You are investing{" "}
                         <span className="font-medium">
                           ${numberFormatter(invest)}
@@ -421,7 +422,7 @@ function PropertyInvest({ user }) {
 
                 {current === 3 && (
                   <div className="max-w-3xl mx-auto">
-                    <h2 className="text-2xl text-center md:text-3xl heading-color">
+                    <h2 className="text-2xl text-center md:text-2xl heading-color">
                       You are investing{" "}
                       <span className="font-medium">
                         ${numberFormatter(invest)}
@@ -432,7 +433,7 @@ function PropertyInvest({ user }) {
                       Residence
                     </h2>
 
-                    <h3 className="pb-3 mt-3 text-xl text-center md:text-2xl heading-color">
+                    <h3 className="pb-3 mt-3 text-xl text-center heading-color">
                       Select your payment method:
                     </h3>
 

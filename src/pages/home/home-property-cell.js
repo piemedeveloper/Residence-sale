@@ -7,11 +7,11 @@ function HomePropertyCell({ residence }) {
   return (
     <div className="relative pb-8 overflow-hidden bg-white home-property rounded-xl">
       <Link to={`/residences/${residence.slag}`}>
-        <div className="relative h-48 sm:h-52">
+        <div className="relative">
           <img
             src={residence.image}
             alt={residence.location}
-            className="object-cover w-full h-full"
+            className="object-cover w-full aspect-[5/3]"
           />
           {residence.is_active === 1 && (
             <p className="absolute px-3 py-1 text-xs rounded-full top-3 left-3 period-bg">
@@ -35,7 +35,7 @@ function HomePropertyCell({ residence }) {
       </Link>
 
       <p
-        className={`uppercase text-white text-center p-1.5 text-sm tracking-wide ${
+        className={`capitalize text-white text-center p-1.5 text-sm tracking-wide ${
           residence.is_active === 1 ? "bg-orange-500" : "entire-bg"
         }`}
       >
@@ -44,12 +44,13 @@ function HomePropertyCell({ residence }) {
 
       <div className="px-6 pt-2 pb-6">
         <h2 className="text-center head-color uppercase text-[13px] mt-2">
-          {residence.name}
+          {residence.name},{" "}
+          <span className="font-semibold text-center main-color">
+            {residence.location}
+          </span>
         </h2>
         <Link to={`/residences/${residence.slag}`}>
-          <p className="mb-2 font-semibold text-center main-color">
-            {residence.location}
-          </p>
+          <p className="mb-2 font-semibold text-center main-color"></p>
         </Link>
 
         <Progress

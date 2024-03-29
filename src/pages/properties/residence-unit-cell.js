@@ -46,7 +46,7 @@ function ResidenceUnitCell({ unit }) {
                   <img
                     src={image}
                     alt={unit.location}
-                    className="object-cover w-full h-full aspect-[8/7] group-hover:scale-110 transition duration-500"
+                    className="object-cover w-full h-full aspect-[4/3] group-hover:scale-110 transition duration-500"
                   />
                 </SwiperSlide>
               ))}

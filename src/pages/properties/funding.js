@@ -7,17 +7,17 @@ function Funding({ residence }) {
   return (
     <>
       {Object.keys(residence).length > 0 && (
-        <div className="pt-2 pb-6">
+        <div className="pb-6">
           <p className="text-center uppercase header-color">
             {residence.location}
           </p>
-          <h1 className="mt-4 text-3xl font-medium text-center main-color md:text-4xl">
+          <h1 className="mt-3 text-3xl font-medium text-center main-color md:text-4xl">
             {residence.name} Residence
           </h1>
 
           <div className="flex flex-col gap-4 p-4 mt-4 bg-white lg:gap-10 lg:flex-row rounded-xl home-property">
             <div className="w-full lg:w-3/5">
-              <div className="overflow-hidden max-h-[25rem] relative">
+              <div className="relative overflow-hidden rounded-md ">
                 <p
                   className={`uppercase text-white text-center p-1.5 text-base tracking-wide ${
                     residence.is_active === 1 ? "main-bg" : "entire-bg"
@@ -30,7 +30,7 @@ function Funding({ residence }) {
                 <img
                   src={residence.image}
                   alt={residence.street}
-                  className="object-cover w-full h-full"
+                  className="object-cover w-full h-full aspect-[2/1]"
                 />
               </div>
             </div>
@@ -41,13 +41,15 @@ function Funding({ residence }) {
                     <h2 className="font-medium uppercase">
                       FORECAST ANNUAL RENTAL YIELD
                     </h2>
-                    <p className="mt-2 main-color">{residence.annual_yield}%</p>
+                    <p className="mt-2 font-medium main-color">
+                      {residence.annual_yield}%
+                    </p>
                   </div>
                   <div>
                     <h2 className="font-medium uppercase">
                       Forecast annual rental returns
                     </h2>
-                    <p className="mt-2 main-color">
+                    <p className="mt-2 font-medium main-color">
                       $
                       {" " +
                         numberFormatter(
@@ -58,14 +60,14 @@ function Funding({ residence }) {
 
                   <div>
                     <h2 className="font-medium uppercase">Investor(s)</h2>
-                    <p className="mt-2 main-color">
+                    <p className="mt-2 font-medium main-color">
                       {numberFormatter(residence.investors)}
                     </p>
                   </div>
 
                   <div>
                     <h2 className="font-medium uppercase">Target</h2>
-                    <p className="mt-2 main-color">
+                    <p className="mt-2 font-medium main-color">
                       ${" " + numberFormatter(residence.price)}
                     </p>
                   </div>

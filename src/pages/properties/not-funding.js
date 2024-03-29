@@ -12,13 +12,13 @@ function NotFunding({ residence }) {
           <Spin size="large" />
         </div>
       ) : (
-        <div className="container py-10 mx-auto ">
+        <div className="container pb-6 mx-auto">
           <div className="text-center heading-color">
-            <h1 className="mb-3 text-5xl font-semibold">{residence.name}</h1>
+            <h1 className="mb-3 text-4xl font-semibold">{residence.name}</h1>
             <p className="text-lg">{residence.location}</p>
           </div>
 
-          <div className="flex gap-2 mt-10">
+          <div className="flex gap-2 mt-4">
             <Link to="/residences">
               <p className="main-color">Residences</p>
             </Link>

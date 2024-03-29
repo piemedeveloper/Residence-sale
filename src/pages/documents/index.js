@@ -2,7 +2,7 @@ import React from "react";
 
 function Documents() {
   return (
-    <div className="mx-auto container-box py-14">
+    <div className="container mx-auto">
       <p>Documents</p>
     </div>
   );

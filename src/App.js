@@ -123,7 +123,6 @@ function App() {
             >
               <Route path="" element={<Summary />} />
               <Route path="residences" element={<Properties />} />
-              {/* 
               <Route path="residences/:id" element={<PropertyDetail />} />
               <Route path="unit/:id" element={<UnitDetails />} />
               <Route
@@ -131,11 +130,8 @@ function App() {
                 element={<PropertyInvest user={userData} />}
               />
               <Route path="rewards" element={<Rewards user={userData} />} />
+              <Route path="investments" element={<Investments />} />
               <Route path="documents" element={<Documents />} />
-              <Route
-                path="investments"
-                element={<Investments user={userData} />}
-              /> */}
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>

@@ -5,7 +5,7 @@ function Heading(props) {
 
   return (
     <div>
-      <h2 className="mb-2 text-2xl font-bold">{title}</h2>
+      <h2 className="mb-2 text-3xl font-bold">{title}</h2>
       <p>{description}</p>
     </div>
   );

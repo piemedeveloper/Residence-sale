@@ -215,9 +215,9 @@ ul > li {
   -o-border-radius: 10px;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1300px) {
   .container {
-    max-width: 1250px;
+    max-width: 1300px;
   }
 }
 
@@ -336,7 +336,12 @@ ul > li {
 .ant-spin-dot-spin i {
   background-color: white !important;
 }
-
+.loader {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  width: 100%;
+}
 .loader .ant-spin-dot-spin i {
   background-color: rgb(33, 113, 179) !important;
 }

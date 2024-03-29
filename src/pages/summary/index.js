@@ -1,14 +1,9 @@
 import React from "react";
-import Heading from "../../components/heading";
 import Info from "../../components/info";
-import ContentHeading from "../../components/content-heading";
-import { Tooltip } from "antd";
 import _ from "lodash";
 import { numberFormatter } from "../../utils/utils";
 import residence from "../../assets/images/residences.jpeg";
-// import residence1 from "../../assets/images/residence.jpeg";
 import SummaryContainer from "../../components/summary-container";
-// import GraphSection from "./graph-section";
 import postData from "../../hooks/useFetch";
 import { useSelector } from "react-redux";
 import { user } from "../../features";
@@ -83,21 +78,19 @@ function Summary() {
     {
       icon: <PiKeyReturn />,
       title: "Total Returns",
-      tip: "The sum of all rental returns plus appreciation your portfolio has generated to date",
       amount: 0,
     },
     {
       icon: <BsHouseCheck />,
       title: "Annual rental yield",
-      tip: "What your portfolio has generated per year as a percentage of your total invested capital",
       amount: 0,
     },
   ];
 
   return (
-    <div className="mx-auto container-box">
+    <div className="container mx-auto">
       <h2 className="mb-3 font-medium ms-2">Your Portfolio</h2>
-      <div className="grid grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
         {portfolio.map((p, i) => (
           <div
             key={i}
@@ -119,7 +112,7 @@ function Summary() {
       </div>
 
       <h2 className="mt-4 mb-3 font-medium ms-2">Funds</h2>
-      <div className="grid grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
         {funds.map((p, i) => (
           <div
             key={i}

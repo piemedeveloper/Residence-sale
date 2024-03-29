@@ -3,7 +3,6 @@ import logo from "../assets/images/logo.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IoHomeOutline } from "react-icons/io5";
 import { CiGift } from "react-icons/ci";
-import { BsGraphUp } from "react-icons/bs";
 import { BsMenuUp } from "react-icons/bs";
 import { TiThMenu } from "react-icons/ti";
 import { TbHomeStats } from "react-icons/tb";
@@ -44,11 +43,10 @@ function Header() {
       label: "Rewards",
       url: "/dashboard/rewards",
     },
-    // {
-    //   icon: <FaRegFileLines className={icon_class} />,
-    //   label: "Documents",
-    //   url: "documents",
-    // },
+    {
+      label: "Documents",
+      url: "/dashboard/documents",
+    },
   ];
 
   const logout = () => {
@@ -126,7 +124,7 @@ function Header() {
           <div className="flex gap-3">
             <Link to="/">
               <div className="flex items-center py-2">
-                <img src={logo} alt="Pieme logo" className="h-12" />
+                <img src={logo} alt="Pieme logo" className="h-12 p-1" />
                 {/* <h1 className="text-3xl text-white ms-1">Pieme</h1> */}
               </div>
             </Link>
@@ -165,7 +163,7 @@ function Header() {
             ))}
             <div className="lg:hidden">
               <TiThMenu
-                className={`${icon_class} text-3xl cursor-pointer`}
+                className={`${icon_class} text-3xl cursor-pointer text-white`}
                 onClick={showDrawer}
               />
             </div>

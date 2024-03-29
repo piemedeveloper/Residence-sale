@@ -67,7 +67,7 @@ function HowItWorksDetails() {
 
           <div className="gray-bg">
             <div className="container pt-12 pb-4 mx-auto">
-              <h1 className="max-w-2xl mx-auto text-4xl font-semibold text-center md:text-5xl heading-color">
+              <h1 className="max-w-2xl mx-auto text-4xl font-semibold text-center heading-color">
                 {data.title}
               </h1>
 
@@ -81,7 +81,7 @@ function HowItWorksDetails() {
 
           <div className="container flex flex-col gap-10 py-12 mx-auto lg:flex-row">
             <div className="w-full text-lg lg:w-2/3 menu-color">
-              <h2 className="mb-4 text-4xl font-semibold heading-color">
+              <h2 className="mb-4 text-3xl font-semibold heading-color">
                 {data.title}
               </h2>
               <div className="how-detail">
