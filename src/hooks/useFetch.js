@@ -1,4 +1,5 @@
-import { getToken } from "../utils/useToken";
+import { getToken } from "./user-token";
+
 async function postData(data = {}) {
   const url = require("../utils/utils").base_url + "api";
 

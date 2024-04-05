@@ -56,7 +56,7 @@ function toEtherString(value) {
   return toEther(toHumanizeNumber(value)).toString();
 }
 
-function CryptoPayments({ to_pay, invest, unit }) {
+function CryptoPayments({ to_pay, invest, unit, pdfDoc }) {
   const { open, close } = useWeb3Modal();
   const { chain } = useNetwork();
 
@@ -78,8 +78,11 @@ function CryptoPayments({ to_pay, invest, unit }) {
   });
 
   //=============================MAKE PAYMENTS======================
-  let amountToPay = "0.01";
-  // let amountToPay = ceil(parseFloat(invest) * 0.03 + parseFloat(invest)).toString();
+  // let amountToPay = "0.01";
+  let amountToPay = ceil(
+    parseFloat(invest) * 0.03 + parseFloat(invest)
+  ).toString();
+
   const { config, error } = usePrepareContractWrite({
     address: usdtAddress,
     abi: usdtABI,
@@ -134,10 +137,11 @@ function CryptoPayments({ to_pay, invest, unit }) {
           data: {
             transaction_hash: data.hash.toString(),
             address: address.toString(),
-            amount: parseFloat(amountToPay),
+            amount: parseFloat(invest),
+            // amount: parseFloat(amountToPay),
             unit_id: unit.id,
             currency: 234,
-            signature: "ertygf56789.png",
+            signature: pdfDoc,
           },
         })
           .then((data) => {
@@ -172,10 +176,11 @@ function CryptoPayments({ to_pay, invest, unit }) {
         data: {
           transaction_hash: data.hash.toString(),
           address: address.toString(),
-          amount: parseFloat(amountToPay),
+          amount: parseFloat(invest),
+          // amount: parseFloat(amountToPay),
           unit_id: unit.id,
           currency: 234,
-          signature: "ertygf56789.png",
+          signature: pdfDoc,
         },
       })
         .then((data) => {
@@ -486,7 +491,6 @@ function CryptoPayments({ to_pay, invest, unit }) {
   return (
     <div className="crypto-page">
       <p className="pb-4 text-lg font-semibold text-center">Accepted Tokens</p>
-
       <Tabs
         type="card"
         defaultActiveKey="1"

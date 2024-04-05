@@ -2,11 +2,11 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import _ from "lodash";
 import HomePropertyCell from "../home/home-property-cell";
-import { getToken } from "../../utils/useToken";
 import postData from "../../hooks/useFetch";
 // import UnitCell from "./unit-cell";
 import NotFunding from "./not-funding";
 import ResidenceUnitCell from "./residence-unit-cell";
+import { getToken } from "../../hooks/user-token";
 
 function LandingPropertyDetail() {
   let location = useLocation();

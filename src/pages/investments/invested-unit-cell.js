@@ -25,7 +25,7 @@ function InvestedUnitCell({ unit }) {
             className="w-[97%]"
           />
 
-          <div className="flex justify-between">
+          <div className="flex justify-between mb-3">
             <p className="head-color">Amount Invested</p>
             <p className="font-medium main-color">
               ${numberFormatter(unit.amount)}

@@ -5,14 +5,12 @@ import residence from "../../assets/images/residence.jpeg";
 import Info from "../../components/info";
 import postData from "../../hooks/useFetch";
 import InvestedUnitCell from "./invested-unit-cell";
-import Transactions from "./transactions";
 import { useSelector } from "react-redux";
 import { user } from "../../features";
 
 function Investments() {
   document.title = "Investments | Pieme";
   const [units, setUnits] = React.useState([]);
-  const [records, setRecords] = React.useState([]);
 
   const userData = useSelector(user.user);
 
@@ -23,7 +21,6 @@ function Investments() {
     }).then((data) => {
       if (data.success === 1) {
         setUnits(data.data);
-        setRecords(data.records);
       }
     });
   }, []);
@@ -40,10 +37,8 @@ function Investments() {
           </div>
         </div>
       ) : (
-        <p className="text-lg text-center">You have not invested yet</p>
+        <p className="mb-6 text-lg">You have not invested yet</p>
       )}
-
-      {records.length > 0 && <Transactions records={records} />}
 
       <SummaryContainer
         bg={residence}

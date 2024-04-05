@@ -16,8 +16,13 @@ const encKey =
   "3518b24be3e5366233465eee7672d222bf3cf4f64760772a66d20bc595886b089d765985e06976774ae4218b4bbc5c081f13938289f3b5bc671e3b99cf994a4e";
 
 function decrypt(cipherText) {
-  var bytes = CryptoJS.AES.decrypt(cipherText, encKey);
-  return bytes.toString(CryptoJS.enc.Utf8);
+  try {
+    var bytes = CryptoJS.AES.decrypt(cipherText, encKey);
+    return bytes.toString(CryptoJS.enc.Utf8);
+  } catch (error) {
+    localStorage.removeItem("token");
+    return "";
+  }
 }
 
 export default function useToken() {

@@ -122,13 +122,15 @@ function HowItWorks() {
             spaceBetween={1}
             modules={[Autoplay, Navigation, A11y]}
             slidesPerView={
-              windowSize[0] < 1050
-                ? windowSize[0] < 800
-                  ? windowSize[0] < 600
-                    ? 1.1
-                    : 1.5
-                  : 2.1
-                : 3.1
+              windowSize[0] < 1100
+                ? windowSize[0] < 1024
+                  ? windowSize[0] < 768
+                    ? windowSize[0] < 600
+                      ? 1.2
+                      : 1.5
+                    : 2.2
+                  : 2.8
+                : 3.8
             }
             navigation
             className="mt-10"

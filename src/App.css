@@ -37,7 +37,8 @@ body {
 }
 :root {
   --main-color: #036eb8;
-  /* --main-color: #1f9bf1; */
+
+  /* --main-color: #1DA1F2; */
   /* --light-main-color: #4fa8e7; */
   --light-main-color: #0482dc;
   /* --deep-main-color: #1981cb; */
@@ -65,6 +66,7 @@ body {
 
 .active-link {
   color: white !important;
+  font-weight: 550;
   /* background-color: var(--deep-main-color); */
 }
 .inactive-link {
@@ -215,9 +217,9 @@ ul > li {
   -o-border-radius: 10px;
 }
 
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 1350px) {
   .container {
-    max-width: 1300px;
+    max-width: 1350px;
   }
 }
 
@@ -281,6 +283,7 @@ ul > li {
 
 .active-menu {
   color: var(--main-color);
+  font-weight: 550;
 }
 
 .how-detail ol {
@@ -438,4 +441,18 @@ img {
 
 .crypto-page .ant-tabs-nav-list {
   gap: 10px !important;
+}
+
+.invest-now {
+  background-color: var(--main-color);
+  color: white;
+  font-weight: 550;
+  padding: 0.7rem 4rem;
+  border-radius: 999px;
+  -webkit-border-radius: 999px;
+  -moz-border-radius: 999px;
+  -ms-border-radius: 999px;
+  -o-border-radius: 999px;
+  font-size: 0.95rem;
+  line-height: 1.5rem;
 }

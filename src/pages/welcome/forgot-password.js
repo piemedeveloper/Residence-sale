@@ -64,26 +64,21 @@ function ForgotPassword() {
       </div>
       <div className="gray-bg">
         <div className="container py-12 mx-auto">
-          <div className="max-w-xl mx-auto detail-form">
+          <div className="max-w-xl mx-auto">
             <form onSubmit={login}>
-              <table>
-                <tbody>
-                  <tr>
-                    <td>
-                      <p>Email Address</p>
-                    </td>
-                    <td>
-                      <input
-                        type="email"
-                        placeholder="Enter email address"
-                        className="text-base"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <div className="detail-form">
+                <div>
+                  <p>Email Address</p>
+                  <div>
+                    <input
+                      placeholder="Enter email address"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="text-sm"
+                    />
+                  </div>
+                </div>
+              </div>
 
               <div className="flex justify-center mt-3">
                 <ReCAPTCHA
@@ -97,7 +92,7 @@ function ForgotPassword() {
                 <button
                   type="submit"
                   disabled={disable}
-                  className="flex items-center gap-3 text-base text-center shadow-md register-btn"
+                  className="flex items-center gap-3 shadow-md invest-now"
                 >
                   {disable && <Spin />}
                   <p>Request reset link</p>

@@ -7,7 +7,6 @@ import PasswordStrengthBar from "react-password-strength-bar";
 import { Checkbox, Spin, Input, notification } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { postDataAuth } from "../../hooks/useFetch";
-import useToken from "../../utils/useToken";
 
 import ReCAPTCHA from "react-google-recaptcha";
 import { robot_keys } from "../../utils/utils";
@@ -15,6 +14,7 @@ import { robot_keys } from "../../utils/utils";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as y from "yup";
+import useToken from "../../hooks/user-token";
 
 const schema = y
   .object({
@@ -253,7 +253,7 @@ function Register() {
                 <button
                   type="submit"
                   disabled={disable}
-                  className="flex items-center gap-3 text-base text-center shadow-md register-btn"
+                  className="flex items-center gap-3 shadow-md invest-now"
                 >
                   {disable && <Spin />}
                   <p>Create my profile</p>

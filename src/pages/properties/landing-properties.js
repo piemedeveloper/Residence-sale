@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import HomePropertyCell from "../home/home-property-cell";
 import postData from "../../hooks/useFetch";
-import { getToken } from "../../utils/useToken";
 import { Helmet } from "react-helmet";
+import { getToken } from "../../hooks/user-token";
 
 function LandingProperties() {
   document.title = "Residences";
@@ -56,7 +56,7 @@ function LandingProperties() {
       </Helmet>
 
       <div className="max-w-3xl px-2 py-12 mx-auto text-center heading-color">
-        <h1 className="text-4xl font-semibold">
+        <h1 className="text-4xl font-semibold md:text-5xl">
           Our Residences for Investment
         </h1>
         {getToken().length === 0 && (

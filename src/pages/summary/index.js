@@ -1,6 +1,5 @@
 import React from "react";
 import Info from "../../components/info";
-import _ from "lodash";
 import { numberFormatter } from "../../utils/utils";
 import residence from "../../assets/images/residences.jpeg";
 import SummaryContainer from "../../components/summary-container";

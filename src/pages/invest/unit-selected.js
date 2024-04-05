@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { low_investment } from "../../utils/data";
 import NumericInput from "react-numeric-input";
-import { Progress, Slider, Row, Col } from "antd";
+import { Progress, Slider } from "antd";
 import { numberFormatter } from "../../utils/utils";
 import _ from "lodash";
 import funded from "../../assets/images/funded.png";

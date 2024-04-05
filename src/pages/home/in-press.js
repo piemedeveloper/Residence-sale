@@ -39,13 +39,15 @@ function InPress() {
         loop={true}
         modules={[Autoplay, Pagination, Navigation, A11y]}
         slidesPerView={
-          windowSize[0] < 1050
-            ? windowSize[0] < 750
-              ? windowSize[0] < 600
-                ? 1.3
-                : 1.8
-              : 2.3
-            : 4.05
+          windowSize[0] < 1100
+            ? windowSize[0] < 1024
+              ? windowSize[0] < 768
+                ? windowSize[0] < 600
+                  ? 1.2
+                  : 1.5
+                : 2.2
+              : 2.8
+            : 3.8
         }
         navigation
         pagination={{ clickable: true }}

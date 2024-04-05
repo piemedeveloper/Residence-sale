@@ -1,6 +1,5 @@
 import React from "react";
 import Heading from "../../components/heading";
-import { Collapse } from "antd";
 import {
   FaSquareFacebook,
   FaSquareXTwitter,
@@ -24,7 +23,7 @@ function Rewards({ user }) {
           <ContentHeading title="my referral code" />
           <div className="py-12">
             <p className="text-2xl font-medium text-center uppercase md:text-3xl main-color">
-              {user.username}
+              {user.code}
             </p>
           </div>
         </div>
@@ -34,7 +33,7 @@ function Rewards({ user }) {
             <div className="flex items-center overflow-hidden share-bg rounded-xl">
               <p className="w-full px-6 text-base head-color line-clamp-1">
                 {window.location.origin}?referrer=
-                <span className="uppercase">{user.username}</span>
+                <span className="uppercase">{user.code}</span>
               </p>
               <button className="px-10 py-3.5 main-bg text-white text-base">
                 Copy

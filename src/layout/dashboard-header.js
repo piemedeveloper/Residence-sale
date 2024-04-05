@@ -13,7 +13,7 @@ import { BsWallet2 } from "react-icons/bs";
 import { FaRegUser } from "react-icons/fa";
 
 import { Drawer, Dropdown, Modal } from "antd";
-import { removeToken } from "../utils/useToken";
+import { removeToken } from "../hooks/user-token";
 
 const { confirm } = Modal;
 

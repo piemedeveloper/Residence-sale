@@ -160,6 +160,18 @@ function PropertyInvest({ user }) {
     },
     {
       key: "2",
+      label: "Crypto Currency Payment",
+      children: (
+        <CryptoPayments
+          to_pay={to_pay}
+          invest={invest}
+          unit={unit}
+          pdfDoc={pdfDoc}
+        />
+      ),
+    },
+    {
+      key: "3",
       label: "Pay with bank transfer",
       children: (
         <div>
@@ -167,11 +179,6 @@ function PropertyInvest({ user }) {
           <p>Coming soon</p>
         </div>
       ),
-    },
-    {
-      key: "3",
-      label: "Crypto Currency Payment",
-      children: <CryptoPayments to_pay={to_pay} invest={invest} unit={unit} />,
     },
   ];
 

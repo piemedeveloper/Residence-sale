@@ -19,20 +19,13 @@ function Home() {
       className="bg-white bg-top bg-no-repeat"
     >
       <TopContent />
-
       <HotelOwnership />
       <Numbers />
-
       <StartPortfolio />
-
       <CalculateInvestment />
-
       <Investing />
-
       <Platform />
-
       <Insights />
-
       <FaqData />
     </div>
   );

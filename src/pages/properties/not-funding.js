@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { numberFormatter } from "../../utils/utils";
 import { Progress, Spin } from "antd";
-import { getToken } from "../../utils/useToken";
+import { getToken } from "../../hooks/user-token";
 
 function NotFunding({ residence }) {
   return (
@@ -91,7 +91,7 @@ function NotFunding({ residence }) {
           {getToken().length === 0 && (
             <div className="flex justify-center mt-4">
               <Link to="/login">
-                <p className="mt-20 text-center register-btn">
+                <p className="my-6 invest-now">
                   Login / Sign up to view more information
                 </p>
               </Link>

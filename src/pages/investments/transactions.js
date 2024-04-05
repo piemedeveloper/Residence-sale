@@ -32,6 +32,9 @@ function Transactions({ records }) {
                 <p>Phone</p>
               </th>
               <th>
+                <p>Contarct</p>
+              </th>
+              <th>
                 <p>Status</p>
               </th>
 
@@ -41,23 +44,43 @@ function Transactions({ records }) {
             </tr>
           </thead>
           <tbody>
-            {_.map(records, (d, i) => (
-              <tr key={i}>
-                <td>{d.transaction_id}</td>
-                <td>{d.unit}</td>
-                <td>{numberFormatter(d.amount)}</td>
-                <td>{numberFormatter(ceil(d.fee))}</td>
-                <td>{numberFormatter(ceil(d.amount + d.fee))}</td>
-                <td>{d.phone}</td>
-                <td>
-                  {d.status === 0 && "Pending"}
-                  {d.status === 1 && "Successful"}
-                  {d.status === 2 && "Failed"}
-                </td>
+            {_.map(records, (d, i) => {
+              let contract = d.contract;
 
-                <td>{formatDate(d.creation_datetime)}</td>
-              </tr>
-            ))}
+              return (
+                <tr key={i}>
+                  <td>{d.transaction_id}</td>
+                  <td>{d.unit}</td>
+                  <td>{numberFormatter(d.amount)}</td>
+                  <td>{numberFormatter(ceil(d.fee))}</td>
+                  <td>{numberFormatter(ceil(d.amount + d.fee))}</td>
+                  <td>{d.phone}</td>
+                  <td>
+                    {contract.length > 0 && (
+                      <a href={contract} target="_blank" download>
+                        <div className="flex items-center gap-1">
+                          <FaFilePdf className="text-red-500" />
+                          <p>
+                            {
+                              contract.split("/")[
+                                contract.split("/").length - 1
+                              ]
+                            }
+                          </p>
+                        </div>
+                      </a>
+                    )}
+                  </td>
+                  <td>
+                    {d.status === 0 && "Pending"}
+                    {d.status === 1 && "Successful"}
+                    {d.status === 2 && "Failed"}
+                  </td>
+
+                  <td>{formatDate(d.creation_datetime)}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
