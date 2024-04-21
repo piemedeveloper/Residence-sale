@@ -5,12 +5,14 @@ import residence from "../../assets/images/residence.jpeg";
 import Info from "../../components/info";
 import postData from "../../hooks/useFetch";
 import InvestedUnitCell from "./invested-unit-cell";
-import Transactions from "./transactions";
+import { useSelector } from "react-redux";
+import { user } from "../../features";
 
-function Investments({ user }) {
+function Investments() {
   document.title = "Investments | Pieme";
   const [units, setUnits] = React.useState([]);
-  const [records, setRecords] = React.useState([]);
+
+  const userData = useSelector(user.user);
 
   React.useEffect(() => {
     postData({
@@ -19,32 +21,28 @@ function Investments({ user }) {
     }).then((data) => {
       if (data.success === 1) {
         setUnits(data.data);
-        setRecords(data.records);
       }
     });
   }, []);
   return (
-    <div className="mx-auto my-14 container-box">
+    <div className="container mx-auto">
       <Heading title="My Investments" description="" />
-      <br />
 
       {units.length > 0 ? (
         <div className="pt-4">
-          <div className="grid gap-6 pb-10 mx-auto sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 pb-10 mx-auto sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {units.map((unit, i) => (
               <InvestedUnitCell key={i} unit={unit} />
             ))}
           </div>
         </div>
       ) : (
-        <p className="text-lg text-center">You have not invested yet</p>
+        <p className="mb-6 text-lg">You have not invested yet</p>
       )}
-
-      {records.length > 0 && <Transactions records={records} />}
 
       <SummaryContainer
         bg={residence}
-        title={`${user.first_name}, don't miss out on the current available opportunities`}
+        title={`${userData.first_name}, don't miss out on the current available opportunities`}
         link="/dashboard/residences"
         label="View availble opportunities"
       />

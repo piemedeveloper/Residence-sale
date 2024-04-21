@@ -7,15 +7,12 @@ function PropertyCell({ residence }) {
   return (
     <div className="relative pb-8 overflow-hidden bg-white shadow-md rounded-xl">
       <Link to={`/dashboard/residences/${residence.slag}`}>
-        <div className="relative h-48 sm:h-52">
+        <div className="relative">
           <img
             src={residence.image}
             alt={residence.name}
-            className="object-cover w-full h-full"
+            className="object-cover w-full aspect-[5/3]"
           />
-          {/* <p className="absolute px-2 py-1 text-xs rounded-full top-3 left-3 period-bg">
-            {residence.period}-Year term
-          </p> */}
 
           {residence.paid > 0 && residence.paid === residence.price && (
             <div
@@ -33,43 +30,39 @@ function PropertyCell({ residence }) {
       </Link>
 
       <p
-        className={`uppercase text-white text-center p-1.5 text-sm tracking-wide ${
+        className={`capitalize text-white text-center p-1.5 text-sm tracking-wide ${
           residence.is_active === 1 ? "bg-orange-500" : "entire-bg"
         }`}
       >
         {residence.is_active === 1 ? "funding now" : "not funding now"}
       </p>
 
-      <div className="p-6">
+      <div className="p-4">
         <h2 className="text-center head-color uppercase text-[13px] font-medium">
-          {residence.name}
+          {residence.name},{" "}
+          <span className="font-bold main-color">{residence.location}</span>
         </h2>
-        <Link to={`/dashboard/residences/${residence.slag}`}>
-          <p className="my-1 mb-4 font-semibold text-center md:text-lg main-color">
-            {residence.location}
-          </p>
-        </Link>
 
         <Progress
           percent={parseInt((residence.paid / residence.price) * 100)}
         />
-        <div className="flex justify-between">
+        <div className="flex justify-between text-sm">
           <div>
-            <p className="text-base md:text-[15px]">Investors</p>
-            <p className="entire-color font-semibold text-base md:text-[15px]">
+            <p className="">Investors</p>
+            <p className="text-[0.9rem] font-semibold entire-color">
               {numberFormatter(residence.investors)}
             </p>
           </div>
           <div>
-            <p className="text-base md:text-[15px] text-end">Target</p>
-            <p className="entire-color font-semibold text-end text-base md:text-[15px]">
+            <p className="text-end">Target</p>
+            <p className="text-[0.9rem] font-semibold entire-color text-end">
               ${numberFormatter(residence.price)}
             </p>
           </div>
         </div>
 
-        <p className="mt-3 text-2xl font-semibold text-center md:text-3xl main-color">
-          {residence.annual_yield}%*
+        <p className="mt-2 text-2xl font-semibold text-center md:text-3xl main-color">
+          {residence.annual_yield}%
         </p>
         <p className="mt-1 mb-3 text-center head-color">
           Forecast annual rental yield
@@ -78,7 +71,7 @@ function PropertyCell({ residence }) {
 
       <div className="absolute bottom-0 w-full p-3 border-t">
         <Link to={`/dashboard/residences/${residence.slag}`}>
-          <p className="text-base font-medium text-center entire-color">
+          <p className="text-[0.95rem] font-medium text-center entire-color">
             View details
           </p>
         </Link>

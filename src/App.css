@@ -3,10 +3,17 @@
 @tailwind utilities;
 
 body {
-  /* background-color: white; */
-  font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto,
-    helvetica neue, Arial, noto sans, sans-serif, apple color emoji,
-    segoe ui emoji, segoe ui symbol, noto color emoji;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
 .container {
@@ -30,7 +37,8 @@ body {
 }
 :root {
   --main-color: #036eb8;
-  /* --main-color: #1f9bf1; */
+
+  /* --main-color: #1DA1F2; */
   /* --light-main-color: #4fa8e7; */
   --light-main-color: #0482dc;
   /* --deep-main-color: #1981cb; */
@@ -40,7 +48,12 @@ body {
   --entire-color: #2b7079;
 }
 .main-bg {
-  background-color: var(--main-color);
+  /* background-color: var(--main-color); */
+  background-color: #191825;
+}
+
+.main-light-bg {
+  background-color: var(--light-main-color);
 }
 
 .head-color {
@@ -52,7 +65,12 @@ body {
 }
 
 .active-link {
-  background-color: var(--deep-main-color);
+  color: white !important;
+  font-weight: 550;
+  /* background-color: var(--deep-main-color); */
+}
+.inactive-link {
+  color: #a3a3a7;
 }
 
 .main-deep-bg {
@@ -65,10 +83,6 @@ body {
 
 .heading-bg {
   background-color: #013e69;
-}
-
-.link-hover:hover {
-  background-color: var(--light-main-color);
 }
 
 .period-bg {
@@ -203,9 +217,9 @@ ul > li {
   -o-border-radius: 10px;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1350px) {
   .container {
-    max-width: 1250px;
+    max-width: 1350px;
   }
 }
 
@@ -269,6 +283,7 @@ ul > li {
 
 .active-menu {
   color: var(--main-color);
+  font-weight: 550;
 }
 
 .how-detail ol {
@@ -324,7 +339,12 @@ ul > li {
 .ant-spin-dot-spin i {
   background-color: white !important;
 }
-
+.loader {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  width: 100%;
+}
 .loader .ant-spin-dot-spin i {
   background-color: rgb(33, 113, 179) !important;
 }
@@ -409,4 +429,30 @@ img {
 
 .res-progress .ant-progress-outer {
   margin-top: 10px;
+}
+
+.crypto-page .ant-tabs-tab {
+  background-color: rgb(238, 238, 238) !important;
+}
+
+.crypto-page .ant-tabs-tab-active {
+  background-color: white !important;
+}
+
+.crypto-page .ant-tabs-nav-list {
+  gap: 10px !important;
+}
+
+.invest-now {
+  background-color: var(--main-color);
+  color: white;
+  font-weight: 550;
+  padding: 0.7rem 4rem;
+  border-radius: 999px;
+  -webkit-border-radius: 999px;
+  -moz-border-radius: 999px;
+  -ms-border-radius: 999px;
+  -o-border-radius: 999px;
+  font-size: 0.95rem;
+  line-height: 1.5rem;
 }

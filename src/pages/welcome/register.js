@@ -7,7 +7,6 @@ import PasswordStrengthBar from "react-password-strength-bar";
 import { Checkbox, Spin, Input, notification } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { postDataAuth } from "../../hooks/useFetch";
-import useToken, { getToken } from "../../utils/useToken";
 
 import ReCAPTCHA from "react-google-recaptcha";
 import { robot_keys } from "../../utils/utils";
@@ -15,6 +14,7 @@ import { robot_keys } from "../../utils/utils";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as y from "yup";
+import useToken from "../../hooks/user-token";
 
 const schema = y
   .object({
@@ -36,6 +36,7 @@ const schema = y
 
 function Register() {
   const recaptcha = React.useRef();
+
   const {
     register,
     handleSubmit,
@@ -53,14 +54,6 @@ function Register() {
     strength: 0,
     agree: false,
   });
-
-  React.useEffect(() => {
-    if (getToken().length > 0) {
-      navigate("/dashboard");
-      window.location.reload(false);
-    }
-    // eslint-disable-next-line
-  }, []);
 
   const onSubmit = async (sub) => {
     if (data.phone_no.length === 0)
@@ -103,6 +96,7 @@ function Register() {
             description: resp.message,
           });
         else {
+          navigate("/dashboard");
           setToken(resp.token);
           window.location.reload(false);
         }
@@ -259,7 +253,7 @@ function Register() {
                 <button
                   type="submit"
                   disabled={disable}
-                  className="flex items-center gap-3 text-base text-center shadow-md register-btn"
+                  className="flex items-center gap-3 shadow-md invest-now"
                 >
                   {disable && <Spin />}
                   <p>Create my profile</p>

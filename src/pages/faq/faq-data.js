@@ -43,7 +43,7 @@ function FaqData() {
   return (
     <div className="pb-10 gray-bg">
       <div className="container mx-auto">
-        <h1 className="pt-10 pb-6 text-5xl font-medium text-center main-color">
+        <h1 className="pt-10 pb-6 text-5xl font-medium text-center heading-color">
           Frequently asked questions
         </h1>
 

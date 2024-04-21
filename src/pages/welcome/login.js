@@ -3,13 +3,13 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { Spin, notification } from "antd";
 import { postDataAuth } from "../../hooks/useFetch";
-import useToken, { getToken } from "../../utils/useToken";
 import ReCAPTCHA from "react-google-recaptcha";
 import { robot_keys } from "../../utils/utils";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as y from "yup";
+import useToken from "../../hooks/user-token";
 
 const schema = y
   .object({
@@ -19,6 +19,8 @@ const schema = y
   .required();
 
 function Login() {
+  document.title = "Login | Pieme";
+
   const {
     register,
     handleSubmit,
@@ -27,24 +29,16 @@ function Login() {
     resolver: yupResolver(schema),
   });
 
-  document.title = "Login | Pieme";
   const navigate = useNavigate();
   const { setToken } = useToken();
   const [disable, setDisable] = React.useState(false);
-
-  React.useEffect(() => {
-    if (getToken().length > 0) {
-      navigate("/dashboard");
-      window.location.reload(false);
-    }
-    // eslint-disable-next-line
-  }, []);
 
   const recaptcha = React.useRef();
 
   const onSubmit = async (data) => {
     const captchaValue = recaptcha.current.getValue();
     if (!captchaValue) await recaptcha.current.executeAsync();
+
     setDisable(true);
     postDataAuth({
       service: "login",
@@ -95,7 +89,6 @@ function Login() {
                   <p>Password</p>
                   <div>
                     <input
-                      autoComplete={true}
                       type="password"
                       placeholder="Enter your password"
                       {...register("password")}
@@ -118,7 +111,7 @@ function Login() {
                 <button
                   type="submit"
                   disabled={disable}
-                  className="flex items-center gap-3 text-base text-center shadow-md register-btn"
+                  className="flex items-center gap-3 shadow-md invest-now"
                 >
                   {disable && <Spin />}
                   <p>Sign in</p>

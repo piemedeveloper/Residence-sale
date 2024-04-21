@@ -62,7 +62,7 @@ function Platform() {
 
                 <div className="flex mt-10">
                   <Link to="/residences">
-                    <p className="mt-20 text-center register-btn">Invest Now</p>
+                    <p className="invest-now">Invest Now</p>
                   </Link>
                 </div>
               </div>

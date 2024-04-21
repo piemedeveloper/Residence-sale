@@ -4,10 +4,10 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Input, notification, Spin } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { postDataAuth } from "../../hooks/useFetch";
-import { getToken } from "../../utils/useToken";
 import ReCAPTCHA from "react-google-recaptcha";
 import { robot_keys } from "../../utils/utils";
 import PasswordStrengthBar from "react-password-strength-bar";
+import { getToken } from "../../hooks/user-token";
 
 function ResetPassword() {
   document.title = "Reset Password | Pieme";

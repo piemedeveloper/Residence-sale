@@ -2,11 +2,11 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import _ from "lodash";
 import HomePropertyCell from "../home/home-property-cell";
-import { getToken } from "../../utils/useToken";
 import postData from "../../hooks/useFetch";
 // import UnitCell from "./unit-cell";
 import NotFunding from "./not-funding";
 import ResidenceUnitCell from "./residence-unit-cell";
+import { getToken } from "../../hooks/user-token";
 
 function LandingPropertyDetail() {
   let location = useLocation();
@@ -52,7 +52,7 @@ function LandingPropertyDetail() {
   }, [location]);
 
   return (
-    <div className="gray-bg">
+    <div className="py-10 gray-bg">
       <NotFunding residence={residence} />
 
       {getToken().length > 0 && units.length > 0 && (
@@ -77,7 +77,7 @@ function LandingPropertyDetail() {
 
       <div className="py-12 bg-white">
         <div className="container mx-auto text-lg text-center">
-          <h2 className="mb-3 text-4xl font-semibold text-center heading-color">
+          <h2 className="mb-3 text-3xl font-semibold text-center heading-color">
             Other available Investment Opportunities
           </h2>
           <p className="menu-color">
@@ -99,7 +99,7 @@ function LandingPropertyDetail() {
           )}
         </div>
 
-        <div className="container grid gap-8 pb-16 mx-auto mt-10 md:grid-cols-2 lg:grid-cols-3">
+        <div className="container grid gap-6 pb-16 mx-auto mt-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {_.filter(residences, (p) => p.slag !== pid).map((residence, i) => (
             <HomePropertyCell key={i} residence={residence} />
           ))}

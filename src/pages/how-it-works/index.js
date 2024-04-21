@@ -84,13 +84,13 @@ function HowItWorks() {
       </Helmet>
 
       <div className="max-w-3xl px-2 py-12 mx-auto text-center heading-color">
-        <h1 className="text-3xl font-semibold md:text-5xl">
+        <h1 className="text-3xl font-semibold md:text-4xl">
           How Pieme Community Hotel Ownership Works
         </h1>
         <p className="mt-4 text-lg">{page.description}</p>
       </div>
 
-      <div className="container grid gap-10 pb-6 mx-auto mt-3 md:grid-cols-2 lg:grid-cols-3">
+      <div className="container grid gap-6 pb-6 mx-auto mt-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {how_it_works.map((h, i) => (
           <InsightCell key={i} data={h} />
         ))}
@@ -122,13 +122,15 @@ function HowItWorks() {
             spaceBetween={1}
             modules={[Autoplay, Navigation, A11y]}
             slidesPerView={
-              windowSize[0] < 1050
-                ? windowSize[0] < 800
-                  ? windowSize[0] < 600
-                    ? 1.1
-                    : 1.5
-                  : 2.1
-                : 3.1
+              windowSize[0] < 1100
+                ? windowSize[0] < 1024
+                  ? windowSize[0] < 768
+                    ? windowSize[0] < 600
+                      ? 1.2
+                      : 1.5
+                    : 2.2
+                  : 2.8
+                : 3.8
             }
             navigation
             className="mt-10"

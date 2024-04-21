@@ -59,7 +59,7 @@ function PropertyDetail() {
 
   return (
     <div>
-      <div className="mx-auto container-box">
+      <div className="container mx-auto">
         {Object.keys(residence).length > 0 && (
           <>
             {residence.is_active === 0 ? (
@@ -75,7 +75,7 @@ function PropertyDetail() {
         0 && (
         <div className="py-12 bg-white">
           <div className="container mx-auto text-lg text-center">
-            <h2 className="mb-3 text-4xl font-semibold text-center heading-color">
+            <h2 className="mb-3 text-3xl font-semibold text-center heading-color">
               Current available Investment Opportunities
             </h2>
             <p className="menu-color">
@@ -84,7 +84,7 @@ function PropertyDetail() {
             </p>
           </div>
 
-          <div className="container grid gap-8 pb-16 mx-auto mt-10 md:grid-cols-2 lg:grid-cols-3">
+          <div className="container grid gap-6 pb-16 mx-auto mt-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {_.filter(
               residences,
               (p) => p.is_active === 1 && p.slag !== pid
@@ -96,7 +96,7 @@ function PropertyDetail() {
       )}
       {units.length > 0 && (
         <div className="py-10 bg-white">
-          <h2 className="container max-w-2xl mx-auto mb-10 text-3xl font-medium text-center md:text-4xl heading-color">
+          <h2 className="container max-w-2xl mx-auto mb-10 text-3xl font-semibold text-center md:text-3xl heading-color">
             Available units at Pieme Residence
             <br /> {residence.name}
           </h2>

@@ -10,7 +10,7 @@ import { Spin, Modal } from "antd";
 import jsPDF from "jspdf";
 
 import axios from "axios";
-import CryptoPayments from "../properties/crypto-payments";
+import CryptoPayments from "../properties/crypto/crypto-payments";
 import Contract from "../documents/contract";
 import UnitSelected from "./unit-selected";
 import MobileMoneyPayment from "../properties/mobile-money-payment";
@@ -139,7 +139,7 @@ function PropertyInvest({ user }) {
     {
       label: "Total to Pay",
       value: `$ ${numberFormatter(
-        parseFloat(invest) * 0.03 + parseFloat(invest)
+        ceil(parseFloat(invest) * 0.03) + parseFloat(invest)
       )}`,
     },
   ];
@@ -160,6 +160,18 @@ function PropertyInvest({ user }) {
     },
     {
       key: "2",
+      label: "Crypto Currency Payment",
+      children: (
+        <CryptoPayments
+          to_pay={to_pay}
+          invest={invest}
+          unit={unit}
+          pdfDoc={pdfDoc}
+        />
+      ),
+    },
+    {
+      key: "3",
       label: "Pay with bank transfer",
       children: (
         <div>
@@ -167,11 +179,6 @@ function PropertyInvest({ user }) {
           <p>Coming soon</p>
         </div>
       ),
-    },
-    {
-      key: "3",
-      label: "Crypto Currency Payment",
-      children: <CryptoPayments to_pay={to_pay} invest={invest} unit={unit} />,
     },
   ];
 
@@ -216,6 +223,7 @@ function PropertyInvest({ user }) {
                 signature: docSign.signature,
               },
             }).then((data) => {
+              setDisable(false);
               if (data.success === 1) {
                 message.success("Document signed");
                 next();
@@ -363,7 +371,7 @@ function PropertyInvest({ user }) {
         </div>
       </Modal>
 
-      <div className="container py-12 mx-auto">
+      <div className="container mx-auto">
         <div>
           <div className="max-w-5xl mx-auto">
             <Steps current={current} items={items} />
@@ -377,7 +385,7 @@ function PropertyInvest({ user }) {
                 {current === 2 && (
                   <div>
                     <div className="max-w-4xl mx-auto">
-                      <h2 className="text-2xl text-center heading-color">
+                      <h2 className="text-xl text-center heading-color">
                         You are investing{" "}
                         <span className="font-medium">
                           ${numberFormatter(invest)}
@@ -421,7 +429,7 @@ function PropertyInvest({ user }) {
 
                 {current === 3 && (
                   <div className="max-w-3xl mx-auto">
-                    <h2 className="text-2xl text-center md:text-3xl heading-color">
+                    <h2 className="text-2xl text-center md:text-2xl heading-color">
                       You are investing{" "}
                       <span className="font-medium">
                         ${numberFormatter(invest)}
@@ -432,7 +440,7 @@ function PropertyInvest({ user }) {
                       Residence
                     </h2>
 
-                    <h3 className="pb-3 mt-3 text-xl text-center md:text-2xl heading-color">
+                    <h3 className="pb-3 mt-3 text-xl text-center heading-color">
                       Select your payment method:
                     </h3>
 

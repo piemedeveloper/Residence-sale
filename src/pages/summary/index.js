@@ -1,63 +1,51 @@
 import React from "react";
-import Heading from "../../components/heading";
 import Info from "../../components/info";
-import ContentHeading from "../../components/content-heading";
-import { Tooltip } from "antd";
-import _ from "lodash";
 import { numberFormatter } from "../../utils/utils";
 import residence from "../../assets/images/residences.jpeg";
-// import residence1 from "../../assets/images/residence.jpeg";
 import SummaryContainer from "../../components/summary-container";
-// import GraphSection from "./graph-section";
 import postData from "../../hooks/useFetch";
+import { useSelector } from "react-redux";
+import { user } from "../../features";
 
-function Summary({ user }) {
+import { MdOutlinePayments, MdOutlinePayment } from "react-icons/md";
+import { PiKeyReturn } from "react-icons/pi";
+import { BiMoneyWithdraw } from "react-icons/bi";
+import { RiFundsBoxLine } from "react-icons/ri";
+import { HiOutlineWallet } from "react-icons/hi2";
+import { BsHouseCheck } from "react-icons/bs";
+import logo from "../../assets/images/logo.png";
+
+function Summary() {
   document.title = "Summary | Pieme";
+  const userData = useSelector(user.user);
 
   const [summary, setsummary] = React.useState({});
 
-  const investments = [
-    {
-      title: "Current \ninvestments",
-      amount: Object.keys(summary).length > 0 ? summary.current_investment : 0,
-    },
-    {
-      title: "Total amount\ninvested",
-      amount:
-        Object.keys(summary).length > 0
-          ? "$" + numberFormatter(summary.total_investment)
-          : 0,
-    },
-  ];
-
-  const returns = [
-    {
-      title: "Total\nreturns",
-      tip: "The sum of all rental returns plus appreciation your portfolio has generated to date",
-      amount: 0,
-    },
-    {
-      title: "Average annual\nrental yield",
-      tip: "What your portfolio has generated per year as a percentage of your total invested capital",
-      amount: 0,
-    },
-  ];
-
   const funds = [
     {
-      title: "Available\nfunds in wallet",
-      color: "lightgreen",
+      icon: <HiOutlineWallet />,
+      title: "Available funds in wallet",
+      color: "green",
       amount: 0,
     },
     {
-      title: "Total\nre-invested",
+      icon: <RiFundsBoxLine />,
+      title: "Total re-invested",
       color: "#036eb8",
       amount: 0,
     },
     {
-      title: "Total\nwithdrawn",
+      icon: <BiMoneyWithdraw />,
+      title: "Total withdrawn",
       color: "orange",
       amount: 0,
+    },
+    {
+      icon: <img src={logo} alt="PIE" className="object-cover w-6 h-6" />,
+      title: "PIE",
+      color: "#036eb8",
+      amount:
+        Object.keys(summary).length > 0 ? numberFormatter(summary.pie) : 0,
     },
   ];
 
@@ -72,89 +60,88 @@ function Summary({ user }) {
     });
   }, []);
 
+  const portfolio = [
+    {
+      icon: <MdOutlinePayment />,
+      title: "Current investments",
+      amount: Object.keys(summary).length > 0 ? summary.current_investment : 0,
+    },
+    {
+      icon: <MdOutlinePayments />,
+      title: "Total amount invested",
+      amount:
+        Object.keys(summary).length > 0
+          ? "$" + numberFormatter(summary.total_investment)
+          : 0,
+    },
+    {
+      icon: <PiKeyReturn />,
+      title: "Total Returns",
+      amount: 0,
+    },
+    {
+      icon: <BsHouseCheck />,
+      title: "Annual rental yield",
+      amount: 0,
+    },
+  ];
+
   return (
-    <div className="mx-auto my-14 container-box">
-      <Heading title="Summary" description="" />
-      <br />
+    <div className="container mx-auto">
+      <h2 className="mb-3 font-medium ms-2">Your Portfolio</h2>
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+        {portfolio.map((p, i) => (
+          <div
+            key={i}
+            className="flex items-center gap-4 p-4 overflow-hidden bg-white border rounded-lg"
+          >
+            <div className="p-2 text-2xl text-white rounded-full main-light-bg">
+              {p.icon}
+            </div>
+            <div>
+              <p className="text-sm font-medium whitespace-pre-line head-color">
+                {p.title}
+              </p>
+              <p className="mt-1 text-lg font-bold whitespace-pre-line head-color">
+                {p.amount}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="mt-4 mb-3 font-medium ms-2">Funds</h2>
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+        {funds.map((p, i) => (
+          <div
+            key={i}
+            className="flex items-center gap-4 p-4 overflow-hidden bg-white border rounded-lg"
+          >
+            <div
+              className="p-2 text-2xl text-white rounded-full"
+              style={{ backgroundColor: p.color }}
+            >
+              {p.icon}
+            </div>
+            <div>
+              <p className="text-sm font-medium whitespace-pre-line head-color">
+                {p.title}
+              </p>
+              <p className="mt-1 text-lg font-bold whitespace-pre-line head-color">
+                {p.amount}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+      {/* <Heading title="Summary" description="" />
+      <br /> */}
 
       <Info desc="The income generated in Pieme Residences fluctuates depending on the season, similar to how the value of any investment can decrease as well as increase due to market fluctuations and other external factors. Forecasts regarding the income are only estimates and are not reliable." />
 
-      <div className="flex flex-col w-full gap-6 md:flex-row">
-        <div className="w-full bg-white rounded-xl">
-          <ContentHeading title="YOUR PORTFOLIO" />
-          <div className="grid grid-cols-2 gap-6 p-5">
-            {_.map(investments, (investment, i) => (
-              <div key={i}>
-                <p className="text-base whitespace-pre-line head-color">
-                  {investment.title}
-                </p>
-                <p className="text-xl font-semibold main-color">
-                  {investment.amount}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="px-5 my-3">
-            <div className="w-full h-4 rounded-full invest-input"></div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-6 p-5">
-            {_.map(returns, (r, i) => (
-              <div key={i}>
-                <Tooltip placement="top" title={r.tip}>
-                  <p className="text-base underline whitespace-pre-line cursor-pointer head-color">
-                    {r.title}
-                  </p>
-                </Tooltip>
-                <p className="text-xl font-semibold main-color">{r.amount}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="w-full bg-white rounded-xl">
-          <ContentHeading title="FUNDS" />
-          <div className="grid grid-cols-2 gap-6 p-5 sm:grid-cols-3">
-            {_.map(funds, (f, i) => (
-              <div key={i} className="flex gap-2">
-                <div
-                  style={{ backgroundColor: f.color }}
-                  className="w-3 h-3 mt-1 rounded-full"
-                ></div>
-                <div>
-                  <p className="text-base whitespace-pre-line head-color">
-                    {f.title}
-                  </p>
-                  <p className="text-xl font-semibold main-color">
-                    ${numberFormatter(f.amount)}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="px-5 my-3">
-            <div className="w-full h-4 rounded-full invest-input"></div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-6 p-5 sm:grid-cols-3">
-            <div>
-              <p className="text-base whitespace-pre-line head-color">$PIE</p>
-              <p className="text-xl font-semibold main-color">
-                {Object.keys(summary).length > 0
-                  ? numberFormatter(summary.pie)
-                  : 0}
-              </p>
-            </div>
-
-            <div>{/* <button>Withdraw</button> */}</div>
-          </div>
-        </div>
-      </div>
-
       <SummaryContainer
         bg={residence}
-        title={`${user.first_name}, don't miss out on the current available opportunities`}
+        title={`${userData.first_name}, don't miss out on the current available opportunities`}
         link="/dashboard/residences"
         label="View available opportunities"
       />

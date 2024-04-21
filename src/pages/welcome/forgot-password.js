@@ -1,11 +1,11 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 import { Spin, notification } from "antd";
 import { postDataAuth } from "../../hooks/useFetch";
-import { getToken } from "../../utils/useToken";
 import ReCAPTCHA from "react-google-recaptcha";
 import { robot_keys } from "../../utils/utils";
+import { AuthContext } from "../../context/auth-context";
 
 function ForgotPassword() {
   document.title = "Forgot Password | Pieme";
@@ -13,15 +13,8 @@ function ForgotPassword() {
   const [disable, setDisable] = React.useState(false);
   const [email, setEmail] = React.useState("");
 
-  React.useEffect(() => {
-    if (getToken().length > 0) {
-      navigate("/dashboard");
-      window.location.reload(false);
-    }
-    // eslint-disable-next-line
-  }, []);
-
   const recaptcha = React.useRef();
+  const { isAuthenticated } = useContext(AuthContext);
 
   const login = async (e) => {
     e.preventDefault();
@@ -58,6 +51,7 @@ function ForgotPassword() {
 
   return (
     <div>
+      {isAuthenticated && <Navigate to="/dashboard" />}
       <div className="bg-white">
         <div className="container py-12 mx-auto text-center heading-color">
           <h1 className="text-4xl font-semibold md:text-5xl">
@@ -70,26 +64,21 @@ function ForgotPassword() {
       </div>
       <div className="gray-bg">
         <div className="container py-12 mx-auto">
-          <div className="max-w-xl mx-auto detail-form">
+          <div className="max-w-xl mx-auto">
             <form onSubmit={login}>
-              <table>
-                <tbody>
-                  <tr>
-                    <td>
-                      <p>Email Address</p>
-                    </td>
-                    <td>
-                      <input
-                        type="email"
-                        placeholder="Enter email address"
-                        className="text-base"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <div className="detail-form">
+                <div>
+                  <p>Email Address</p>
+                  <div>
+                    <input
+                      placeholder="Enter email address"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="text-sm"
+                    />
+                  </div>
+                </div>
+              </div>
 
               <div className="flex justify-center mt-3">
                 <ReCAPTCHA
@@ -103,7 +92,7 @@ function ForgotPassword() {
                 <button
                   type="submit"
                   disabled={disable}
-                  className="flex items-center gap-3 text-base text-center shadow-md register-btn"
+                  className="flex items-center gap-3 shadow-md invest-now"
                 >
                   {disable && <Spin />}
                   <p>Request reset link</p>

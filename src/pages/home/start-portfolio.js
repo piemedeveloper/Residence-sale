@@ -44,42 +44,36 @@ function StartPortfolio() {
 
   return (
     <div className="gray-bg">
-      <div className="container py-12 mx-auto">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-medium text-center md:text-4xl heading-color">
-            Commence Your Hotel Business Journey Today
-          </h2>
+      <div className="container py-16 mx-auto">
+        <h2 className="max-w-xl mx-auto text-3xl font-semibold text-center md:text-4xl heading-color">
+          Commence Your Hotel Business Journey Today
+        </h2>
 
-          <div className="flex justify-center pb-6 mt-8">
-            <Link to="/residences">
-              <p className="mt-20 text-center register-btn">Invest Now</p>
-            </Link>
-          </div>
-
-          <Swiper
-            spaceBetween={1}
-            modules={[Autoplay, Navigation, A11y]}
-            slidesPerView={
-              windowSize[0] < 1050
-                ? windowSize[0] < 800
+        <Swiper
+          spaceBetween={1}
+          modules={[Autoplay, Navigation, A11y]}
+          slidesPerView={
+            windowSize[0] < 1100
+              ? windowSize[0] < 1024
+                ? windowSize[0] < 768
                   ? windowSize[0] < 600
                     ? 1.2
                     : 1.5
                   : 2.2
-                : 3.2
-            }
-            navigation
-            className="mt-10"
-          >
-            {residences.map((residence, i) => (
-              <SwiperSlide key={i}>
-                <div className="mb-10 me-8">
-                  <HomePropertyCell residence={residence} />
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
+                : 2.8
+              : 3.8
+          }
+          navigation
+          className="mt-10"
+        >
+          {residences.map((residence, i) => (
+            <SwiperSlide key={i}>
+              <div className="mb-10 me-8">
+                <HomePropertyCell residence={residence} />
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   );

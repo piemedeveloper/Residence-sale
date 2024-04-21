@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import HomePropertyCell from "../home/home-property-cell";
 import postData from "../../hooks/useFetch";
-import { getToken } from "../../utils/useToken";
 import { Helmet } from "react-helmet";
+import { getToken } from "../../hooks/user-token";
 
 function LandingProperties() {
   document.title = "Residences";
@@ -56,7 +56,7 @@ function LandingProperties() {
       </Helmet>
 
       <div className="max-w-3xl px-2 py-12 mx-auto text-center heading-color">
-        <h1 className="text-5xl font-semibold">
+        <h1 className="text-4xl font-semibold md:text-5xl">
           Our Residences for Investment
         </h1>
         {getToken().length === 0 && (
@@ -73,7 +73,7 @@ function LandingProperties() {
         )}
       </div>
 
-      <div className="container grid gap-10 pb-16 mx-auto mt-3 md:grid-cols-2 lg:grid-cols-3">
+      <div className="container grid gap-6 pb-16 mx-auto mt-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {residences.map((residence, i) => (
           <HomePropertyCell key={i} residence={residence} />
         ))}

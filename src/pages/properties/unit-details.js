@@ -34,7 +34,7 @@ function UnitDetails() {
   }, [location]);
 
   return (
-    <div className="container py-10 mx-auto">
+    <div className="container mx-auto">
       {Object.keys(unit).length === 0 ? (
         <div className="flex justify-center loader">
           <Spin size="large" />

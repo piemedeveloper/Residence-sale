@@ -43,9 +43,7 @@ function TopContent() {
 
             <div className="flex">
               <Link to="/residences">
-                <p className="text-base text-center md:text-base register-btn">
-                  Invest Now
-                </p>
+                <p className="text-base invest-now">Invest Now</p>
               </Link>
             </div>
           </div>
@@ -78,7 +76,7 @@ function TopContent() {
 
           <div className="flex justify-center mt-12">
             <Link to="/residences">
-              <p className="mt-20 text-center register-btn">Invest Now</p>
+              <p className="mt-20 invest-now">Invest Now</p>
             </Link>
           </div>
         </div>
