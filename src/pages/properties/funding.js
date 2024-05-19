@@ -19,9 +19,8 @@ function Funding({ residence }) {
             <div className="w-full lg:w-3/5">
               <div className="relative overflow-hidden rounded-md ">
                 <p
-                  className={`uppercase text-white text-center p-1.5 text-base tracking-wide ${
-                    residence.is_active === 1 ? "main-bg" : "entire-bg"
-                  }`}
+                  className={`uppercase text-white text-center p-1.5 text-base tracking-wide ${residence.is_active === 1 ? "main-bg" : "entire-bg"
+                    }`}
                 >
                   {residence.is_active === 1
                     ? "funding now"
@@ -73,6 +72,11 @@ function Funding({ residence }) {
                   </div>
                 </div>
 
+                <a href={residence.pitch_deck} target="_blank" rel="noreferrer" className="flex">
+                  <p className="px-10 py-2 mt-6 text-sm text-white main-bg rounded-tr-2xl">
+                    Pitch deck
+                  </p>
+                </a>
                 <div className="mt-10 res-progress">
                   <p>Percentage Investment</p>
                   <Progress

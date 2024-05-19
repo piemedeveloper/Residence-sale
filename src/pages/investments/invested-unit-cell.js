@@ -5,7 +5,10 @@ import { Link } from "react-router-dom";
 
 function InvestedUnitCell({ unit }) {
   return (
-    <Link to={`/dashboard/unit/${unit.enc_id}`}>
+    <Link to={`${unit.amount > 0 && unit.amount === unit.cost
+      ? `/dashboard/unit/${unit.enc_id}`
+      : `/dashboard/residences/invest/${unit.enc_id}`
+      }`}>
       <div className="overflow-hidden bg-white rounded-lg home-property">
         <div className="relative h-42">
           <img

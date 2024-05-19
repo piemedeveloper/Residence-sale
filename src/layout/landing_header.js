@@ -25,14 +25,15 @@ function LandingHeader() {
     { label: "Home", url: "", links: [] },
     { label: "How it works", url: "how-it-works", links: [] },
     { label: "Residences", url: "residences", links: [] },
-    {
-      label: "About",
-      url: "about team",
-      links: [
-        { label: "About Pieme", url: "about" },
-        // { label: "Meet the team", url: "team" },
-      ],
-    },
+    // {
+    //   label: "About",
+    //   url: "about team",
+    //   links: [
+    //     { label: "About Pieme", url: "about" },
+    //   ],
+    // },
+    { label: "About", url: "about", links: [] },
+    { label: "Blog", url: "blog", links: [] },
     { label: "Questions", url: "faq", links: [] },
   ];
 
@@ -67,11 +68,10 @@ function LandingHeader() {
                 arrow
               >
                 <div
-                  className={`flex items-center p-2 menu-color hover:text-black cursor-pointer gap-2 ${
-                    active.length > 0 && m.url.includes(active)
-                      ? "active-menu"
-                      : ""
-                  }`}
+                  className={`flex items-center p-2 menu-color hover:text-black cursor-pointer gap-2 ${active.length > 0 && m.url.includes(active)
+                    ? "active-menu"
+                    : ""
+                    }`}
                 >
                   <p className="h-full">{m.label}</p>
                   <TiArrowSortedDown />
@@ -80,12 +80,11 @@ function LandingHeader() {
             ) : (
               <Link key={i} to={`/${m.url}`} onClick={onClose}>
                 <p
-                  className={`h-full p-2 menu-color hover:text-black ${
-                    (active.length === 0 && m.url === active) ||
+                  className={`h-full p-2 menu-color hover:text-black ${(active.length === 0 && m.url === active) ||
                     (active.length > 0 && m.url.includes(active))
-                      ? "active-menu"
-                      : ""
-                  }`}
+                    ? "active-menu"
+                    : ""
+                    }`}
                 >
                   {m.label}
                 </p>
@@ -135,11 +134,10 @@ function LandingHeader() {
                   arrow
                 >
                   <div
-                    className={`flex items-center p-5 menu-color hover:text-black cursor-pointer gap-2 ${
-                      active.length > 0 && m.url.includes(active)
-                        ? "active-menu"
-                        : ""
-                    }`}
+                    className={`flex items-center p-5 menu-color hover:text-black cursor-pointer gap-2 ${active.length > 0 && m.url.includes(active)
+                      ? "active-menu"
+                      : ""
+                      }`}
                   >
                     <p className="h-full">{m.label}</p>
                     <TiArrowSortedDown />
@@ -148,12 +146,11 @@ function LandingHeader() {
               ) : (
                 <Link key={i} to={`/${m.url}`}>
                   <p
-                    className={`h-full p-5 menu-color hover:text-black ${
-                      (active.length === 0 && m.url === active) ||
+                    className={`h-full p-5 menu-color hover:text-black ${(active.length === 0 && m.url === active) ||
                       (active.length > 0 && m.url.includes(active))
-                        ? "active-menu"
-                        : ""
-                    }`}
+                      ? "active-menu"
+                      : ""
+                      }`}
                   >
                     {m.label}
                   </p>

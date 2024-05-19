@@ -31,7 +31,7 @@ import HowItWorksDetails from "./pages/how-it-works/how-it-works-details";
 import TermsAndConditions from "./pages/documents/terms-and-conditions";
 import DashboardContent from "./layout/dashboard-content";
 import { useSelector } from "react-redux";
-import { user, addUsers } from "./features";
+import { user } from "./features";
 import Summary from "./pages/summary";
 import Properties from "./pages/properties";
 import PropertyInvest from "./pages/invest/property-invest";
@@ -42,6 +42,7 @@ import Documents from "./pages/documents";
 import Investments from "./pages/investments";
 import NotFound from "./pages/not-found";
 import OpenRoute from "./hooks/open-routes";
+import BlogPosts from "./pages/blog";
 
 function App() {
   // const projectId = "04f3c387a6d55f5a29fd58b99c63a224";
@@ -59,93 +60,98 @@ function App() {
   // 3. Create modal
   createWeb3Modal({ wagmiConfig, projectId, chains });
   return (
-    <WagmiConfig config={wagmiConfig}>
-      <BrowserRouter>
-        <AuthProvider>
-          <Routes>
-            <Route path="/" element={<LandingContent />}>
-              <Route path="" element={<Home />} />
-              <Route path="/faq" element={<Faq />} />
-              <Route path="/about" element={<About />} />
-              <Route
-                path="/login"
-                element={
-                  <OpenRoute>
-                    <Login />
-                  </OpenRoute>
-                }
-              />
-              <Route
-                path="/forgot-password"
-                element={
-                  <OpenRoute>
-                    <ForgotPassword />
-                  </OpenRoute>
-                }
-              />
-              <Route
-                path="/reset-password/:id"
-                element={
-                  <OpenRoute>
-                    <ResetPassword />
-                  </OpenRoute>
-                }
-              />
-              <Route
-                path="/signup"
-                element={
-                  <OpenRoute>
-                    <Register />
-                  </OpenRoute>
-                }
-              />
-              <Route path="/residences" element={<LandingProperties />} />
-              <Route path="/how-it-works" element={<HowItWorks />} />
-              <Route
-                path="residences/:id"
-                element={<LandingPropertyDetail />}
-              />
-              <Route path="/:id" element={<HowItWorksDetails />} />
-              <Route
-                path="/terms-and-conditions"
-                element={<TermsAndConditions />}
-              />
-              <Route path="*" element={<Home />} />
-            </Route>
+    <div>
+      <WagmiConfig config={wagmiConfig}>
+        <BrowserRouter>
+          <AuthProvider>
+            <Routes>
+              <Route path="/" element={<LandingContent />}>
+                <Route path="" element={<Home />} />
+                <Route path="/faq" element={<Faq />} />
+                <Route path="/blog" element={<BlogPosts />} />
+                <Route path="/about" element={<About />} />
+                <Route
+                  path="/login"
+                  element={
+                    <OpenRoute>
+                      <Login />
+                    </OpenRoute>
+                  }
+                />
+                <Route
+                  path="/forgot-password"
+                  element={
+                    <OpenRoute>
+                      <ForgotPassword />
+                    </OpenRoute>
+                  }
+                />
+                <Route
+                  path="/reset-password/:id"
+                  element={
+                    <OpenRoute>
+                      <ResetPassword />
+                    </OpenRoute>
+                  }
+                />
+                <Route
+                  path="/signup"
+                  element={
+                    <OpenRoute>
+                      <Register />
+                    </OpenRoute>
+                  }
+                />
+                <Route path="/residences" element={<LandingProperties />} />
+                <Route path="/how-it-works" element={<HowItWorks />} />
+                <Route
+                  path="residences/:id"
+                  element={<LandingPropertyDetail />}
+                />
+                <Route path="/:id" element={<HowItWorksDetails />} />
+                <Route
+                  path="/terms-and-conditions"
+                  element={<TermsAndConditions />}
+                />
+                <Route path="*" element={<Home />} />
+              </Route>
 
-            <Route
-              path="/dashboard"
-              element={
-                <ProtectedRoute>
-                  <DashboardContent />
-                </ProtectedRoute>
-              }
-            >
-              <Route path="" element={<Summary />} />
-              <Route path="residences" element={<Properties />} />
-              <Route path="residences/:id" element={<PropertyDetail />} />
-              <Route path="unit/:id" element={<UnitDetails />} />
               <Route
-                path="residences/invest/:id"
-                element={<PropertyInvest user={userData} />}
-              />
-              <Route path="rewards" element={<Rewards user={userData} />} />
-              <Route path="investments" element={<Investments />} />
-              <Route path="documents" element={<Documents />} />
-              <Route path="*" element={<NotFound />} />
-            </Route>
-          </Routes>
-        </AuthProvider>
-      </BrowserRouter>
+                path="/dashboard"
+                element={
+                  <ProtectedRoute>
+                    <DashboardContent />
+                  </ProtectedRoute>
+                }
+              >
+                <Route path="" element={<Summary />} />
+                <Route path="residences" element={<Properties />} />
+                <Route path="residences/:id" element={<PropertyDetail />} />
+                <Route path="unit/:id" element={<UnitDetails />} />
+                <Route
+                  path="residences/invest/:id"
+                  element={<PropertyInvest user={userData} />}
+                />
+                <Route path="rewards" element={<Rewards user={userData} />} />
+                <Route path="investments" element={<Investments />} />
+                <Route path="documents" element={<Documents />} />
+                <Route path="*" element={<NotFound />} />
+              </Route>
+            </Routes>
+          </AuthProvider>
+        </BrowserRouter>
 
-      {/* <TawkMessengerReact
-          propertyId="65e0ce599131ed19d97353e8"
-          widgetId="1hnr2c4n0"
-        /> */}
-      {/* <BrowserRouter>
+
+        {/* <BrowserRouter>
           <Content />
         </BrowserRouter> */}
-    </WagmiConfig>
+      </WagmiConfig>
+
+      {/* <TawkMessengerReact
+        propertyId="65e0ce599131ed19d97353e8"
+        widgetId="1hnr2c4n0"
+      /> */}
+    </div>
   );
 }
 

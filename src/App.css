@@ -456,3 +456,29 @@ img {
   font-size: 0.95rem;
   line-height: 1.5rem;
 }
+
+.bank-pay {
+  border-collapse: collapse;
+}
+
+.bank-pay table {
+  width: 100%;
+}
+
+.bank-pay td {
+  border: 1px solid rgb(182, 182, 182);
+  padding: 5px 15px;
+}
+
+.bank-pay tr > td:first-child {
+  font-weight: 600;
+}
+
+figure {
+  margin-bottom: 10px;
+}
+
+figure img {
+  aspect-ratio: 5/3;
+  object-fit: cover;
+}

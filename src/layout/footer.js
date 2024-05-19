@@ -53,6 +53,8 @@ function Footer() {
               hospitality opportunities.
             </p>
           </div>
+
+          <a href="mailto:support@pieme.info"><p className="pt-3 text-white">support@pieme.info</p></a>
         </div>
       </div>
 

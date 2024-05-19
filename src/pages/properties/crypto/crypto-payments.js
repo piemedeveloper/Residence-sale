@@ -78,7 +78,6 @@ function CryptoPayments({ to_pay, invest, unit, pdfDoc }) {
   });
 
   //=============================MAKE PAYMENTS======================
-  // let amountToPay = "0.01";
   let amountToPay = ceil(
     parseFloat(invest) * 0.03 + parseFloat(invest)
   ).toString();
@@ -191,7 +190,7 @@ function CryptoPayments({ to_pay, invest, unit, pdfDoc }) {
     }
   }, [isConnected, usdtBalance, data]);
 
-  const onChange = (key) => {};
+  const onChange = (key) => { };
   const items = [
     {
       key: "1",

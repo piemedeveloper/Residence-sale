@@ -61,6 +61,7 @@ function UnitSelected({ unit, next }) {
   ];
   return (
     <div className="unit-details">
+
       <div className="container mx-auto">
         <div className="text-center heading-color">
           <h1 className="mb-3 text-4xl font-semibold">{unit.name}</h1>
@@ -121,7 +122,10 @@ function UnitSelected({ unit, next }) {
               </div>
             </div>
 
+
+
             <div className="relative bottom-0 w-full mt-8 lg:mt-0 pe-4 lg:absolute">
+
               <Progress
                 percent={parseFloat(
                   100 - ((unit.cost - unit.amount) / unit.cost) * 100

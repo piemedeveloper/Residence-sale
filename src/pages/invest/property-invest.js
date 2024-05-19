@@ -14,6 +14,7 @@ import CryptoPayments from "../properties/crypto/crypto-payments";
 import Contract from "../documents/contract";
 import UnitSelected from "./unit-selected";
 import MobileMoneyPayment from "../properties/mobile-money-payment";
+import BankPaymentInitiate from "./bank-payment-initiate";
 
 function PropertyInvest({ user }) {
   let location = useLocation();
@@ -35,7 +36,6 @@ function PropertyInvest({ user }) {
     setIsModalOpen(false);
 
     setDisable(true);
-
     exportPdf();
   };
   const handleCancel = () => {
@@ -173,12 +173,13 @@ function PropertyInvest({ user }) {
     {
       key: "3",
       label: "Pay with bank transfer",
-      children: (
-        <div>
-          {/* <BankPayment invest={invest} user={user} /> */}
-          <p>Coming soon</p>
-        </div>
-      ),
+      children: <div>
+        <p>Coming soon</p>
+        {/* <BankPaymentInitiate user={user} to_pay={to_pay}
+          invest={invest}
+          unit={unit}
+          pdfDoc={pdfDoc} /> */}
+      </div>,
     },
   ];
 
@@ -248,7 +249,6 @@ function PropertyInvest({ user }) {
 
     var doc = new jsPDF("p", "pt", "a4");
     let srcwidth = component.scrollWidth;
-    const margin = 10;
     doc.html(component, {
       html2canvas: {
         scale: 600 / srcwidth,

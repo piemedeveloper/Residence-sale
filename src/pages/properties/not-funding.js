@@ -28,7 +28,7 @@ function NotFunding({ residence }) {
           </div>
 
           <div className="flex flex-col gap-8 p-4 mt-4 bg-white lg:flex-row rounded-xl home-property">
-            <div className="w-full lg:w-2/5 h-60 max-h-60">
+            <div className="w-full h-64 lg:w-2/5 max-h-64">
               <img
                 src={residence.image}
                 alt={residence.location}
@@ -67,6 +67,7 @@ function NotFunding({ residence }) {
                     Croudfunding
                   </h3>
                 </div>
+
                 <div>
                   <p className="text-sm uppercase menu-color">PROPERTY TYPE</p>
                   <h3 className="text-base font-semibold heading-color">
@@ -76,6 +77,11 @@ function NotFunding({ residence }) {
               </div>
 
               <div className="relative bottom-0 w-full mt-8 lg:mt-0 lg:absolute">
+                <a href={residence.pitch_deck} target="_blank" rel="noreferrer" className="flex">
+                  <p className="px-10 py-2 mt-3 text-sm text-white main-bg rounded-tr-2xl">
+                    Pitch deck
+                  </p>
+                </a>
                 <Progress
                   percent={parseInt((residence.paid / residence.price) * 100)}
                 />
@@ -86,6 +92,8 @@ function NotFunding({ residence }) {
                   </p>
                 </div>
               </div>
+
+
             </div>
           </div>
           {getToken().length === 0 && (
