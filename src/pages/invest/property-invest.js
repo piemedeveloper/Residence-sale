@@ -58,7 +58,6 @@ function PropertyInvest({ user }) {
     }).then((data) => {
       if (data.success === 1) {
         const cv = _.filter(data.data, { currency: "UGX" });
-        console.log("conversions", cv)
         if (cv.length > 0) setCValue(cv[0].value);
       }
     });
@@ -175,11 +174,10 @@ function PropertyInvest({ user }) {
       key: "3",
       label: "Pay with bank transfer",
       children: <div>
-        <p>Coming soon</p>
-        {/* <BankPaymentInitiate user={user} to_pay={to_pay}
+        <BankPaymentInitiate user={user} to_pay={to_pay}
           invest={invest}
           unit={unit}
-          pdfDoc={pdfDoc} /> */}
+          pdfDoc={pdfDoc} />
       </div>,
     },
   ];

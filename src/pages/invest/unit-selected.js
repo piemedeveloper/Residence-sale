@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from "react";
 import { low_investment } from "../../utils/data";
 import NumericInput from "react-numeric-input";
 import { Progress, Slider } from "antd";
@@ -7,6 +8,7 @@ import _ from "lodash";
 import funded from "../../assets/images/funded.png";
 import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import postData from "../../hooks/useFetch";
 
 function importAll(r) {
   let images = {};
@@ -20,6 +22,8 @@ function importAll(r) {
 const images = importAll(
   require.context("../../assets/images/icons", false, /\.(png|jpe?g|svg)$/)
 );
+
+
 
 function UnitSelected({ unit, next }) {
   const [invest, setInvest] = useState(150);
@@ -59,6 +63,20 @@ function UnitSelected({ unit, next }) {
       },
     },
   ];
+
+
+  useEffect(() => {
+    if (unit.cost - unit.amount > 0) {
+      postData({
+        service: "bank_pay_checker",
+        data: {},
+      }).then((data) => {
+        console.log(data)
+      });
+    }
+
+  }, [])
+
   return (
     <div className="unit-details">
 
@@ -121,8 +139,6 @@ function UnitSelected({ unit, next }) {
                 </h3>
               </div>
             </div>
-
-
 
             <div className="relative bottom-0 w-full mt-8 lg:mt-0 pe-4 lg:absolute">
 
