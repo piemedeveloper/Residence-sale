@@ -92,7 +92,8 @@ function Header() {
 
   let location = useLocation();
   React.useEffect(() => {
-    setActive(location.pathname.substring(1));
+    setActive(location.pathname.substring(1).split("/")[1]);
+
     window.scrollTo({ behavior: "smooth", top: 0 });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -133,9 +134,8 @@ function Header() {
               {menu.map((m, i) => (
                 <Link to={m.url} key={i}>
                   <div
-                    className={`h-full flex items-center px-4 ${
-                      "/" + active === m.url ? "active-link" : "inactive-link"
-                    }  transform transition-all duration-300 gap-2`}
+                    className={`h-full flex items-center px-4 ${"/dashboard/" + active === m.url ? "active-link" : "inactive-link"
+                      }  transform transition-all duration-300 gap-2`}
                   >
                     {/* {m.icon} */}
                     <p className="text-[0.9rem] tracking-wider line-clamp-1">
