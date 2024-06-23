@@ -58,6 +58,7 @@ function PropertyInvest({ user }) {
     }).then((data) => {
       if (data.success === 1) {
         const cv = _.filter(data.data, { currency: "UGX" });
+        console.log("conversions", cv)
         if (cv.length > 0) setCValue(cv[0].value);
       }
     });

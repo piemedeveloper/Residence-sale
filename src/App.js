@@ -140,11 +140,6 @@ function App() {
             </Routes>
           </AuthProvider>
         </BrowserRouter>
-
-
-        {/* <BrowserRouter>
-          <Content />
-        </BrowserRouter> */}
       </WagmiConfig>
 
       {/* <TawkMessengerReact

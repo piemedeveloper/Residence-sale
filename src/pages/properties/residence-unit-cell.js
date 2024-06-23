@@ -9,15 +9,14 @@ import { numberFormatter } from "../../utils/utils";
 function ResidenceUnitCell({ unit }) {
   return (
     <Link
-      to={`${
-        unit.amount > 0 && unit.amount === unit.cost
-          ? `/dashboard/unit/${unit.enc_id}`
-          : `/dashboard/residences/invest/${unit.enc_id}`
-      }`}
+      to={`${unit.amount > 0 && unit.amount === unit.cost
+        ? `/dashboard/unit/${unit.enc_id}`
+        : `/dashboard/residences/invest/${unit.enc_id}`
+        }`}
     >
       <div className="group">
         <div className="relative overflow-hidden rounded-xl">
-          {unit.amount > 0 && unit.amount === unit.cost ? (
+          {unit.amount > 0 && unit.amount >= unit.cost ? (
             <div
               className={`z-10 w-full h-full absolute top-0 bg-blue-600/10 backdrop-brightness-[60%] flex items-center justify-center`}
             >

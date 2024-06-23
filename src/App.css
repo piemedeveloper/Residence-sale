@@ -227,6 +227,11 @@ ul > li {
   .numbers-cont div {
     border: none !important;
   }
+
+  .detail-form > div {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .numbers-cont div {

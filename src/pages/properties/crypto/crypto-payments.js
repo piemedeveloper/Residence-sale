@@ -1,15 +1,15 @@
 import usdt from "../../../assets/images/usdt-1.png";
-import bnb from "../../../assets/images/bnb-1.png";
+// import bnb from "../../../assets/images/bnb-1.png";
 import pieme from "../../../assets/images/pieme.png";
-import islamic from "../../../assets/images/islamic-mark.png";
+// import islamic from "../../../assets/images/islamic-mark.png";
+// import Haqq from "./haqq";
 import "../../../assets/css/crypto.css";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { LoginOutlined } from "@ant-design/icons";
-import { Card, Row, Button, Flex } from "antd";
+import { Button, Flex } from "antd";
 import { useState, useEffect } from "react";
 import { useAccount, useContractRead } from "wagmi";
 import postData from "../../../hooks/useFetch";
-import Haqq from "./haqq";
 import { Alert } from "antd";
 import { disconnect } from "@wagmi/core";
 
@@ -20,10 +20,6 @@ import { fetchBalance, sendTransaction } from "@wagmi/core";
 import { Tabs } from "antd";
 import { ceil } from "lodash";
 
-const gridStyle = {
-  width: "25%",
-  textAlign: "center",
-};
 
 function toUnit(value) {
   const unitValue = ethers.utils.formatEther(value);
@@ -302,164 +298,164 @@ function CryptoPayments({ to_pay, invest, unit, pdfDoc }) {
         </>
       ),
     },
-    {
-      key: "2",
-      label: (
-        <div className="flex flex-col gap-3 px-4 py-3 text-center">
-          <img
-            src={bnb}
-            alt="bnb"
-            style={{ height: "60px" }}
-            className="mx-auto"
-          />
-          <p>BNB</p>
-        </div>
-      ),
-      children: (
-        <>
-          {isConnected ? (
-            chain.network === "bsc" ? (
-              <>
-                <Alert
-                  className="py"
-                  message={
-                    <>
-                      <p className="address">
-                        Address : <span className="addr">{address}</span>
-                      </p>
-                      <p className="address">
-                        {" "}
-                        BNB Balance :{" "}
-                        <span className="addr">{networkTokenBalance}</span>
-                      </p>
+    // {
+    //   key: "2",
+    //   label: (
+    //     <div className="flex flex-col gap-3 px-4 py-3 text-center">
+    //       <img
+    //         src={bnb}
+    //         alt="bnb"
+    //         style={{ height: "60px" }}
+    //         className="mx-auto"
+    //       />
+    //       <p>BNB</p>
+    //     </div>
+    //   ),
+    //   children: (
+    //     <>
+    //       {isConnected ? (
+    //         chain.network === "bsc" ? (
+    //           <>
+    //             <Alert
+    //               className="py"
+    //               message={
+    //                 <>
+    //                   <p className="address">
+    //                     Address : <span className="addr">{address}</span>
+    //                   </p>
+    //                   <p className="address">
+    //                     {" "}
+    //                     BNB Balance :{" "}
+    //                     <span className="addr">{networkTokenBalance}</span>
+    //                   </p>
 
-                      <p className="address">
-                        {" "}
-                        USD Value :{" "}
-                        <span className="addr">{tokenValueInUsd}</span>
-                      </p>
-                    </>
-                  }
-                  type="info"
-                />
+    //                   <p className="address">
+    //                     {" "}
+    //                     USD Value :{" "}
+    //                     <span className="addr">{tokenValueInUsd}</span>
+    //                   </p>
+    //                 </>
+    //               }
+    //               type="info"
+    //             />
 
-                <div className="mt-4 text-base">
-                  <table>
-                    <tbody>
-                      {to_pay.map((p, i) => (
-                        <tr key={i}>
-                          <td className="py-1 pe-4">
-                            <p>{p.label}</p>
-                          </td>
-                          <td>
-                            <p>{p.value}</p>
-                          </td>
-                        </tr>
-                      ))}
-                      <Alert
-                        className="mt-3"
-                        message={
-                          <tr>
-                            <td>Amount to pay in BNB:</td>
-                            <td>
-                              <p className="bnbV"> {tokenPayValue}</p>
-                            </td>
-                          </tr>
-                        }
-                        type="success"
-                        showIcon
-                      />
-                    </tbody>
-                  </table>
+    //             <div className="mt-4 text-base">
+    //               <table>
+    //                 <tbody>
+    //                   {to_pay.map((p, i) => (
+    //                     <tr key={i}>
+    //                       <td className="py-1 pe-4">
+    //                         <p>{p.label}</p>
+    //                       </td>
+    //                       <td>
+    //                         <p>{p.value}</p>
+    //                       </td>
+    //                     </tr>
+    //                   ))}
+    //                   <Alert
+    //                     className="mt-3"
+    //                     message={
+    //                       <tr>
+    //                         <td>Amount to pay in BNB:</td>
+    //                         <td>
+    //                           <p className="bnbV"> {tokenPayValue}</p>
+    //                         </td>
+    //                       </tr>
+    //                     }
+    //                     type="success"
+    //                     showIcon
+    //                   />
+    //                 </tbody>
+    //               </table>
 
-                  {tokenPayValue > networkTokenBalance ? (
-                    <Alert
-                      message="Insufficient Funds..."
-                      type="error"
-                      showIcon
-                      className="mt-3"
-                    />
-                  ) : (
-                    ""
-                  )}
-                </div>
-                <Flex
-                  gap="small"
-                  wrap="wrap"
-                  justify={"start"}
-                  align={"center"}
-                >
-                  <Button
-                    type="primary"
-                    icon={<LoginOutlined />}
-                    disabled={tokenPayValue > networkTokenBalance}
-                    onClick={() => sendNetworkToken()}
-                    className="connectBtn"
-                  >
-                    Make Payment
-                  </Button>
-                  <Button
-                    danger
-                    icon={<LoginOutlined />}
-                    onClick={() => disconnect()}
-                    className="connectBtn"
-                  >
-                    Disconnect
-                  </Button>
-                </Flex>
-              </>
-            ) : (
-              <Alert
-                className="py"
-                message="Please Connect to Binance Smart Chain Network"
-                type="info"
-                showIcon
-              />
-            )
-          ) : (
-            <Flex gap="small" wrap="wrap" justify={"center"} align={"center"}>
-              <Button
-                type="primary"
-                icon={<LoginOutlined />}
-                loading={isConnecting ? true : false}
-                onClick={() => connect()}
-                className="connectBtn"
-              >
-                {isConnecting ? "Connecting...." : "Connect Wallet"}
-              </Button>
-            </Flex>
-          )}
-        </>
-      ),
-    },
-    {
-      key: "3",
-      label: (
-        <div className="flex flex-col gap-3 px-4 py-3 text-center">
-          <img
-            src={islamic}
-            alt="islamic"
-            style={{ height: "60px" }}
-            className="mx-auto"
-          />
-          <p>Islamic Coin</p>
-        </div>
-      ),
-      children: (
-        <Haqq
-          chain={chain}
-          address={address}
-          networkTokenBalance={networkTokenBalance}
-          tokenValueInUsd={tokenValueInUsd}
-          to_pay={to_pay}
-          tokenPayValue={tokenPayValue}
-          isConnecting={isConnecting}
-          connect={connect}
-          sendNetworkToken={sendNetworkToken}
-          isConnected={isConnected}
-        />
-      ),
-    },
+    //               {tokenPayValue > networkTokenBalance ? (
+    //                 <Alert
+    //                   message="Insufficient Funds..."
+    //                   type="error"
+    //                   showIcon
+    //                   className="mt-3"
+    //                 />
+    //               ) : (
+    //                 ""
+    //               )}
+    //             </div>
+    //             <Flex
+    //               gap="small"
+    //               wrap="wrap"
+    //               justify={"start"}
+    //               align={"center"}
+    //             >
+    //               <Button
+    //                 type="primary"
+    //                 icon={<LoginOutlined />}
+    //                 disabled={tokenPayValue > networkTokenBalance}
+    //                 onClick={() => sendNetworkToken()}
+    //                 className="connectBtn"
+    //               >
+    //                 Make Payment
+    //               </Button>
+    //               <Button
+    //                 danger
+    //                 icon={<LoginOutlined />}
+    //                 onClick={() => disconnect()}
+    //                 className="connectBtn"
+    //               >
+    //                 Disconnect
+    //               </Button>
+    //             </Flex>
+    //           </>
+    //         ) : (
+    //           <Alert
+    //             className="py"
+    //             message="Please Connect to Binance Smart Chain Network"
+    //             type="info"
+    //             showIcon
+    //           />
+    //         )
+    //       ) : (
+    //         <Flex gap="small" wrap="wrap" justify={"center"} align={"center"}>
+    //           <Button
+    //             type="primary"
+    //             icon={<LoginOutlined />}
+    //             loading={isConnecting ? true : false}
+    //             onClick={() => connect()}
+    //             className="connectBtn"
+    //           >
+    //             {isConnecting ? "Connecting...." : "Connect Wallet"}
+    //           </Button>
+    //         </Flex>
+    //       )}
+    //     </>
+    //   ),
+    // },
+    // {
+    //   key: "3",
+    //   label: (
+    //     <div className="flex flex-col gap-3 px-4 py-3 text-center">
+    //       <img
+    //         src={islamic}
+    //         alt="islamic"
+    //         style={{ height: "60px" }}
+    //         className="mx-auto"
+    //       />
+    //       <p>Islamic Coin</p>
+    //     </div>
+    //   ),
+    //   children: (
+    //     <Haqq
+    //       chain={chain}
+    //       address={address}
+    //       networkTokenBalance={networkTokenBalance}
+    //       tokenValueInUsd={tokenValueInUsd}
+    //       to_pay={to_pay}
+    //       tokenPayValue={tokenPayValue}
+    //       isConnecting={isConnecting}
+    //       connect={connect}
+    //       sendNetworkToken={sendNetworkToken}
+    //       isConnected={isConnected}
+    //     />
+    //   ),
+    // },
     {
       key: "4",
       label: (

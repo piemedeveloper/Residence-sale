@@ -123,10 +123,13 @@ function Login() {
               <Link to="/forgot-password">
                 <p className="main-color">Forgot your password?</p>
               </Link>
+              <p className="mt-3 main-color ">Don't have an account?</p>
               <Link to="/signup">
-                <p className="mt-3 main-color ">
-                  Don't have an account? Click here to sign up.
-                </p>
+                <div className="flex items-center justify-center gap-3 p-3.5 mt-3 text-sm text-center text-white rounded-full shadow-md main-deep-bg">
+                  <p >
+                    Click here to sign up.
+                  </p>
+                </div>
               </Link>
             </div>
           </div>
