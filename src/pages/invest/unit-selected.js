@@ -64,6 +64,8 @@ function UnitSelected({ unit, next }) {
     },
   ];
 
+  const [bankPay, setBankPay] = useState({})
+
 
   useEffect(() => {
     if (unit.cost - unit.amount > 0) {
@@ -71,7 +73,7 @@ function UnitSelected({ unit, next }) {
         service: "bank_pay_checker",
         data: {},
       }).then((data) => {
-        console.log(data)
+        setBankPay(data)
       });
     }
 
@@ -244,12 +246,15 @@ function UnitSelected({ unit, next }) {
                   </div>
 
                   <div className="flex justify-center pt-6 pb-2">
-                    <button
-                      onClick={() => next(invest)}
-                      className="w-full py-3.5 text-sm text-center text-white rounded-full main-bg"
-                    >
-                      Invest now
-                    </button>
+                    {Object.keys(bankPay).length !== 0 && <>
+                      {bankPay.success === 1 ? <button
+                        onClick={() => next(invest)}
+                        className="w-full py-3.5 text-sm text-center text-white rounded-full main-bg"
+                      >
+                        Invest now
+                      </button> : <p className="text-lg text-red-600">Still have a pending bank payment, can not make another invesment</p>}
+
+                    </>}
                   </div>
                 </div>
               ) : (

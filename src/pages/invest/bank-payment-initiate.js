@@ -33,7 +33,10 @@ function BankPaymentInitiate({ user, invest, unit, pdfDoc }) {
                     });
 
                     navigate("/dashboard");
-                    window.location.reload(false);
+                    setTimeout(function () {
+                        window.location.reload(false);
+                    }, 3000);
+
                 }
                 else notification.error({
                     message: "Bank payment",
