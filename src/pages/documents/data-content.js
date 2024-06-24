@@ -86,7 +86,7 @@ exports.purpose = ({ name, amount, percentage }) => [
       {
         title: "",
         description: [
-          `All investors of the Housing Unit shall be jointly entitled to Seventy percent (70%) of the net book fee from each booking of the Housing Unit out of which the Investor under this agreement shall be entitled to <b>${(
+          `All investors of the Housing Unit shall be jointly entitled to Seventy percent (70%) of the net booking fee from each booking of the Housing Unit out of which the Investor under this agreement shall be entitled to <b>${(
             percentage * 0.7
           ).toFixed(
             2

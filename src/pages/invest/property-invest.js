@@ -177,7 +177,8 @@ function PropertyInvest({ user }) {
         <BankPaymentInitiate user={user} to_pay={to_pay}
           invest={invest}
           unit={unit}
-          pdfDoc={pdfDoc} />
+          pdfDoc={pdfDoc}
+          cValue={cValue} />
       </div>,
     },
   ];

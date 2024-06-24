@@ -1,25 +1,23 @@
 import { Spin, notification } from 'antd'
 import React, { useState } from 'react'
 import postData from '../../hooks/useFetch'
-import { ceil } from 'lodash'
 import { useNavigate } from 'react-router-dom'
+import { numberFormatter } from '../../utils/utils'
+import { ceil } from 'lodash'
 
-function BankPaymentInitiate({ user, invest, unit, pdfDoc }) {
+function BankPaymentInitiate({ user, invest, unit, pdfDoc, cValue }) {
     const [initiate, setInitiate] = useState(false)
 
     const navigate = useNavigate();
 
     const initiatePayment = () => {
-        let amountToPay = ceil(
-            parseFloat(invest) * 0.03 + parseFloat(invest)
-        ).toString();
 
         setInitiate(true)
         postData({
             service: "bank_initiate",
             data: {
                 "unit_id": unit.id,
-                "amount": amountToPay,
+                "amount": parseFloat(invest),
                 "signature": "signat5678765ure.png",
                 "contract": pdfDoc,
                 "currency": 800
@@ -35,7 +33,7 @@ function BankPaymentInitiate({ user, invest, unit, pdfDoc }) {
                     navigate("/dashboard");
                     setTimeout(function () {
                         window.location.reload(false);
-                    }, 3000);
+                    }, 2500);
 
                 }
                 else notification.error({
@@ -72,10 +70,22 @@ function BankPaymentInitiate({ user, invest, unit, pdfDoc }) {
                         <td>Branch</td>
                         <td>Oasis Mall</td>
                     </tr>
+                    <tr>
+                        <td>Amount</td>
+                        <td>$ {numberFormatter(parseFloat(invest) + ceil(parseFloat(invest) * 0.03))}</td>
+                    </tr>
+                    <tr>
+                        <td>Amount to Pay</td>
+                        <td>UGX. {numberFormatter(
+                            ceil(
+                                parseFloat(cValue) *
+                                (parseFloat(invest) + parseFloat(invest) * 0.03)
+                            )
+                        )}</td>
+                    </tr>
                 </tbody>
             </table> : <table>
                 <tbody>
-
                     <tr>
                         <td>Bank Name</td>
                         <td>EQUITY BANK UGANDA LIMITED</td>
@@ -115,6 +125,10 @@ function BankPaymentInitiate({ user, invest, unit, pdfDoc }) {
                     <tr>
                         <td>Country</td>
                         <td>Uganda</td>
+                    </tr>
+                    <tr>
+                        <td>Amount</td>
+                        <td>$ {numberFormatter(parseFloat(invest) + ceil(parseFloat(invest) * 0.03))}</td>
                     </tr>
 
                 </tbody>

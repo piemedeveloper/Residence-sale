@@ -5,12 +5,14 @@ import postData from "../hooks/useFetch";
 import { removeToken } from "../hooks/user-token";
 import { useDispatch, useSelector } from "react-redux";
 import { user, addUsers } from "../features";
+import BankPay from "../pages/invest/bank-pay";
 
 function DashboardContent() {
   const navigate = useNavigate();
 
   const userData = useSelector(user.user);
   const dispatch = useDispatch();
+
 
   React.useEffect(() => {
     postData({
@@ -26,11 +28,14 @@ function DashboardContent() {
     // eslint-disable-next-line
   }, []);
 
+
+
   return (
     <div>
       <Header />
-      <div className="py-10 gray-bg">
+      <div className="relative py-10 gray-bg">
         <Outlet />
+        <BankPay />
       </div>
     </div>
   );
