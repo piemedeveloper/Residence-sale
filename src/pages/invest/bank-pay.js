@@ -8,6 +8,7 @@ import { InboxOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import { ceil } from "lodash";
 import { useSelector } from "react-redux";
 import { user } from "../../features";
+import { useCountdown } from "../../components/useCountdown";
 
 const { Dragger } = Upload;
 
@@ -17,6 +18,45 @@ const { confirm } = Modal;
 function BankPay() {
     const userData = useSelector(user.user);
     const [uploads, setUploads] = React.useState([]);
+
+    Date.prototype.addHours = function (h) {
+        this.setHours(this.getHours() + h);
+        return this;
+    }
+
+    const addZero = (num) => {
+        if (num < 10) return "0" + num;
+        return num;
+    };
+    const DateTimeDisplay = ({ value, type }) => {
+        return (
+            <div className="text-center">
+                <span className="text-[0.8rem] capitalize">{type}</span>
+                <p className="text-lg font-semibold text-red-500">{addZero(value)}</p>
+            </div>
+        );
+    };
+
+    const ShowCounter = ({ days, hours, minutes, seconds }) => {
+        return (
+            <div className="flex gap-2 px-6 rounded-md">
+                {/* <DateTimeDisplay value={days} type={"DAY"} /> */}
+                <DateTimeDisplay value={hours} type={"HRS"} />
+                :<DateTimeDisplay value={minutes} type={"MINS"} />
+                :<DateTimeDisplay value={seconds} type={"SEC"} />
+            </div>
+        );
+    };
+
+    const CountdownTimer = ({ targetDate }) => {
+        const [days, hours, minutes, seconds] = useCountdown(targetDate);
+
+        if (days + hours + minutes + seconds <= 0) {
+            return <p>Timed out</p>;
+        } else {
+            return ShowCounter({ days, hours, minutes, seconds });
+        }
+    };
 
     const props = {
         name: 'image',
@@ -122,8 +162,6 @@ function BankPay() {
             },
             onCancel() { },
         });
-
-
     }
 
     return (
@@ -138,34 +176,41 @@ function BankPay() {
                     onCancel={handleCancel}>
                     <div className="mt-6 mb-3 bank-pay">
                         {bankPay.data.bank_proof == null ? <>
-                            {userData.phone_no.toString().substring(0, 3) === "256" ? <table>
-                                <tbody>
-                                    <tr>
-                                        <td>Account Name</td>
-                                        <td> Pie tech Limited</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Account No</td>
-                                        <td>1036201669567</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Bank Name</td>
-                                        <td>Equity bank Uganda</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Branch</td>
-                                        <td>Oasis Mall</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Amount</td>
-                                        <td>$ {numberFormatter(parseFloat(bankPay.data.amount + ceil(bankPay.data.fee)))}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Amount to Pay</td>
-                                        <td>UGX. {numberFormatter(bankPay.data.curreny_amount + bankPay.data.currency_fee)}</td>
-                                    </tr>
-                                </tbody>
-                            </table> : <table>
+                            {userData.phone_no !== undefined && userData.phone_no.toString().substring(0, 3) === "256" ? <div>
+                                <div className="w-32 mb-4">
+                                    <CountdownTimer
+                                        targetDate={new Date(bankPay.data.creation_datetime).addHours(12).getTime()}
+                                    />
+                                </div>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>Account Name</td>
+                                            <td> Pie tech Limited</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Account No</td>
+                                            <td>1036201669567</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bank Name</td>
+                                            <td>Equity bank Uganda</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Branch</td>
+                                            <td>Oasis Mall</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Amount</td>
+                                            <td>$ {numberFormatter(parseFloat(bankPay.data.amount + ceil(bankPay.data.fee)))}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Amount to Pay</td>
+                                            <td>UGX. {numberFormatter(bankPay.data.curreny_amount + bankPay.data.currency_fee)}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div> : <table>
                                 <tbody>
 
                                     <tr>
@@ -239,7 +284,12 @@ function BankPay() {
 
                 </Modal>
                 <div className="fixed flex items-center gap-4 cursor-pointer right-10 top-20" onClick={showModal}>
-                    <p className="text-lg font-medium">Bank Payment</p>
+                    <div className="flex flex-col justify-center text-center">
+                        <p className="text-lg font-medium">Bank Payment</p>
+                        <CountdownTimer
+                            targetDate={new Date(bankPay.data.creation_datetime).addHours(12).getTime()}
+                        />
+                    </div>
                     <div className="p-4 rounded-full main-bg gelatine">
                         <BsBank className="text-3xl text-white" />
                     </div>
