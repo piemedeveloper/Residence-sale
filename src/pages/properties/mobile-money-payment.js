@@ -94,7 +94,7 @@ function MobileMoneyPayment({ cValue, invest, unit, docSign, to_pay, pdfDoc }) {
               if (
                 data.transaction.reason === "NOT_ENOUGH_FUNDS" ||
                 data.transaction.reason ===
-                  "LOW_BALANCE_OR_PAYEE_LIMIT_REACHED_OR_NOT_ALLOWED"
+                "LOW_BALANCE_OR_PAYEE_LIMIT_REACHED_OR_NOT_ALLOWED"
               )
                 notification.error({
                   message: "Mobile money payment failed",
@@ -152,7 +152,7 @@ function MobileMoneyPayment({ cValue, invest, unit, docSign, to_pay, pdfDoc }) {
           if (
             data.transaction.reason === "NOT_ENOUGH_FUNDS" ||
             data.transaction.reason ===
-              "LOW_BALANCE_OR_PAYEE_LIMIT_REACHED_OR_NOT_ALLOWED"
+            "LOW_BALANCE_OR_PAYEE_LIMIT_REACHED_OR_NOT_ALLOWED"
           )
             notification.error({
               message: "Mobile money payment failed",
@@ -165,65 +165,80 @@ function MobileMoneyPayment({ cValue, invest, unit, docSign, to_pay, pdfDoc }) {
 
   return (
     <div>
-      <div>
-        <img
-          src={mtn}
-          alt="Pieme MTN mobile money payment"
-          className="object-cover w-10 h-10 mb-2"
-        />
-        <p className="my-4 font-semibold main-color">
-          Note: MTN Phone number is currently being supported
-        </p>
-
-        <div className="text-base">
-          <table>
-            <tbody>
-              {to_pay.map((p, i) => (
-                <tr key={i}>
-                  <td className="py-1 pe-4">
-                    <p>{p.label}</p>
-                  </td>
-                  <td>
-                    <p>{p.value}</p>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <p className="pb-2 mt-2 text-xl font-semibold main-color">
-          UGX.{" "}
-          {numberFormatter(
-            ceil(
-              parseFloat(cValue) *
-                (parseFloat(invest) + parseFloat(invest) * 0.03)
-            )
-          )}
-        </p>
-
-        <p>Phone Number</p>
-        <div className="phone-input">
-          <PhoneInput
-            placeholder="Enter phone number"
-            defaultCountry="UG"
-            countries={["UG"]}
-            value={phone}
-            onChange={(e) => {
-              setPhone(e);
-            }}
+      {ceil(
+        parseFloat(cValue) *
+        (parseFloat(invest) + parseFloat(invest) * 0.03)
+      ) <= 5000000 ?
+        <div>
+          <img
+            src={mtn}
+            alt="Pieme MTN mobile money payment"
+            className="object-cover w-10 h-10 mb-2"
           />
-        </div>
+          <p className="my-4 font-semibold main-color">
+            Note: MTN Phone number is currently being supported
+          </p>
 
-        <button
-          onClick={mobileMoneyPay}
-          disabled={btnDis}
-          className="w-full flex items-center justify-center gap-3 px-10 py-2.5 mt-8 text-white rounded-md main-bg"
-        >
-          {!countDown && btnDis && <Spin />}
-          <p> {countDown ? `Waiting... ${timer}` : "Make Payment"}</p>
-        </button>
-      </div>
+          <div className="text-base">
+            <table>
+              <tbody>
+                {to_pay.map((p, i) => (
+                  <tr key={i}>
+                    <td className="py-1 pe-4">
+                      <p>{p.label}</p>
+                    </td>
+                    <td>
+                      <p>{p.value}</p>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <p className="pb-2 mt-2 text-xl font-semibold main-color">
+            UGX.{" "}
+            {numberFormatter(
+              ceil(
+                parseFloat(cValue) *
+                (parseFloat(invest) + parseFloat(invest) * 0.03)
+              )
+            )}
+          </p>
+
+          <p>Phone Number</p>
+          <div className="phone-input">
+            <PhoneInput
+              placeholder="Enter phone number"
+              defaultCountry="UG"
+              countries={["UG"]}
+              value={phone}
+              onChange={(e) => {
+                setPhone(e);
+              }}
+            />
+          </div>
+
+          <button
+            onClick={mobileMoneyPay}
+            disabled={btnDis}
+            className="w-full flex items-center justify-center gap-3 px-10 py-2.5 mt-8 text-white rounded-md main-bg"
+          >
+            {!countDown && btnDis && <Spin />}
+            <p> {countDown ? `Waiting... ${timer}` : "Make Payment"}</p>
+          </button>
+        </div> : <div>
+          <p className="pb-2 mt-2 text-xl font-semibold main-color">
+            UGX.{" "}
+            {numberFormatter(
+              ceil(
+                parseFloat(cValue) *
+                (parseFloat(invest) + parseFloat(invest) * 0.03)
+              )
+            )}
+          </p>
+          <p className="text-base font-medium">Mobile money payment is inactive: Amount Exceeds 5M</p>
+        </div>}
     </div>
   );
 }

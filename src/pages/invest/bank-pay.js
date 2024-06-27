@@ -75,7 +75,7 @@ function BankPay() {
             if (status === 'done') {
                 info.fileList.map((upload) => {
                     if (uploads[upload.uid] === undefined)
-                        uploads[upload.uid] = info.file.response.data[0];
+                        uploads[upload.uid] = info.file.response.data[info.file.response.data.length - 1];
                     setUploads({ ...uploads });
                 });
             } else if (status === 'error') {
@@ -264,7 +264,7 @@ function BankPay() {
                             }
 
 
-                            <p className="my-6 text-lg font-medium">Proof of payment upload</p>
+                            <p className="my-6 text-lg font-medium"> Upload Proof of payment</p>
                             <Dragger {...props} maxCount={2} accept="image/png, image/jpg/image/jpeg/image/gif">
                                 <p className="ant-upload-drag-icon">
                                     <InboxOutlined />
@@ -279,12 +279,12 @@ function BankPay() {
                                 <button className="cancel-btn" onClick={cancelPayment}>Cancel Payment</button>
                                 <button className="login-btn" onClick={submitProof}>Upload Proof</button>
                             </div>
-                        </> : <p className="text-lg">Bank proof of payment still pending verification<br />Please try again later or contact support for immediate feedback</p>}
+                        </> : <p className="text-lg">Under payment Verification<br />Please try again later or contact support for immediate feedback</p>}
                     </div>
 
                 </Modal>
-                <div className="fixed flex items-center gap-4 cursor-pointer right-10 top-20" onClick={showModal}>
-                    <div className="flex flex-col justify-center text-center">
+                <div className="fixed flex items-center p-2 bg-white border rounded-full cursor-pointer right-3 top-20" onClick={showModal}>
+                    <div className="flex flex-col justify-center text-center ms-3">
                         <p className="text-lg font-medium">Bank Payment</p>
                         <CountdownTimer
                             targetDate={new Date(bankPay.data.creation_datetime).addHours(12).getTime()}
