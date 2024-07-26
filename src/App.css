@@ -513,3 +513,10 @@ figure img {
     transform: scale(0.95, 1.05);
   }
 }
+
+.youtube-clip {
+  width: 100%;
+}
+.youtube-clip iframe {
+  width: 100% !important;
+}

@@ -10,6 +10,7 @@ import Insights from "./insights";
 import CalculateInvestment from "./calculate-investment";
 import FaqData from "../faq/faq-data";
 import HotelOwnership from "./hotel-ownership";
+import YoutubeClips from "./youtube-clips";
 
 function Home() {
   document.title = "Hotel Room Investment";
@@ -26,6 +27,9 @@ function Home() {
       <Investing />
       <Platform />
       <Insights />
+      <div>
+        <YoutubeClips />
+      </div>
       <FaqData />
     </div>
   );

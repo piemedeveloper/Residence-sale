@@ -2,6 +2,7 @@ import React from "react";
 import Slider from "./slider";
 import { Markup } from "interweave";
 import { Helmet } from "react-helmet";
+import YoutubeClips from "../home/youtube-clips";
 
 function About() {
   const about = [
@@ -57,7 +58,12 @@ function About() {
       </div>
 
       <div className="px-2 py-12 gradient-bg">
-        <Slider />
+        {/* <Slider /> */}
+        <YoutubeClips />
+      </div>
+
+      <div>
+        {/* <YoutubeClips /> */}
       </div>
 
       <div className="container py-10 mx-auto">
