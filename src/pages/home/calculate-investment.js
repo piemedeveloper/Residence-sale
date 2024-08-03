@@ -5,11 +5,14 @@ import { BsCalculator } from "react-icons/bs";
 import { JackInTheBox } from "react-awesome-reveal";
 import residence from "../../assets/images/residence.jpeg";
 import NumericInput from "react-numeric-input";
+import { ceil } from "lodash";
 
 function CalculateInvestment() {
   const [data, setData] = React.useState({
     unit: 55000,
     booking: 200,
+    maintenance: 15,
+    tax: 18,
     days: 23,
     monthly: 0,
     annual: 0,
@@ -17,10 +20,10 @@ function CalculateInvestment() {
 
   const calculate = () => {
     data.monthly = Math.ceil(
-      (data.booking * data.days * 0.7 * data.unit) / 55000
+      ((data.booking - data.maintenance - data.tax) * data.days * 0.7 * data.unit) / 55000
     );
     data.annual = Math.ceil(
-      (data.booking * data.days * 0.7 * 12 * data.unit) / 55000
+      ((data.booking - data.maintenance - data.tax) * data.days * 0.7 * 12 * data.unit) / 55000
     );
     setData({ ...data });
   };
@@ -79,10 +82,23 @@ function CalculateInvestment() {
               value={data.booking}
               onChange={(e) => {
                 data.booking = e.target.value;
+                data.maintenance = data.booking * 0.07
+                data.tax = data.booking * 0.09
                 setData({ ...data });
               }}
               className="text-sm border-0 rounded-none focus:border-0"
             />
+          </div>
+
+
+          <div className="grid items-center grid-cols-2 gap-4 p-2 px-4 mt-2 bg-white rounded-md">
+            <p className="text-sm border-e">Maintenance ( 7% )</p>
+            <p className="text-sm border-0 rounded-none focus:border-0 ps-3">{ceil(data.maintenance)}</p>
+          </div>
+
+          <div className="grid items-center grid-cols-2 gap-4 p-2 px-4 mt-2 bg-white rounded-md">
+            <p className="text-sm border-e">Tax ( 9% )</p>
+            <p className="text-sm border-0 rounded-none focus:border-0 ps-3">{ceil(data.tax)}</p>
           </div>
 
           <div className="grid items-center grid-cols-2 gap-4 p-2 px-4 mt-2 bg-white rounded-md">
