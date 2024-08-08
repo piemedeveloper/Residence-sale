@@ -43,7 +43,7 @@ function Investing() {
   // ];
   return (
     <div
-      className="bg-center bg-no-repeat bg-cover"
+      className="bg-center bg-no-repeat bg-cover bg-blend-normal"
       style={{ backgroundImage: `url(${residences})` }}
     >
       <div className="container relative py-12 mx-auto heading-color">

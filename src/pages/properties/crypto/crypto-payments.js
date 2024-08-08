@@ -196,7 +196,7 @@ function CryptoPayments({ to_pay, invest, unit, pdfDoc }) {
             src={usdt}
             alt="usdt"
             style={{ height: "60px" }}
-            className="mx-auto"
+            className="object-contain mx-auto"
           />
           <p>USDT</p>
         </div>
@@ -464,7 +464,7 @@ function CryptoPayments({ to_pay, invest, unit, pdfDoc }) {
             src={pieme}
             alt="Pieme"
             style={{ height: "60px" }}
-            className="mx-auto"
+            className="object-contain mx-auto"
           />
           <p>Pieme</p>
         </div>

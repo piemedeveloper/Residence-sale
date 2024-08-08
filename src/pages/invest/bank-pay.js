@@ -175,7 +175,7 @@ function BankPay() {
                     width={800}
                     onCancel={handleCancel}>
                     <div className="mt-6 mb-3 bank-pay">
-                        {bankPay.data.bank_proof == null ? <>
+                        {bankPay.data.bank_proof !== undefined && bankPay.data.bank_proof == null ? <>
                             {userData.phone_no !== undefined && userData.phone_no.toString().substring(0, 3) === "256" ? <div>
                                 <div className="w-32 mb-4">
                                     <CountdownTimer

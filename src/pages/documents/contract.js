@@ -284,7 +284,7 @@ function Contract(props) {
           </div>
 
           <div className="mb-10 ms-14 user-details">
-            <div>
+            <div className="flex flex-col sm:flex-row">
               <p>
                 <b>Next of Kin: </b>
               </p>
@@ -300,7 +300,7 @@ function Contract(props) {
               />
             </div>
 
-            <div>
+            <div className="flex flex-col sm:flex-row">
               <p>
                 <b>Relationship: </b>
               </p>
@@ -315,7 +315,7 @@ function Contract(props) {
                 }}
               />
             </div>
-            <div>
+            <div className="flex flex-col sm:flex-row">
               <p>
                 <b>Address</b>:
               </p>
@@ -330,7 +330,7 @@ function Contract(props) {
                 }}
               />
             </div>
-            <div className="mt-6">
+            <div className="flex flex-col mt-6 sm:flex-row">
               <p>
                 <b>Beneficiary</b>:
               </p>
@@ -345,7 +345,7 @@ function Contract(props) {
                 }}
               />
             </div>
-            <div>
+            <div className="flex flex-col sm:flex-row">
               <p>
                 <b>Relationship</b>:
               </p>
@@ -360,7 +360,7 @@ function Contract(props) {
                 }}
               />
             </div>
-            <div>
+            <div className="flex flex-col sm:flex-row">
               <p>
                 <b>Address</b>:
               </p>
@@ -400,11 +400,10 @@ function Contract(props) {
             <div>
               <div
                 onClick={() => setSign(true)}
-                className={`px-6 py-4 my-4 ${
-                  signature && signature.length > 0
-                    ? ""
-                    : "border-2 border-blue-500 "
-                }cursor-pointer hover:border-blue-700 hover:border-2`}
+                className={`px-6 py-4 my-4 ${signature && signature.length > 0
+                  ? ""
+                  : "border-2 border-blue-500 "
+                  }cursor-pointer hover:border-blue-700 hover:border-2`}
               >
                 {signature && signature.length > 0 ? (
                   <img className="h-14" src={signature} alt="Signature" />
@@ -426,9 +425,8 @@ function Contract(props) {
       </div>
 
       <div
-        className={`z-10 absolute bottom-0 ${
-          !sign && "hidden"
-        } w-full bg-white border-t`}
+        className={`z-10 absolute bottom-0 ${!sign && "hidden"
+          } w-full bg-white border-t`}
       >
         <div className="flex items-center justify-between px-4 border-b">
           <p className="p-4 text-2xl ">Signature</p>

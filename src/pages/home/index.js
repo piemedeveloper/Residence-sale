@@ -11,6 +11,7 @@ import CalculateInvestment from "./calculate-investment";
 import FaqData from "../faq/faq-data";
 import HotelOwnership from "./hotel-ownership";
 import YoutubeClips from "./youtube-clips";
+import Media from "./media";
 
 function Home() {
   document.title = "Hotel Room Investment";
@@ -20,6 +21,7 @@ function Home() {
       className="bg-white bg-top bg-no-repeat"
     >
       <TopContent />
+      <Media />
       <HotelOwnership />
       <Numbers />
       <StartPortfolio />

@@ -9,21 +9,24 @@ import { ceil } from "lodash";
 
 function CalculateInvestment() {
   const [data, setData] = React.useState({
-    unit: 55000,
-    booking: 200,
-    maintenance: 15,
-    tax: 18,
+    unit: 65000,
+    stake: 100,
+    booking: 100,
+    maintenance: 0,
+    tax: 0,
     days: 23,
     monthly: 0,
     annual: 0,
   });
 
   const calculate = () => {
+    data.maintenance = data.booking * 0.07
+    data.tax = data.booking * 0.09
     data.monthly = Math.ceil(
-      ((data.booking - data.maintenance - data.tax) * data.days * 0.7 * data.unit) / 55000
+      ((data.booking - data.maintenance - data.tax) * data.days * 0.7 * data.unit) / 65000
     );
     data.annual = Math.ceil(
-      ((data.booking - data.maintenance - data.tax) * data.days * 0.7 * 12 * data.unit) / 55000
+      ((data.booking - data.maintenance - data.tax) * data.days * 0.7 * 12 * data.unit) / 65000
     );
     setData({ ...data });
   };
@@ -49,32 +52,32 @@ function CalculateInvestment() {
             />
           </div>
         </JackInTheBox>
+
         <div className="p-10 md:p-10 md:max-w-xl">
+          <p className="mb-6 text-xl text-white border-e">Unit cost : $ 65,000</p>
           <div className="grid items-center grid-cols-2 gap-4 p-2 px-4 mt-2 bg-white rounded-md">
             <p className="text-sm border-e">Amount Invested ($)</p>
-            {/* <Input
-              type="number"
-              value={data.unit}
-              onChange={(e) => {
-                data.unit = e.target.value;
-                setData({ ...data });
-              }}
-              className="text-sm border-0 rounded-none focus:border-0"
-            /> */}
 
             <NumericInput
               min={150}
               step={1}
-              max={55000}
+              max={65000}
               style={false}
               value={data.unit}
               onBlur={(e) => {
                 data.unit = e.target.value;
+                data.stake = (data.unit / 65000) * 100
                 setData({ ...data });
               }}
               className="text-sm border-0 rounded-none focus:border-0 py-1.5"
             />
           </div>
+
+          <div className="grid items-center grid-cols-2 gap-4 p-2 px-4 mt-2 bg-white rounded-md">
+            <p className="text-sm border-e">Percentage Stake (%)</p>
+            <p className="text-sm border-0 rounded-none focus:border-0 ps-3">{data.stake}</p>
+          </div>
+
           <div className="grid items-center grid-cols-2 gap-4 p-2 px-4 mt-2 bg-white rounded-md">
             <p className="text-sm border-e">Booking Fee(Per Night) ($)</p>
             <Input
@@ -82,24 +85,12 @@ function CalculateInvestment() {
               value={data.booking}
               onChange={(e) => {
                 data.booking = e.target.value;
-                data.maintenance = data.booking * 0.07
-                data.tax = data.booking * 0.09
                 setData({ ...data });
               }}
               className="text-sm border-0 rounded-none focus:border-0"
             />
           </div>
 
-
-          <div className="grid items-center grid-cols-2 gap-4 p-2 px-4 mt-2 bg-white rounded-md">
-            <p className="text-sm border-e">Maintenance ( 7% )</p>
-            <p className="text-sm border-0 rounded-none focus:border-0 ps-3">{ceil(data.maintenance)}</p>
-          </div>
-
-          <div className="grid items-center grid-cols-2 gap-4 p-2 px-4 mt-2 bg-white rounded-md">
-            <p className="text-sm border-e">Tax ( 9% )</p>
-            <p className="text-sm border-0 rounded-none focus:border-0 ps-3">{ceil(data.tax)}</p>
-          </div>
 
           <div className="grid items-center grid-cols-2 gap-4 p-2 px-4 mt-2 bg-white rounded-md">
             <p className="text-sm border-e">Booked Days(Monthly)</p>
@@ -123,6 +114,30 @@ function CalculateInvestment() {
           </button>
 
           <div className="grid items-center grid-cols-2 gap-4 mt-5">
+            <p className="text-white">Maintenance (7%)</p>
+            <p className="w-full p-2 px-4 text-white rounded-sm main-dark-light-bg">
+              $ {data.maintenance.toLocaleString("en-US")}
+            </p>
+          </div>
+
+
+          <div className="grid items-center grid-cols-2 gap-4">
+            <p className="text-white">Tax ( 9% )</p>
+            <p className="w-full p-2 px-4 text-white rounded-sm main-dark-light-bg">
+              $ {data.tax.toLocaleString("en-US")}
+            </p>
+          </div>
+
+          <div className="grid items-center grid-cols-2 gap-4">
+            <p className="text-white">Pieme Income</p>
+            <p className="w-full p-2 px-4 text-white rounded-sm main-dark-light-bg">
+              $ {(Math.ceil(
+                ((data.booking - data.maintenance - data.tax) * data.days * 0.3 * data.unit) / 65000
+              )).toLocaleString("en-US")}
+            </p>
+          </div>
+
+          <div className="grid items-center grid-cols-2 gap-4">
             <p className="text-white">Monthly Net Income</p>
             <p className="w-full p-2 px-4 text-white rounded-sm main-dark-light-bg">
               $ {data.monthly.toLocaleString("en-US")}
@@ -133,6 +148,13 @@ function CalculateInvestment() {
             <p className="text-white">Annual Net Income</p>
             <p className="w-full p-2 px-4 text-white rounded-sm main-dark-light-bg">
               $ {data.annual.toLocaleString("en-US")}
+            </p>
+          </div>
+
+          <div className="grid items-center grid-cols-2 gap-4">
+            <p className="text-white">Annual Percentage Yield (%)</p>
+            <p className="w-full p-2 px-4 text-white rounded-sm main-dark-light-bg">
+              {((data.annual / data.unit) * 100).toFixed(2)}
             </p>
           </div>
         </div>

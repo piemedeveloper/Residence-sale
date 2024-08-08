@@ -444,7 +444,7 @@ function PropertyInvest({ user }) {
                       Select your payment method:
                     </h3>
 
-                    <div className="p-8 gray-bg">
+                    <div className="md:p-8 gray-bg">
                       <Collapse
                         accordion
                         defaultActiveKey={["1"]}
