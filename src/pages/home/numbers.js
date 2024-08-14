@@ -13,7 +13,7 @@ function Numbers() {
       desc: "Amount Invested",
     },
     {
-      figure: "150",
+      figure: "200+",
       desc: "Number of Investors",
     },
   ];

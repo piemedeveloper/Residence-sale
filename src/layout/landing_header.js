@@ -25,16 +25,17 @@ function LandingHeader() {
     { label: "Home", url: "", links: [] },
     { label: "How it works", url: "how-it-works", links: [] },
     { label: "Residences", url: "residences", links: [] },
-    // {
-    //   label: "About",
-    //   url: "about team",
-    //   links: [
-    //     { label: "About Pieme", url: "about" },
-    //   ],
-    // },
-    { label: "About", url: "about", links: [] },
+    {
+      label: "About",
+      url: "about team",
+      links: [
+        { label: "About Pieme", url: "about" },
+        { label: "Questions", url: "faq" },
+      ],
+    },
+    // { label: "About", url: "about", links: [] },
     { label: "Blog", url: "blog", links: [] },
-    { label: "Questions", url: "faq", links: [] },
+    { label: "Marketplace", url: "marketplace", links: [] },
   ];
 
   const showDrawer = () => {
@@ -77,8 +78,18 @@ function LandingHeader() {
                   <TiArrowSortedDown />
                 </div>
               </Dropdown>
-            ) : (
-              <Link key={i} to={`/${m.url}`} onClick={onClose}>
+            ) :
+              m.url === "marketplace" ? <a href="https://app.pieme.info/">
+                <p
+                  className={`h-full p-2 menu-color hover:text-black ${(active.length === 0 && m.url === active) ||
+                    (active.length > 0 && m.url.includes(active))
+                    ? "active-menu"
+                    : ""
+                    }`}
+                >
+                  {m.label}
+                </p>
+              </a> : <Link key={i} to={`/${m.url}`} onClick={onClose}>
                 <p
                   className={`h-full p-2 menu-color hover:text-black ${(active.length === 0 && m.url === active) ||
                     (active.length > 0 && m.url.includes(active))
@@ -89,7 +100,7 @@ function LandingHeader() {
                   {m.label}
                 </p>
               </Link>
-            );
+
           })}
 
           <div className="h-6"></div>
@@ -143,8 +154,14 @@ function LandingHeader() {
                     <TiArrowSortedDown />
                   </div>
                 </Dropdown>
-              ) : (
-                <Link key={i} to={`/${m.url}`}>
+              ) :
+                m.url === "marketplace" ? <a href="https://app.pieme.info/">
+                  <p
+                    className={`h-full p-5 menu-color hover:text-black border-2 border-blue-400 active-menu`}
+                  >
+                    {m.label}
+                  </p>
+                </a> : <Link key={i} to={`/${m.url}`}>
                   <p
                     className={`h-full p-5 menu-color hover:text-black ${(active.length === 0 && m.url === active) ||
                       (active.length > 0 && m.url.includes(active))
@@ -155,7 +172,7 @@ function LandingHeader() {
                     {m.label}
                   </p>
                 </Link>
-              );
+
             })}
           </div>
 

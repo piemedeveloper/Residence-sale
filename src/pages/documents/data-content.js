@@ -67,8 +67,7 @@ exports.purpose = ({ name, amount, percentage }) => [
         description: [
           `The Investor hereby contributes in full <b>${numberFormatter(
             amount
-          )}</b> US DOLLARS
-            for <b>${percentage} Percent (%)</b> ownership in the Housing Unit which contribution is inclusive of the cost of furnishing the Housing Unit.`,
+          )}</b> US DOLLARS for <b>${percentage} Percent (%)</b> ownership in the Housing Unit which contribution is inclusive of the cost of furnishing the Housing Unit.`,
         ],
       },
       {

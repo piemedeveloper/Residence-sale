@@ -45,11 +45,15 @@ function Login() {
       data: data,
     }).then((resp) => {
       setDisable(false);
-      if (resp.success === 0)
-        notification.error({
-          message: "Sign in",
-          description: resp.message,
-        });
+      console.log(resp)
+      if (resp.success === 0) {
+        if (!resp.marketplace)
+          notification.error({
+            message: "Sign in",
+            description: resp.message,
+          });
+        else window.location.href = "https://app.pieme.info/pieme/auth/sign-in"
+      }
       else {
         setToken(resp.token);
         navigate("/dashboard");

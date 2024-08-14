@@ -142,10 +142,10 @@ function App() {
         </BrowserRouter>
       </WagmiConfig>
 
-      <TawkMessengerReact
+      {/* <TawkMessengerReact
         propertyId="65e0ce599131ed19d97353e8"
         widgetId="1hnr2c4n0"
-      />
+      /> */}
     </div>
   );
 }
