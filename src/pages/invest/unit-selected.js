@@ -9,6 +9,7 @@ import funded from "../../assets/images/funded.png";
 import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import postData from "../../hooks/useFetch";
+import Commitment from "./commitment";
 
 function importAll(r) {
   let images = {};
@@ -273,6 +274,8 @@ function UnitSelected({ unit, next }) {
 
                     </>}
                   </div>
+
+                  {commitment.unit === 0 && <Commitment unit={unit} />}
                 </div>
               ) : (
                 <div className="p-10 pb-18">
