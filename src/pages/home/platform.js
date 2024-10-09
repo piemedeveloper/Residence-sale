@@ -61,9 +61,9 @@ function Platform() {
                 </div>
 
                 <div className="flex mt-10">
-                  <Link to="/residences">
+                  <a href="https://app.pieme.info">
                     <p className="invest-now">Invest Now</p>
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>

@@ -8,7 +8,7 @@ import { Spin, message, notification } from "antd";
 import { useNavigate } from "react-router-dom";
 import postData from "../../hooks/useFetch";
 
-function MobileMoneyPayment({ cValue, invest, unit, docSign, to_pay, pdfDoc }) {
+function MobileMoneyPayment({ cValue, invest, unit, docSign, to_pay, pdfDoc, commitment }) {
   const navigate = useNavigate();
   const [phone, setPhone] = useState("");
   const [countDown, setCountDown] = useState(false);
@@ -125,6 +125,7 @@ function MobileMoneyPayment({ cValue, invest, unit, docSign, to_pay, pdfDoc }) {
           unit_id: unit.id,
           signature: docSign.signature,
           contract: pdfDoc,
+          "is_commitment": commitment
         },
       }).then((data) => {
         setBtnDis(false);

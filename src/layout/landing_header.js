@@ -7,6 +7,8 @@ import { Drawer, Dropdown } from "antd";
 import { TiArrowSortedDown } from "react-icons/ti";
 import { AuthContext } from "../context/auth-context";
 
+import { IoCartOutline } from "react-icons/io5";
+
 function LandingHeader() {
   const [open, setOpen] = React.useState(false);
   const [active, setActive] = React.useState("");
@@ -157,9 +159,9 @@ function LandingHeader() {
               ) :
                 m.url === "marketplace" ? <a href="https://app.pieme.info/">
                   <p
-                    className={`h-full p-5 menu-color hover:text-black border-2 border-blue-400 active-menu`}
+                    className={`h-full p-5 menu-color hover:text-black active-menu flex items-center gap-2`}
                   >
-                    {m.label}
+                    <IoCartOutline className="text-2xl" />{m.label}
                   </p>
                 </a> : <Link key={i} to={`/${m.url}`}>
                   <p

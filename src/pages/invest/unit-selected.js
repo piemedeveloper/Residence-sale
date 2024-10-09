@@ -27,6 +27,9 @@ const images = importAll(
 
 function UnitSelected({ unit, next }) {
   const [invest, setInvest] = useState(150);
+  const [commitment, setCommitment] = useState({
+    overall: 0, unit: 0
+  });
 
   const offers = [
     {
@@ -76,6 +79,16 @@ function UnitSelected({ unit, next }) {
         setBankPay(data)
       });
     }
+
+
+    postData({
+      service: "commitment_balance",
+      data: {
+        unit_id: unit.id
+      },
+    }).then((data) => {
+      setCommitment({ overall: data.overall, unit: data.unit })
+    });
 
   }, [])
 
@@ -233,7 +246,7 @@ function UnitSelected({ unit, next }) {
                   </div>
                   <Slider
                     defaultValue={150}
-                    max={unit.cost - unit.amount}
+                    max={commitment.unit > 0 ? commitment.unit : unit.cost - unit.amount}
                     min={150}
                     value={invest}
                     onChange={(e) => setInvest(e)}
@@ -245,10 +258,14 @@ function UnitSelected({ unit, next }) {
                     <p>${numberFormatter(unit.cost - unit.amount)}</p>
                   </div>
 
+                  {commitment.unit > 0 ? <div>
+
+                  </div> : <div></div>}
+
                   <div className="flex justify-center pt-6 pb-2">
                     {Object.keys(bankPay).length !== 0 && <>
                       {bankPay.success === 1 ? <button
-                        onClick={() => next(invest)}
+                        onClick={() => next(invest, commitment.unit > 0)}
                         className="w-full py-3.5 text-sm text-center text-white rounded-full main-bg"
                       >
                         Invest now

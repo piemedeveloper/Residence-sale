@@ -4,6 +4,7 @@ import { FaRegBuilding } from "react-icons/fa";
 import { MdOutlineAttachMoney, MdPayment } from "react-icons/md";
 import { GiReceiveMoney } from "react-icons/gi";
 import { Slide } from "react-awesome-reveal";
+import { IoCartOutline } from "react-icons/io5";
 
 import _ from "lodash";
 import Slider from "../about/slider";
@@ -42,9 +43,9 @@ function TopContent() {
             </p>
 
             <div className="flex">
-              <Link to="/residences">
+              <a href="https://app.pieme.info">
                 <p className="text-base invest-now">Invest Now</p>
-              </Link>
+              </a>
             </div>
           </div>
         </Slide>
@@ -52,8 +53,13 @@ function TopContent() {
       </div>
 
       <div>
-        <div className="mt-16">
+        <div className="relative mt-16">
           <Slider />
+          <div className="absolute px-16 py-8 text-center text-white transform -translate-x-1/2 -translate-y-1/2 rounded-md top-1/2 left-1/2 main-light-bg">
+            <p className="font-medium text:2xl lg:text-3xl">Marketplace is now Open</p>
+            <p className="mt-5 text-lg">Pre-register now</p>
+            <a href="https://app.pieme.info"><p className="flex items-center justify-center gap-3 p-3 mt-3 bg-white rounded-sm border-1 main-color"><IoCartOutline className="text-2xl" />Visit our Marketplace</p></a>
+          </div>
         </div>
 
         <div className="max-w-4xl mx-auto my-14">
@@ -75,9 +81,9 @@ function TopContent() {
           </div>
 
           <div className="flex justify-center mt-12">
-            <Link to="/residences">
+            <a href="https://app.pieme.info">
               <p className="mt-20 invest-now">Invest Now</p>
-            </Link>
+            </a>
           </div>
         </div>
       </div>

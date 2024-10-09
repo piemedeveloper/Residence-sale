@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { numberFormatter } from '../../utils/utils'
 import { ceil } from 'lodash'
 
-function BankPaymentInitiate({ user, invest, unit, pdfDoc, cValue }) {
+function BankPaymentInitiate({ user, invest, unit, pdfDoc, cValue, commitment }) {
     const [initiate, setInitiate] = useState(false)
 
     const navigate = useNavigate();
@@ -20,7 +20,8 @@ function BankPaymentInitiate({ user, invest, unit, pdfDoc, cValue }) {
                 "amount": parseFloat(invest),
                 "signature": "signat5678765ure.png",
                 "contract": pdfDoc,
-                "currency": 800
+                "currency": 800,
+                "is_commitment": commitment
             },
         })
             .then((data) => {

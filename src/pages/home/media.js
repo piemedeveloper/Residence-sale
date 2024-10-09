@@ -83,13 +83,13 @@ function Media() {
                 >
                     {media.map((m, k) => (
                         <SwiperSlide key={k}>
-                            <div className="flex items-center justify-center">
+                            <a href={m.link} target='_blank' rel="noreferrer" className="flex items-center justify-center">
                                 <img
                                     src={m.icon}
                                     alt="logos"
                                     className="object-contain h-20"
                                 />
-                            </div>
+                            </a>
                         </SwiperSlide>
                     ))}
                 </Swiper>

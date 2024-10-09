@@ -52,7 +52,7 @@ function toEtherString(value) {
   return toEther(toHumanizeNumber(value)).toString();
 }
 
-function CryptoPayments({ to_pay, invest, unit, pdfDoc }) {
+function CryptoPayments({ to_pay, invest, unit, pdfDoc, commitment }) {
   const { open, close } = useWeb3Modal();
   const { chain } = useNetwork();
 
@@ -137,6 +137,7 @@ function CryptoPayments({ to_pay, invest, unit, pdfDoc }) {
             unit_id: unit.id,
             currency: 234,
             signature: pdfDoc,
+            "is_commitment": commitment
           },
         })
           .then((data) => {

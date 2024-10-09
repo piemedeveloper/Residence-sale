@@ -22,6 +22,7 @@ function PropertyInvest({ user }) {
   const [unit, setUnit] = useState({});
   const [cValue, setCValue] = useState(0);
   const [disable, setDisable] = useState(false);
+  const [commitment, setCommitment] = useState(false);
   const [invest, setInvest] = useState(150);
   const [signature, setSignature] = useState(null);
   const [docSign, setDocSign] = useState({});
@@ -112,8 +113,9 @@ function PropertyInvest({ user }) {
     setCurrent(current + 1);
   };
 
-  const amountSet = (amount) => {
+  const amountSet = (amount, is_commitment) => {
     setInvest(amount);
+    setCommitment(is_commitment)
     setCurrent(current + 1);
   };
 
@@ -155,6 +157,7 @@ function PropertyInvest({ user }) {
           docSign={docSign}
           to_pay={to_pay}
           pdfDoc={pdfDoc}
+          commitment={commitment}
         />
       ),
     },
@@ -167,6 +170,7 @@ function PropertyInvest({ user }) {
           invest={invest}
           unit={unit}
           pdfDoc={pdfDoc}
+          commitment={commitment}
         />
       ),
     },
@@ -174,11 +178,14 @@ function PropertyInvest({ user }) {
       key: "3",
       label: "Pay with bank transfer",
       children: <div>
-        <BankPaymentInitiate user={user} to_pay={to_pay}
+        <BankPaymentInitiate
+          user={user} to_pay={to_pay}
           invest={invest}
           unit={unit}
           pdfDoc={pdfDoc}
-          cValue={cValue} />
+          cValue={cValue}
+          commitment={commitment}
+        />
       </div>,
     },
   ];

@@ -37,7 +37,7 @@ const schema = y
 function Register() {
   const recaptcha = React.useRef();
 
-  window.location.href = "https://app.pieme.info/pieme/auth/sign-up"
+  // window.location.href = "https://app.pieme.info/pieme/auth/sign-up"
 
   const {
     register,
