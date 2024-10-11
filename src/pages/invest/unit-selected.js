@@ -259,10 +259,6 @@ function UnitSelected({ unit, next }) {
                     <p>${numberFormatter(unit.cost - unit.amount)}</p>
                   </div>
 
-                  {commitment.unit > 0 ? <div>
-
-                  </div> : <div></div>}
-
                   <div className="flex justify-center pt-6 pb-2">
                     {Object.keys(bankPay).length !== 0 && <>
                       {bankPay.success === 1 ? <button
@@ -275,7 +271,7 @@ function UnitSelected({ unit, next }) {
                     </>}
                   </div>
 
-                  {commitment.unit === 0 && <Commitment unit={unit} />}
+                  {commitment.unit === 0 && <Commitment unit={unit} invest={invest} />}
                 </div>
               ) : (
                 <div className="p-10 pb-18">
