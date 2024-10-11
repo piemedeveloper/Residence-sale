@@ -72,14 +72,14 @@ function UnitSelected({ unit, next }) {
 
 
   useEffect(() => {
-    if (unit.cost - unit.amount > 0) {
-      postData({
-        service: "bank_pay_checker",
-        data: {},
-      }).then((data) => {
-        setBankPay(data)
-      });
-    }
+    // if (unit.cost - unit.amount > 0) {
+    postData({
+      service: "bank_pay_checker",
+      data: {},
+    }).then((data) => {
+      setBankPay(data)
+    });
+    // }
 
 
     postData({
@@ -223,66 +223,118 @@ function UnitSelected({ unit, next }) {
               <p className="p-4 text-base font-medium text-center border-b main-color">
                 Investment
               </p>
-              {unit.cost - unit.amount > 0 ? (
-                <div className="p-5">
-                  <p className="text-base head-color">
-                    Investment amount (minimum {low_investment})
-                  </p>
 
-                  <div className="flex items-center mt-3 overflow-hidden rounded-lg invest-container">
-                    <span className="px-4 py-2.5 invest-input font-medium">
-                      $
-                    </span>
+              {commitment.unit > 0 ? <div className="p-5">
+                <p className="text-base head-color">
+                  Investment amount (minimum {low_investment})
+                </p>
 
-                    <NumericInput
-                      className="px-4 py-2 text-base font-medium bg-transparent outline-none"
-                      min={150}
-                      step={1}
-                      max={commitment.unit > 0 ? commitment.unit : unit.cost - unit.amount}
-                      value={invest}
-                      // eslint-disable-next-line
-                      style={false}
-                      onBlur={(e) => setInvest(e.target.value)}
-                    />
-                  </div>
-                  <Slider
-                    defaultValue={150}
-                    max={commitment.unit > 0 ? commitment.unit : unit.cost - unit.amount}
+                <div className="flex items-center mt-3 overflow-hidden rounded-lg invest-container">
+                  <span className="px-4 py-2.5 invest-input font-medium">
+                    $
+                  </span>
+
+                  <NumericInput
+                    className="px-4 py-2 text-base font-medium bg-transparent outline-none"
                     min={150}
+                    step={1}
+                    max={commitment.unit > 0 ? commitment.unit : unit.cost - unit.amount}
                     value={invest}
-                    onChange={(e) => setInvest(e)}
-                    className="mt-6"
+                    // eslint-disable-next-line
+                    style={false}
+                    onBlur={(e) => setInvest(e.target.value)}
                   />
-
-                  <div className="flex justify-between text-sm">
-                    <p>$150</p>
-                    <p>${numberFormatter(commitment.unit > 0 ? commitment.unit : unit.cost - unit.amount)}</p>
-                  </div>
-
-                  <div className="flex justify-center pt-6">
-                    {Object.keys(bankPay).length !== 0 && <>
-                      {bankPay.success === 1 ? <button
-                        onClick={() => next(invest, commitment.unit > 0)}
-                        className="w-full py-3.5 text-sm text-center text-white rounded-full main-bg"
-                      >
-                        Invest now
-                      </button> : <p className="text-lg text-red-600">Still have a pending bank payment, can not make another invesment</p>}
-
-                    </>}
-                  </div>
-
-                  <Commitment unit={unit} invest={invest} commitment={commitment} />
                 </div>
-              ) : (
-                <div className="p-10 pb-18">
-                  <img src={funded} alt="Residence unit fully funded" />
+                <Slider
+                  defaultValue={150}
+                  max={commitment.unit > 0 ? commitment.unit : unit.cost - unit.amount}
+                  min={150}
+                  value={invest}
+                  onChange={(e) => setInvest(e)}
+                  className="mt-6"
+                />
+
+                <div className="flex justify-between text-sm">
+                  <p>$150</p>
+                  <p>${numberFormatter(commitment.unit > 0 ? commitment.unit : unit.cost - unit.amount)}</p>
                 </div>
-              )}
+
+                <div className="flex justify-center pt-6">
+                  {Object.keys(bankPay).length !== 0 && <>
+                    {bankPay.success === 1 ? <button
+                      onClick={() => next(invest, commitment.unit > 0)}
+                      className="w-full py-3.5 text-sm text-center text-white rounded-full main-bg"
+                    >
+                      Invest now
+                    </button> : <p className="text-lg text-red-600">Still have a pending bank payment, can not make another invesment</p>}
+
+                  </>}
+                </div>
+
+                <Commitment unit={unit} invest={invest} commitment={commitment} />
+              </div> : <div>
+                {unit.cost - unit.amount > 0 ? (
+                  <div className="p-5">
+                    <p className="text-base head-color">
+                      Investment amount (minimum {low_investment})
+                    </p>
+
+                    <div className="flex items-center mt-3 overflow-hidden rounded-lg invest-container">
+                      <span className="px-4 py-2.5 invest-input font-medium">
+                        $
+                      </span>
+
+                      <NumericInput
+                        className="px-4 py-2 text-base font-medium bg-transparent outline-none"
+                        min={150}
+                        step={1}
+                        max={commitment.unit > 0 ? commitment.unit : unit.cost - unit.amount}
+                        value={invest}
+                        // eslint-disable-next-line
+                        style={false}
+                        onBlur={(e) => setInvest(e.target.value)}
+                      />
+                    </div>
+                    <Slider
+                      defaultValue={150}
+                      max={commitment.unit > 0 ? commitment.unit : unit.cost - unit.amount}
+                      min={150}
+                      value={invest}
+                      onChange={(e) => setInvest(e)}
+                      className="mt-6"
+                    />
+
+                    <div className="flex justify-between text-sm">
+                      <p>$150</p>
+                      <p>${numberFormatter(commitment.unit > 0 ? commitment.unit : unit.cost - unit.amount)}</p>
+                    </div>
+
+                    <div className="flex justify-center pt-6">
+                      {Object.keys(bankPay).length !== 0 && <>
+                        {bankPay.success === 1 ? <button
+                          onClick={() => next(invest, commitment.unit > 0)}
+                          className="w-full py-3.5 text-sm text-center text-white rounded-full main-bg"
+                        >
+                          Invest now
+                        </button> : <p className="text-lg text-red-600">Still have a pending bank payment, can not make another invesment</p>}
+
+                      </>}
+                    </div>
+
+                    <Commitment unit={unit} invest={invest} commitment={commitment} />
+                  </div>
+                ) : (
+                  <div className="p-10 pb-18">
+                    <img src={funded} alt="Residence unit fully funded" />
+                  </div>
+                )}
+              </div>}
+
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 

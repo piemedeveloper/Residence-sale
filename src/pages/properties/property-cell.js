@@ -16,9 +16,8 @@ function PropertyCell({ residence }) {
 
           {residence.paid > 0 && residence.paid === residence.price && (
             <div
-              className={`w-full h-full absolute top-0 ${
-                residence.type === 0 ? "bg-blue-600/30" : "bg-green-600/20"
-              }  backdrop-brightness-[40%] flex items-center justify-center`}
+              className={`w-full h-full absolute top-0 ${residence.type === 0 ? "bg-blue-600/30" : "bg-green-600/20"
+                }  backdrop-brightness-[40%] flex items-center justify-center`}
             >
               <div className="pt-3 text-xl font-medium text-center text-white uppercase md:text-2xl">
                 <p>Fully funded</p>
@@ -30,9 +29,8 @@ function PropertyCell({ residence }) {
       </Link>
 
       <p
-        className={`capitalize text-white text-center p-1.5 text-sm tracking-wide ${
-          residence.is_active === 1 ? "bg-orange-500" : "entire-bg"
-        }`}
+        className={`capitalize text-white text-center p-1.5 text-sm tracking-wide ${residence.is_active === 1 ? "bg-orange-500" : "entire-bg"
+          }`}
       >
         {residence.is_active === 1 ? "funding now" : "not funding now"}
       </p>
@@ -42,7 +40,6 @@ function PropertyCell({ residence }) {
           {residence.name},{" "}
           <span className="font-bold main-color">{residence.location}</span>
         </h2>
-
         <Progress
           percent={parseInt((residence.paid / residence.price) * 100)}
         />

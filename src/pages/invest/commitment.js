@@ -90,7 +90,7 @@ function Commitment({ unit, invest, commitment }) {
                 className="w-full py-3.5 text-sm text-center text-white rounded-full danger-bg"
                 onClick={cancel}
             >
-                Cancel commitment
+                Cancel Commitment
             </button>}
 
         </div>
