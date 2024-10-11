@@ -129,6 +129,7 @@ function MobileMoneyPayment({ cValue, invest, unit, docSign, to_pay, pdfDoc, com
         },
       }).then((data) => {
         setBtnDis(false);
+        console.log(data)
         if (data.status === 1) {
           notification.success({
             message: "Mobile money payment success",
