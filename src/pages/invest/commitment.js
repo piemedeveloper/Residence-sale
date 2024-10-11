@@ -6,7 +6,7 @@ import postData from '../../hooks/useFetch';
 
 const { confirm } = Modal;
 
-function Commitment({ unit, invest }) {
+function Commitment({ unit, invest, commitment }) {
     const commit = () => {
         confirm({
             title: `Are you sure you want to commit $${numberFormatter(invest)}?`,
@@ -28,7 +28,7 @@ function Commitment({ unit, invest }) {
                             });
                             resolve()
                         } else {
-                            notification.error({
+                            notification.success({
                                 message: "Commitment",
                                 description: data.message,
                             });
@@ -40,21 +40,58 @@ function Commitment({ unit, invest }) {
 
                 }).catch(() => console.log('Oops errors!'));
             },
-            onCancel() {
-                console.log("Cancel");
-            },
+            onCancel() { },
         });
-        // removeToken
+    };
+
+
+    const cancel = () => {
+        confirm({
+            title: `Are you sure you want to cancel your commitment?`,
+            icon: <ExclamationCircleOutlined />,
+            content: `When you click 'ok' you will be cancel the commitment`,
+            onOk() {
+                return new Promise((resolve, reject) => {
+                    postData({
+                        service: "cancel_commitment",
+                        data: {},
+                    }).then((data) => {
+                        if (data.success !== 1) {
+                            notification.error({
+                                message: "Commitment",
+                                description: data.message,
+                            });
+                            resolve()
+                        } else {
+                            notification.success({
+                                message: "Commitment",
+                                description: data.message,
+                            });
+                            setTimeout(function () {
+                                window.location.reload(false);
+                            }, 2500);
+                        }
+                    });
+
+                }).catch(() => console.log('Oops errors!'));
+            },
+            onCancel() { },
+        });
     };
 
     return (
-        <div className="flex justify-center pt-6 pb-2">
-            <button
+        <div className="flex justify-center pt-4">
+            {commitment.unit === 0 ? <button
                 className="w-full py-3.5 text-sm text-center text-white rounded-full main-light-bg"
                 onClick={commit}
             >
                 Commit to Unit
-            </button>
+            </button> : <button
+                className="w-full py-3.5 text-sm text-center text-white rounded-full danger-bg"
+                onClick={cancel}
+            >
+                Cancel commitment
+            </button>}
 
         </div>
     )

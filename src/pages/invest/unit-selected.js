@@ -238,7 +238,7 @@ function UnitSelected({ unit, next }) {
                       className="px-4 py-2 text-base font-medium bg-transparent outline-none"
                       min={150}
                       step={1}
-                      max={unit.cost - unit.amount}
+                      max={commitment.unit > 0 ? commitment.unit : unit.cost - unit.amount}
                       value={invest}
                       // eslint-disable-next-line
                       style={false}
@@ -256,10 +256,10 @@ function UnitSelected({ unit, next }) {
 
                   <div className="flex justify-between text-sm">
                     <p>$150</p>
-                    <p>${numberFormatter(unit.cost - unit.amount)}</p>
+                    <p>${numberFormatter(commitment.unit > 0 ? commitment.unit : unit.cost - unit.amount)}</p>
                   </div>
 
-                  <div className="flex justify-center pt-6 pb-2">
+                  <div className="flex justify-center pt-6">
                     {Object.keys(bankPay).length !== 0 && <>
                       {bankPay.success === 1 ? <button
                         onClick={() => next(invest, commitment.unit > 0)}
@@ -271,7 +271,7 @@ function UnitSelected({ unit, next }) {
                     </>}
                   </div>
 
-                  {commitment.unit === 0 && <Commitment unit={unit} invest={invest} />}
+                  <Commitment unit={unit} invest={invest} commitment={commitment} />
                 </div>
               ) : (
                 <div className="p-10 pb-18">
