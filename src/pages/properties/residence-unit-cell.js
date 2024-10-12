@@ -8,11 +8,14 @@ import { numberFormatter } from "../../utils/utils";
 
 function ResidenceUnitCell({ unit }) {
   return (
+    // <Link
+    //   to={`${unit.amount > 0 && unit.amount === unit.cost
+    //     ? `/dashboard/unit/${unit.enc_id}`
+    //     : `/dashboard/residences/invest/${unit.enc_id}`
+    //     }`}
+    // >
     <Link
-      to={`${unit.amount > 0 && unit.amount === unit.cost
-        ? `/dashboard/unit/${unit.enc_id}`
-        : `/dashboard/residences/invest/${unit.enc_id}`
-        }`}
+      to={`/dashboard/residences/invest/${unit.enc_id}`}
     >
       <div className="group">
         <div className="relative overflow-hidden rounded-xl">

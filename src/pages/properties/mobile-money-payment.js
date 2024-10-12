@@ -125,7 +125,8 @@ function MobileMoneyPayment({ cValue, invest, unit, docSign, to_pay, pdfDoc, com
           unit_id: unit.id,
           signature: docSign.signature,
           contract: pdfDoc,
-          "is_commitment": commitment
+          "is_commitment": commitment.is_commitment,
+          "commit_id": commitment.commit_id
         },
       }).then((data) => {
         setBtnDis(false);

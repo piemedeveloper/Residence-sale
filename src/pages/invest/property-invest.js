@@ -22,7 +22,7 @@ function PropertyInvest({ user }) {
   const [unit, setUnit] = useState({});
   const [cValue, setCValue] = useState(0);
   const [disable, setDisable] = useState(false);
-  const [commitment, setCommitment] = useState(false);
+  const [commitment, setCommitment] = useState({ is_commitment: false, commit_id: 0 });
   const [invest, setInvest] = useState(150);
   const [signature, setSignature] = useState(null);
   const [docSign, setDocSign] = useState({});
@@ -113,9 +113,9 @@ function PropertyInvest({ user }) {
     setCurrent(current + 1);
   };
 
-  const amountSet = (amount, is_commitment) => {
+  const amountSet = (amount, is_commitment, commit_id) => {
     setInvest(amount);
-    setCommitment(is_commitment)
+    setCommitment({ is_commitment, commit_id })
     setCurrent(current + 1);
   };
 

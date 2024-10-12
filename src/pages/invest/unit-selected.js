@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { low_investment } from "../../utils/data";
@@ -29,7 +30,7 @@ const images = importAll(
 function UnitSelected({ unit, next }) {
   const [invest, setInvest] = useState(150);
   const [commitment, setCommitment] = useState({
-    overall: 0, unit: 0
+    overall: 0, unit: 0, commit_id: 0
   });
 
   const offers = [
@@ -88,7 +89,21 @@ function UnitSelected({ unit, next }) {
         unit_id: unit.id
       },
     }).then((data) => {
-      setCommitment({ overall: data.overall, unit: data.unit })
+      if (data.success !== 1) { } else {
+        let balance = 0
+        let overall = 0
+        let commit_id = 0
+        // Unit Commitment
+        data.unit.map((u) => {
+          balance += u.amount - u.invested
+          commit_id = u.id
+        })
+        data.data.map((u) => {
+          overall += u.amount - u.invested
+        })
+        setCommitment({ overall: overall, unit: balance, commit_id })
+      }
+
     });
 
   }, [])
@@ -262,7 +277,7 @@ function UnitSelected({ unit, next }) {
                 <div className="flex justify-center pt-6">
                   {Object.keys(bankPay).length !== 0 && <>
                     {bankPay.success === 1 ? <button
-                      onClick={() => next(invest, commitment.unit > 0)}
+                      onClick={() => next(invest, commitment.unit > 0, commitment.commit_id)}
                       className="w-full py-3.5 text-sm text-center text-white rounded-full main-bg"
                     >
                       Invest now
@@ -312,7 +327,7 @@ function UnitSelected({ unit, next }) {
                     <div className="flex justify-center pt-6">
                       {Object.keys(bankPay).length !== 0 && <>
                         {bankPay.success === 1 ? <button
-                          onClick={() => next(invest, commitment.unit > 0)}
+                          onClick={() => next(invest, commitment.unit > 0, commitment.commit_id)}
                           className="w-full py-3.5 text-sm text-center text-white rounded-full main-bg"
                         >
                           Invest now

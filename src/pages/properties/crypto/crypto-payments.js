@@ -137,7 +137,8 @@ function CryptoPayments({ to_pay, invest, unit, pdfDoc, commitment }) {
             unit_id: unit.id,
             currency: 234,
             signature: pdfDoc,
-            "is_commitment": commitment
+            "is_commitment": commitment.is_commitment,
+            "commit_id": commitment.commit_id
           },
         })
           .then((data) => {

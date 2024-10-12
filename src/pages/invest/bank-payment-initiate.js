@@ -21,7 +21,8 @@ function BankPaymentInitiate({ user, invest, unit, pdfDoc, cValue, commitment })
                 "signature": "signat5678765ure.png",
                 "contract": pdfDoc,
                 "currency": 800,
-                "is_commitment": commitment
+                "is_commitment": commitment.is_commitment,
+                "commit_id": commitment.commit_id
             },
         })
             .then((data) => {
