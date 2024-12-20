@@ -280,7 +280,7 @@ function UnitSelected({ unit, next }) {
                       onClick={() => next(invest, commitment.unit > 0, commitment.commit_id)}
                       className="w-full py-3.5 text-sm text-center text-white rounded-full main-bg"
                     >
-                      Invest now
+                      Make Settlement
                     </button> : <p className="text-lg text-red-600">Still have a pending bank payment, can not make another invesment</p>}
 
                   </>}

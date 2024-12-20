@@ -156,3 +156,30 @@ export function WhatIs() {
     </div>
   );
 }
+
+
+export const FaqIndex1 = () => {
+  return <div>yah</div>
+}
+
+export const FaqIndex2 = () => {
+  return <div>yah</div>
+}
+export const FaqIndex3 = () => {
+  return <div>yah</div>
+}
+
+export const FaqIndex4 = () => {
+  return <div>yah</div>
+}
+export const FaqIndex5 = () => {
+  return <div>yah</div>
+}
+
+export const FaqIndex6 = () => {
+  return <div>yah</div>
+}
+
+export const FaqIndex7 = () => {
+  return <div>yah</div>
+}

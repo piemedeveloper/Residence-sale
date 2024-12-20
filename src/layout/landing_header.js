@@ -32,7 +32,7 @@ function LandingHeader() {
       url: "about team",
       links: [
         { label: "About Pieme", url: "about" },
-        { label: "Questions", url: "faq" },
+        { label: "Frequently Asked Questions", url: "faq" },
       ],
     },
     // { label: "About", url: "about", links: [] },
@@ -130,7 +130,7 @@ function LandingHeader() {
             </div>
           </Link>
 
-          <div className="hidden gap-6 lg:flex">
+          <div className="hidden gap-3 lg:flex">
             {_.map(menu, (m, i) => {
               const items = _.map(m.links, (link, l) => {
                 return {

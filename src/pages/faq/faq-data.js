@@ -2,11 +2,11 @@ import React from "react";
 
 import { Collapse } from "antd";
 import {
-  Differences,
-  Disadvanges,
-  HowItWorks,
-  WhatIs,
-  WhyConsider,
+  FaqIndex1,
+  FaqIndex2,
+  FaqIndex3,
+  FaqIndex4,
+  FaqIndex5,
 } from "./data-content";
 
 function FaqData() {
@@ -15,29 +15,29 @@ function FaqData() {
       key: "1",
       label:
         "I can afford to build an entire hotel alone” Why you should consider investing in Pieme Residences",
-      children: <WhyConsider />,
+      children: <FaqIndex1 />,
     },
     {
       key: "2",
       label: "How do Pieme residences work",
-      children: <HowItWorks />,
+      children: <FaqIndex2 />,
     },
     {
       key: "3",
       label:
         "What are the Disadvantages of investing in community-owned Hotels",
-      children: <Disadvanges />,
+      children: <FaqIndex3 />,
     },
     {
       key: "4",
       label:
         "Difference Between Community Owned Hotel and Other traditional ownership Models",
-      children: <Differences />,
+      children: <FaqIndex4 />,
     },
     {
       key: "5",
       label: "What is Hotel Community ownership",
-      children: <WhatIs />,
+      children: <FaqIndex5 />,
     },
   ];
   return (
@@ -51,6 +51,7 @@ function FaqData() {
           <Collapse
             accordion
             items={items}
+            defaultActiveKey={["1"]}
             expandIconPosition="end"
             bordered={false}
           />

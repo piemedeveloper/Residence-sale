@@ -7,19 +7,23 @@ import postData from "../../hooks/useFetch";
 import { useSelector } from "react-redux";
 import { user } from "../../features";
 
-import { MdOutlinePayments, MdOutlinePayment } from "react-icons/md";
+import { MdOutlinePayments, MdOutlinePayment, MdOutlinePaid } from "react-icons/md";
 import { PiKeyReturn } from "react-icons/pi";
 import { BiMoneyWithdraw } from "react-icons/bi";
 import { RiFundsBoxLine } from "react-icons/ri";
 import { HiOutlineWallet } from "react-icons/hi2";
 import { BsHouseCheck } from "react-icons/bs";
+import { CiCreditCardOff } from "react-icons/ci";
 import logo from "../../assets/images/logo.png";
+import { Link } from "react-router-dom";
 
 function Summary() {
   document.title = "Summary | Pieme";
   const userData = useSelector(user.user);
 
+
   const [summary, setsummary] = React.useState({});
+  const [commitment, setCommitment] = React.useState({ unit_id: "", commited: 0, invested: 0 });
 
   const funds = [
     {
@@ -58,6 +62,30 @@ function Summary() {
         setsummary({ ...data.data });
       }
     });
+
+    postData({
+      service: "commitment_balance",
+      data: { unit_id: 0 },
+    }).then((data) => {
+      if (data.success !== 1) { } else {
+        let commited = 0
+        let invested = 0
+
+        let unit_id = ""
+        data.data.map((u) => {
+          commited += u.amount
+          invested += u.invested
+          unit_id = u.enc_id
+        })
+
+        data.unit.map((u) => {
+          // balance += u.amount - u.invested
+          // commit_id = u.id
+        })
+        setCommitment({ unit_id, commited, invested })
+      }
+
+    });
   }, []);
 
   const portfolio = [
@@ -73,6 +101,19 @@ function Summary() {
         Object.keys(summary).length > 0
           ? "$" + numberFormatter(summary.total_investment)
           : 0,
+    },
+    {
+      icon: <CiCreditCardOff />,
+      title: "Total Commitment",
+      color: "red",
+      link: "/dashboard/residences/invest/" + commitment.unit_id,
+      amount: "$" + numberFormatter(commitment.commited),
+    },
+    {
+      icon: <MdOutlinePaid />,
+      title: "Commitement fulfilled",
+      color: "green",
+      amount: "$" + numberFormatter(commitment.invested),
     },
     {
       icon: <PiKeyReturn />,
@@ -91,22 +132,46 @@ function Summary() {
       <h2 className="mb-3 font-medium ms-2">Your Portfolio</h2>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
         {portfolio.map((p, i) => (
-          <div
-            key={i}
-            className="flex items-center gap-4 p-4 overflow-hidden bg-white border rounded-lg"
-          >
-            <div className="p-2 text-2xl text-white rounded-full main-light-bg">
-              {p.icon}
-            </div>
-            <div>
-              <p className="text-sm font-medium whitespace-pre-line head-color">
-                {p.title}
-              </p>
-              <p className="mt-1 text-lg font-bold whitespace-pre-line head-color">
-                {p.amount}
-              </p>
-            </div>
+          <div key={i}>
+            {p.link !== undefined ? <Link to={p.link}>
+              <div
+                className="flex items-center gap-4 p-4 overflow-hidden bg-white border rounded-lg"
+              >
+                <div
+                  style={{ backgroundColor: p.color }}
+                  className="p-2 text-2xl text-white rounded-full main-light-bg">
+                  {p.icon}
+                </div>
+                <div>
+                  <p className="text-sm font-medium whitespace-pre-line head-color">
+                    {p.title}
+                  </p>
+                  <p className="mt-1 text-lg font-bold whitespace-pre-line head-color">
+                    {p.amount}
+                  </p>
+                </div>
+              </div>
+            </Link> :
+              <div
+                className="flex items-center gap-4 p-4 overflow-hidden bg-white border rounded-lg"
+              >
+                <div
+                  style={{ backgroundColor: p.color }}
+                  className="p-2 text-2xl text-white rounded-full main-light-bg">
+                  {p.icon}
+                </div>
+                <div>
+                  <p className="text-sm font-medium whitespace-pre-line head-color">
+                    {p.title}
+                  </p>
+                  <p className="mt-1 text-lg font-bold whitespace-pre-line head-color">
+                    {p.amount}
+                  </p>
+                </div>
+              </div>
+            }
           </div>
+
         ))}
       </div>
 
