@@ -1,10 +1,6 @@
 
-import { Tabs, message, Upload } from "antd";
-import {
-    EditOutlined,
-    CloudUploadOutlined,
-    FontColorsOutlined,
-} from "@ant-design/icons";
+import { Tabs } from "antd";
+
 import React, { useMemo, useState } from "react";
 import postData from "../../hooks/useFetch";
 import { formatDate } from "../../utils/utils";
@@ -22,7 +18,6 @@ function Wallet() {
                 "is_credit": true
             },
         }).then((data) => {
-            console.log(data.data)
             if (data.success === 1) {
                 setCredit(data.data)
             }
@@ -35,8 +30,7 @@ function Wallet() {
                 "is_credit": false
             },
         }).then((data) => {
-            console.log(data.data)
-            if (data.success !== 1) {
+            if (data.success === 1) {
                 setDebit(data.data)
             }
         });
