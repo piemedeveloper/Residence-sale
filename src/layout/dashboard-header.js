@@ -75,7 +75,7 @@ function Header() {
       items: [
         {
           key: "1",
-          label: <Link to="/dashboard">Wallet</Link>,
+          label: <Link to="/dashboard/wallet">Wallet</Link>,
         },
       ],
     },

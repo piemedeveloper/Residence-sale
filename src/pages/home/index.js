@@ -29,10 +29,9 @@ function Home() {
       <Investing />
       <Platform />
       <Insights />
-      <div>
+      <div className="mb-10">
         <YoutubeClips />
       </div>
-      <FaqData />
     </div>
   );
 }

@@ -43,6 +43,7 @@ import Investments from "./pages/investments";
 import NotFound from "./pages/not-found";
 import OpenRoute from "./hooks/open-routes";
 import BlogPosts from "./pages/blog";
+import Wallet from "./pages/wallet";
 
 function App() {
   // const projectId = "04f3c387a6d55f5a29fd58b99c63a224";
@@ -126,6 +127,7 @@ function App() {
               >
                 <Route path="" element={<Summary />} />
                 <Route path="residences" element={<Properties />} />
+                <Route path="wallet" element={<Wallet />} />
                 <Route path="residences/:id" element={<PropertyDetail />} />
                 <Route path="unit/:id" element={<UnitDetails />} />
                 <Route
@@ -142,10 +144,10 @@ function App() {
         </BrowserRouter>
       </WagmiConfig>
 
-      {/* <TawkMessengerReact
+      <TawkMessengerReact
         propertyId="65e0ce599131ed19d97353e8"
         widgetId="1hnr2c4n0"
-      /> */}
+      />
     </div>
   );
 }

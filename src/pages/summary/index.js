@@ -30,7 +30,8 @@ function Summary() {
       icon: <HiOutlineWallet />,
       title: "Available funds in wallet",
       color: "green",
-      amount: 0,
+      amount:
+        Object.keys(summary).length > 0 ? numberFormatter(summary.wallet) : 0,
     },
     {
       icon: <RiFundsBoxLine />,
