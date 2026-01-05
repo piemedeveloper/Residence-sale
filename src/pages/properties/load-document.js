@@ -408,9 +408,8 @@ function LoadDocument(props) {
       </div>
 
       <div
-        className={`z-10 absolute bottom-0 ${
-          !sign && "hidden"
-        } w-full bg-white border-t`}
+        className={`z-10 absolute bottom-0 ${!sign && "hidden"
+          } w-full bg-white border-t`}
       >
         <div className="flex items-center justify-between px-4 border-b">
           <p className="p-4 text-2xl ">Signature</p>
