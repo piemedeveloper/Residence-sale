@@ -5,13 +5,29 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      // Optional: Wagmi-friendly defaults (recommended)
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
+      retry: false, // or adjust as needed
+    },
+  },
+});
+
+
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </QueryClientProvider>
   </React.StrictMode>
 );
 
